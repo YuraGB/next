@@ -45,15 +45,14 @@ export const authOptions: NextAuthOptions = {
       if (user) token.role = user.role
       return token
     },
-    // async session({ session, token, user }) {
-    //   // Send properties to the client, like an access_token from a provider.
-    //   session.accessToken = token.accessToken
-    //   return session
-    // },
+
+    async session({ session }) {
+      return session
+    },
   },
-  // pages: {
-  //   signIn: '/auth/signin',
-  // },
+  pages: {
+    signIn: '/auth/signin',
+  },
   //
   // jwt: {
   //   async encode({ secret, token }) {
