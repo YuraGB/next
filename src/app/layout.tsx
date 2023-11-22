@@ -1,8 +1,9 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
-import { Navigation } from '@/components/navigation/Navigation'
+import { Navigation } from '@/modules/navigation/Navigation'
 import AuthProvider from '@/app/context/AuthProvider'
+import NextUiProviderComponent from '@/app/context/NextUiProviderComponent'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -19,10 +20,12 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <AuthProvider>
-          <Navigation />
-          {children}
-        </AuthProvider>
+        <NextUiProviderComponent>
+          <AuthProvider>
+            <Navigation />
+            {children}
+          </AuthProvider>
+        </NextUiProviderComponent>
       </body>
     </html>
   )

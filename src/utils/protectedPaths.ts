@@ -1,1 +1,1 @@
-export const protectedPaths = ['/admin']
+export const protectedPaths: string[] = ['/admin']
