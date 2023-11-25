@@ -5,7 +5,7 @@ import React from 'react'
 
 export const Navigation = (): React.ReactNode => {
   const { data: session } = useSession()
-  console.log('render')
+  console.log('render', session)
 
   return (
     <div>
