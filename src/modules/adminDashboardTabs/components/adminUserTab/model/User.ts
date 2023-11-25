@@ -5,4 +5,4 @@ export type User = {
   role: Role
 }
 
-export type Role = 'admin' | 'user' | 'guest'
+export type Role = 'admin' | 'user' | 'guest' | string
