@@ -1,5 +1,6 @@
 import React from 'react'
 import { User } from '@/modules/adminDashboardTabs/components/adminUserTab/model/User'
+import {User as UserComponent} from "@nextui-org/react";
 
 type UserItemProps = {
   user: User
@@ -8,8 +9,12 @@ type UserItemProps = {
 export const UserItem = ({ user }: UserItemProps): React.ReactNode => {
   const { name } = user
   return (
-    <section>
-      <p>{name}</p>
-    </section>
+    <UserComponent
+      name={name}
+      description="Product Designer"
+      avatarProps={{
+        src: "https://i.pravatar.cc/150?u=a04258114e29026702d"
+      }}
+    />
   )
 }

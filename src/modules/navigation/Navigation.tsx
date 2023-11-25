@@ -8,8 +8,10 @@ export const Navigation = (): React.ReactNode => {
   console.log('render')
 
   return (
-    <nav>
-      <Link href={'/'}>Homes</Link>
-    </nav>
+    <div>
+      <nav>
+        <Link href={'/'}>Homes</Link>
+      </nav>
+    </div>
   )
 }
