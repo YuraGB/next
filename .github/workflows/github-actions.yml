@@ -1,0 +1,21 @@
+name: GitHub Actions
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+on: [push]
+jobs:
+  init:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.x]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check out repository code Starting on Node ${{ matrix.node-version }}
+        uses: actions/checkout@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+        run: echo "Node was installed"
+      - name: Install node modules
+        run: npm install
+      - name: Build the project
+        run: npm run install
+
