@@ -16,7 +16,7 @@ export default function Login(props: {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <h2> Login</h2>
+      <h1> Login</h1>
       {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
       {/* @ts-ignore */}
       <form onSubmit={onSubmit}>
