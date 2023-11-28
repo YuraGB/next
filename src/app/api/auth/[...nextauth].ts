@@ -53,6 +53,11 @@ export const authOptions: NextAuthOptions = {
   pages: {
     signIn: '/login',
   },
+  secret: process.env.NEXTAUTH_SECRET,
+  session: {
+    strategy: 'jwt',
+  },
+  debug: process.env.NODE_ENV === 'development',
   //
   // jwt: {
   //   async encode({ secret, token }) {

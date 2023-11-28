@@ -8,5 +8,7 @@ it('should have H1 Home', () => {
     name: 'Home',
   }) //ACT
 
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-expect-error
   expect(elem).toBeInTheDocument() //ASSERT
 })
