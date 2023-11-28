@@ -1,5 +1,5 @@
 // import { signIn } from 'next-auth/react'
-import { LoginForm } from '@/modules/loginForm/LoginForm'
+import LoginForm from '@/modules/loginForm/LoginForm'
 
 export default function Login(/*props: {
   searchParams: { callbackUrl: string }
