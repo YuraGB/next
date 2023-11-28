@@ -6,6 +6,7 @@ export type Fields = {
   isInvalid: boolean
   pattern?: RegExp
   description?: string
+  autoComplete?: string
 }
 
 export type Inputs = {

@@ -20,7 +20,7 @@ export const RegistrationForm = (): React.ReactNode => {
       </div>
 
       <div className="relative mb-6">
-        <Input type="password" label="password" />
+        <Input type="password" label="password" autoComplete={'on'} />
       </div>
 
       <Button

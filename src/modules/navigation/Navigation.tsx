@@ -13,8 +13,13 @@ export const Navigation = (): React.ReactNode => {
   return (
     <Navbar isBordered isBlurred={false}>
       <NavbarBrand>
-        <AcmeLogo />
-        <p className="font-bold text-inherit">ACME</p>
+        <Link
+          href={'/'}
+          className={'flex justify-center content-center items-center'}
+        >
+          <AcmeLogo />
+          <p className="font-bold text-inherit">ACME</p>
+        </Link>
       </NavbarBrand>
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
         <NavbarItem>

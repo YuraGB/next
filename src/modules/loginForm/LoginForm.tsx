@@ -1,9 +1,9 @@
 'use client'
-import React from 'react'
+import React, { memo } from 'react'
 import { Button } from '@nextui-org/button'
 import { useLoginForm } from '@/modules/loginForm/useLoginForm'
 
-export const LoginForm = (): React.ReactNode => {
+export const LoginForm = memo((): React.ReactNode => {
   const { formFields, onSubmit, handleSubmit } = useLoginForm()
   return (
     <article className={'flex flex-col justify-center mt-3'}>
@@ -32,4 +32,4 @@ export const LoginForm = (): React.ReactNode => {
       </form>
     </article>
   )
-}
+})

@@ -19,6 +19,7 @@ export const ForgotPasswordForm = (): React.ReactNode => {
             color={'primary'}
             fullWidth={true}
             className={'mb-4'}
+            type={'submit'}
           >
             Send me recovery letter
           </Button>

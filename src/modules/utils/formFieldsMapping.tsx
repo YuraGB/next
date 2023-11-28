@@ -11,11 +11,20 @@ export default function formFieldsMapping<T extends keyof Inputs>(
 ): React.ReactNode[] {
   return fields.map(
     (
-      { type, label, required, errorMessage, pattern, description }: Fields,
+      {
+        type,
+        label,
+        required,
+        errorMessage,
+        pattern,
+        description,
+        autoComplete,
+      }: Fields,
       index: number
     ) => (
       <div className="mb-6" key={label + index}>
         <Input
+          isRequired={required}
           type={type}
           label={label}
           {...register(label as T, {
@@ -24,6 +33,7 @@ export default function formFieldsMapping<T extends keyof Inputs>(
           })}
           errorMessage={errors[label as T] ? errorMessage : ''}
           description={description}
+          autoComplete={autoComplete}
         />
       </div>
     )
