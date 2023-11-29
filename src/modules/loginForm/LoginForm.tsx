@@ -10,6 +10,7 @@ const LoginForm = (): React.ReactNode => {
       <form
         className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-[500px]"
         onSubmit={handleSubmit(onSubmit)}
+        aria-label={'Login in form'}
       >
         {formFields}
         <div className="flex items-center justify-between flex-wrap">

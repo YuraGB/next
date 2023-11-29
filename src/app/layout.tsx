@@ -19,7 +19,9 @@ export default async function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body
+        className={`${inter.className} [&>*:first-child]:min-h-[100dvh] [&>*:first-child]:flex [&>*:first-child]:flex-col`}
+      >
         <NextUiProviderComponent>
           <AuthProvider>
             <Navigation />

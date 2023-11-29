@@ -1,10 +1,17 @@
 import Link from 'next/link'
+import PageWrapper from '@/components/pageWrapper/PageWrapper'
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Gyb Nextjs Access Denied Page',
+  description: 'testing Nextjs 14 Permission denied',
+}
 
 export default function Denied() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <PageWrapper>
       <h1>Denied</h1>
       <Link href={'/'}>Home</Link>
-    </main>
+    </PageWrapper>
   )
 }

@@ -10,10 +10,8 @@ const UsersList = ({ usersData }: UsersListProps): React.ReactNode | null => {
   if (!usersData) {
     return null
   }
-
-  console.log('usersData', usersData)
   return (
-    <section  className={"grid justify-start gap-2"}>
+    <section className={'grid justify-start gap-2'}>
       {usersData.map((userData) => (
         <UserItem key={userData.id} user={userData} />
       ))}

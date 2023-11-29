@@ -8,6 +8,6 @@ describe('<Admin />', () => {
 
     cy.url().should('include', '/admin')
 
-    cy.get('h1').contains('admin')
+    cy.get('h1').contains('Admin page')
   })
 })
