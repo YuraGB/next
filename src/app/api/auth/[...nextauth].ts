@@ -46,18 +46,21 @@ export const authOptions: NextAuthOptions = {
       return token
     },
 
-    async session({ session }) {
+    async session({ session, token }) {
+      if (token && session.user) {
+        session.user.role = token.role
+      }
       return session
     },
   },
   pages: {
     signIn: '/login',
   },
-  secret: process.env.NEXTAUTH_SECRET,
-  session: {
-    strategy: 'jwt',
-  },
-  debug: process.env.NODE_ENV === 'development',
+  // secret: process.env.NEXTAUTH_SECRET,
+  // session: {
+  //   strategy: 'jwt',
+  // },
+  // debug: process.env.NODE_ENV === 'development',
   //
   // jwt: {
   //   async encode({ secret, token }) {

@@ -1,53 +1,42 @@
-'use client'
 import Link from 'next/link'
 import React from 'react'
 import {
   Navbar,
   NavbarBrand,
   NavbarContent,
-  NavbarItem,
+  NavbarMenuToggle,
 } from '@nextui-org/navbar'
-import { Button } from '@nextui-org/button'
+import MenuList from '@/modules/navigation/components/menuList/menuList'
+import { useNavigation } from '@/modules/navigation/useNavigation'
+import MobileMenu from '@/modules/navigation/components/mobileMenu/mobileMenu'
+import ProfileMenuItems from '@/modules/navigation/components/profileMenuItems/profileMenuItems'
 
 export const Navigation = (): React.ReactNode => {
+  const menuItems = useNavigation()
+
   return (
-    <Navbar isBordered isBlurred={false}>
-      <NavbarBrand>
-        <Link
-          href={'/'}
-          className={'flex justify-center content-center items-center'}
-        >
-          <AcmeLogo />
-          <p className="font-bold text-inherit">ACME</p>
-        </Link>
-      </NavbarBrand>
-      <NavbarContent className="hidden sm:flex gap-4" justify="center">
-        <NavbarItem>
-          <Link color="foreground" href="#">
-            Features
-          </Link>
-        </NavbarItem>
-        <NavbarItem isActive>
-          <Link href="#" aria-current="page">
-            Blog
-          </Link>
-        </NavbarItem>
-        <NavbarItem>
-          <Link color="foreground" href="#">
-            Knowledge
-          </Link>
-        </NavbarItem>
+    <Navbar disableAnimation isBordered>
+      <NavbarContent className="sm:hidden" justify="start">
+        <NavbarMenuToggle />
       </NavbarContent>
-      <NavbarContent justify="end">
-        <NavbarItem className="hidden lg:flex">
-          <Link href="/login">Login</Link>
-        </NavbarItem>
-        <NavbarItem>
-          <Button as={Link} color="primary" href="/signUp" variant="flat">
-            Sign Up
-          </Button>
-        </NavbarItem>
+
+      <NavbarContent className=" pr-3" justify="center">
+        <NavbarBrand>
+          <Link
+            href={'/'}
+            className={'flex justify-center content-center items-center'}
+          >
+            <AcmeLogo />
+            <p className="font-bold text-inherit">Yuhur</p>
+          </Link>
+        </NavbarBrand>
       </NavbarContent>
+
+      <MenuList items={menuItems} />
+
+      <ProfileMenuItems />
+
+      <MobileMenu items={menuItems} />
     </Navbar>
   )
 }

@@ -15,7 +15,7 @@ export const AdminDashboardTabs = (): React.ReactNode => {
       selectedKey={selected}
       onSelectionChange={(key) => setSelected(key as string)}
     >
-      <Tab key="users" title="Users">
+      <Tab key="users" title="Users" className={'w-full'}>
         <AdminUserTab data={usersData} />
       </Tab>
       <Tab key="music" title="Music"></Tab>

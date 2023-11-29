@@ -4,7 +4,7 @@ import { Input } from '@nextui-org/input'
 
 export const RegistrationForm = (): React.ReactNode => {
   return (
-    <form className={'bg-white p-4'} aria-label={'registration form'}>
+    <form className={'bg-white p-4 mt-3'} aria-label={'registration form'}>
       <div className="grid grid-cols-2 gap-4">
         <div className="relative mb-6">
           <Input type="firstName" label="First Name" />

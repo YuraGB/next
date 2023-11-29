@@ -3,8 +3,11 @@ import React, { memo } from 'react'
 import { Button } from '@nextui-org/button'
 import { useLoginForm } from '@/modules/loginForm/useLoginForm'
 
-const LoginForm = (): React.ReactNode => {
-  const { formFields, onSubmit, handleSubmit } = useLoginForm()
+export type LoginFormType = {
+  redirectUrl: string
+}
+const LoginForm = ({ redirectUrl }: LoginFormType): React.ReactNode => {
+  const { formFields, onSubmit, handleSubmit } = useLoginForm({ redirectUrl })
   return (
     <article className={'flex flex-col justify-center mt-3'}>
       <form

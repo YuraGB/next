@@ -7,9 +7,9 @@ export const metadata: Metadata = {
   description: 'testing Nextjs 14 Dashboard',
 }
 
-export default function Admin() {
+export default async function Admin() {
   return (
-    <PageWrapper>
+    <PageWrapper additionalClasses={'items-start'}>
       <h1>Admin page</h1>
       <AdminDashboardTabs />
     </PageWrapper>

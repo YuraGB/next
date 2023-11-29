@@ -6,11 +6,21 @@ import { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Gyb Nextjs Login Page',
   description: 'testing Nextjs 14 Login page',
+  keywords: ['yuhur', 'login page'],
+  authors: [
+    {
+      name: 'Yurii Hurianov',
+      url: 'https://www.linkedin.com/in/yurii-hurianov-685373172/',
+    },
+  ],
 }
 
-export default function Login(/*props: {
+export default function Login(props: {
   searchParams: { callbackUrl: string }
-}*/) {
+}) {
+  const redirectUrl = props?.searchParams?.callbackUrl ?? ''
+  console.log(redirectUrl)
+
   // const onSubmit = async (e: SubmitEvent) => {
   //   e.preventDefault()
   //   await signIn('credentials', {
@@ -27,7 +37,7 @@ export default function Login(/*props: {
       {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
       {/* @ts-ignore */}
 
-      <LoginForm />
+      <LoginForm redirectUrl={redirectUrl} />
       {/*<form onSubmit={onSubmit}>*/}
       {/*  <button type={'submit'}> click</button>*/}
       {/*</form>*/}

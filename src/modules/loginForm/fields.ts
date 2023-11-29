@@ -10,11 +10,11 @@ export default [
     isInvalid: true,
   },
   {
-    type: 'text',
-    label: 'email',
+    type: 'password',
+    label: 'password',
     isInvalid: true,
     required: true,
-    pattern: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/,
-    errorMessage: 'Please enter a valid email',
+    errorMessage: 'Incorrect password',
+    autoComplete: 'on',
   },
 ]

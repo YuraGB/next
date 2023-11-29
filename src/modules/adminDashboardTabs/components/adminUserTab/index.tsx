@@ -8,7 +8,7 @@ type UserInProps = {
 
 const AdminUserTab = ({ data }: UserInProps): React.ReactNode => {
   return (
-    <article>
+    <article className={'w-full'}>
       <UsersList usersData={data} />
     </article>
   )
