@@ -22,6 +22,8 @@ const MobileMenu = ({ items }: NavItemsProps): React.ReactNode | null => {
           </Link>
         </NavbarMenuItem>
       ))}
+
+      <ProfileMenuItems />
     </NavbarMenu>
   )
 }

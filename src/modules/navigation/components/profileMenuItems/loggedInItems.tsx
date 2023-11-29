@@ -29,12 +29,7 @@ const LoggedInItems = ({ user }: Props): React.ReactNode => {
         </NavbarItem>
       ) : null}
       <NavbarItem>
-        <Button
-          color="primary"
-          href="/signUp"
-          onClick={() => signOut()}
-          variant="flat"
-        >
+        <Button color="primary" onClick={() => signOut()} variant="flat">
           Sign Out
         </Button>
       </NavbarItem>

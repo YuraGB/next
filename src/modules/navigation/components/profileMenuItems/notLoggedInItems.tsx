@@ -6,7 +6,7 @@ import { Button } from '@nextui-org/button'
 const NotLoggedInItems = (): React.ReactNode => {
   return (
     <NavbarContent justify="end">
-      <NavbarItem className="hidden lg:flex">
+      <NavbarItem>
         <Link href="/login">Login</Link>
       </NavbarItem>
       <NavbarItem>
