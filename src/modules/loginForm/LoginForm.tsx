@@ -6,6 +6,7 @@ import { useLoginForm } from '@/modules/loginForm/useLoginForm'
 export type LoginFormType = {
   redirectUrl: string
 }
+
 const LoginForm = ({ redirectUrl }: LoginFormType): React.ReactNode => {
   const { formFields, onSubmit, handleSubmit } = useLoginForm({ redirectUrl })
   return (

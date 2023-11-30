@@ -1,3 +1,4 @@
+'use client'
 import fields from '@/modules/loginForm/fields'
 import React from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
@@ -5,7 +6,7 @@ import { Inputs } from '@/modules/types/formTypes'
 import formFieldsMapping from '@/modules/utils/formFieldsMapping'
 import { signIn } from 'next-auth/react'
 import { LoginFormType } from '@/modules/loginForm/LoginForm'
-import { useRouter } from 'next/navigation'
+//import { useRouter } from 'next/router'
 import toast from 'react-hot-toast'
 
 export const useLoginForm = ({ redirectUrl }: LoginFormType) => {
@@ -14,7 +15,7 @@ export const useLoginForm = ({ redirectUrl }: LoginFormType) => {
     handleSubmit,
     formState: { errors, isValid },
   } = useForm<Partial<Inputs>>()
-  const router = useRouter()
+  // const router = useRouter()
   const onSubmit: SubmitHandler<Partial<Inputs>> = async (
     data
   ): Promise<void> => {
@@ -27,11 +28,12 @@ export const useLoginForm = ({ redirectUrl }: LoginFormType) => {
           redirect: false,
           callbackUrl: redirectUrl,
         })
+        console.log(resp)
 
-        if (resp?.ok) {
-          router.push(redirectUrl ? redirectUrl : '/')
-        }
-
+        // if (resp?.ok) {
+        //   router.push(redirectUrl ? redirectUrl : '/')
+        // }
+        //
         if (resp?.error) {
           toast.error('There are no such user')
         }

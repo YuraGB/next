@@ -14,15 +14,11 @@ export const metadata: Metadata = {
   ],
 }
 
-export default function Login(props: {
-  searchParams: { callbackUrl: string }
-}) {
-  const redirectUrl = props?.searchParams?.callbackUrl ?? ''
-
+export default function Login() {
   return (
     <PageWrapper>
       <h1>Login</h1>
-      <LoginForm redirectUrl={redirectUrl} />
+      <LoginForm redirectUrl={'/'} />
     </PageWrapper>
   )
 }
