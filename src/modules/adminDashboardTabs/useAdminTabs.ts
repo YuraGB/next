@@ -1,7 +1,7 @@
 'use client'
 import { Dispatch, SetStateAction, useState } from 'react'
 
-export type TabNames = 'users' | 'photos' | 'music'
+export type TabNames = 'users' | 'blog' | 'features'
 
 export type AdminTabs = {
   tabNames: TabNames[]
@@ -10,7 +10,7 @@ export type AdminTabs = {
 }
 
 export const useAdminTabs = (): AdminTabs => {
-  const tabNames: TabNames[] = ['users', 'photos', 'music']
+  const tabNames: TabNames[] = ['users', 'blog', 'features']
   const [selected, setSelected] = useState<string>('users')
 
   return {

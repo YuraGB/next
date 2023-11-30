@@ -5,6 +5,13 @@ import { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Gyb Nextjs Admin Page',
   description: 'testing Nextjs 14 Dashboard',
+  keywords: ['yuhur', 'Dashboard'],
+  authors: [
+    {
+      name: 'Yurii Hurianov',
+      url: 'https://www.linkedin.com/in/yurii-hurianov-685373172/',
+    },
+  ],
 }
 
 export default async function Admin() {
