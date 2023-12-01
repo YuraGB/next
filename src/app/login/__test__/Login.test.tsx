@@ -1,7 +1,7 @@
 import { render, screen, waitFor } from '@testing-library/react'
 import Login from '@/app/login/page'
 
-jest.mock('next/router', () => ({
+jest.mock('next/navigation', () => ({
   useRouter: jest.fn(),
 }))
 

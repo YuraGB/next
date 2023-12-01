@@ -6,7 +6,7 @@ import { Inputs } from '@/modules/types/formTypes'
 import formFieldsMapping from '@/modules/utils/formFieldsMapping'
 import { signIn } from 'next-auth/react'
 import { LoginFormType } from '@/modules/loginForm/LoginForm'
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 import toast from 'react-hot-toast'
 
 export const useLoginForm = ({ redirectUrl }: LoginFormType) => {
