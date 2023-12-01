@@ -1,6 +1,10 @@
 import { render, screen, waitFor } from '@testing-library/react'
 import Login from '@/app/login/page'
 
+jest.mock('next/router', () => ({
+  useRouter: jest.fn(),
+}))
+
 describe('Login page', () => {
   it('Login H1 must be on the page', async () => {
     render(<Login />) //ARRANGE
