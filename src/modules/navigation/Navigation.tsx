@@ -8,8 +8,20 @@ import {
 } from '@nextui-org/navbar'
 import MenuList from '@/modules/navigation/components/menuList/menuList'
 import { useNavigation } from '@/modules/navigation/useNavigation'
-import MobileMenu from '@/modules/navigation/components/mobileMenu/mobileMenu'
-import ProfileMenuItems from '@/modules/navigation/components/profileMenuItems/profileMenuItems'
+import dynamic from 'next/dynamic'
+const MobileMenu = dynamic(
+  () => import('@/modules/navigation/components/mobileMenu/mobileMenu'),
+  {
+    loading: () => <p>Loading...</p>,
+  }
+)
+const ProfileMenuItems = dynamic(
+  () =>
+    import('@/modules/navigation/components/profileMenuItems/profileMenuItems'),
+  {
+    loading: () => <p>Loading...</p>,
+  }
+)
 
 export const Navigation = (): React.ReactNode => {
   const menuItems = useNavigation()
@@ -17,19 +29,23 @@ export const Navigation = (): React.ReactNode => {
   return (
     <Navbar disableAnimation isBordered>
       <NavbarContent className="sm:hidden" justify="start">
-        <NavbarMenuToggle />
+        <li>
+          <NavbarMenuToggle />
+        </li>
       </NavbarContent>
 
       <NavbarContent className=" pr-3" justify="center">
-        <NavbarBrand>
-          <Link
-            href={'/'}
-            className={'flex justify-center content-center items-center'}
-          >
-            <AcmeLogo />
-            <p className="font-bold text-inherit">Yuhur</p>
-          </Link>
-        </NavbarBrand>
+        <li>
+          <NavbarBrand>
+            <Link
+              href={'/'}
+              className={'flex justify-center content-center items-center'}
+            >
+              <AcmeLogo />
+              <p className="font-bold text-inherit">Yuhur</p>
+            </Link>
+          </NavbarBrand>
+        </li>
       </NavbarContent>
 
       <MenuList items={menuItems} />
