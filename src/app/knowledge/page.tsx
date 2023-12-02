@@ -1,11 +1,10 @@
-import LoginForm from '@/app/login/components/loginForm/LoginForm'
 import PageWrapper from '@/components/pageWrapper/PageWrapper'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Gyb Nextjs Login Page',
-  description: 'testing Nextjs 14 Login page',
-  keywords: ['yuhur', 'login page'],
+  title: 'Gyb Nextjs Knowledge Page',
+  description: 'testing Nextjs 14 Knowledge page',
+  keywords: ['yuhur', 'Knowledge page'],
   authors: [
     {
       name: 'Yurii Hurianov',
@@ -14,11 +13,10 @@ export const metadata: Metadata = {
   ],
 }
 
-export default function Login() {
+export default function Knowledge() {
   return (
     <PageWrapper>
-      <h1>Login</h1>
-      <LoginForm redirectUrl={'/'} />
+      <h1>Knowledge</h1>
     </PageWrapper>
   )
 }

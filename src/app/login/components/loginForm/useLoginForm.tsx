@@ -1,11 +1,11 @@
 'use client'
-import fields from '@/modules/loginForm/fields'
+import fields from '@/app/login/components/loginForm/fields'
 import React from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { Inputs } from '@/modules/types/formTypes'
 import formFieldsMapping from '@/modules/utils/formFieldsMapping'
 import { signIn } from 'next-auth/react'
-import { LoginFormType } from '@/modules/loginForm/LoginForm'
+import { LoginFormType } from '@/app/login/components/loginForm/LoginForm'
 import { useRouter } from 'next/navigation'
 import toast from 'react-hot-toast'
 

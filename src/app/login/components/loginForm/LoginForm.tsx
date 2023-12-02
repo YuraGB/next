@@ -1,7 +1,7 @@
 'use client'
 import React, { memo } from 'react'
 import { Button } from '@nextui-org/button'
-import { useLoginForm } from '@/modules/loginForm/useLoginForm'
+import { useLoginForm } from '@/app/login/components/loginForm/useLoginForm'
 
 export type LoginFormType = {
   redirectUrl: string
