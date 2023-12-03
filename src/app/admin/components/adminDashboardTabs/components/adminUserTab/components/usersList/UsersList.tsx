@@ -1,6 +1,6 @@
 import React from 'react'
-import { UserItem } from '@/modules/adminDashboardTabs/components/adminUserTab/components/userItem/UserItem'
-import { User } from '@/modules/adminDashboardTabs/components/adminUserTab/model/User'
+import { UserItem } from '@/app/admin/components/adminDashboardTabs/components/adminUserTab/components/userItem/UserItem'
+import { User } from '@/app/admin/components/adminDashboardTabs/components/adminUserTab/model/User'
 
 type UsersListProps = {
   usersData: User[]

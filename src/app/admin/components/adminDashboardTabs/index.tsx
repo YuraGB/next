@@ -1,8 +1,8 @@
 'use client'
 import React, { useState } from 'react'
 import { Tab, Tabs } from '@nextui-org/tabs'
-import AdminUserTab from '@/modules/adminDashboardTabs/components/adminUserTab'
 import usersData from './components/adminUserTab/dummyData.json'
+import AdminUserTab from '@/app/admin/components/adminDashboardTabs/components/adminUserTab'
 
 export const AdminDashboardTabs = (): React.ReactNode => {
   const [selected, setSelected] = useState<string>('users')

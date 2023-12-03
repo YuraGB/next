@@ -1,7 +1,6 @@
-import { AdminDashboardTabs } from '@/modules/adminDashboardTabs'
 import PageWrapper from '@/components/pageWrapper/PageWrapper'
 import { Metadata } from 'next'
-
+import { AdminDashboardTabs } from '@/app/admin/components/adminDashboardTabs'
 export const metadata: Metadata = {
   title: 'Gyb Nextjs Admin Page',
   description: 'testing Nextjs 14 Dashboard',

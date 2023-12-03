@@ -1,4 +1,4 @@
-import LoginForm from '@/modules/loginForm/LoginForm'
+import LoginForm from '@/app/login/components/loginForm/LoginForm'
 import PageWrapper from '@/components/pageWrapper/PageWrapper'
 import { Metadata } from 'next'
 import React from 'react'

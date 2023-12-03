@@ -3,7 +3,10 @@ import PageWrapper from '@/components/pageWrapper/PageWrapper'
 import { Metadata } from 'next'
 
 const ForgotPasswordFormLazy = lazy(
-  () => import('@/modules/forgotPasswordForm/ForgotPasswordForm')
+  () =>
+    import(
+      '@/app/forgotPassword/components/forgotPasswordForm/ForgotPasswordForm'
+    )
 )
 
 export const metadata: Metadata = {
