@@ -1,6 +1,7 @@
 import Link from 'next/link'
+import { ReactNode } from 'react'
 
-export default function NotFound() {
+export default function NotFound(): ReactNode {
   return (
     <div>
       <h2>Not Found</h2>

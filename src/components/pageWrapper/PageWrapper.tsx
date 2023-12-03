@@ -2,7 +2,7 @@ import React, { ReactNode } from 'react'
 import { Toaster } from 'react-hot-toast'
 
 interface Props {
-  children?: ReactNode
+  children?: ReactNode | ReactNode[]
   additionalClasses?: string
 }
 

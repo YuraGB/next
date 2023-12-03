@@ -1,6 +1,7 @@
 import { RegistrationForm } from '@/modules/registrationForm/RegistrationForm'
 import { Metadata } from 'next'
 import PageWrapper from '@/components/pageWrapper/PageWrapper'
+import React from 'react'
 
 export const metadata: Metadata = {
   title: 'Gyb Next js Sign Up Page',
@@ -14,7 +15,7 @@ export const metadata: Metadata = {
   ],
 }
 
-export default function RegisterPage() {
+export default function RegisterPage(): React.ReactNode {
   return (
     <PageWrapper>
       <h1>Registration</h1>

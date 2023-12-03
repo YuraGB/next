@@ -1,6 +1,7 @@
 import LoginForm from '@/modules/loginForm/LoginForm'
 import PageWrapper from '@/components/pageWrapper/PageWrapper'
 import { Metadata } from 'next'
+import React from 'react'
 
 export const metadata: Metadata = {
   title: 'Gyb Nextjs Login Page',
@@ -14,7 +15,7 @@ export const metadata: Metadata = {
   ],
 }
 
-export default function Login() {
+export default function Login(): React.ReactNode {
   return (
     <PageWrapper>
       <h1>Login</h1>
