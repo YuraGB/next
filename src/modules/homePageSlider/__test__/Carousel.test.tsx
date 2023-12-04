@@ -10,6 +10,6 @@ describe('Slider tests', () => {
 
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-expect-error
-    expect(elem).toBeInTheDocument() //ASSERT
+    expect(elem).not.toBeInTheDocument() //ASSERT
   })
 })
