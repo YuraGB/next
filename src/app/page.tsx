@@ -1,6 +1,7 @@
 import PageWrapper from '@/components/pageWrapper/PageWrapper'
 import { Metadata } from 'next'
-import React from 'react'
+import React, { Suspense } from 'react'
+import HomePageSlider from '@/modules/homePageSlider'
 
 export const metadata: Metadata = {
   title: 'Gyb Nextjs Home Page',
@@ -11,6 +12,9 @@ export default function Home(): React.ReactNode {
   return (
     <PageWrapper>
       <h1>Home</h1>
+      <Suspense fallback={<p>Loading...</p>}>
+        <HomePageSlider />
+      </Suspense>
     </PageWrapper>
   )
 }

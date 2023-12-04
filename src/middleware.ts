@@ -11,14 +11,6 @@ export default withAuth(
     ) {
       return NextResponse.rewrite(new URL('/denied', request.url))
     }
-
-    // if (
-    //   request.nextUrl.pathname.startsWith('/client') &&
-    //   request.nextauth.token?.role !== 'admin' &&
-    //   request.nextauth.token?.role !== 'manager'
-    // ) {
-    //   return NextResponse.rewrite(new URL('/denied', request.url))
-    // }
   },
   {
     callbacks: {

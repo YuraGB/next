@@ -24,6 +24,7 @@ const LoginForm = ({ redirectUrl }: LoginFormType): React.ReactNode => {
             color={'primary'}
             fullWidth={true}
             className={'mb-4'}
+            role={'button'}
           >
             Login in
           </Button>

@@ -13,5 +13,13 @@ describe('Navigation', () => {
 
     // The new page should contain an h1 with "Login"
     cy.get('h1').contains('Login')
+
+    cy.get('input[name="name"]').type('Yurii')
+    cy.get('input[name="password"]').type('123')
+
+    cy.get('button[role="button"]').click()
+
+    //redirect to HP
+    cy.url().should('include', '/')
   })
 })

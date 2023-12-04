@@ -12,7 +12,7 @@ export default function PageWrapper({
 }: Props): React.ReactNode {
   return (
     <main
-      className={` ${additionalClasses} flex flex-col pt-12 items-center grow-1 max-w-7xl m-auto sm:p-24`}
+      className={` ${additionalClasses} flex flex-col pt-12 items-center grow-1 max-w-7xl m-auto sm:p-24 relative`}
     >
       {children}
       <Toaster />

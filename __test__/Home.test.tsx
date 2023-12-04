@@ -1,6 +1,8 @@
+//https://jestjs.io/docs/manual-mocks#mocking-methods-which-are-not-implemented-in-jsdom
+import './setupTests.mock'
+
 import { render, screen } from '@testing-library/react'
 import Home from '@/app/page'
-
 it('should have H1 Home', () => {
   render(<Home />) //ARRANGE
 
