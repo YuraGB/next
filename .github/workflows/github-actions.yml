@@ -18,7 +18,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - name: Npm Install
-        run: npm install
+        run: npm install --force
       - name: Build
         run: npm run build
       - name: Run Jest tests
