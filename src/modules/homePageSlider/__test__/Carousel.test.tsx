@@ -2,7 +2,7 @@ import '@/../__test__/setupTests.mock'
 import { render, screen, waitFor } from '@testing-library/react'
 import HomePageSlider from '@/modules/homePageSlider'
 // Import the necessary modules and types
-import { listAll, getDownloadURL, StorageReference } from '@firebase/storage'
+import { listAll, getDownloadURL } from '@firebase/storage'
 
 // Type for the mock implementation
 type StorageMock = jest.Mocked<typeof import('@firebase/storage')>
@@ -17,7 +17,7 @@ const mockedGetDownloadURL = getDownloadURL as StorageMock['getDownloadURL']
 // Mock the behavior of listAll and getDownloadURL
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error
-mockedListAll.mockImplementation((ref: StorageReference) => {
+mockedListAll.mockImplementation(() => {
   // Implement your mock behavior for listAll
   return Promise.resolve({
     items: [
@@ -26,7 +26,7 @@ mockedListAll.mockImplementation((ref: StorageReference) => {
   })
 })
 
-mockedGetDownloadURL.mockImplementation((storageRef: StorageReference) => {
+mockedGetDownloadURL.mockImplementation(() => {
   // Implement your mock behavior for getDownloadURL
   return Promise.resolve('https://example.com/mock-image.jpg')
 })
