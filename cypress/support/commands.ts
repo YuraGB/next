@@ -35,3 +35,31 @@
 //     }
 //   }
 // }
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+// eslint-disable-next-line @typescript-eslint/no-namespace
+declare namespace Cypress {
+  interface Chainable {
+    /**
+     * Custom command to mock Firebase functions.
+     * @example cy.mockFirebase()
+     */
+    mockFirebase(): Chainable<void>
+  }
+}
+
+// Define a custom type for the Window object
+interface CustomWindow extends Window {
+  getDownloadURL?: () => Cypress.Chainable<string>
+}
+
+// Use the custom type in your Cypress command
+Cypress.Commands.add('mockFirebase', () => {
+  cy.window().then((win: CustomWindow) => {
+    // Mock your Firebase functions as needed
+    win.getDownloadURL = cy
+      .stub()
+      .resolves('https://example.com/mock-image.jpg')
+    // Add more stubs or mocks as needed
+  })
+})

@@ -1,4 +1,8 @@
 describe('Navigation', () => {
+  beforeEach(() => {
+    // Mock Firebase before each test
+    cy.mockFirebase()
+  })
   it('should navigate to login page', () => {
     // Start from the index page
     cy.visit('http://localhost:3000/')
