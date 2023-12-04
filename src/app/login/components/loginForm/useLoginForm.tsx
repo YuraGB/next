@@ -26,11 +26,10 @@ export const useLoginForm = ({ redirectUrl }: LoginFormType) => {
           username: name,
           password: password,
           redirect: false,
-          callbackUrl: redirectUrl,
         })
 
         if (resp?.ok) {
-          await router.push(redirectUrl ? redirectUrl : '/')
+          router.push(redirectUrl ? redirectUrl : '/')
         }
 
         if (resp?.error) {

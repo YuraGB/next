@@ -16,7 +16,7 @@ const PhotoItem = ({ photo }: Props): ReactNode | null => {
       alt={'Yuhur photo'}
       width={200}
       height={200}
-      loading={'lazy'}
+      priority={true}
     />
   )
 }
