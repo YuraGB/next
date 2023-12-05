@@ -29,7 +29,7 @@ export const authOptions: NextAuthOptions = {
           id: '42',
           name: 'Yurii',
           password: '123',
-          role: 'admin',
+          role: 'user',
         }
 
         if (credentials?.username === user.name) {
