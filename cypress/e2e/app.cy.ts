@@ -10,6 +10,7 @@ describe('Navigation', () => {
     // Find a link with an href attribute containing "login" and click it
     cy.get('a[href*="/login"]')
       .should('not.have.css', 'display', 'none')
+      .first()
       .click({ force: true }) // -> init of the header make link hidden
 
     // The new url should include "/login"
