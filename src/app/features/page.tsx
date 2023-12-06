@@ -2,8 +2,8 @@ import PageWrapper from '@/components/pageWrapper/PageWrapper'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Gyb Nextjs Blog Page',
-  description: 'testing Nextjs 14 Blog page',
+  title: 'Gyb Nextjs Features Page',
+  description: 'testing Nextjs 14 Features page',
   keywords: ['yuhur', 'Blog page'],
   authors: [
     {
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 export default function Blog() {
   return (
     <PageWrapper>
-      <h1>Blog</h1>
+      <h1>Features</h1>
     </PageWrapper>
   )
 }

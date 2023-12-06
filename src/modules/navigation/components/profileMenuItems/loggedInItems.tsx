@@ -14,6 +14,7 @@ const LoggedInItems = ({ user }: Props): React.ReactNode => {
   if (!user) {
     return null
   }
+
   const { role, name } = user
 
   const isAdmin = role === 'admin'

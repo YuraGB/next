@@ -2,6 +2,8 @@ import PageWrapper from '@/components/pageWrapper/PageWrapper'
 import { Metadata } from 'next'
 import React from 'react'
 
+export const dynamicParams = true
+
 export const metadata: Metadata = {
   title: 'Gyb Nextjs Features post Page',
   description: 'testing Nextjs 14 Features post page',
