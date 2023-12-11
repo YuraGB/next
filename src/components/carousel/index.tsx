@@ -10,7 +10,7 @@ export default function Carousel({ children }: Props): ReactNode {
     dots: false,
     infinite: true,
     fade: true,
-    speed: 500,
+    speed: 1500,
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows: false,
