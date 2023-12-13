@@ -16,12 +16,9 @@ describe('Admin Dashboard', () => {
   it('Should be users tab', () => {
     render(<AdminDashboardTabs />) //ARRANGE
 
-    const elem: ReturnType<GetByRole<HTMLElement>> = screen.getByRole(
-      'button',
-      {
-        name: 'Sign up',
-      }
-    ) //ACT
+    const elem: ReturnType<GetByRole> = screen.getByRole('button', {
+      name: 'Sign up',
+    }) //ACT
 
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-expect-error
@@ -31,7 +28,7 @@ describe('Admin Dashboard', () => {
   it('should have the form on the Registration page', () => {
     render(<AdminDashboardTabs />) //ARRANGE
 
-    const elem: ReturnType<GetByRole<HTMLElement>> = screen.getByRole('form', {
+    const elem: ReturnType<GetByRole> = screen.getByRole('form', {
       name: 'registration form',
     }) //ACT
 
