@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   ],
 }
 
-export default async function Admin() {
+export default function Admin() {
   return (
     <PageWrapper additionalClasses={'items-start'}>
       <h1>Admin page</h1>

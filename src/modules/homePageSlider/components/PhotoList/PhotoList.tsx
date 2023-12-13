@@ -5,11 +5,11 @@ type Props = {
   photos: PhotoList
 }
 
-const PhotoList = ({ photos }: Props): ReactNode[] | null => {
+const photoList = ({ photos }: Props): ReactNode[] | null => {
   if (!photos?.length) {
     return null
   }
   return photos.map((photo) => <PhotoItem key={photo} photo={photo} />)
 }
 
-export default PhotoList
+export default photoList
