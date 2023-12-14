@@ -1,7 +1,7 @@
 import NextAuth from 'next-auth'
 import type { NextAuthOptions } from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
-import { findUser } from '@/app/signup/components/registrationForm/service/createUser'
+import { findUser } from '@/app/signUp/components/registrationForm/service/createUser'
 
 export const authOptions: NextAuthOptions = {
   providers: [
