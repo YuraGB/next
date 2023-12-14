@@ -10,6 +10,7 @@ export default async (data: Partial<Inputs>) => {
         email: email,
         password: password,
         redirect: false,
+        callbackUrl: '/',
       })
     } catch (e) {
       throw e

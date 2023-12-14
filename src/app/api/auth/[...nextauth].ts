@@ -1,8 +1,6 @@
 import NextAuth from 'next-auth'
 import type { NextAuthOptions } from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
-import prisma from '../../../../lib/prisma'
-import { PrismaAdapter } from '@next-auth/prisma-adapter'
 import { findUser } from '@/app/signUp/components/registrationForm/service/createUser'
 
 export const authOptions: NextAuthOptions = {
@@ -41,7 +39,6 @@ export const authOptions: NextAuthOptions = {
       },
     }),
   ],
-  adapter: PrismaAdapter(prisma),
   session: {
     strategy: 'jwt',
     maxAge: 30 * 24 * 60 * 60, // 30 days

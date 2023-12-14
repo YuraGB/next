@@ -65,5 +65,7 @@ export const useSignUp = () => {
     register
   )
 
+  console.log(errors)
+
   return { formFields, handleSubmit, onSubmit, isValid }
 }
