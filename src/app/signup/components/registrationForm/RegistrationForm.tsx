@@ -1,7 +1,7 @@
 'use client'
 import React from 'react'
 import { Button } from '@nextui-org/button'
-import { useSignUp } from '@/app/signUp/components/registrationForm/useSignUp'
+import { useSignUp } from '@/app/signup/components/registrationForm/useSignUp'
 
 export const RegistrationForm = (): React.ReactNode => {
   const { onSubmit, formFields, handleSubmit } = useSignUp()
