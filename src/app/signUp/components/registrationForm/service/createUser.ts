@@ -8,7 +8,7 @@ type createUser = {
     hashPassword: string
   }
   select: {
-    name: boolean
+    email: boolean
     hashPassword: boolean
   }
 }

@@ -32,13 +32,13 @@ export const useSignUp = () => {
           data: newUser,
           //select -> the fields that will return after creation
           select: {
-            name: true,
+            email: true,
             hashPassword: true,
           },
         })
 
         const response = await signInService({
-          name: user.name,
+          email: user.email,
           password: user.hashPassword,
         })
 

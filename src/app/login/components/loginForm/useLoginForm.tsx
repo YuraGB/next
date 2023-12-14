@@ -23,7 +23,6 @@ export const useLoginForm = ({ redirectUrl }: LoginFormType) => {
     if (data) {
       try {
         const resp = await signInService(data)
-
         if (resp?.ok) {
           router.push(redirectUrl ? redirectUrl : '/')
         }
