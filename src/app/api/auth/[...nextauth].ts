@@ -1,6 +1,9 @@
-import NextAuth, { User } from 'next-auth'
+import NextAuth from 'next-auth'
 import type { NextAuthOptions } from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
+import prisma from '../../../../lib/prisma'
+import { PrismaAdapter } from '@next-auth/prisma-adapter'
+import { findUser } from '@/app/signUp/components/registrationForm/service/createUser'
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -12,10 +15,10 @@ export const authOptions: NextAuthOptions = {
       // e.g. domain, username, password, 2FA token, etc.
       // You can pass any HTML attribute to the <input> tag through the object.
       credentials: {
-        username: { label: 'Username', type: 'text', placeholder: 'jsmith' },
+        username: { label: 'Username', type: 'text', placeholder: 'Full name' },
+        email: { label: 'Username', type: 'text', placeholder: 'Full name' },
         password: { label: 'Password', type: 'password' },
       },
-
       async authorize(credentials) {
         // You need to provide your own logic here that takes the credentials
         // submitted and returns either a object representing a user or value
@@ -24,22 +27,26 @@ export const authOptions: NextAuthOptions = {
         // You can also use the `req` object to obtain additional parameters
         // (i.e., the request IP address)
 
-        //test user
-        const user: User & { password: string } = {
-          id: '42',
-          name: 'Yurii',
-          password: '123',
-          role: 'admin',
+        if (credentials?.email) {
+          const user = await findUser(credentials?.email)
+          if (
+            user &&
+            credentials?.email === user.email &&
+            credentials?.password === user.hashPassword
+          ) {
+            return user
+          }
         }
-
-        if (credentials?.username === user.name) {
-          return user
-        } else {
-          return null
-        }
+        return null
       },
     }),
   ],
+  adapter: PrismaAdapter(prisma),
+  session: {
+    strategy: 'jwt',
+    maxAge: 30 * 24 * 60 * 60, // 30 days
+    updateAge: 24 * 60 * 60, // 24 hours
+  },
   callbacks: {
     async jwt({ token, user }) {
       if (user) token.role = user?.role

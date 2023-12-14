@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description: 'testing Nextjs 14 with all features',
 }
 
-export default function Home(): React.ReactNode {
+export default function Home() {
   return (
     <PageWrapper>
       <h1>Home</h1>

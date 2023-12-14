@@ -1,6 +1,15 @@
 import { render, screen } from '@testing-library/react'
 import RegisterPage from '@/app/signUp/page'
 
+// Mock useRouter:
+jest.mock('next/navigation', () => ({
+  useRouter() {
+    return {
+      prefetch: () => null,
+    }
+  },
+}))
+
 describe('Sign up page', () => {
   it('should have H1 Sign up', () => {
     render(<RegisterPage />) //ARRANGE

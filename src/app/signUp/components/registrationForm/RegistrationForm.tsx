@@ -1,33 +1,23 @@
+'use client'
 import React from 'react'
 import { Button } from '@nextui-org/button'
-import { Input } from '@nextui-org/input'
+import { useSignUp } from '@/app/signUp/components/registrationForm/useSignUp'
 
 export const RegistrationForm = (): React.ReactNode => {
+  const { onSubmit, formFields, handleSubmit } = useSignUp()
   return (
-    <form className={'bg-white p-4 mt-3'} aria-label={'registration form'}>
-      <div className="grid grid-cols-2 gap-4">
-        <div className="relative mb-6">
-          <Input type="firstName" label="First Name" />
-        </div>
-
-        <div className="relative mb-6">
-          <Input type="lastName" label="Last Name" />
-        </div>
-      </div>
-
-      <div className="relative mb-6">
-        <Input type="email" label="Email" />
-      </div>
-
-      <div className="relative mb-6">
-        <Input type="password" label="password" autoComplete={'on'} />
-      </div>
-
+    <form
+      className={'bg-white p-4 mt-3 w-full max-w-xl flex flex-wrap'}
+      aria-label={'registration form'}
+      onSubmit={handleSubmit(onSubmit)}
+    >
+      {formFields}
       <Button
         variant={'flat'}
         color={'primary'}
         fullWidth={true}
         className={'mb-4'}
+        type={'submit'}
       >
         Sign up
       </Button>

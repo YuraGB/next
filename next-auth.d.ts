@@ -16,6 +16,12 @@ declare module 'next-auth' {
   }
 }
 
+declare module '@auth/core/adapters' {
+  interface AdapterUser {
+    role: string
+  }
+}
+
 declare module 'next-auth/jwt' {
   interface JWT extends DefaultJWT {
     role: string

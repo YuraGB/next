@@ -4,10 +4,10 @@ import React from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { Inputs } from '@/modules/types/formTypes'
 import formFieldsMapping from '@/modules/utils/formFieldsMapping'
-import { signIn } from 'next-auth/react'
 import { LoginFormType } from '@/app/login/components/loginForm/LoginForm'
-import { useRouter } from 'next/navigation'
 import toast from 'react-hot-toast'
+import signInService from '@/app/login/components/loginForm/service/signInService'
+import { useRouter } from 'next/navigation'
 
 export const useLoginForm = ({ redirectUrl }: LoginFormType) => {
   const {
@@ -16,26 +16,30 @@ export const useLoginForm = ({ redirectUrl }: LoginFormType) => {
     formState: { errors, isValid },
   } = useForm<Partial<Inputs>>()
   const router = useRouter()
+
   const onSubmit: SubmitHandler<Partial<Inputs>> = async (
     data
   ): Promise<void> => {
     if (data) {
-      const { name, password } = data
-      if (name && password) {
-        const resp = await signIn('credentials', {
-          username: name,
-          password: password,
-          redirect: false,
-        })
+      try {
+        const resp = await signInService(data)
 
         if (resp?.ok) {
           router.push(redirectUrl ? redirectUrl : '/')
         }
 
         if (resp?.error) {
-          toast.error('There are no such user')
+          toast.error('There is no such user')
+        }
+      } catch (e) {
+        if (e instanceof Error) {
+          toast.error(e.message)
+        } else {
+          toast.error('Something went wrong')
         }
       }
+    } else {
+      toast.error('The login in fields are empty ')
     }
   }
 

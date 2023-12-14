@@ -19,10 +19,12 @@ export default function formFieldsMapping<T extends keyof Inputs>(
         pattern,
         description,
         autoComplete,
+        isInvalid,
+        additionalClasses,
       }: Fields,
       index: number
     ) => (
-      <div className="mb-6" key={label + index}>
+      <div className={`mb-6 ${additionalClasses}`} key={label + index}>
         <Input
           isRequired={required}
           type={type}
@@ -31,6 +33,7 @@ export default function formFieldsMapping<T extends keyof Inputs>(
             required: required,
             pattern: pattern,
           })}
+          isInvalid={isInvalid}
           errorMessage={errors[label as T] ? errorMessage : ''}
           description={description}
           autoComplete={autoComplete}
