@@ -27,39 +27,29 @@ export const useSignUp = () => {
         email: data.email ? data.email : '',
         hashPassword: data.password ? data.password : '',
       }
+      await log({ newUser, createUser }, 'onSubmit2')
+      const user = await createUser({
+        data: newUser,
+        //select -> the fields that will return after creation
+        select: {
+          email: true,
+          hashPassword: true,
+        },
+      })
 
-      try {
-        await log({ newUser, createUser }, 'onSubmit2')
-        ;('use server')
-        const user = await createUser({
-          data: newUser,
-          //select -> the fields that will return after creation
-          select: {
-            email: true,
-            hashPassword: true,
-          },
+      await log(user, 'afterCreatying')
+      if (typeof user !== 'string' && user.email && user.hashPassword) {
+        const response = await signInService({
+          email: user.email,
+          password: user.hashPassword,
         })
-
-        await log(user, 'afterCreatying')
-        if (typeof user !== 'string' && user.email && user.hashPassword) {
-          const response = await signInService({
-            email: user.email,
-            password: user.hashPassword,
-          })
-          await log(user, 'afterSignIn')
-          if (response?.ok) {
-            router.push('/')
-          }
-
-          if (response?.error) {
-            toast.error('There is no such user')
-          }
+        await log(user, 'afterSignIn')
+        if (response?.ok) {
+          router.push('/')
         }
-      } catch (e) {
-        if (e instanceof Error) {
-          toast.error('The user with such email is already registered')
-        } else {
-          console.log(e)
+
+        if (response?.error) {
+          toast.error('There is no such user')
         }
       }
     }
