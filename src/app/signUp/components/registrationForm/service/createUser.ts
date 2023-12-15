@@ -27,19 +27,9 @@ export const findUser = async (email: string) => {
 }
 
 export const createUser = async (newUser: createUser) => {
-  await log(newUser, 3)
-  console.log(newUser, 3)
-  try {
-    const findMatch = await findUser(newUser.data.email)
-    await log(findMatch, 4)
-    console.log(findMatch, 4)
-    if (findMatch) {
-      return 'This email is already registered'
-    }
-  } catch (e) {
-    log(e, 'createUserLogError')
-    console.log(e)
-    return 'Error'
+  const findMatch = await findUser(newUser.data.email)
+  if (findMatch) {
+    return 'This email is already registered'
   }
   return await prisma.user.create(newUser)
 }
