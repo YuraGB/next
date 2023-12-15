@@ -8,7 +8,6 @@ import { createUser } from '@/app/signUp/components/registrationForm/service/cre
 import toast from 'react-hot-toast'
 import signInService from '@/app/login/components/loginForm/service/signInService'
 import { useRouter } from 'next/navigation'
-import log from '../../../../../netlify/functions/log'
 
 export const useSignUp = () => {
   const {
@@ -16,18 +15,19 @@ export const useSignUp = () => {
     handleSubmit,
     formState: { errors, isValid },
   } = useForm<Partial<Inputs>>()
+
   const router = useRouter()
 
   const onSubmit: SubmitHandler<Partial<Inputs>> = async (data) => {
     const areAllFieldsFilled = validateFields(data)
-    await log(data, 'onSubmit')
+
     if (areAllFieldsFilled) {
       const newUser = {
         name: `${data.firstName} ${data.lastName}`,
         email: data.email ? data.email : '',
         hashPassword: data.password ? data.password : '',
       }
-      await log({ newUser, createUser }, 'onSubmit2')
+
       const user = await createUser({
         data: newUser,
         //select -> the fields that will return after creation
@@ -37,13 +37,12 @@ export const useSignUp = () => {
         },
       })
 
-      await log(user, 'afterCreatying')
       if (typeof user !== 'string' && user.email && user.hashPassword) {
         const response = await signInService({
           email: user.email,
           password: user.hashPassword,
         })
-        await log(user, 'afterSignIn')
+
         if (response?.ok) {
           router.push('/')
         }
@@ -60,8 +59,6 @@ export const useSignUp = () => {
     errors,
     register
   )
-
-  console.log(errors)
 
   return { formFields, handleSubmit, onSubmit, isValid }
 }

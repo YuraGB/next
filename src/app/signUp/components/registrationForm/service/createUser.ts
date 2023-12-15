@@ -19,7 +19,7 @@ export const findUser = async (email: string) => {
   }
 
   if (prisma === null || prisma === undefined) {
-    return 'prisma absent'
+    throw 'prisma absent'
   }
 
   return await prisma.user.findUnique({
@@ -31,12 +31,12 @@ export const findUser = async (email: string) => {
 
 export const createUser = async (newUser: createUser) => {
   if (prisma === null || prisma === undefined) {
-    return 'prisma absent'
+    throw 'prisma absent'
   }
 
   const findMatch = await findUser(newUser.data.email)
   if (findMatch) {
-    return 'This email is already registered'
+    throw 'This email is already registered'
   }
   return await prisma.user.create(newUser)
 }
