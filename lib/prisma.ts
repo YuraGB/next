@@ -1,10 +1,14 @@
 import { PrismaClient } from '@prisma/client'
 
-let prisma: PrismaClient
+const prismaClientSingleton = () => {
+  return new PrismaClient({
+    log: ['info', 'query'],
+  })
+}
 
 declare global {
   // eslint-disable-next-line no-var
-  var prisma: PrismaClient
+  var prisma: undefined | ReturnType<typeof prismaClientSingleton>
 }
 
 if (typeof window === 'undefined') {
@@ -19,6 +23,4 @@ if (typeof window === 'undefined') {
   }
 }
 
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-expect-error
 export default prisma
