@@ -30,7 +30,7 @@ export const createUser = async (newUser: createUser) => {
 
   if (findMatch) {
     throw 'This email is already registered'
+  } else {
+    return await prisma.user.create(newUser)
   }
-
-  return await prisma.user.create(newUser)
 }

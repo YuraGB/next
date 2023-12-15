@@ -2,6 +2,7 @@ import NextAuth from 'next-auth'
 import type { NextAuthOptions } from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
 import { findUser } from '@/app/signUp/components/registrationForm/service/createUser'
+import log from '../../../../functions/log'
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -14,7 +15,7 @@ export const authOptions: NextAuthOptions = {
       // You can pass any HTML attribute to the <input> tag through the object.
       credentials: {
         username: { label: 'Username', type: 'text', placeholder: 'Full name' },
-        email: { label: 'Username', type: 'text', placeholder: 'Full name' },
+        email: { label: 'Username', type: 'text', placeholder: 'Email' },
         password: { label: 'Password', type: 'password' },
       },
       async authorize(credentials) {
@@ -26,7 +27,9 @@ export const authOptions: NextAuthOptions = {
         // (i.e., the request IP address)
 
         if (credentials?.email) {
+          log(credentials, 1)
           const user = await findUser(credentials?.email)
+          log(user, 2)
           if (
             user &&
             credentials?.email === user.email &&
