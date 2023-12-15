@@ -29,7 +29,7 @@ export const useSignUp = () => {
       }
 
       try {
-        await log(data, 'onSubmit2')
+        await log(newUser, 'onSubmit2')
         const user = await createUser({
           data: newUser,
           //select -> the fields that will return after creation
