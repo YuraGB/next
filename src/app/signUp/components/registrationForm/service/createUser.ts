@@ -1,5 +1,6 @@
 'use server'
 import prisma from '../../../../../../lib/prisma'
+import log from '../../../../../../netlify/functions/log'
 
 type createUser = {
   data: {
@@ -26,8 +27,9 @@ export const findUser = async (email: string) => {
 }
 
 export const createUser = async (newUser: createUser) => {
+  await log(newUser, 3)
   const findMatch = await findUser(newUser.data.email)
-
+  await log(findMatch, 4)
   if (findMatch) {
     throw 'This email is already registered'
   } else {
