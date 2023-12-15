@@ -1,6 +1,5 @@
 'use server'
 import prisma from '../../../../../../lib/prisma'
-import log from '../../../../../../netlify/functions/log'
 
 type createUser = {
   data: {
