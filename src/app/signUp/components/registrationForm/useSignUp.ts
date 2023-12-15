@@ -40,7 +40,7 @@ export const useSignUp = () => {
         })
 
         await log(user, 'afterCreatying')
-        if (user) {
+        if (typeof user !== 'string' && user.email && user.hashPassword) {
           const response = await signInService({
             email: user.email,
             password: user.hashPassword,

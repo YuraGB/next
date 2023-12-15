@@ -34,11 +34,12 @@ export const createUser = async (newUser: createUser) => {
     await log(findMatch, 4)
     console.log(findMatch, 4)
     if (findMatch) {
-      throw 'This email is already registered'
+      return 'This email is already registered'
     }
   } catch (e) {
     log(e, 'createUserLogError')
     console.log(e)
+    return 'Error'
   }
   return await prisma.user.create(newUser)
 }
