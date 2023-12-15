@@ -38,6 +38,7 @@ export const useSignUp = () => {
             hashPassword: true,
           },
         })
+
         await log(user, 'afterCreatying')
         if (user) {
           const response = await signInService({
