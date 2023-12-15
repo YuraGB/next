@@ -1,7 +1,7 @@
 import NextAuth from 'next-auth'
 import type { NextAuthOptions } from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
-//import { findUser } from '@/app/signUp/components/registrationForm/service/createUser'
+import { findUser } from '@/app/signUp/components/registrationForm/service/createUser'
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -26,15 +26,7 @@ export const authOptions: NextAuthOptions = {
         // (i.e., the request IP address)
 
         if (credentials?.email) {
-          console.log(credentials, 'credentials')
-          // const user = await findUser(credentials?.email)
-          const user = {
-            email: 'yuhur@gmail.com',
-            hashPassword: '123',
-            role: 'admin',
-            id: '1',
-          }
-          console.log(user, 'user')
+          const user = await findUser(credentials?.email)
           if (
             user &&
             credentials?.email === user.email &&
