@@ -27,7 +27,13 @@ export const authOptions: NextAuthOptions = {
 
         if (credentials?.email) {
           console.log(credentials, 'credentials')
-          const user = await findUser(credentials?.email)
+          // const user = await findUser(credentials?.email)
+          const user = {
+            email: 'yuhur@gmail.com',
+            hashPassword: '123',
+            role: 'admin',
+            id: '1',
+          }
           console.log(user, 'user')
           if (
             user &&
