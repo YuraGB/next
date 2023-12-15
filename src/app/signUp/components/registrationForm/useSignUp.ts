@@ -37,12 +37,12 @@ export const useSignUp = () => {
             hashPassword: true,
           },
         })
-
+        await log(user, 'afterCreatying')
         const response = await signInService({
           email: user.email,
           password: user.hashPassword,
         })
-
+        await log(user, 'afterSignIn')
         if (response?.ok) {
           router.push('/')
         }
