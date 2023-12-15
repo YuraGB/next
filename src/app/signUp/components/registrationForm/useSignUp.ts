@@ -29,7 +29,7 @@ export const useSignUp = () => {
       }
 
       try {
-        await log(newUser, 'onSubmit2')
+        await log({ newUser, createUser }, 'onSubmit2')
         const user = await createUser({
           data: newUser,
           //select -> the fields that will return after creation
@@ -39,17 +39,19 @@ export const useSignUp = () => {
           },
         })
         await log(user, 'afterCreatying')
-        const response = await signInService({
-          email: user.email,
-          password: user.hashPassword,
-        })
-        await log(user, 'afterSignIn')
-        if (response?.ok) {
-          router.push('/')
-        }
+        if (user) {
+          const response = await signInService({
+            email: user.email,
+            password: user.hashPassword,
+          })
+          await log(user, 'afterSignIn')
+          if (response?.ok) {
+            router.push('/')
+          }
 
-        if (response?.error) {
-          toast.error('There is no such user')
+          if (response?.error) {
+            toast.error('There is no such user')
+          }
         }
       } catch (e) {
         if (e instanceof Error) {
