@@ -8,6 +8,7 @@ import { createUser } from '@/app/signUp/components/registrationForm/service/cre
 import toast from 'react-hot-toast'
 import signInService from '@/app/login/components/loginForm/service/signInService'
 import { useRouter } from 'next/navigation'
+import log from '../../../../../netlify/functions/log'
 
 export const useSignUp = () => {
   const {
@@ -19,7 +20,7 @@ export const useSignUp = () => {
 
   const onSubmit: SubmitHandler<Partial<Inputs>> = async (data) => {
     const areAllFieldsFilled = validateFields(data)
-
+    await log(data, 'onSubmit')
     if (areAllFieldsFilled) {
       const newUser = {
         name: `${data.firstName} ${data.lastName}`,
