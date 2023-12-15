@@ -2,7 +2,7 @@ import NextAuth from 'next-auth'
 import type { NextAuthOptions } from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
 import { findUser } from '@/app/signUp/components/registrationForm/service/createUser'
-import log from '../../../../functions/log'
+import log from '../../../../netlify/functions/log'
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -27,9 +27,9 @@ export const authOptions: NextAuthOptions = {
         // (i.e., the request IP address)
 
         if (credentials?.email) {
-          log(credentials, 1)
+          await log(credentials, 1)
           const user = await findUser(credentials?.email)
-          log(user, 2)
+          await log(user, 2)
           if (
             user &&
             credentials?.email === user.email &&
