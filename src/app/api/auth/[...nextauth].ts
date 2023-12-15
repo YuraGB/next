@@ -27,16 +27,18 @@ export const authOptions: NextAuthOptions = {
         // (i.e., the request IP address)
 
         if (credentials?.email) {
-          await log(credentials, 1)
-          const user = await findUser(credentials?.email)
-          await log(user, 2)
-          if (
-            user &&
-            typeof user !== 'string' &&
-            credentials?.email === user.email &&
-            credentials?.password === user.hashPassword
-          ) {
-            return user
+          try {
+            const user = await findUser(credentials?.email)
+            if (
+              user &&
+              typeof user !== 'string' &&
+              credentials?.email === user.email &&
+              credentials?.password === user.hashPassword
+            ) {
+              return user
+            }
+          } catch (e) {
+            throw 'there is an error during logging'
           }
         }
         return null
