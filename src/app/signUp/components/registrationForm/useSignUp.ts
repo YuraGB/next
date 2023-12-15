@@ -30,6 +30,7 @@ export const useSignUp = () => {
 
       try {
         await log({ newUser, createUser }, 'onSubmit2')
+        ;('use server')
         const user = await createUser({
           data: newUser,
           //select -> the fields that will return after creation
