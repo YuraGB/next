@@ -32,6 +32,7 @@ export const authOptions: NextAuthOptions = {
           await log(user, 2)
           if (
             user &&
+            typeof user !== 'string' &&
             credentials?.email === user.email &&
             credentials?.password === user.hashPassword
           ) {
