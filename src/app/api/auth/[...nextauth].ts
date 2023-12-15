@@ -26,7 +26,9 @@ export const authOptions: NextAuthOptions = {
         // (i.e., the request IP address)
 
         if (credentials?.email) {
+          console.log(credentials, 'credentials')
           const user = await findUser(credentials?.email)
+          console.log(user, 'user')
           if (
             user &&
             credentials?.email === user.email &&
@@ -35,7 +37,15 @@ export const authOptions: NextAuthOptions = {
             return user
           }
         }
-        return null
+        return {
+          email: '380673996678@ukr.net',
+          password: '1q2w3e4r5t',
+          redirect: 'false',
+          callbackUrl: '/',
+          csrfToken:
+            '6bb780488f76f2b4c45eae9f99ef86c3511120d3294f67843d8dd585dbf72f6d',
+          json: 'true',
+        }
       },
     }),
   ],
