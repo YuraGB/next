@@ -37,15 +37,7 @@ export const authOptions: NextAuthOptions = {
             return user
           }
         }
-        return {
-          email: '380673996678@ukr.net',
-          password: '1q2w3e4r5t',
-          redirect: 'false',
-          callbackUrl: '/',
-          csrfToken:
-            '6bb780488f76f2b4c45eae9f99ef86c3511120d3294f67843d8dd585dbf72f6d',
-          json: 'true',
-        }
+        return null
       },
     }),
   ],
