@@ -25,7 +25,7 @@ export default function ForgotPassword() {
   return (
     <PageWrapper>
       <h1 className={'mb-6'}> Forgot password ?</h1>
-      <Suspense>
+      <Suspense fallback={<p>Loading</p>}>
         <ForgotPasswordFormLazy />
       </Suspense>
     </PageWrapper>
