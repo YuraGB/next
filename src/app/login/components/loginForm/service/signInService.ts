@@ -13,7 +13,7 @@ export default async (data: Partial<Inputs>) => {
         callbackUrl: '/',
       })
     } catch (e) {
-      throw e
+      console.log(e)
     }
   } else {
     throw 'The email or password is missing'
