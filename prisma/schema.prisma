@@ -46,7 +46,7 @@ model User {
   Account            Account?
   Session            Session?
 
-  @@unique([email, id, hashPassword])
+  @@unique([email])
 }
 
 model Account {
