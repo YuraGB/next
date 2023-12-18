@@ -40,7 +40,7 @@ export const useSignUp = () => {
       if (typeof user !== 'string' && user.email && user.hashPassword) {
         const response = await signInService({
           email: user.email,
-          password: user.hashPassword,
+          password: data.password,
         })
 
         if (response?.ok) {
@@ -48,7 +48,7 @@ export const useSignUp = () => {
         }
 
         if (response?.error) {
-          toast.error('There is no such user')
+          toast.error('The password or email is wrong')
         }
       }
     }

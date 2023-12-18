@@ -7,7 +7,8 @@ import { emailPattern, requirePattern } from '@/utils/validation/patterns'
 export default [
   {
     type: 'text',
-    label: 'firstName',
+    label: 'First name',
+    name: 'firstName',
     errorMessage: 'Please enter a valid name',
     pattern: requirePattern,
     required: true,
@@ -15,15 +16,17 @@ export default [
   },
   {
     type: 'text',
-    label: 'lastName',
+    label: 'Last name',
+    name: 'lastName',
     errorMessage: 'Please enter a valid name',
     required: true,
     pattern: requirePattern,
     additionalClasses: 'w-[48%]',
   },
   {
-    type: 'text',
+    type: 'email',
     label: 'email',
+    name: 'email',
     errorMessage: 'Please enter a valid name',
     required: true,
     pattern: emailPattern,
@@ -32,6 +35,7 @@ export default [
   {
     type: 'password',
     label: 'password',
+    name: 'password',
     required: true,
     pattern: requirePattern,
     errorMessage: 'Incorrect password',

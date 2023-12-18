@@ -2,8 +2,11 @@ import NextAuth from 'next-auth'
 import type { NextAuthOptions } from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
 import { findUser } from '@/app/signUp/components/registrationForm/service/createUser'
+import { PrismaAdapter } from '@next-auth/prisma-adapter'
+import { toComparePasswords } from '@/app/signUp/components/registrationForm/service/util/validateUser'
 
 export const authOptions: NextAuthOptions = {
+  adapter: PrismaAdapter(prisma),
   providers: [
     CredentialsProvider({
       // The name to display on the sign in form (e.g. 'Sign in with...')
@@ -24,15 +27,15 @@ export const authOptions: NextAuthOptions = {
         // e.g. return { id: 1, name: 'J Smith', email: 'jsmith@example.com' }
         // You can also use the `req` object to obtain additional parameters
         // (i.e., the request IP address)
-
         if (credentials?.email) {
           try {
             const user = await findUser(credentials?.email)
+
             if (
               user &&
               typeof user !== 'string' &&
               credentials?.email === user.email &&
-              credentials?.password === user.hashPassword
+              toComparePasswords(credentials?.password, user.hashPassword)
             ) {
               return user
             }

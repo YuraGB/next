@@ -1,7 +1,8 @@
 'use server'
 import prisma from '../../../../../../lib/prisma'
+import { replacePasswordToHash } from '@/app/signUp/components/registrationForm/service/util/validateUser'
 
-type createUser = {
+export type CreateUser = {
   data: {
     name: string
     email: string
@@ -29,14 +30,38 @@ export const findUser = async (email: string) => {
   })
 }
 
-export const createUser = async (newUser: createUser) => {
+export const createUser = async (newUser: CreateUser) => {
   if (prisma === null || prisma === undefined) {
     throw 'prisma absent'
   }
 
+  if (
+    !newUser?.data?.email ||
+    !newUser?.data?.hashPassword ||
+    !newUser?.data?.name
+  ) {
+    throw 'Not all user data provided'
+  }
+
   const findMatch = await findUser(newUser.data.email)
+
   if (findMatch) {
     throw 'This email is already registered'
   }
-  return await prisma.user.create(newUser)
+
+  const userDataWithHashedPassword = replacePasswordToHash(newUser)
+
+  if (userDataWithHashedPassword?.hashPassword) {
+    const newUserData = {
+      data: userDataWithHashedPassword,
+      select: newUser.select,
+    }
+    try {
+      return await prisma.user.create(newUserData)
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
+  throw 'Something went wrong'
 }

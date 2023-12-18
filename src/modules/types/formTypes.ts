@@ -2,6 +2,7 @@ export type Fields = {
   type: string
   required: boolean
   label: string
+  name?: string
   errorMessage: string
   isInvalid?: boolean
   pattern?: RegExp
