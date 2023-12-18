@@ -1,5 +1,6 @@
+'use client'
 import Link from 'next/link'
-import React from 'react'
+import React, { useState } from 'react'
 import {
   Navbar,
   NavbarBrand,
@@ -25,9 +26,15 @@ const ProfileMenuItems = dynamic(
 
 export const Navigation = (): React.ReactNode => {
   const menuItems = useNavigation()
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   return (
-    <Navbar disableAnimation isBordered>
+    <Navbar
+      disableAnimation
+      isBordered
+      isMenuOpen={isMenuOpen}
+      onMenuOpenChange={setIsMenuOpen}
+    >
       <NavbarContent className="sm:hidden" justify="start">
         <li>
           <NavbarMenuToggle />

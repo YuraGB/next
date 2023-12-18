@@ -8,6 +8,7 @@ export default [
   {
     type: 'text',
     label: 'email',
+    name: 'email',
     errorMessage: 'Please enter a valid name',
     required: true,
     pattern: emailPattern,
@@ -15,6 +16,7 @@ export default [
   {
     type: 'password',
     label: 'password',
+    name: 'password',
     required: true,
     errorMessage: 'Incorrect password',
     autoComplete: 'on',

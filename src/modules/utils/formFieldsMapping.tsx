@@ -13,6 +13,7 @@ export default function formFieldsMapping<T extends keyof Inputs>(
     (
       {
         type,
+        name,
         label,
         required,
         errorMessage,
@@ -29,7 +30,7 @@ export default function formFieldsMapping<T extends keyof Inputs>(
           isRequired={required}
           type={type}
           label={label}
-          {...register(label as T, {
+          {...register(name as T, {
             required: required,
             pattern: pattern,
           })}
