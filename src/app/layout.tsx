@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
-import { Navigation } from '@/modules/navigation/Navigation'
+import Navigation from '@/modules/navigation/Navigation'
 import AuthProvider from '@/app/context/AuthProvider'
 import NextUiProviderComponent from '@/app/context/NextUiProviderComponent'
 import React from 'react'

@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import PageWrapper from '@/components/pageWrapper/PageWrapper'
 import { Metadata } from 'next'
+import { Pages } from '@/utils/pages'
 
 export const metadata: Metadata = {
   title: 'Gyb Nextjs Access Denied Page',
@@ -18,7 +19,7 @@ export default function Denied() {
   return (
     <PageWrapper>
       <h1>Denied</h1>
-      <Link href={'/'}>Home</Link>
+      <Link href={Pages.HOME}>Home</Link>
     </PageWrapper>
   )
 }

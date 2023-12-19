@@ -4,6 +4,7 @@ import CredentialsProvider from 'next-auth/providers/credentials'
 import { findUser } from '@/app/signUp/components/registrationForm/service/createUser'
 import { PrismaAdapter } from '@next-auth/prisma-adapter'
 import { toComparePasswords } from '@/app/signUp/components/registrationForm/service/util/validateUser'
+import { Pages } from '@/utils/pages'
 
 export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),
@@ -66,7 +67,7 @@ export const authOptions: NextAuthOptions = {
     },
   },
   pages: {
-    signIn: '/login',
+    signIn: Pages.LOGIN,
   },
   // secret: process.env.NEXTAUTH_SECRET,
   // session: {

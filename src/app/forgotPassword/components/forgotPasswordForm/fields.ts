@@ -6,7 +6,7 @@ export default [
   {
     type: 'text',
     label: 'email',
-    isInvalid: true,
+    name: 'email',
     required: true,
     pattern: emailPattern,
     errorMessage: 'Please enter a valid email',

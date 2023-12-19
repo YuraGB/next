@@ -1,23 +1,23 @@
-import React, { memo } from 'react'
+import React, { memo, useMemo } from 'react'
 import { NavbarContent, NavbarItem } from '@nextui-org/navbar'
 import Link from 'next/link'
 import { Button } from '@nextui-org/button'
 import { User } from 'next-auth'
 import { signOut } from 'next-auth/react'
 import { Avatar } from '@nextui-org/avatar'
+import { Pages } from '@/utils/pages'
 
 type Props = {
   user?: User
 }
 
 const LoggedInItems = ({ user }: Props): React.ReactNode => {
+  const isAdmin = useMemo(() => user?.role === 'ADMIN', [user?.role])
   if (!user) {
     return null
   }
 
-  const { role, name } = user
-
-  const isAdmin = role === 'admin'
+  const { name } = user
 
   return (
     <NavbarContent justify="end">
@@ -26,7 +26,7 @@ const LoggedInItems = ({ user }: Props): React.ReactNode => {
       </NavbarItem>
       {isAdmin ? (
         <NavbarItem className="hidden lg:flex">
-          <Link href="/admin">Dashboard</Link>
+          <Link href={Pages.ADMIN}>Dashboard</Link>
         </NavbarItem>
       ) : null}
       <NavbarItem>

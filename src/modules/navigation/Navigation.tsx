@@ -18,13 +18,10 @@ const MobileMenu = dynamic(
 )
 const ProfileMenuItems = dynamic(
   () =>
-    import('@/modules/navigation/components/profileMenuItems/profileMenuItems'),
-  {
-    loading: () => <p>Loading...</p>,
-  }
+    import('@/modules/navigation/components/profileMenuItems/profileMenuItems')
 )
 
-export const Navigation = (): React.ReactNode => {
+const Navigation = (): React.ReactNode => {
   const menuItems = useNavigation()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
@@ -63,6 +60,8 @@ export const Navigation = (): React.ReactNode => {
     </Navbar>
   )
 }
+
+export default React.memo(Navigation)
 
 export const AcmeLogo = () => (
   <svg fill="none" height="36" viewBox="0 0 32 32" width="36">
