@@ -19,9 +19,7 @@ export default function Blog() {
   return (
     <PageWrapper>
       <h1>Blog</h1>
-      <Suspense fallback={<p>Loading...</p>}>
-        <ListOfPosts />
-      </Suspense>
+      <ListOfPosts />
     </PageWrapper>
   )
 }
