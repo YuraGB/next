@@ -1,7 +1,6 @@
 import PageWrapper from '@/components/pageWrapper/PageWrapper'
 import { Metadata } from 'next'
 import { ListOfPosts } from '@/app/blog/components/listOfPosts'
-import { Suspense } from 'react'
 
 export const metadata: Metadata = {
   title: 'Gyb Nextjs Blog Page',
