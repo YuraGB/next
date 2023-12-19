@@ -8,5 +8,11 @@ export const ListOfPosts = async () => {
     return null
   }
 
-  return publicPosts.map((post) => <PostOverview key={post.id} post={post} />)
+  return (
+    <>
+      {publicPosts.map((post) => (
+        <PostOverview key={post.id} post={post} />
+      ))}
+    </>
+  )
 }
