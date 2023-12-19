@@ -11,13 +11,16 @@ const PhotoItem = ({ photo }: Props): ReactNode | null => {
     return null
   }
   return (
-    <Image
-      src={photo}
-      alt={'Yuhur photo'}
-      width={200}
-      height={200}
-      priority={true}
-    />
+    <div style={{ position: 'relative', width: 'auto', height: 'auto' }}>
+      <Image
+        src={photo}
+        alt={'Yuhur photo'}
+        width={200}
+        height={200}
+        className="h-auto w-auto"
+        priority={true}
+      />
+    </div>
   )
 }
 

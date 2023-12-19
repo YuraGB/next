@@ -1,5 +1,7 @@
+import { Pages } from '@/utils/pages'
+
 export const useNavigation = () => [
-  { url: '/features', name: 'Features' },
-  { url: '/blog', name: 'Blog' },
-  { url: '/knowledge', name: 'Knowledge' },
+  { url: Pages.FEATURES, name: 'Features' },
+  { url: Pages.BLOG, name: 'Blog' },
+  { url: Pages.KNOWLEDGE, name: 'Knowledge' },
 ]
