@@ -5,6 +5,7 @@ import AuthProvider from '@/app/context/AuthProvider'
 import NextUiProviderComponent from '@/app/context/NextUiProviderComponent'
 import React from 'react'
 import dynamic from 'next/dynamic'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 const Navigation = dynamic(() => import('@/modules/navigation/Navigation'))
 
 const inter = Inter({ subsets: ['latin'] })
@@ -28,7 +29,7 @@ export default async function RootLayout({
             {children}
           </AuthProvider>
         </NextUiProviderComponent>
-        {/*<SpeedInsights />*/}
+        <SpeedInsights />
       </body>
     </html>
   )
