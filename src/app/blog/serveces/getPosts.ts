@@ -1,13 +1,7 @@
 'use server'
 import { cache } from 'react'
 import 'server-only'
-
-//https://nextjs.org/docs/app/building-your-application/data-fetching/patterns#using-react-cache-server-only-and-the-preload-pattern
-export const preload = () => {
-  // void evaluates the given expression and returns undefined
-  // https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/void
-  void getPublicPosts()
-}
+import prisma from '../../../../lib/prisma'
 
 export const getPublicPosts = cache(async () => {
   try {

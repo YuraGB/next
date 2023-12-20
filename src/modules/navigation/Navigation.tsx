@@ -10,11 +10,9 @@ import {
 import MenuList from '@/modules/navigation/components/menuList/menuList'
 import { useNavigation } from '@/modules/navigation/useNavigation'
 import dynamic from 'next/dynamic'
+
 const MobileMenu = dynamic(
-  () => import('@/modules/navigation/components/mobileMenu/mobileMenu'),
-  {
-    loading: () => <p>Loading...</p>,
-  }
+  () => import('@/modules/navigation/components/mobileMenu/mobileMenu')
 )
 const ProfileMenuItems = dynamic(
   () =>

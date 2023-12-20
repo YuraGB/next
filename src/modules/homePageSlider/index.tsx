@@ -1,8 +1,12 @@
 'use client'
 import React, { memo, ReactNode } from 'react'
 import { useHPSlider } from '@/modules/homePageSlider/useHPSlider'
-import Carousel from '@/components/carousel'
-import PhotoItem from '@/modules/homePageSlider/components/PhotoItem/PhotoItem'
+import dynamic from 'next/dynamic'
+
+const Carousel = dynamic(() => import('@/components/carousel'))
+const PhotoItem = dynamic(
+  () => import('@/modules/homePageSlider/components/PhotoItem/PhotoItem')
+)
 
 const HomePageSlider = (): ReactNode => {
   const { photos } = useHPSlider()
