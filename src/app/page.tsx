@@ -1,7 +1,8 @@
 import PageWrapper from '@/components/pageWrapper/PageWrapper'
 import { Metadata } from 'next'
 import React, { Suspense } from 'react'
-import HomePageSlider from '@/modules/homePageSlider'
+import dynamic from 'next/dynamic'
+const HomePageSlider = dynamic(() => import('@/modules/homePageSlider'))
 
 export const metadata: Metadata = {
   title: 'Gyb Nextjs Home Page',

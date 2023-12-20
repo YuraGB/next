@@ -1,6 +1,7 @@
 'use server'
 import { cache } from 'react'
 import 'server-only'
+import prisma from '../../../../lib/prisma'
 
 //https://nextjs.org/docs/app/building-your-application/data-fetching/patterns#using-react-cache-server-only-and-the-preload-pattern
 export const preload = () => {
