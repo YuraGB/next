@@ -14,7 +14,7 @@
     "cypress:open": "cypress open",
     "cypress:test": "cypress run",
     "e2e:tests": "start-server-and-test dev http://localhost:3000 \"cypress run --e2e\"",
-    "prisma-concat": "npx ts-node  prisma/concat-schemas.ts && npx prisma format",
+    "prisma-concat": "ts-node  prisma/concat-schemas.ts && npx prisma format",
     "generate": "npm run prisma-concat && prisma generate"
   },
   "dependencies": {
