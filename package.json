@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "npm run generate && next build",
     "start": "next start",
-    "postinstall": "prisma generate",
+    "postinstall": "generate",
     "lint": "next lint",
     "test": "jest",
     "test:verbose": "jest --verbose",
