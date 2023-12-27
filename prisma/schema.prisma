@@ -63,13 +63,6 @@ enum Role {
   ADMIN
 }
 
-model Category {
-  id      String   @id @default(auto()) @map("_id") @db.ObjectId
-  name    String   @default("general")
-  postIDs String[] @db.ObjectId
-  posts   Post[]   @relation(fields: [postIDs], references: [id])
-}
-
 model Post {
   id          String     @id @default(auto()) @map("_id") @db.ObjectId
   title       String
@@ -82,4 +75,11 @@ model Post {
   publishedAt DateTime   @default(now())
   categories  Category[] @relation(fields: [categoryIDs], references: [id])
   categoryIDs String[]   @db.ObjectId
+}
+
+model Category {
+  id      String   @id @default(auto()) @map("_id") @db.ObjectId
+  name    String   @default("general")
+  postIDs String[] @db.ObjectId
+  posts   Post[]   @relation(fields: [postIDs], references: [id])
 }

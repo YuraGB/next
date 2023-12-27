@@ -12,7 +12,6 @@ const start = async () => {
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   const models = await glob('./**/*.prisma', { ignore: '**/connect-db.prisma' })
-  console.log(models)
   const files = [connectFile, ...models]
 
   await writeFile(schemaFile, '')
@@ -20,8 +19,7 @@ const start = async () => {
   await Promise.all(
     files.map(async (path) => {
       const content = await readFile(path)
-      console.log(content)
-      console.log(path)
+
       return appendFile(schemaFile, content.toString())
     })
   )
