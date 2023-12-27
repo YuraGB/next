@@ -33,11 +33,11 @@ const PhotoItem = ({ photo }: Props): ReactNode | null => {
     <div style={{ position: 'relative', width: 'auto', height: 'auto' }}>
       <Image
         src={photo}
-        fetchPriority={'low'}
+        fetchPriority={'high'}
         alt={'Yuhur photo'}
         width={200}
         height={200}
-        loading={'lazy'}
+        loading={'eager'}
         className="h-auto w-auto"
         blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
         placeholder="blur" // Optional blur-up while loading

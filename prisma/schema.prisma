@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider      = "prisma-client-js"
   binaryTargets = ["native", "rhel-openssl-1.0.x"]
@@ -11,25 +8,15 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Post {
-  id          String     @id @default(auto()) @map("_id") @db.ObjectId
-  title       String
-  content     String
-  published   Boolean    @default(true)
-  author      User       @relation(fields: [authorId], references: [id])
-  authorId    String     @db.ObjectId
-  public      Boolean    @default(true)
-  image       String?
-  publishedAt DateTime   @default(now())
-  categories  Category[] @relation(fields: [categoryIDs], references: [id])
-  categoryIDs String[]   @db.ObjectId
-}
-
-model Category {
-  id      String   @id @default(auto()) @map("_id") @db.ObjectId
-  name    String   @default("general")
-  postIDs String[] @db.ObjectId
-  posts   Post[]   @relation(fields: [postIDs], references: [id])
+model Session {
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId       String   @unique @db.ObjectId
+  expires      DateTime
+  sessionToken String   @unique
+  accessToken  String   @unique
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  user         User     @relation(fields: [userId], references: [id])
 }
 
 model User {
@@ -71,18 +58,28 @@ model VerificationRequest {
   @@unique([identifier, token])
 }
 
-model Session {
-  id           String   @id @default(auto()) @map("_id") @db.ObjectId
-  userId       String   @unique @db.ObjectId
-  expires      DateTime
-  sessionToken String   @unique
-  accessToken  String   @unique
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
-  user         User     @relation(fields: [userId], references: [id])
-}
-
 enum Role {
   USER
   ADMIN
+}
+
+model Category {
+  id      String   @id @default(auto()) @map("_id") @db.ObjectId
+  name    String   @default("general")
+  postIDs String[] @db.ObjectId
+  posts   Post[]   @relation(fields: [postIDs], references: [id])
+}
+
+model Post {
+  id          String     @id @default(auto()) @map("_id") @db.ObjectId
+  title       String
+  content     String
+  published   Boolean    @default(true)
+  author      User       @relation(fields: [authorId], references: [id])
+  authorId    String     @db.ObjectId
+  public      Boolean    @default(true)
+  image       String?
+  publishedAt DateTime   @default(now())
+  categories  Category[] @relation(fields: [categoryIDs], references: [id])
+  categoryIDs String[]   @db.ObjectId
 }

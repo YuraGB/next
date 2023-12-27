@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && prisma generate",
+    "build": "next build && npm run generate",
     "start": "next start",
     "postinstall": "prisma generate",
     "lint": "next lint",
@@ -13,11 +13,12 @@
     "test:watch": "jest --watchAll",
     "cypress:open": "cypress open",
     "cypress:test": "cypress run",
-    "e2e:tests": "start-server-and-test dev http://localhost:3000 \"cypress run --e2e\""
+    "e2e:tests": "start-server-and-test dev http://localhost:3000 \"cypress run --e2e\"",
+    "prisma-concat": "npx ts-node ./prisma/concat-schemas.ts && npx prisma format",
+    "generate": "npm run prisma-concat && prisma generate"
   },
   "dependencies": {
     "@auth/mongodb-adapter": "^2.0.9",
-    "@next-auth/prisma-adapter": "^0.4.4-canary.81",
     "@nextui-org/react": "^2.2.9",
     "@vercel/speed-insights": "^1.0.2",
     "bcrypt": "^5.1.1",
@@ -32,14 +33,17 @@
     "react-hot-toast": "^2.4.1",
     "react-slick": "^0.29.0",
     "server-only": "^0.0.1",
-    "slick-carousel": "^1.8.1"
+    "slick-carousel": "^1.8.1",
+    "undici": "^5.8.0"
   },
   "devDependencies": {
+    "@next-auth/prisma-adapter": "^0.4.4-canary.81",
     "@prisma/client": "^5.7.1",
     "@testing-library/jest-dom": "^6.1.4",
     "@testing-library/react": "^14.1.2",
     "@testing-library/user-event": "^14.5.1",
     "@types/bcrypt": "^5.0.2",
+    "@types/glob": "^8.1.0",
     "@types/jest": "^29.5.10",
     "@types/node": "^20",
     "@types/react": "^18",
@@ -47,12 +51,13 @@
     "@types/react-slick": "^0.23.12",
     "@typescript-eslint/eslint-plugin": "^6.9.1",
     "autoprefixer": "^10.0.1",
-    "cypress": "^13.6.0",
+    "cypress": "^13.6.2",
     "eslint": "^8",
     "eslint-config-next": "14.0.1",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-jest-dom": "^5.1.0",
     "eslint-plugin-testing-library": "^6.2.0",
+    "glob": "^10.3.10",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
     "postcss": "^8",

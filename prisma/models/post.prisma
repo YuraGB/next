@@ -1,0 +1,14 @@
+
+model Post {
+  id          String     @id @default(auto()) @map("_id") @db.ObjectId
+  title       String
+  content     String
+  published   Boolean    @default(true)
+  author      User       @relation(fields: [authorId], references: [id])
+  authorId    String     @db.ObjectId
+  public      Boolean    @default(true)
+  image       String?
+  publishedAt DateTime   @default(now())
+  categories  Category[] @relation(fields: [categoryIDs], references: [id])
+  categoryIDs String[]   @db.ObjectId
+}
