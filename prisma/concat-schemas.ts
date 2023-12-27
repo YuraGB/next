@@ -1,9 +1,11 @@
-import { appendFile, readFile, writeFile } from 'fs/promises'
-import { glob } from 'glob'
-import path from 'path'
-import { fileURLToPath } from 'url'
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = path.dirname(__filename)
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const fsPromises = require('fs/promises')
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const g = require('glob')
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const path = require('path')
+const { glob } = g
+const { appendFile, readFile, writeFile } = fsPromises
 
 const start = async () => {
   const schemaFile = path.resolve(__dirname, 'schema.prisma')
