@@ -2,8 +2,7 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-  provider      = "prisma-client-js"
-  binaryTargets = ["native", "rhel-openssl-1.0.x"]
+  provider = "prisma-client-js"
 }
 
 datasource db {
@@ -45,8 +44,6 @@ model User {
   accessTokenExpires DateTime?
   Account            Account?
   Session            Session?
-
-  @@unique([email])
 }
 
 model Account {
@@ -67,8 +64,6 @@ model VerificationRequest {
   expires    DateTime
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
-
-  @@unique([identifier, token])
 }
 
 model Session {
@@ -80,6 +75,23 @@ model Session {
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
   user         User     @relation(fields: [userId], references: [id])
+}
+
+model Slide {
+  id          String  @id @default(auto()) @map("_id") @db.ObjectId
+  image       String
+  description String?
+  url         String?
+  title       String?
+  Slider      Slider? @relation(fields: [sliderId], references: [id])
+  sliderId    String? @db.ObjectId
+}
+
+model Slider {
+  id       String  @id @default(auto()) @map("_id") @db.ObjectId
+  sliderID String
+  title    String
+  slide    Slide[]
 }
 
 enum Role {

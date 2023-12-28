@@ -10,12 +10,11 @@ const PhotoItem = dynamic(
 
 const HomePageSlider = (): ReactNode => {
   const { photos } = useHPSlider()
-
   return (
     <section className={'w-full'}>
       <Carousel>
         {photos.map((photo) => (
-          <PhotoItem key={photo} photo={photo} />
+          <PhotoItem key={photo.id} photo={photo} />
         ))}
       </Carousel>
     </section>

@@ -1,9 +1,9 @@
-import { PhotoUrl } from '@/modules/homePageSlider/types'
+import { Slide } from '@/modules/homePageSlider/types'
 import { ReactNode } from 'react'
 import Image from 'next/image'
 
 type Props = {
-  photo: PhotoUrl
+  photo: Slide
 }
 
 const shimmer = (w: number, h: number) => `
@@ -32,7 +32,7 @@ const PhotoItem = ({ photo }: Props): ReactNode | null => {
   return (
     <div style={{ position: 'relative', width: 'auto', height: 'auto' }}>
       <Image
-        src={photo}
+        src={photo.image}
         fetchPriority={'low'}
         alt={'Yuhur photo'}
         width={200}
