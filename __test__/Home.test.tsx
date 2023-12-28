@@ -1,5 +1,5 @@
 //https://jestjs.io/docs/manual-mocks#mocking-methods-which-are-not-implemented-in-jsdom
-import { render, screen } from '@testing-library/react'
+import { render, screen, waitFor } from '@testing-library/react'
 import Home from '@/app/page'
 
 jest.mock('../src/modules/homePageSlider', () => {
@@ -10,14 +10,15 @@ jest.mock('../src/modules/homePageSlider', () => {
   }
 })
 
-it('should have H1 Home', () => {
+it('should have H1 Home', async () => {
   render(<Home />)
 
   const elem = screen.getByRole('heading', {
     name: 'Home',
   })
-
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-expect-error
-  expect(elem).toBeInTheDocument()
+  await waitFor(() =>
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-expect-error
+    expect(elem).toBeInTheDocument()
+  )
 })

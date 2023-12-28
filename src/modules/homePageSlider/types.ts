@@ -1,6 +1,6 @@
 export type PhotoUrl = string
 
-export type PhotoList = PhotoUrl[]
+export type PhotoList = Slide[]
 
 export type Slide = {
   id: string

@@ -9,7 +9,7 @@ const photoList = ({ photos }: Props): ReactNode[] | null => {
   if (!photos?.length) {
     return null
   }
-  return photos.map((photo) => <PhotoItem key={photo} photo={photo} />)
+  return photos.map((photo) => <PhotoItem key={photo.id} photo={photo} />)
 }
 
 export default photoList
