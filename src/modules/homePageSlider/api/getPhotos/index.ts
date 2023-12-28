@@ -1,18 +1,27 @@
-import {
-  getDownloadURL,
-  listAll,
-  ref,
-  StorageReference,
-} from '@firebase/storage'
-import { storage } from '@/config/fireBase.config'
+'use server'
+import prisma from '../../../../../lib/prisma'
+import { Slider } from '@/modules/homePageSlider/types'
+type GetPhotosT = () => Promise<Slider | null | undefined>
 
-type GetPhotosT = (folder: string) => Promise<string[]>
-
-// get saved items from Firebase storage
-export const getPhotos: GetPhotosT = async (folder: string = '') => {
-  const { items }: { items: StorageReference[] } = await listAll(
-    ref(storage, folder)
-  )
-
-  return Promise.all(items.map((image) => getDownloadURL(image)))
+export const getPhotos: GetPhotosT = async () => {
+  try {
+    return await prisma?.slider.findFirst({
+      where: {
+        title: 'Home page slider',
+      },
+      select: {
+        slide: {
+          select: {
+            id: true,
+            title: true,
+            image: true,
+            url: true,
+            description: true,
+          },
+        },
+      },
+    })
+  } catch (e) {
+    console.log(e)
+  }
 }
