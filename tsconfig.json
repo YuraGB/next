@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "ESNext",
-    "module": "es2022",
+    "module": "esnext",
     "moduleResolution": "Node",
     "lib": [
       "dom",
@@ -32,7 +32,7 @@
       "@/*": [
         "./src/*"
       ]
-    },
+    }
   },
   "ts-node": {
     "esm": true

@@ -1,0 +1,16 @@
+model Slide {
+  id          String  @id @default(auto()) @map("_id") @db.ObjectId
+  image       String
+  description String?
+  url         String?
+  title       String?
+  Slider      Slider? @relation(fields: [sliderId], references: [id])
+  sliderId    String? @db.ObjectId
+}
+
+model Slider {
+  id       String  @id @default(auto()) @map("_id") @db.ObjectId
+  sliderID String
+  title    String
+  slide    Slide[]
+}
