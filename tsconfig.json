@@ -31,7 +31,8 @@
     "paths": {
       "@/*": [
         "./src/*"
-      ]
+      ],
+      "$prisma": ["./lib/prisma.ts"]
     }
   },
   "ts-node": {

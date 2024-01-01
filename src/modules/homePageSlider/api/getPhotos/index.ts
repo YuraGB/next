@@ -1,5 +1,5 @@
 'use server'
-import prisma from '../../../../../lib/prisma'
+import prisma from '$prisma'
 import { Slider } from '@/modules/homePageSlider/types'
 type GetPhotosT = () => Promise<Slider | null | undefined>
 
