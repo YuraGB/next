@@ -1,8 +1,8 @@
 'use client'
-import React, { useState } from 'react'
+import React, { Suspense, useState } from 'react'
 import { Tab, Tabs } from '@nextui-org/tabs'
-import usersData from './components/adminUserTab/dummyData.json'
-import AdminUserTab from '@/app/admin/components/adminDashboardTabs/components/adminUserTab'
+import AdminUserTab from '@/app/admin/components/adminDashboardTabs/modules/adminUserTab'
+import AdminBlogTab from '@/app/admin/components/adminDashboardTabs/modules/blogDashboardTab'
 
 export const AdminDashboardTabs = (): React.ReactNode => {
   const [selected, setSelected] = useState<string>('users')
@@ -16,10 +16,16 @@ export const AdminDashboardTabs = (): React.ReactNode => {
       onSelectionChange={(key) => setSelected(key as string)}
     >
       <Tab key="users" title="Users" className={'w-full'}>
-        <AdminUserTab data={usersData} />
+        <Suspense fallback={<p>....</p>}>
+          <AdminUserTab />
+        </Suspense>
       </Tab>
-      <Tab key="blog" title="Blog"></Tab>
-      <Tab key="features" title="Features"></Tab>
+      <Tab key="blog" title="Blog" className={'w-full'}>
+        <Suspense fallback={<p>....</p>}>
+          <AdminBlogTab />
+        </Suspense>
+      </Tab>
+      <Tab key="features" title="Features" className={'w-full'}></Tab>
     </Tabs>
   )
 }

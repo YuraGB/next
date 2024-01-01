@@ -1,0 +1,12 @@
+'use server'
+import prisma from '$prisma'
+import { User } from '@/app/admin/components/adminDashboardTabs/modules/adminUserTab/model/User'
+type GetUsersT = () => Promise<Partial<User>[] | null | undefined>
+
+export const getUsers: GetUsersT = async () => {
+  try {
+    return await prisma?.user.findMany()
+  } catch (e) {
+    console.log(e)
+  }
+}

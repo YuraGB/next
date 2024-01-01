@@ -1,5 +1,5 @@
 'use server'
-import prisma from '../../../../../../lib/prisma'
+import prisma from '$prisma'
 import { replacePasswordToHash } from '@/app/signUp/components/registrationForm/service/util/validateUser'
 
 export type CreateUser = {
