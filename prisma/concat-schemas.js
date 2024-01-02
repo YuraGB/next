@@ -16,6 +16,7 @@ const start = async () => {
   const models = await glob('./**/*.prisma', { ignore: '**/connect-db.prisma' })
   const files = [connectFile, ...models]
 
+  // clear main schema file
   await writeFile(schemaFile, '')
 
   await Promise.all(

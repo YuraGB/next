@@ -8,15 +8,21 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Session {
-  id           String   @id @default(auto()) @map("_id") @db.ObjectId
-  userId       String   @unique @db.ObjectId
-  expires      DateTime
-  sessionToken String   @unique
-  accessToken  String   @unique
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
-  user         User     @relation(fields: [userId], references: [id])
+model Slide {
+  id          String  @id @default(auto()) @map("_id") @db.ObjectId
+  image       String
+  description String?
+  url         String?
+  title       String?
+  Slider      Slider? @relation(fields: [sliderId], references: [id])
+  sliderId    String? @db.ObjectId
+}
+
+model Slider {
+  id       String  @id @default(auto()) @map("_id") @db.ObjectId
+  sliderID String
+  title    String
+  slide    Slide[]
 }
 
 model User {
@@ -63,6 +69,17 @@ enum Role {
   ADMIN
 }
 
+model Session {
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId       String   @unique @db.ObjectId
+  expires      DateTime
+  sessionToken String   @unique
+  accessToken  String   @unique
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  user         User     @relation(fields: [userId], references: [id])
+}
+
 model Post {
   id          String     @id @default(auto()) @map("_id") @db.ObjectId
   title       String
@@ -84,19 +101,13 @@ model Category {
   posts   Post[]   @relation(fields: [postIDs], references: [id])
 }
 
-model Slide {
-  id          String  @id @default(auto()) @map("_id") @db.ObjectId
-  image       String
-  description String?
-  url         String?
-  title       String?
-  Slider      Slider? @relation(fields: [sliderId], references: [id])
-  sliderId    String? @db.ObjectId
-}
-
-model Slider {
-  id       String  @id @default(auto()) @map("_id") @db.ObjectId
-  sliderID String
-  title    String
-  slide    Slide[]
+model Tale {
+  id               String   @id @default(auto()) @map("_id") @db.ObjectId
+  title            String
+  mainImage        String
+  images           String[]
+  createdAt        DateTime @default(now())
+  forAge           String
+  shortDescription String
+  content          String
 }
