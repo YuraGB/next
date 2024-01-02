@@ -38,7 +38,7 @@ const PhotoItem = ({ photo }: Props): ReactNode | null => {
         width={200}
         height={200}
         loading={'eager'}
-        className="h-auto w-auto"
+        className="h-auto w-auto [clip-path:ellipse(229px_245px_at_10%_20%)]"
         blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
         placeholder="blur" // Optional blur-up while loading
       />

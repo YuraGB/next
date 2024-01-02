@@ -8,23 +8,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Slide {
-  id          String  @id @default(auto()) @map("_id") @db.ObjectId
-  image       String
-  description String?
-  url         String?
-  title       String?
-  Slider      Slider? @relation(fields: [sliderId], references: [id])
-  sliderId    String? @db.ObjectId
-}
-
-model Slider {
-  id       String  @id @default(auto()) @map("_id") @db.ObjectId
-  sliderID String
-  title    String
-  slide    Slide[]
-}
-
 model User {
   id                 String    @id @default(auto()) @map("_id") @db.ObjectId
   email              String
@@ -69,6 +52,34 @@ enum Role {
   ADMIN
 }
 
+model Tale {
+  id               String   @id @default(auto()) @map("_id") @db.ObjectId
+  title            String
+  mainImage        String
+  images           String[]
+  createdAt        DateTime @default(now())
+  forAge           String
+  shortDescription String
+  content          String
+}
+
+model Slide {
+  id          String  @id @default(auto()) @map("_id") @db.ObjectId
+  image       String
+  description String?
+  url         String?
+  title       String?
+  Slider      Slider? @relation(fields: [sliderId], references: [id])
+  sliderId    String? @db.ObjectId
+}
+
+model Slider {
+  id       String  @id @default(auto()) @map("_id") @db.ObjectId
+  sliderID String
+  title    String
+  slide    Slide[]
+}
+
 model Session {
   id           String   @id @default(auto()) @map("_id") @db.ObjectId
   userId       String   @unique @db.ObjectId
@@ -99,15 +110,4 @@ model Category {
   name    String   @default("general")
   postIDs String[] @db.ObjectId
   posts   Post[]   @relation(fields: [postIDs], references: [id])
-}
-
-model Tale {
-  id               String   @id @default(auto()) @map("_id") @db.ObjectId
-  title            String
-  mainImage        String
-  images           String[]
-  createdAt        DateTime @default(now())
-  forAge           String
-  shortDescription String
-  content          String
 }
