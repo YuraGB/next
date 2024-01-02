@@ -3,6 +3,7 @@ export enum Pages {
   BLOG = '/blog',
   FEATURES = '/features',
   KNOWLEDGE = '/knowledge',
+  FAIRY_TALES = '/fairyTales',
   LOGIN = '/login',
   SIGNUP = '/signUp',
   HOME = '/',
