@@ -1,5 +1,5 @@
 'use server'
-import prisma from '$prisma'
+import prisma from '$prismaClient/prisma'
 import { User } from '@/app/admin/components/adminDashboardTabs/modules/adminUserTab/model/User'
 type GetUsersT = () => Promise<Partial<User>[] | null | undefined>
 

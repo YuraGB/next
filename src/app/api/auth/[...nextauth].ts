@@ -5,7 +5,7 @@ import { findUser } from '@/app/signUp/components/registrationForm/service/creat
 import { PrismaAdapter } from '@next-auth/prisma-adapter'
 import { toComparePasswords } from '@/app/signUp/components/registrationForm/service/util/validateUser'
 import { Pages } from '@/utils/pages'
-import prisma from '$prisma'
+import prisma from '$prismaClient/prisma'
 
 export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),

@@ -1,7 +1,7 @@
 'use server'
 import { cache } from 'react'
 import 'server-only'
-import prisma from '$prisma'
+import prisma from '$prismaClient/prisma'
 
 export const getPublicPosts = cache(async () => {
   try {

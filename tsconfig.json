@@ -32,7 +32,7 @@
       "@/*": [
         "./src/*"
       ],
-      "$prisma": ["./lib/prisma.ts"]
+      "$prismaClient/*": ["./lib/*"]
     }
   },
   "ts-node": {

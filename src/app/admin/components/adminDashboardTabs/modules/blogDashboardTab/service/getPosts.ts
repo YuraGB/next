@@ -1,5 +1,5 @@
 'use server'
-import prisma from '$prisma'
+import prisma from '$prismaClient/prisma'
 
 export const getPosts = async () => {
   try {
