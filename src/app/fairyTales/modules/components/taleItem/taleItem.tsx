@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, CardBody, CardFooter, CardHeader } from '@nextui-org/card'
+import { Card, CardFooter, CardHeader } from '@nextui-org/card'
 import Image from 'next/image'
 import { Divider } from '@nextui-org/react'
 import { Tale } from '.prisma/client'
