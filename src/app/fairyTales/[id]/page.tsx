@@ -2,6 +2,8 @@ import PageWrapper from '@/components/pageWrapper/PageWrapper'
 import { Metadata } from 'next'
 import React from 'react'
 import { getAllFairyTales } from '@/app/fairyTales/service/getAllFairyTales'
+import { getTale } from '@/app/fairyTales/service/getTale'
+import TaleContent from '@/app/fairyTales/[id]/components/taleContent'
 
 export const dynamicParams = true
 export const revalidate = 60
@@ -18,16 +20,16 @@ export const metadata: Metadata = {
   ],
 }
 
-export default function FairyTale({
+export default async function FairyTale({
   params,
 }: {
   params: { id: string }
-}): React.ReactNode {
-  //todo dynamic route data
-  console.log(params)
+}) {
+  const taleData = await getTale(params.id)
+
   return (
     <PageWrapper>
-      <h1>FairyTale</h1>
+      {taleData ? <TaleContent taleContent={taleData} /> : null}
     </PageWrapper>
   )
 }

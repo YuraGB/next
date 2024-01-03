@@ -3,34 +3,58 @@ import { Card, CardBody, CardFooter, CardHeader } from '@nextui-org/card'
 import Image from 'next/image'
 import { Divider } from '@nextui-org/react'
 import { Tale } from '.prisma/client'
+import { useRouter } from 'next/navigation'
+import { Pages } from '@/utils/pages'
 
 const TaleItem = ({ tale }: { tale: Tale }): React.ReactNode | null => {
+  const router = useRouter()
   if (!tale) {
     return null
   }
 
-  const { title, forAge, mainImage, createdAt, shortDescription } = tale
+  const { id, title, forAge, mainImage, createdAt, shortDescription } = tale
+
+  const onClick = () => {
+    if (id) {
+      router.push(`${Pages.FAIRY_TALES}/${id}`, { scroll: true })
+    }
+  }
+
   return (
-    <Card className="min-w-[400px]">
-      <CardHeader className="flex gap-3">
+    <Card
+      className="min-w-[400px]"
+      isPressable
+      isBlurred
+      isHoverable
+      onClick={onClick}
+    >
+      <CardHeader className="flex gap-3 relative p-0">
         <Image
           alt="nextui logo"
-          height={40}
+          height={200}
           src={mainImage ? mainImage : ''}
-          width={40}
+          width={600}
+          className={'w-full h-[400px] object-cover'}
         />
-        <div className="flex flex-col">
-          <p className="text-md">{title}</p>
+        <div className="flex flex-col absolute left-0 top-0 max-w-[50%] w-full max-h-[50%]">
+          <p className="text-md relative text-amber-50 p-3 h-auto flex w-full items-center overflow-hidden color-inherit subpixel-antialiased rounded-b-large backdrop-blur backdrop-saturate-150 bg-black/40 bottom-0 z-10 border-t-1 border-default-600 dark:border-default-100">
+            {title}
+          </p>
+        </div>
+        <div className="flex flex-col items-start absolute left-6 button-[50%] max-w-[50%] w-full h-[50%]">
+          <p className="text-left line-clamp-4 relative text-amber-50 p-0  items-center color-inherit subpixel-antialiased  backdrop-blur ">
+            {shortDescription}
+          </p>
         </div>
       </CardHeader>
       <Divider />
-      <CardBody>
-        <p>{shortDescription}</p>
-      </CardBody>
-      <Divider />
-      <CardFooter>
-        <p>{forAge}</p>
-        <p>{createdAt.toString()}</p>
+      <CardFooter
+        className={
+          'absolute bg-black/40 bottom-0 z-10 border-t-1 border-default-600 dark:border-default-100 text-amber-50 flex justify-between'
+        }
+      >
+        <p>Category: {forAge}</p>
+        <p>Published: {createdAt.toLocaleDateString()}</p>
       </CardFooter>
     </Card>
   )
