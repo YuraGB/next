@@ -1,7 +1,10 @@
 import PageWrapper from '@/components/pageWrapper/PageWrapper'
 import { Metadata } from 'next'
-import { AdminDashboardTabs } from '@/app/admin/components/adminDashboardTabs'
 import React, { Suspense } from 'react'
+import dynamic from 'next/dynamic'
+const AdminDashboardTabs = dynamic(
+  () => import('@/app/admin/components/adminDashboardTabs')
+)
 
 export const metadata: Metadata = {
   title: 'Gyb Nextjs Admin Page',
@@ -18,7 +21,6 @@ export const metadata: Metadata = {
 export default function Admin() {
   return (
     <PageWrapper additionalClasses={'items-start'}>
-      <h1>Admin page</h1>
       <Suspense fallback={<p>Loading</p>}>
         <AdminDashboardTabs />
       </Suspense>

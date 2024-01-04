@@ -1,11 +1,16 @@
 'use client'
-import React, { Suspense, useState } from 'react'
+import React, { memo, Suspense } from 'react'
 import { Tab, Tabs } from '@nextui-org/tabs'
 import AdminUserTab from '@/app/admin/components/adminDashboardTabs/modules/adminUserTab'
 import AdminBlogTab from '@/app/admin/components/adminDashboardTabs/modules/blogDashboardTab'
+import {
+  tabNames,
+  useAdminTabs,
+} from '@/app/admin/components/adminDashboardTabs/useAdminTabs'
+import AdminTalesTab from '@/app/admin/components/adminDashboardTabs/modules/fairyTalesTab'
 
 export const AdminDashboardTabs = (): React.ReactNode => {
-  const [selected, setSelected] = useState<string>('users')
+  const { selected, tales, setSelected, posts, users } = useAdminTabs()
 
   return (
     <Tabs
@@ -15,17 +20,23 @@ export const AdminDashboardTabs = (): React.ReactNode => {
       selectedKey={selected}
       onSelectionChange={(key) => setSelected(key as string)}
     >
-      <Tab key="users" title="Users" className={'w-full'}>
+      <Tab key={tabNames.USERS} title="Users" className={'w-full'}>
         <Suspense fallback={<p>....</p>}>
-          <AdminUserTab />
+          <AdminUserTab users={users} />
         </Suspense>
       </Tab>
-      <Tab key="blog" title="Blog" className={'w-full'}>
+      <Tab key={tabNames.BLOG} title="Blog" className={'w-full'}>
         <Suspense fallback={<p>....</p>}>
-          <AdminBlogTab />
+          <AdminBlogTab posts={posts} />
         </Suspense>
       </Tab>
-      <Tab key="features" title="Features" className={'w-full'}></Tab>
+      <Tab key={tabNames.TALES} title="Tales" className={'w-full'}>
+        <Suspense fallback={<p>....</p>}>
+          <AdminTalesTab tales={tales} />
+        </Suspense>
+      </Tab>
     </Tabs>
   )
 }
+
+export default memo(AdminDashboardTabs)

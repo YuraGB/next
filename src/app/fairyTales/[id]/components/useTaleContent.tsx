@@ -29,7 +29,7 @@ export const useTaleContent = (taleData: Tale) => {
           </Fragment>
         ))
     }
-  }, [content])
+  }, [content, images])
 
   return {
     forAge,

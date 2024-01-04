@@ -5,6 +5,7 @@ import NextUiProviderComponent from '@/app/context/NextUiProviderComponent'
 import React from 'react'
 import dynamic from 'next/dynamic'
 import { SpeedInsights } from '@vercel/speed-insights/next'
+import Footer from '@/modules/footer'
 const Navigation = dynamic(() => import('@/modules/navigation/Navigation'))
 
 export const metadata: Metadata = {
@@ -19,7 +20,7 @@ export default async function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
+      <body className={'min-h-[100dvh] flex flex-col'}>
         <NextUiProviderComponent>
           <AuthProvider>
             <Navigation />
@@ -27,6 +28,7 @@ export default async function RootLayout({
           </AuthProvider>
         </NextUiProviderComponent>
         <SpeedInsights />
+        <Footer />
       </body>
     </html>
   )

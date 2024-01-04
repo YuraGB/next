@@ -3,12 +3,12 @@ import { memo } from 'react'
 const HomePageIntro = () => {
   return (
     <section className={'text-center leading-8 max-w-[80%] [&>p]:mb-6'}>
-      <p>
+      <h1>
         <strong className={'mb-6 text-2xl block max-w-[70%] m-auto'}>
           Welcome to Fairy tale world - A Magical World of Stories and Fairy
           Tales for Children
         </strong>
-      </p>
+      </h1>
       <em className={'mb-6 block'}>
         🌟 Created with love by Yurii Huriyanov 🌟
       </em>

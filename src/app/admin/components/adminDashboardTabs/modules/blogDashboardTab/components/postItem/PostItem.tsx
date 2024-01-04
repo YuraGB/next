@@ -5,7 +5,6 @@ import Image from 'next/image'
 import { Divider } from '@nextui-org/react'
 
 const PostItem = ({ post }: { post: PostT }) => {
-  console.log(post)
   if (!post) {
     return null
   }
