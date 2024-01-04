@@ -21,6 +21,7 @@ export const useTaleModal = () => {
     const areAllFieldsFilled = validateFields(data)
 
     if (areAllFieldsFilled) {
+      console.log(data)
     }
   }
   return {
