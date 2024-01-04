@@ -15,7 +15,6 @@ export default function Home() {
   // create()
   return (
     <PageWrapper>
-      <h1>Home</h1>
       <Suspense fallback={<p>Loading...</p>}>
         <HomePageSlider />
       </Suspense>

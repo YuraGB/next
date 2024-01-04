@@ -13,7 +13,7 @@ const Paragraph = ({
   return (
     <div className={'flex justify-between items-center relative min-h-[400px]'}>
       <p
-        className={`max-w-[50%] [z-index:1] backdrop-blur p-6 text-amber-50 ${
+        className={` font-['cormorant_it'] italic text-xl max-w-[50%] [z-index:1] backdrop-blur p-6 text-amber-50 ${
           isOdd ? 'ml-auto' : 'mr-auto'
         }`}
       >

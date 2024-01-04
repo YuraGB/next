@@ -1,18 +1,15 @@
 'use client'
-import React from 'react'
-import { User } from '@/app/admin/components/adminDashboardTabs/modules/adminUserTab/model/User'
-import { useUsersList } from '@/app/admin/components/adminDashboardTabs/modules/adminUserTab/components/usersList/useUsersList'
+import React, { FC } from 'react'
+import { TUsers } from '@/app/admin/components/adminDashboardTabs/useUsersList'
 import { UserItem } from '@/app/admin/components/adminDashboardTabs/modules/adminUserTab/components/userItem/UserItem'
 
-export type UsersListProps = {
-  usersData: Promise<Partial<User>[] | null | undefined>
-}
-
-const UsersList = (): React.ReactNode | null => {
-  const { users } = useUsersList()
+const UsersList: FC<{ users: TUsers | undefined }> = ({
+  users,
+}): React.ReactNode | null => {
   if (!users || users.length === 0) {
     return null
   }
+
   return (
     <section className={'grid justify-start gap-2'}>
       {users.map((userData) => (

@@ -3,7 +3,7 @@ import { User as UserComponent } from '@nextui-org/react'
 import { User } from '@/app/admin/components/adminDashboardTabs/modules/adminUserTab/model/User'
 
 type UserItemProps = {
-  user: Partial<User> | null | undefined
+  user: Partial<User>
 }
 
 export const UserItem = ({ user }: UserItemProps): React.ReactNode | null => {
@@ -11,7 +11,7 @@ export const UserItem = ({ user }: UserItemProps): React.ReactNode | null => {
     return null
   }
 
-  const { name, imageUrl, role } = user
+  const { name, role, imageUrl } = user
 
   return (
     <UserComponent

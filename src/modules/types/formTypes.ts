@@ -5,6 +5,7 @@ export type Fields = {
   name?: string
   errorMessage: string
   isInvalid?: boolean
+  accept?: string
   pattern?: RegExp
   description?: string
   autoComplete?: string

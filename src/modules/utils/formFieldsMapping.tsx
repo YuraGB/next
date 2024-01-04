@@ -1,5 +1,5 @@
 import { Fields, Inputs } from '@/modules/types/formTypes'
-import { Input } from '@nextui-org/input'
+import { Input, Textarea } from '@nextui-org/input'
 import React from 'react'
 import { FieldErrors } from 'react-hook-form/dist/types/errors'
 import { UseFormRegister } from 'react-hook-form/dist/types/form'
@@ -22,23 +22,29 @@ export default function formFieldsMapping<T extends keyof Inputs>(
         autoComplete,
         isInvalid,
         additionalClasses,
+        ...rest
       }: Fields,
       index: number
     ) => (
       <div className={`mb-6 ${additionalClasses}`} key={label + index}>
-        <Input
-          isRequired={required}
-          type={type}
-          label={label}
-          {...register(name as T, {
-            required: required,
-            pattern: pattern,
-          })}
-          isInvalid={isInvalid}
-          errorMessage={errors[label as T] ? errorMessage : ''}
-          description={description}
-          autoComplete={autoComplete}
-        />
+        {type === 'textarea' ? (
+          <Textarea label={label} className="w-full" {...rest} />
+        ) : (
+          <Input
+            isRequired={required}
+            type={type}
+            label={label}
+            {...register(name as T, {
+              required: required,
+              pattern: pattern,
+            })}
+            isInvalid={isInvalid}
+            errorMessage={errors[label as T] ? errorMessage : ''}
+            description={description}
+            autoComplete={autoComplete}
+            {...rest}
+          />
+        )}
       </div>
     )
   )

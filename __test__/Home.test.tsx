@@ -14,7 +14,7 @@ it('should have H1 Home', async () => {
   render(<Home />)
 
   const elem = screen.getByRole('heading', {
-    name: 'Home',
+    name: 'Welcome to Fairy tale world - A Magical World of Stories and Fairy Tales for Children',
   })
   await waitFor(() =>
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment

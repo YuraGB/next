@@ -18,7 +18,11 @@ const TaleContent = ({
         <section
           className={'absolute w-full h-full flex flex-col justify-between'}
         >
-          <h1 className={'text-amber-50 text-xl text-center  mt-[10%]'}>
+          <h1
+            className={
+              'font-["Cinzel_Decorative"] [color:white] text-[32px] text-center  mt-[10%]'
+            }
+          >
             {title ? title : 'Fairy Tale'}
           </h1>
           <div className={'flex justify-between text-amber-50 p-4'}>

@@ -1,21 +1,38 @@
 'use client'
 import { Dispatch, SetStateAction, useState } from 'react'
+import { usePostList } from '@/app/admin/components/adminDashboardTabs/usePostList'
+import { useUsersList } from '@/app/admin/components/adminDashboardTabs/useUsersList'
+import { PostT } from '@/app/admin/components/adminDashboardTabs/modules/blogDashboardTab/model/Post'
+import { User } from '@/app/admin/components/adminDashboardTabs/modules/adminUserTab/model/User'
+import { useFairyTales } from '@/app/fairyTales/modules/components/talesList/useFairyTales'
+import { Tale } from '.prisma/client'
 
-export type TabNames = 'users' | 'blog' | 'features'
+export enum tabNames {
+  USERS = 'USERS',
+  BLOG = 'BLOG',
+  TALES = 'TALES',
+}
 
 export type AdminTabs = {
-  tabNames: TabNames[]
   selected: string
   setSelected: Dispatch<SetStateAction<string>>
+  posts: PostT[] | undefined
+  users: Partial<User>[] | undefined
+  tales: Tale[]
 }
 
 export const useAdminTabs = (): AdminTabs => {
-  const tabNames: TabNames[] = ['users', 'blog', 'features']
   const [selected, setSelected] = useState<string>('users')
 
+  const { posts } = usePostList()
+  const { users } = useUsersList()
+  const { tales } = useFairyTales()
+
   return {
-    tabNames,
     selected,
     setSelected,
+    posts,
+    users,
+    tales,
   }
 }
