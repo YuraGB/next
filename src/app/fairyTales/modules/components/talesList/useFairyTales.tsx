@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { getAllFairyTales } from '@/app/fairyTales/service/getAllFairyTales'
+import { getAllFairyTales } from '@/services/getAllFairyTales'
 import { Tale } from '.prisma/client'
 
 export const useFairyTales = () => {

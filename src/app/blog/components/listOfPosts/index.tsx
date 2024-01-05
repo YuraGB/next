@@ -1,5 +1,5 @@
 import { memo } from 'react'
-import { getPublicPosts } from '@/app/blog/serveces/getPosts'
+import { getPublicPosts } from '@/services/getPublicPosts'
 import PostOverview from '@/app/blog/components/postOverview'
 
 const ListOfPosts = async () => {

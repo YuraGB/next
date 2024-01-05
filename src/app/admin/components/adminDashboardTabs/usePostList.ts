@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { getPosts } from '@/app/admin/components/adminDashboardTabs/modules/blogDashboardTab/service/getPosts'
+import { getPosts } from '@/services/getPosts'
 import { PostT } from '@/app/admin/components/adminDashboardTabs/modules/blogDashboardTab/model/Post'
 
 export const usePostList = () => {

@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-anonymous-default-export
 export default [
   {
     type: 'text',
@@ -20,6 +21,8 @@ export default [
     type: 'text',
     name: 'mainImage',
     label: 'Main image',
+    pattern:
+      /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/,
     description: 'The url of the image',
     errorMessage: 'Please attach a valid file',
     required: true,
@@ -28,8 +31,8 @@ export default [
 
   {
     type: 'textarea',
-    label: 'content',
-    name: 'Content',
+    label: 'Content',
+    name: 'content',
     errorMessage: 'Please enter a content',
     required: true,
     additionalClasses: 'w-full',

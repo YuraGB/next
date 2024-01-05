@@ -1,18 +1,37 @@
 import fields from './fields'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { Inputs } from '@/modules/types/formTypes'
+import { Fields, Inputs } from '@/modules/types/formTypes'
 import React from 'react'
 import formFieldsMapping from '@/modules/utils/formFieldsMapping'
 import validateFields from '@/utils/validation/validateFields'
-export const useTaleModal = () => {
+import { Tale } from '.prisma/client'
+export const useTaleModal = (initialValues: Tale | null) => {
   const {
     register,
     handleSubmit,
     formState: { errors, isValid },
   } = useForm<Partial<Inputs>>()
+  const initialFields: Fields[] = fields
+  let fieldsWithDefaultValues: Fields[] = []
+
+  if (initialValues) {
+    fieldsWithDefaultValues = fields.map((field: Fields) => {
+      if (
+        initialValues &&
+        field.name &&
+        initialValues[field.name as keyof Tale] !== undefined
+      ) {
+        return {
+          defaultValue: initialValues[field.name as keyof Tale] as string,
+          ...field,
+        }
+      }
+      return field
+    })
+  }
 
   const formFields: React.ReactNode[] = formFieldsMapping(
-    fields,
+    initialValues ? fieldsWithDefaultValues : initialFields,
     errors,
     register
   )
@@ -29,5 +48,6 @@ export const useTaleModal = () => {
     handleSubmit,
     isValid,
     onSubmit,
+    errors,
   }
 }
