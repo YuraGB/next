@@ -3,7 +3,13 @@ import { Card, CardFooter, CardHeader } from '@nextui-org/card'
 import { Divider } from '@nextui-org/react'
 import { Tale } from '.prisma/client'
 
-const TaleAdminItem = ({ tale }: { tale: Tale }): React.ReactNode | null => {
+const TaleAdminItem = ({
+  tale,
+  onEdit,
+}: {
+  tale: Tale
+  onEdit: (tale: Tale) => void
+}): React.ReactNode | null => {
   if (!tale) {
     return null
   }
@@ -12,7 +18,7 @@ const TaleAdminItem = ({ tale }: { tale: Tale }): React.ReactNode | null => {
 
   const onClick = () => {
     if (id) {
-      //router.push(`${Pages.FAIRY_TALES}/${id}`, { scroll: true })
+      onEdit(tale)
     }
   }
 

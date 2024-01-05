@@ -20,26 +20,36 @@ export default function formFieldsMapping<T extends keyof Inputs>(
         pattern,
         description,
         autoComplete,
-        isInvalid,
         additionalClasses,
+        defaultValue,
         ...rest
       }: Fields,
       index: number
     ) => (
       <div className={`mb-6 ${additionalClasses}`} key={label + index}>
         {type === 'textarea' ? (
-          <Textarea label={label} className="w-full" {...rest} />
+          <Textarea
+            label={label}
+            className="w-full"
+            {...rest}
+            {...register(name as T, {
+              required: required,
+              pattern: pattern,
+            })}
+            defaultValue={defaultValue}
+          />
         ) : (
           <Input
             isRequired={required}
             type={type}
             label={label}
+            defaultValue={defaultValue}
             {...register(name as T, {
               required: required,
               pattern: pattern,
             })}
-            isInvalid={isInvalid}
-            errorMessage={errors[label as T] ? errorMessage : ''}
+            isInvalid={!!errors[name as T]}
+            errorMessage={errors[name as T] ? errorMessage : ''}
             description={description}
             autoComplete={autoComplete}
             {...rest}

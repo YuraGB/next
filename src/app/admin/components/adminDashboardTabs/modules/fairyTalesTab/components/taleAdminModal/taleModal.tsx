@@ -8,12 +8,19 @@ import {
   ModalHeader,
 } from '@nextui-org/modal'
 import { Button } from '@nextui-org/button'
-import { useDisclosure } from '@nextui-org/use-disclosure'
 import { useTaleModal } from '@/app/admin/components/adminDashboardTabs/modules/fairyTalesTab/components/taleAdminModal/useTaleModal'
+import { Tale } from '.prisma/client'
 
-const TaleModal = (props: ReturnType<typeof useDisclosure>) => {
-  const { isOpen, onClose } = props
-  const { handleSubmit, onSubmit, formFields } = useTaleModal()
+type propsInit = {
+  initialValues: Tale | null
+}
+const TaleModal = ({
+  isOpen = false,
+  onClose = () => {},
+  initialValues = null,
+}: { isOpen: boolean; onClose: () => void } & propsInit) => {
+  const { handleSubmit, onSubmit, formFields } = useTaleModal(initialValues)
+
   return (
     <Modal size={'5xl'} isOpen={isOpen} onClose={onClose}>
       <ModalContent>

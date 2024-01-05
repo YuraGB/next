@@ -11,6 +11,9 @@ export const metadata: Metadata = {
   description: 'testing Nextjs 14 with all features',
 }
 
+export const runtime = 'edge'
+export const preferredRegion = ['fra1']
+
 export default function Home() {
   // create()
   return (

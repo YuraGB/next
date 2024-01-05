@@ -10,6 +10,7 @@ export type Fields = {
   description?: string
   autoComplete?: string
   additionalClasses?: string
+  defaultValue?: string
 }
 
 export type Inputs = {

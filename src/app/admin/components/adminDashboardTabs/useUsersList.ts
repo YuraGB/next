@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { User } from '@/app/admin/components/adminDashboardTabs/modules/adminUserTab/model/User'
-import { getUsers } from '@/app/admin/components/adminDashboardTabs/modules/adminUserTab/service/getUsers'
+import { getUsers } from '@/services/getUsers'
 
 export type TUsers = Partial<User>[]
 export const useUsersList = () => {
