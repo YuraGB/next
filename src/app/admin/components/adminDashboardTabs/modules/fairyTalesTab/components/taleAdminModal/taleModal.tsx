@@ -10,6 +10,7 @@ import {
 import { Button } from '@nextui-org/button'
 import { useTaleModal } from '@/app/admin/components/adminDashboardTabs/modules/fairyTalesTab/components/taleAdminModal/useTaleModal'
 import { Tale } from '.prisma/client'
+import ImagesInputs from '@/app/admin/components/adminDashboardTabs/modules/fairyTalesTab/components/imagesInputs/imagesInputs'
 
 type propsInit = {
   initialValues: Tale | null
@@ -19,7 +20,8 @@ const TaleModal = ({
   onClose = () => {},
   initialValues = null,
 }: { isOpen: boolean; onClose: () => void } & propsInit) => {
-  const { handleSubmit, onSubmit, formFields } = useTaleModal(initialValues)
+  const { handleSubmit, register, onSubmit, formFields } =
+    useTaleModal(initialValues)
 
   return (
     <Modal size={'5xl'} isOpen={isOpen} onClose={onClose}>
@@ -36,6 +38,10 @@ const TaleModal = ({
                 onSubmit={handleSubmit(onSubmit)}
               >
                 {formFields}
+                <ImagesInputs
+                  register={register}
+                  initialImages={initialValues?.images}
+                />
                 <Button
                   variant={'flat'}
                   color={'primary'}

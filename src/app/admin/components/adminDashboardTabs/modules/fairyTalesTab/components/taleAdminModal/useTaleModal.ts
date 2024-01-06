@@ -5,6 +5,7 @@ import React from 'react'
 import formFieldsMapping from '@/modules/utils/formFieldsMapping'
 import validateFields from '@/utils/validation/validateFields'
 import { Tale } from '.prisma/client'
+
 export const useTaleModal = (initialValues: Tale | null) => {
   const {
     register,
@@ -49,5 +50,6 @@ export const useTaleModal = (initialValues: Tale | null) => {
     isValid,
     onSubmit,
     errors,
+    register,
   }
 }
