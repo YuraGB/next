@@ -1,3 +1,4 @@
+'use server'
 import prisma from '$prismaClient/prisma'
 import { Tale } from '.prisma/client'
 

@@ -1,6 +1,6 @@
 import { Button } from '@nextui-org/button'
 import { Input } from '@nextui-org/input'
-import React from 'react'
+import React, { Fragment } from 'react'
 import { UseFormRegister } from 'react-hook-form/dist/types/form'
 import { FieldValues } from 'react-hook-form/dist/types/fields'
 import { useImagesInputs } from '@/app/admin/components/adminDashboardTabs/modules/fairyTalesTab/components/imagesInputs/useImagesInputs'
@@ -12,7 +12,7 @@ const ImagesInputs = ({
   register: UseFormRegister<FieldValues>
   initialImages: string[] | undefined
 }) => {
-  const { onAdd, images } = useImagesInputs(initialImages)
+  const { onAdd, images, onDelete } = useImagesInputs(initialImages)
 
   return (
     <section
@@ -29,14 +29,21 @@ const ImagesInputs = ({
         Add new image
       </Button>
       {images.map((input, i) => (
-        <Input
-          key={i}
-          {...register(`images-${i}`, {})}
-          name={`images-${i}`}
-          description={`The url of the image`}
-          defaultValue={input.defaultValue}
-          className={'w-full mb-4'}
-        />
+        <div className={'flex w-full'} key={i}>
+          <Input
+            {...register(`images-${i}`, {})}
+            name={`images-${i}`}
+            description={`The url of the image`}
+            defaultValue={input.defaultValue}
+            className={'w-full mb-4 w-full'}
+          />
+          <Button
+            className={'p-6 mt-1 ml-2'}
+            onClick={() => onDelete(input.id)}
+          >
+            Rem
+          </Button>
+        </div>
       ))}
     </section>
   )

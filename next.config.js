@@ -5,7 +5,7 @@ const nextConfig = {
   //   ppr: true,
   // },
   images: {
-    domains: ['firebasestorage.googleapis.com'],
+    domains: ['firebasestorage.googleapis.com', 'www.firstbenefits.org'],
   },
 }
 

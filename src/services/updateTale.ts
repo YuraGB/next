@@ -2,11 +2,12 @@
 import prisma from '$prismaClient/prisma'
 import { Tale } from '.prisma/client'
 
-export const getTale = async (id: string): Promise<Tale | undefined | null> => {
+export const updateTale = (id: string, data: Partial<Tale>) => {
   try {
-    return await prisma?.tale.findUnique({
-      where: {
-        id,
+    return prisma.tale.update({
+      where: { id },
+      data: {
+        ...data,
       },
     })
   } catch (e) {

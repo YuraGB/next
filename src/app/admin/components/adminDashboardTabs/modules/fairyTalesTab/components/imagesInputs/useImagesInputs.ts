@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 
 const defaultState = {
   defaultValue: '',
+  id: 'defaultValue',
 }
 
 export const useImagesInputs = (initialImages: string[] | undefined) => {
@@ -9,17 +10,26 @@ export const useImagesInputs = (initialImages: string[] | undefined) => {
 
   useEffect(() => {
     if (initialImages && initialImages.length) {
-      const setInitials = initialImages
-        .map((image) => ({
-          defaultValue: image,
-        }))
-        .filter((i) => i.defaultValue)
+      const setInitials = initialImages.map((image) => ({
+        id: image,
+        defaultValue: image,
+      }))
 
       setImages(setInitials)
     } else {
       setImages([defaultState])
     }
   }, [initialImages])
+
+  const onDelete = useCallback(
+    (id: string) => {
+      if (id) {
+        const updatedImages = images.filter((images) => images.id !== id)
+        setImages(updatedImages)
+      }
+    },
+    [images]
+  )
 
   const onAdd: () => void = () => {
     const newInput = [...images, defaultState]
@@ -28,5 +38,6 @@ export const useImagesInputs = (initialImages: string[] | undefined) => {
   return {
     onAdd,
     images,
+    onDelete,
   }
 }
