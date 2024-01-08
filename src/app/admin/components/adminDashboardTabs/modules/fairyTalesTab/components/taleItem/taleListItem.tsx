@@ -24,7 +24,7 @@ const TaleAdminItem = ({
 
   return (
     <Card
-      className="min-w-[400px]"
+      className="max-w-full"
       isPressable
       isBlurred
       isHoverable

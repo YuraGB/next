@@ -2,9 +2,9 @@
 import prisma from '$prismaClient/prisma'
 import { Tale } from '.prisma/client'
 
-export default (newTale: Tale) => {
+export default async (newTale: Tale) => {
   try {
-    return prisma.tale.create({
+    return await prisma.tale.create({
       data: newTale,
     })
   } catch (e) {

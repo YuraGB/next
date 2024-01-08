@@ -4,6 +4,7 @@ import React, { Fragment } from 'react'
 import { UseFormRegister } from 'react-hook-form/dist/types/form'
 import { FieldValues } from 'react-hook-form/dist/types/fields'
 import { useImagesInputs } from '@/app/admin/components/adminDashboardTabs/modules/fairyTalesTab/components/imagesInputs/useImagesInputs'
+import RemoveButton from '@/components/removeButton'
 
 const ImagesInputs = ({
   register,
@@ -37,12 +38,7 @@ const ImagesInputs = ({
             defaultValue={input.defaultValue}
             className={'w-full mb-4 w-full'}
           />
-          <Button
-            className={'p-6 mt-1 ml-2'}
-            onClick={() => onDelete(input.id)}
-          >
-            Rem
-          </Button>
+          <RemoveButton onClick={() => onDelete(input.id)} />
         </div>
       ))}
     </section>

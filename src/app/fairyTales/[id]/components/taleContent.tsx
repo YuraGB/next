@@ -3,6 +3,7 @@ import { Tale } from '.prisma/client'
 import { memo, ReactNode } from 'react'
 import Image from 'next/image'
 import { useTaleContent } from '@/app/fairyTales/[id]/components/useTaleContent'
+import placeholder from '@/app/assets/placeholder.webp'
 
 const TaleContent = ({
   taleContent,
@@ -36,7 +37,7 @@ const TaleContent = ({
           width={700}
           height={200}
           alt="NextUI hero Image with delay"
-          src={mainImage}
+          src={mainImage ? mainImage : placeholder}
           loading={'lazy'}
           className={'w-full object-cover h-auto'}
         />

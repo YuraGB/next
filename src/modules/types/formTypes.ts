@@ -2,7 +2,7 @@ export type Fields = {
   type: string
   required: boolean
   label: string
-  name?: string
+  name: string
   errorMessage: string
   isInvalid?: boolean
   accept?: string

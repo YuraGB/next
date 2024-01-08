@@ -1,13 +1,14 @@
-import { Fields, Inputs } from '@/modules/types/formTypes'
+import { Fields } from '@/modules/types/formTypes'
 import { Input, Textarea } from '@nextui-org/input'
 import React from 'react'
 import { FieldErrors } from 'react-hook-form/dist/types/errors'
 import { UseFormRegister } from 'react-hook-form/dist/types/form'
+import { FieldValues } from 'react-hook-form/dist/types/fields'
 
-export default function formFieldsMapping<T extends keyof Inputs>(
+export default function formFieldsMapping(
   fields: Fields[],
-  errors: FieldErrors<Pick<Inputs, T>>,
-  register: UseFormRegister<Partial<Inputs>>
+  errors: FieldErrors<Fields>,
+  register: UseFormRegister<FieldValues>
 ): React.ReactNode[] {
   return fields.map(
     (
@@ -32,7 +33,7 @@ export default function formFieldsMapping<T extends keyof Inputs>(
             label={label}
             className="w-full"
             {...rest}
-            {...register(name as T, {
+            {...register(name as keyof Fields, {
               required: required,
               pattern: pattern,
             })}
@@ -44,12 +45,12 @@ export default function formFieldsMapping<T extends keyof Inputs>(
             type={type}
             label={label}
             defaultValue={defaultValue}
-            {...register(name as T, {
+            {...register(name as keyof Fields, {
               required: required,
               pattern: pattern,
             })}
-            isInvalid={!!errors[name as T]}
-            errorMessage={errors[name as T] ? errorMessage : ''}
+            isInvalid={!!errors[name as keyof Fields]}
+            errorMessage={errors[name as keyof Fields] ? errorMessage : ''}
             description={description}
             autoComplete={autoComplete}
             {...rest}

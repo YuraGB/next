@@ -20,8 +20,10 @@ const TaleModal = ({
   onClose = () => {},
   initialValues = null,
 }: { isOpen: boolean; onClose: () => void } & propsInit) => {
-  const { handleSubmit, register, onSubmit, formFields } =
-    useTaleModal(initialValues)
+  const { handleSubmit, register, onSubmit, formFields } = useTaleModal(
+    initialValues,
+    onClose
+  )
 
   return (
     <Modal size={'5xl'} isOpen={isOpen} onClose={onClose}>
@@ -49,7 +51,7 @@ const TaleModal = ({
                   className={'mb-4'}
                   type={'submit'}
                 >
-                  Create a fairy tale
+                  {initialValues ? 'Edit the tale' : 'Create a fairy tale'}
                 </Button>
               </form>
             </ModalBody>

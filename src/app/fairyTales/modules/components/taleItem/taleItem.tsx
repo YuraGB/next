@@ -5,6 +5,7 @@ import { Divider } from '@nextui-org/react'
 import { Tale } from '.prisma/client'
 import { useRouter } from 'next/navigation'
 import { Pages } from '@/utils/pages'
+import placeholder from '@/app/assets/placeholder.webp'
 
 const TaleItem = ({ tale }: { tale: Tale }): React.ReactNode | null => {
   const router = useRouter()
@@ -32,7 +33,7 @@ const TaleItem = ({ tale }: { tale: Tale }): React.ReactNode | null => {
         <Image
           alt="nextui logo"
           height={200}
-          src={mainImage ? mainImage : ''}
+          src={mainImage ? mainImage : placeholder}
           width={600}
           className={'w-full h-[400px] object-cover'}
         />

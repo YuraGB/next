@@ -1,19 +1,22 @@
 import fields from './fields'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { Fields, Inputs } from '@/modules/types/formTypes'
+import { Fields } from '@/modules/types/formTypes'
 import React from 'react'
 import formFieldsMapping from '@/modules/utils/formFieldsMapping'
-import validateFields from '@/utils/validation/validateFields'
 import { Tale } from '.prisma/client'
 import { updateTale } from '@/services/updateTale'
 import { formatTaleData } from '@/app/admin/components/adminDashboardTabs/modules/fairyTalesTab/components/taleAdminModal/util/formatData'
+import addNewTale from '@/services/addNewTale'
 
-export const useTaleModal = (initialValues: Tale | null) => {
+export const useTaleModal = (
+  initialValues: Tale | null,
+  onClose: () => void = () => {}
+) => {
   const {
     register,
     handleSubmit,
     formState: { errors, isValid },
-  } = useForm<Partial<Inputs>>()
+  } = useForm<Partial<Tale>>()
   const initialFields: Fields[] = fields
   let fieldsWithDefaultValues: Fields[] = []
 
@@ -40,11 +43,15 @@ export const useTaleModal = (initialValues: Tale | null) => {
   )
 
   const onSubmit: SubmitHandler<Partial<Tale>> = async (data) => {
+    const normalizeData = formatTaleData(data)
+
     if (initialValues) {
-      const normalizeData = formatTaleData(data)
-      const updatedTale = await updateTale(initialValues.id, normalizeData)
-      console.log(updatedTale)
+      await updateTale(initialValues.id, normalizeData)
+    } else {
+      await addNewTale(normalizeData)
     }
+
+    onClose()
   }
 
   return {

@@ -1,6 +1,6 @@
 import { Tale } from '.prisma/client'
 
-export const formatTaleData = (data: Partial<Tale>): Partial<Tale> => {
+export const formatTaleData = (data: Partial<Tale>): Tale => {
   const formattedData: Partial<Tale> = {
     images: [] as string[], // Initialize images as an array
   }
@@ -16,5 +16,5 @@ export const formatTaleData = (data: Partial<Tale>): Partial<Tale> => {
     }
   }
 
-  return formattedData
+  return formattedData as Tale
 }
