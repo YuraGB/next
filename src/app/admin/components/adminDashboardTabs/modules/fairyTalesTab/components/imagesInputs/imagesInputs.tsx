@@ -1,6 +1,6 @@
 import { Button } from '@nextui-org/button'
 import { Input } from '@nextui-org/input'
-import React, { Fragment } from 'react'
+import React from 'react'
 import { UseFormRegister } from 'react-hook-form/dist/types/form'
 import { FieldValues } from 'react-hook-form/dist/types/fields'
 import { useImagesInputs } from '@/app/admin/components/adminDashboardTabs/modules/fairyTalesTab/components/imagesInputs/useImagesInputs'
