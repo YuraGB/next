@@ -4,16 +4,16 @@ import { Tale } from '.prisma/client'
 import TaleAdminItem from '@/app/admin/components/adminDashboardTabs/modules/fairyTalesTab/components/taleItem/taleListItem'
 import TaleListSkeleton from '@/app/admin/components/adminDashboardTabs/modules/fairyTalesTab/components/taleList/taleListSkeleton'
 
-const TalesList: FC<{ tales: Tale[]; onEdit: (tale: Tale) => void }> = ({
-  tales,
-  onEdit,
-}) => {
+const TalesList: FC<{
+  tales: Tale[] | undefined
+  onEdit: (tale: Tale) => void
+}> = ({ tales, onEdit }) => {
   if (!tales) {
     return <TaleListSkeleton />
   }
 
   return (
-    <section className={'grid justify-start gap-2 max-w-full'}>
+    <section className={'grid justify-start gap-2 max-w-full grid-cols-2'}>
       {tales.map((tale) => (
         <TaleAdminItem key={tale.id} tale={tale} onEdit={onEdit} />
       ))}

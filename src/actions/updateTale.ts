@@ -2,14 +2,16 @@
 import prisma from '$prismaClient/prisma'
 import { Tale } from '.prisma/client'
 
-export const updateTale = (id: string, data: Partial<Tale>) => {
+export const updateTale = async (id: string, data: Partial<Tale>) => {
   try {
-    return prisma.tale.update({
+    const newData = await prisma.tale.update({
       where: { id },
       data: {
         ...data,
       },
     })
+
+    return newData
   } catch (e) {
     console.log(e)
   }

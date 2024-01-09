@@ -5,7 +5,7 @@ import TaleModal from '@/app/admin/components/adminDashboardTabs/modules/fairyTa
 import { useDisclosure } from '@nextui-org/use-disclosure'
 import { Button } from '@nextui-org/button'
 
-const AdminTalesTab: FC<{ tales: Tale[] }> = ({ tales }) => {
+const AdminTalesTab: FC<{ tales: Tale[] | undefined }> = ({ tales }) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const editedTale = useRef<Tale | null>(null)
   const onEdit = useCallback(

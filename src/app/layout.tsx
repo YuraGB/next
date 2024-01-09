@@ -6,6 +6,7 @@ import React from 'react'
 import dynamic from 'next/dynamic'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import Footer from '@/modules/footer'
+import ReactQueryProvider from '@/app/context/ReactQueryProvider'
 const Navigation = dynamic(() => import('@/modules/navigation/Navigation'))
 
 export const metadata: Metadata = {
@@ -22,10 +23,12 @@ export default async function RootLayout({
     <html lang="en">
       <body className={'min-h-[100dvh] flex flex-col'}>
         <NextUiProviderComponent>
-          <AuthProvider>
-            <Navigation />
-            {children}
-          </AuthProvider>
+          <ReactQueryProvider>
+            <AuthProvider>
+              <Navigation />
+              {children}
+            </AuthProvider>
+          </ReactQueryProvider>
         </NextUiProviderComponent>
         <SpeedInsights />
         <Footer />

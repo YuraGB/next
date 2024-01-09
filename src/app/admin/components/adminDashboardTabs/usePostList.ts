@@ -1,19 +1,12 @@
-import { useEffect, useState } from 'react'
-import { getPosts } from '@/services/getPosts'
-import { PostT } from '@/app/admin/components/adminDashboardTabs/modules/blogDashboardTab/model/Post'
+import { useQuery } from '@tanstack/react-query'
+import { GET_ALL_POSTS } from '@/actions/queryNaming'
+import { getAllPosts } from '@/actions/getPublicPosts'
 
 export const usePostList = () => {
-  const [posts, setPosts] = useState<PostT[] | undefined>()
+  const { data, isLoading, error } = useQuery({
+    queryKey: [GET_ALL_POSTS],
+    queryFn: async () => await getAllPosts(),
+  })
 
-  useEffect(() => {
-    getPosts()
-      .then((resp) => {
-        if (resp) {
-          setPosts(resp)
-        }
-      })
-      .catch(console.log)
-  }, [])
-
-  return { posts }
+  return { posts: data, isLoading, error }
 }

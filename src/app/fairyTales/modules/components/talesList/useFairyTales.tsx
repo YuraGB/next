@@ -1,16 +1,12 @@
-import { useEffect, useState } from 'react'
-import { getAllFairyTales } from '@/services/getAllFairyTales'
-import { Tale } from '.prisma/client'
+import { getAllFairyTales } from '@/actions/getAllFairyTales'
+import { useQuery } from '@tanstack/react-query'
+import { GET_ALL_TALES } from '@/actions/queryNaming'
 
 export const useFairyTales = () => {
-  const [tales, setTales] = useState<Tale[]>([])
-  useEffect(() => {
-    getAllFairyTales().then((resp) => {
-      if (resp && resp.length) {
-        setTales(resp)
-      }
-    })
-  }, [])
+  const { data, isLoading, error } = useQuery({
+    queryKey: [GET_ALL_TALES],
+    queryFn: async () => await getAllFairyTales(),
+  })
 
-  return { tales }
+  return { tales: data, isLoading, error }
 }

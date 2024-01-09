@@ -17,8 +17,8 @@ export type AdminTabs = {
   selected: string
   setSelected: Dispatch<SetStateAction<string>>
   posts: PostT[] | undefined
-  users: Partial<User>[] | undefined
-  tales: Tale[]
+  users: User[] | undefined | null
+  tales: Tale[] | undefined
 }
 
 export const useAdminTabs = (): AdminTabs => {
