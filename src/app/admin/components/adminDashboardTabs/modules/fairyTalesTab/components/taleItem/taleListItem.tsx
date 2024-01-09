@@ -24,7 +24,7 @@ const TaleAdminItem = ({
 
   return (
     <Card
-      className="max-w-full"
+      className="max-w-full rounded-none w-full flex"
       isPressable
       isBlurred
       isHoverable
@@ -32,13 +32,15 @@ const TaleAdminItem = ({
     >
       <CardHeader className="flex gap-3 relative p-0">
         <div className="flex flex-col">
-          <p className="p-2">{title}</p>
+          <p className="p-3">{title}</p>
         </div>
       </CardHeader>
       <Divider />
-      <CardFooter>
-        <p className={'mr-2'}>Category: {forAge}</p>
-        <p>Published: {createdAt.toLocaleDateString()}</p>
+      <CardFooter className={'flex justify-between'}>
+        <p className={'mr-2 text-gray-700 text-sm'}>Category: {forAge}</p>
+        <p className={'text-gray-700 text-sm'}>
+          Published: {createdAt.toLocaleDateString()}
+        </p>
       </CardFooter>
     </Card>
   )

@@ -1,8 +1,8 @@
 import React, { FC } from 'react'
 import UsersList from '@/app/admin/components/adminDashboardTabs/modules/adminUserTab/components/usersList/UsersList'
-import { TUsers } from '@/app/admin/components/adminDashboardTabs/useUsersList'
+import { User } from '@/app/admin/components/adminDashboardTabs/modules/adminUserTab/model/User'
 
-const AdminUserTab: FC<{ users: TUsers | undefined }> = ({ users }) => {
+const AdminUserTab: FC<{ users: User[] | undefined | null }> = ({ users }) => {
   return (
     <article className={'w-full'}>
       <UsersList users={users} />

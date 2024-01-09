@@ -4,9 +4,9 @@ import { Fields } from '@/modules/types/formTypes'
 import React from 'react'
 import formFieldsMapping from '@/modules/utils/formFieldsMapping'
 import { Tale } from '.prisma/client'
-import { updateTale } from '@/services/updateTale'
 import { formatTaleData } from '@/app/admin/components/adminDashboardTabs/modules/fairyTalesTab/components/taleAdminModal/util/formatData'
-import addNewTale from '@/services/addNewTale'
+import addNewTale from '@/actions/addNewTale'
+import useUpdateTaleHandler from '@/app/admin/components/adminDashboardTabs/modules/fairyTalesTab/components/taleAdminModal/util/updateTaleHandler'
 
 export const useTaleModal = (
   initialValues: Tale | null,
@@ -19,6 +19,7 @@ export const useTaleModal = (
   } = useForm<Partial<Tale>>()
   const initialFields: Fields[] = fields
   let fieldsWithDefaultValues: Fields[] = []
+  const update = useUpdateTaleHandler()
 
   if (initialValues) {
     fieldsWithDefaultValues = fields.map((field: Fields) => {
@@ -46,7 +47,7 @@ export const useTaleModal = (
     const normalizeData = formatTaleData(data)
 
     if (initialValues) {
-      await updateTale(initialValues.id, normalizeData)
+      update.mutate({ id: initialValues.id, data: normalizeData })
     } else {
       await addNewTale(normalizeData)
     }

@@ -1,19 +1,12 @@
-import { useEffect, useState } from 'react'
-import { User } from '@/app/admin/components/adminDashboardTabs/modules/adminUserTab/model/User'
-import { getUsers } from '@/services/getUsers'
+import { getUsers } from '@/actions/getUsers'
+import { useQuery } from '@tanstack/react-query'
+import { GET_ALL_USERS } from '@/actions/queryNaming'
 
-export type TUsers = Partial<User>[]
 export const useUsersList = () => {
-  const [users, setUsers] = useState<TUsers>()
-  useEffect(() => {
-    getUsers()
-      .then((resp) => {
-        if (resp) {
-          setUsers(resp)
-        }
-      })
-      .catch(console.log)
-  }, [])
+  const { data, isLoading, error } = useQuery({
+    queryKey: [GET_ALL_USERS],
+    queryFn: async () => await getUsers(),
+  })
 
-  return { users }
+  return { users: data, isLoading, error }
 }
