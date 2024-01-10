@@ -15,6 +15,8 @@ const ImagesInputs = ({
 }) => {
   const { onAdd, images, onDelete } = useImagesInputs(initialImages)
 
+  const onDeleteHandler = (id: string) => () => onDelete(id)
+
   return (
     <section
       className={
@@ -38,7 +40,7 @@ const ImagesInputs = ({
             defaultValue={input.defaultValue}
             className={'w-full mb-4 w-full'}
           />
-          <RemoveButton onClick={() => onDelete(input.id)} />
+          <RemoveButton onClick={onDeleteHandler(input.id)} />
         </div>
       ))}
     </section>
