@@ -1,13 +1,16 @@
+import React from 'react'
 import type { Metadata } from 'next'
-import './globals.css'
+
+import { SpeedInsights } from '@vercel/speed-insights/next'
+import ReactQueryProvider from '@/app/context/ReactQueryProvider'
 import AuthProvider from '@/app/context/AuthProvider'
 import NextUiProviderComponent from '@/app/context/NextUiProviderComponent'
-import React from 'react'
+
+import './globals.css'
+
 import dynamic from 'next/dynamic'
-import { SpeedInsights } from '@vercel/speed-insights/next'
-import Footer from '@/modules/footer'
-import ReactQueryProvider from '@/app/context/ReactQueryProvider'
 const Navigation = dynamic(() => import('@/modules/navigation/Navigation'))
+const Footer = dynamic(() => import('@/modules/footer'))
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -29,9 +32,9 @@ export default async function RootLayout({
               {children}
             </AuthProvider>
           </ReactQueryProvider>
+          <Footer />
         </NextUiProviderComponent>
         <SpeedInsights />
-        <Footer />
       </body>
     </html>
   )

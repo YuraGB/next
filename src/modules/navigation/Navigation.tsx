@@ -10,6 +10,7 @@ import {
 import MenuList from '@/modules/navigation/components/menuList/menuList'
 import { useNavigation } from '@/modules/navigation/useNavigation'
 import dynamic from 'next/dynamic'
+import { ThemeSwitcher } from '@/components/themeSwitcher/ThemeSwitcher'
 
 const MobileMenu = dynamic(
   () => import('@/modules/navigation/components/mobileMenu/mobileMenu')
@@ -37,7 +38,8 @@ const Navigation = (): React.ReactNode => {
       </NavbarContent>
 
       <NavbarContent className=" pr-3" justify="center">
-        <li>
+        <li className={'flex'}>
+          <ThemeSwitcher />
           <NavbarBrand>
             <Link
               href={'/'}
