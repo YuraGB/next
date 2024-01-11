@@ -8,11 +8,11 @@ interface Props {
 
 export default function PageWrapper({
   children,
-  additionalClasses,
+  additionalClasses = '',
 }: Props): React.ReactNode {
   return (
     <main
-      className={` ${additionalClasses} flex flex-col pt-12 items-center grow-1 max-w-7xl m-auto sm:p-24 relative`}
+      className={` ${additionalClasses} flex flex-col pt-12 items-center grow-1 max-w-7xl m-auto sm:p-24 relative mt-0 w-full`}
     >
       {children}
       <Toaster />

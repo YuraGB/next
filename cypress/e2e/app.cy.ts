@@ -4,8 +4,10 @@ describe('Navigation', () => {
     cy.mockFirebase()
   })
   it('should navigate to login page', () => {
+    cy.setCookie('Accept-Language', 'en')
+
     // Start from the index page
-    cy.visit('http://localhost:3000/')
+    cy.visit('http://localhost:3000/en')
 
     // Find a link with an href attribute containing "login" and click it
     cy.get('a[href*="/login"]')

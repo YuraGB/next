@@ -7,8 +7,11 @@ export default defineConfig({
       bundler: 'webpack',
     },
   },
-
+  experimentalMemoryManagement: true,
+  numTestsKeptInMemory: 20,
   e2e: {
+    baseUrl: 'http://localhost:3000',
+    defaultCommandTimeout: 10000,
     setupNodeEvents() {
       // implement node event listeners here
     },

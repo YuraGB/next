@@ -27,17 +27,21 @@ export default async function RootLayout({
   params: { locale: string }
 }) {
   const intl = await getIntl(params.locale)
-  console.log(params, intl)
+  // console.log(params, intl)
   return (
     <html lang={intl.locale}>
-      <body className={'min-h-[100dvh] flex flex-col'}>
+      <body
+        className={
+          'min-h-[100dvh] flex flex-col [&>div]:min-h-[100dvh] [&>div]:flex [&>div]:flex-col'
+        }
+      >
         <NextUiProviderComponent>
           <ReactQueryProvider>
             <AuthProvider>
-              {/*<ServerIntlProvider messages={intl.messages} locale={intl.locale}>*/}
-              <Navigation />
-              {children}
-              {/*</ServerIntlProvider>*/}
+              <ServerIntlProvider messages={intl.messages} locale={intl.locale}>
+                <Navigation />
+                {children}
+              </ServerIntlProvider>
             </AuthProvider>
           </ReactQueryProvider>
           <Footer />
