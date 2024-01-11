@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 import type { Metadata } from 'next'
 
 import { SpeedInsights } from '@vercel/speed-insights/next'
@@ -9,6 +9,8 @@ import NextUiProviderComponent from '@/app/context/NextUiProviderComponent'
 import './globals.css'
 
 import dynamic from 'next/dynamic'
+import ServerIntlProvider from '@/app/context/i18nProvider'
+import getIntl from '@/utils/intl'
 const Navigation = dynamic(() => import('@/modules/navigation/Navigation'))
 const Footer = dynamic(() => import('@/modules/footer'))
 
@@ -19,17 +21,23 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({
   children,
+  params,
 }: {
-  children: React.ReactNode
+  children: ReactNode
+  params: { locale: string }
 }) {
+  const intl = await getIntl(params.locale)
+  console.log(params, intl)
   return (
-    <html lang="en">
+    <html lang={intl.locale}>
       <body className={'min-h-[100dvh] flex flex-col'}>
         <NextUiProviderComponent>
           <ReactQueryProvider>
             <AuthProvider>
+              {/*<ServerIntlProvider messages={intl.messages} locale={intl.locale}>*/}
               <Navigation />
               {children}
+              {/*</ServerIntlProvider>*/}
             </AuthProvider>
           </ReactQueryProvider>
           <Footer />
