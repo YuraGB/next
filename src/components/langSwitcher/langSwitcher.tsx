@@ -1,7 +1,6 @@
 'use client'
-import React, { ChangeEvent, ChangeEventHandler, EventHandler } from 'react'
-import { useRouter } from 'next/navigation'
-import { usePathname } from 'next/navigation'
+import React, { ChangeEvent } from 'react'
+import { useRouter, usePathname } from 'next/navigation'
 import { useCurrentLocale } from 'next-i18n-router/client'
 import i18nConfig from '@/../i18nConfig'
 
@@ -31,8 +30,8 @@ const LangSwitcher = () => {
 
   return (
     <select onChange={handleChange} value={currentLocale}>
-      <option value="en">English</option>
-      <option value="ua">UA</option>
+      <option value="en">En</option>
+      <option value="uk">ua</option>
     </select>
   )
 }

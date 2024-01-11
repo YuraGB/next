@@ -12,9 +12,9 @@
     "test:verbose": "jest --verbose",
     "test:coverage": "jest --coverage --coverageDirectory='coverage'",
     "test:watch": "jest --watchAll",
-    "cypress:open": "cypress open",
-    "cypress:test": "cypress run",
-    "e2e:tests": "start-server-and-test dev http://localhost:3000 \"cypress run --e2e\"",
+    "cypress:open": "cypress open -b electron",
+    "cypress:test": "cypress run -b electron",
+    "e2e:tests": "start-server-and-test dev http://localhost:3000/en/ \"cypress run --e2e\"",
     "prisma-concat": "node  prisma/concat-schemas.js && npx prisma format",
     "generate": "npm run prisma-concat && prisma generate"
   },

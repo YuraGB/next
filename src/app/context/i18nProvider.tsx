@@ -4,7 +4,7 @@ import { IntlProvider } from 'react-intl'
 import { ReactNode } from 'react'
 import { MessageFormatElement } from '@formatjs/icu-messageformat-parser'
 
-export default async function ServerIntlProvider({
+export default function ServerIntlProvider({
   children,
   messages,
   locale = 'en',

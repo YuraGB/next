@@ -1,30 +1,32 @@
-import { NextRequestWithAuth, withAuth } from 'next-auth/middleware'
+import { NextRequestWithAuth } from 'next-auth/middleware'
 import { i18nRouter } from 'next-i18n-router'
 import { NextResponse } from 'next/server'
 import i18nConfig from '@/../i18nConfig'
+import { getToken } from 'next-auth/jwt'
 
-export default withAuth(
-  function middleware(request: NextRequestWithAuth) {
-    console.log(request)
-    if (
-      request.nextUrl.pathname.startsWith('/admin') &&
-      request.nextauth.token?.role.toLowerCase() !== 'admin'
-    ) {
-      return NextResponse.rewrite(new URL('/denied', request.url))
-    }
-    console.log(request)
-    //  return i18nRouter(request, i18nConfig)
-  },
-  {
-    callbacks: { authorized: ({ token }) => !!token },
+export default async function middleware(request: NextRequestWithAuth) {
+  const token = await getToken({ req: request })
+  const locale = request.nextUrl.locale || 'en'
+
+  request.nextauth = request.nextauth || {}
+  request.nextauth.token = token
+
+  if (
+    request.nextUrl.pathname.includes('/admin') &&
+    request.nextauth.token?.role.toLowerCase() !== 'admin'
+  ) {
+    return NextResponse.rewrite(
+      new URL(`/${locale ? locale : 'en'}/denied`, request.nextUrl.origin)
+    )
   }
-)
+  return i18nRouter(request, i18nConfig)
+}
 
 export const config = {
   matcher: [
     // Skip all internal paths (_next)
     '/((?!_next|api).*)',
     // Optional: only run on root (/) URL
-    // '/'
+    // '/admin',
   ],
 }
