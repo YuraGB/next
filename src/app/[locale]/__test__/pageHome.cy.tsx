@@ -1,5 +1,5 @@
 import React from 'react'
-import Home from '../[locale]/page'
+import Home from '../page'
 
 describe('<Home />', () => {
   it('renders', () => {

@@ -1,6 +1,6 @@
 'use server'
 import prisma from '$prismaClient/prisma'
-import { User } from '@/app/admin/components/adminDashboardTabs/modules/adminUserTab/model/User'
+import { User } from '@/app/[locale]/admin/components/adminDashboardTabs/modules/adminUserTab/model/User'
 type GetUsersT = () => Promise<User[] | null | undefined>
 
 export const getUsers: GetUsersT = async () => {
