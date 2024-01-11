@@ -1,11 +1,11 @@
-@import "slick-carousel/slick/slick.css";
-@import "slick-carousel/slick/slick-theme.css";
-@import "./ fonts/Quicksand/quicksand.css";
-@import "./ fonts/Cinzelde/stylesheet.css";
-@import "./ fonts/Cormorant/Cormorant Garamond.css";
-@import "./ fonts/Cormorant/Cormorant Garamond Light.css";
-@import "./ fonts/Cormorant/Cormorant Garamond Medium.css";
-@import "./ fonts/Cormorant/Cormorant Garamond SemiBold.css";
+@import "../../../node_modules/slick-carousel/slick/slick.css";
+@import "../../../node_modules/slick-carousel/slick/slick-theme.css";
+@import "../ fonts/Quicksand/quicksand.css";
+@import "../ fonts/Cinzelde/stylesheet.css";
+@import "../ fonts/Cormorant/Cormorant Garamond.css";
+@import "../ fonts/Cormorant/Cormorant Garamond Light.css";
+@import "../ fonts/Cormorant/Cormorant Garamond Medium.css";
+@import "../ fonts/Cormorant/Cormorant Garamond SemiBold.css";
 
 @tailwind base;
 @tailwind components;

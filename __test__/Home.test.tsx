@@ -1,6 +1,6 @@
 //https://jestjs.io/docs/manual-mocks#mocking-methods-which-are-not-implemented-in-jsdom
 import { render, screen, waitFor } from '@testing-library/react'
-import Home from '@/app/page'
+import Home from '@/app/[locale]/page'
 
 jest.mock('../src/modules/homePageSlider', () => {
   // Replace with the actual path to your FirebaseComponent
