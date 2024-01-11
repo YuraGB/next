@@ -16,7 +16,7 @@ export default async function middleware(request: NextRequestWithAuth) {
     request.nextauth.token?.role.toLowerCase() !== 'admin'
   ) {
     return NextResponse.rewrite(
-      new URL(`/${locale ? locale : 'en'}/denied`, request.nextUrl.origin)
+      new URL(`/${locale}/denied`, request.nextUrl.origin)
     )
   }
   return i18nRouter(request, i18nConfig)

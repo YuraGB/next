@@ -1,4 +1,3 @@
-import { memo } from 'react'
 import { getPublicPosts } from '@/actions/getPublicPosts'
 import PostOverview from '@/app/[locale]/blog//components/postOverview'
 
@@ -12,4 +11,4 @@ const ListOfPosts = async () => {
   return publicPosts.map((post) => <PostOverview key={post.id} post={post} />)
 }
 
-export default memo(ListOfPosts)
+export default ListOfPosts
