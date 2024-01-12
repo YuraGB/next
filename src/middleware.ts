@@ -25,7 +25,7 @@ export default async function middleware(request: NextRequestWithAuth) {
 export const config = {
   matcher: [
     // Skip all internal paths (_next)
-    '/((?!_next|api).*)',
+    '/((?!_next|api|favicon.ico).*)',
     // Optional: only run on root (/) URL
     // '/admin',
   ],

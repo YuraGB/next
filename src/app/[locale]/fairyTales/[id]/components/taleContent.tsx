@@ -3,7 +3,7 @@ import { Tale } from '.prisma/client'
 import { memo, ReactNode } from 'react'
 import Image from 'next/image'
 import { useTaleContent } from '@/app/[locale]/fairyTales/[id]/components/useTaleContent'
-import placeholder from '@/app/assets/placeholder.webp'
+import placeholder from '@/assets/placeholder.webp'
 
 const TaleContent = ({
   taleContent,

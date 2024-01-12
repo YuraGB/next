@@ -1,38 +1,26 @@
 'use client'
-import React, { ChangeEvent } from 'react'
-import { useRouter, usePathname } from 'next/navigation'
-import { useCurrentLocale } from 'next-i18n-router/client'
-import i18nConfig from '@/../i18nConfig'
+import React from 'react'
+import { useLangSwitcher } from '@/components/langSwitcher/useLangSwitcher'
+import { Select, SelectItem } from '@nextui-org/select'
 
 const LangSwitcher = () => {
-  const router = useRouter()
-  const currentPathname = usePathname()
-  const currentLocale = useCurrentLocale(i18nConfig)
-
-  const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    const newLocale = e.target.value
-
-    // set cookie for next-i18n-router
-    const days = 30
-    const date = new Date()
-    date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000)
-    const expires = '; expires=' + date.toUTCString()
-    document.cookie = `NEXT_LOCALE=${newLocale};expires=${expires};path=/`
-
-    if (currentLocale === i18nConfig.defaultLocale) {
-      router.push('/' + newLocale + currentPathname)
-    } else {
-      router.push(currentPathname.replace(`/${currentLocale}`, `/${newLocale}`))
-    }
-
-    router.refresh()
-  }
+  const { handleChange, currentLocale } = useLangSwitcher()
 
   return (
-    <select onChange={handleChange} value={currentLocale}>
-      <option value="en">En</option>
-      <option value="uk">ua</option>
-    </select>
+    <Select
+      onChange={handleChange}
+      defaultSelectedKeys={[currentLocale as string]}
+      aria-label={'language switcher'}
+      className={'w-[70px]'}
+      size={'sm'}
+    >
+      <SelectItem key={'uk'} value={'uk'} className={'w-[55px]'}>
+        ua
+      </SelectItem>
+      <SelectItem key={'en'} value={'en'} className={'w-[55px]'}>
+        en
+      </SelectItem>
+    </Select>
   )
 }
 
