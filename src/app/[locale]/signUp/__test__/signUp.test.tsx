@@ -1,5 +1,9 @@
 import { render, screen } from '@testing-library/react'
 import RegisterPage from '@/app/[locale]/signUp/page'
+import ServerIntlProvider from '@/app/context/i18nProvider'
+import { ReactNode } from 'react'
+import { createIntl } from '@formatjs/intl'
+import en from '../../../../i18n/en.json'
 
 // Mock useRouter:
 jest.mock('next/navigation', () => ({
@@ -11,8 +15,23 @@ jest.mock('next/navigation', () => ({
 }))
 
 describe('Sign up page', () => {
+  const intl = createIntl({
+    locale: 'en',
+    messages: en,
+    onError: (e) => console.log(e),
+  })
+  function Wrapper({ children }: { children: ReactNode }) {
+    return (
+      <ServerIntlProvider locale={intl.locale} messages={intl.messages}>
+        {children}
+      </ServerIntlProvider>
+    )
+  }
+
   it('should have H1 Sign up', () => {
-    render(<RegisterPage />) //ARRANGE
+    render(<RegisterPage />, {
+      wrapper: Wrapper,
+    }) //ARRANGE
 
     const elem: HTMLParagraphElement = screen.getByRole('heading', {
       name: 'Registration',
@@ -23,8 +42,8 @@ describe('Sign up page', () => {
     expect(elem).toBeInTheDocument() //ASSERT
   })
 
-  it('should have submit button Sign up of the Registration form', () => {
-    render(<RegisterPage />) //ARRANGE
+  it('should have submit button Sign up of the Registration form', async () => {
+    render(<RegisterPage />, { wrapper: Wrapper }) //ARRANGE
 
     const elem: HTMLParagraphElement = screen.getByRole('button', {
       name: 'Sign up',
@@ -35,8 +54,8 @@ describe('Sign up page', () => {
     expect(elem).toBeInTheDocument() //ASSERT
   })
 
-  it('should have the form on the Registration page', () => {
-    render(<RegisterPage />) //ARRANGE
+  it('should have the form on the Registration page', async () => {
+    render(<RegisterPage />, { wrapper: Wrapper }) //ARRANGE
 
     const elem: HTMLParagraphElement = screen.getByRole('form', {
       name: 'registration form',
