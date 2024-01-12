@@ -5,7 +5,7 @@ import { Divider } from '@nextui-org/react'
 import { Tale } from '.prisma/client'
 import { useRouter } from 'next/navigation'
 import { Pages } from '@/utils/pages'
-import placeholder from '@/app/assets/placeholder.webp'
+import placeholder from '@/assets/placeholder.webp'
 
 const TaleItem = ({ tale }: { tale: Tale }): React.ReactNode | null => {
   const router = useRouter()

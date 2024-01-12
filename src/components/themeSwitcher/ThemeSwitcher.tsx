@@ -18,7 +18,7 @@ export function ThemeSwitcher() {
 
   if (!mounted) {
     return (
-      <div>
+      <div className={'flex items-center'}>
         <Button
           isIconOnly={true}
           variant={'shadow'}
@@ -38,7 +38,7 @@ export function ThemeSwitcher() {
   const isLight = theme === 'light'
 
   return (
-    <div className={'mr-2'}>
+    <div className={'mr-2 flex items-center'}>
       <Button
         onClick={() => setTheme(isLight ? 'dark' : 'light')}
         isIconOnly={true}

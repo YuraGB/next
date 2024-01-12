@@ -12,6 +12,7 @@ import { useNavigation } from '@/modules/navigation/useNavigation'
 import dynamic from 'next/dynamic'
 import { ThemeSwitcher } from '@/components/themeSwitcher/ThemeSwitcher'
 import LangSwitcher from '@/components/langSwitcher/langSwitcher'
+import { FormattedMessage } from 'react-intl'
 
 const MobileMenu = dynamic(
   () => import('@/modules/navigation/components/mobileMenu/mobileMenu')
@@ -48,7 +49,9 @@ const Navigation = (): React.ReactNode => {
               className={'flex justify-center content-center items-center'}
             >
               <AcmeLogo />
-              <p className="font-bold text-inherit">Yuhur</p>
+              <p className="font-bold text-inherit">
+                <FormattedMessage id={'logo'} />
+              </p>
             </Link>
           </NavbarBrand>
         </li>

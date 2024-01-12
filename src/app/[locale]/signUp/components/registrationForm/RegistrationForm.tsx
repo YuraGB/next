@@ -2,6 +2,7 @@
 import React from 'react'
 import { Button } from '@nextui-org/button'
 import { useSignUp } from '@/app/[locale]/signUp/components/registrationForm/useSignUp'
+import { FormattedMessage } from 'react-intl'
 
 export const RegistrationForm = (): React.ReactNode => {
   const { onSubmit, formFields, handleSubmit } = useSignUp()
@@ -19,7 +20,7 @@ export const RegistrationForm = (): React.ReactNode => {
         className={'mb-4'}
         type={'submit'}
       >
-        Sign up
+        <FormattedMessage id={'sign_up_button'} />
       </Button>
     </form>
   )
