@@ -13,6 +13,7 @@ import dynamic from 'next/dynamic'
 import { ThemeSwitcher } from '@/components/themeSwitcher/ThemeSwitcher'
 import LangSwitcher from '@/components/langSwitcher/langSwitcher'
 import { FormattedMessage } from 'react-intl'
+import Search from '@/modules/search'
 
 const MobileMenu = dynamic(
   () => import('@/modules/navigation/components/mobileMenu/mobileMenu')
@@ -62,6 +63,9 @@ const Navigation = (): React.ReactNode => {
       <ProfileMenuItems />
 
       <MobileMenu items={menuItems} />
+      <NavbarContent className={'max-w-[40px]'}>
+        <Search />
+      </NavbarContent>
     </Navbar>
   )
 }
