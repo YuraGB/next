@@ -1,3 +1,61 @@
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "rhel-openssl-1.0.x"]
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model Post {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  title       String
+  content     String
+  published   Boolean  @default(true)
+  author      User     @relation(fields: [authorId], references: [id])
+  authorId    String   @db.ObjectId
+  public      Boolean  @default(true)
+  image       String?
+  publishedAt DateTime @default(now())
+}
+
+model CategoryTale {
+  id    String @id @default(auto()) @map("_id") @db.ObjectId
+  name  String @unique @default("general")
+  tales Tale[]
+}
+
+model Tale {
+  id               String       @id @default(auto()) @map("_id") @db.ObjectId
+  title            String
+  mainImage        String
+  images           String[]
+  createdAt        DateTime     @default(now())
+  forAge           String
+  shortDescription String
+  content          String
+  categoryTaleId   String       @db.ObjectId
+  categoryTale     CategoryTale @relation(fields: [categoryTaleId], references: [id])
+}
+
+model Slide {
+  id          String  @id @default(auto()) @map("_id") @db.ObjectId
+  image       String
+  description String?
+  url         String?
+  title       String?
+  Slider      Slider? @relation(fields: [sliderId], references: [id])
+  sliderId    String? @db.ObjectId
+}
+
+model Slider {
+  id       String  @id @default(auto()) @map("_id") @db.ObjectId
+  sliderID String
+  title    String
+  slide    Slide[]
+}
+
 model User {
   id                 String    @id @default(auto()) @map("_id") @db.ObjectId
   email              String
@@ -42,44 +100,6 @@ enum Role {
   ADMIN
 }
 
-model Slide {
-  id          String  @id @default(auto()) @map("_id") @db.ObjectId
-  image       String
-  description String?
-  url         String?
-  title       String?
-  Slider      Slider? @relation(fields: [sliderId], references: [id])
-  sliderId    String? @db.ObjectId
-}
-
-model Slider {
-  id       String  @id @default(auto()) @map("_id") @db.ObjectId
-  sliderID String
-  title    String
-  slide    Slide[]
-}
-
-generator client {
-  provider      = "prisma-client-js"
-  binaryTargets = ["native", "rhel-openssl-1.0.x"]
-}
-
-datasource db {
-  provider = "mongodb"
-  url      = env("DATABASE_URL")
-}
-
-model Tale {
-  id               String   @id @default(auto()) @map("_id") @db.ObjectId
-  title            String
-  mainImage        String
-  images           String[]
-  createdAt        DateTime @default(now())
-  forAge           String
-  shortDescription String
-  content          String
-}
-
 model Session {
   id           String   @id @default(auto()) @map("_id") @db.ObjectId
   userId       String   @unique @db.ObjectId
@@ -89,25 +109,4 @@ model Session {
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
   user         User     @relation(fields: [userId], references: [id])
-}
-
-model Post {
-  id          String     @id @default(auto()) @map("_id") @db.ObjectId
-  title       String
-  content     String
-  published   Boolean    @default(true)
-  author      User       @relation(fields: [authorId], references: [id])
-  authorId    String     @db.ObjectId
-  public      Boolean    @default(true)
-  image       String?
-  publishedAt DateTime   @default(now())
-  categories  Category[] @relation(fields: [categoryIDs], references: [id])
-  categoryIDs String[]   @db.ObjectId
-}
-
-model Category {
-  id      String   @id @default(auto()) @map("_id") @db.ObjectId
-  name    String   @default("general")
-  postIDs String[] @db.ObjectId
-  posts   Post[]   @relation(fields: [postIDs], references: [id])
 }

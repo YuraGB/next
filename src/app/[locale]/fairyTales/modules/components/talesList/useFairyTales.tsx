@@ -7,6 +7,5 @@ export const useFairyTales = () => {
     queryKey: [GET_ALL_TALES],
     queryFn: async () => await getAllFairyTales(),
   })
-
   return { tales: data, isLoading, error }
 }

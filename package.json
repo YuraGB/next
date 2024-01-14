@@ -16,7 +16,7 @@
     "cypress:test": "cypress run -b electron",
     "e2e:tests": "start-server-and-test dev http://localhost:3000/en/ \"cypress run --e2e\"",
     "prisma-concat": "node  prisma/concat-schemas.js && npx prisma format",
-    "generate": "npm run prisma-concat && prisma generate"
+    "generate": "prisma generate"
   },
   "dependencies": {
     "@auth/mongodb-adapter": "^2.0.9",
