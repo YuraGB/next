@@ -10,6 +10,7 @@ const AdminTalesTab: FC<{ tales: Tale[] | undefined }> = ({ tales }) => {
   const editedTale = useRef<Tale | null>(null)
   const onEdit = useCallback(
     (tale: Tale) => {
+      editedTale.current = null
       onOpen()
       editedTale.current = tale
     },

@@ -10,10 +10,12 @@ export const useImagesInputs = (initialImages: string[] | undefined) => {
 
   useEffect(() => {
     if (initialImages && initialImages.length) {
-      const setInitials = initialImages.map((image) => ({
-        id: image,
-        defaultValue: image,
-      }))
+      const setInitials = initialImages
+        .filter((image) => image)
+        .map((image) => ({
+          id: image,
+          defaultValue: image,
+        }))
 
       setImages(setInitials)
     } else {

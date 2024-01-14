@@ -1,7 +1,7 @@
 import fields from './fields'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { Fields } from '@/modules/types/formTypes'
-import React from 'react'
+import React, { useEffect, useMemo } from 'react'
 import formFieldsMapping from '@/modules/utils/formFieldsMapping'
 import { Tale } from '.prisma/client'
 import { formatTaleData } from '@/app/[locale]/admin/components/adminDashboardTabs/modules/fairyTalesTab/components/taleAdminModal/util/formatData'
@@ -14,6 +14,8 @@ export const useTaleModal = (
 ) => {
   const {
     register,
+    reset,
+    getValues,
     handleSubmit,
     formState: { errors, isValid },
   } = useForm<Partial<Tale>>()
@@ -21,37 +23,44 @@ export const useTaleModal = (
   let fieldsWithDefaultValues: Fields[] = []
   const update = useUpdateTaleHandler()
 
-  if (initialValues) {
-    fieldsWithDefaultValues = fields.map((field: Fields) => {
-      if (
-        initialValues &&
-        field.name &&
-        initialValues[field.name as keyof Tale] !== undefined
-      ) {
-        return {
-          defaultValue: initialValues[field.name as keyof Tale] as string,
-          ...field,
-        }
-      }
-      return field
-    })
-  }
+  useEffect(() => {
+    // clear the form
+    reset({})
+  }, [initialValues])
 
-  const formFields: React.ReactNode[] = formFieldsMapping(
-    initialValues ? fieldsWithDefaultValues : initialFields,
-    errors,
-    register
-  )
+  const formFields: React.ReactNode[] = useMemo(() => {
+    if (initialValues) {
+      fieldsWithDefaultValues = fields.map((field: Fields) => {
+        if (
+          initialValues &&
+          field.name &&
+          initialValues[field.name as keyof Tale] !== undefined
+        ) {
+          return {
+            defaultValue: initialValues[field.name as keyof Tale] as string,
+            ...field,
+          }
+        }
+        return field
+      })
+    }
+
+    return formFieldsMapping(
+      initialValues ? fieldsWithDefaultValues : initialFields,
+      errors,
+      register
+    )
+  }, [errors, fieldsWithDefaultValues, initialFields, initialValues, register])
 
   const onSubmit: SubmitHandler<Partial<Tale>> = async (data) => {
     const normalizeData = formatTaleData(data)
-
     if (initialValues) {
       update.mutate({ id: initialValues.id, data: normalizeData })
     } else {
       await addNewTale(normalizeData)
     }
-
+    // clear data after submit
+    reset()
     onClose()
   }
 
