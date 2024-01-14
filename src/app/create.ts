@@ -1,5 +1,5 @@
 'use server'
-import prisma from '$prismaClient/prisma'
+// import prisma from '$prismaClient/prisma'
 
 // export const create = async () => {
 //   array.map((e) => {
