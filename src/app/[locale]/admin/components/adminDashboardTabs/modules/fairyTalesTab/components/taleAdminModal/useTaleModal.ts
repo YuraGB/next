@@ -15,7 +15,6 @@ export const useTaleModal = (
   const {
     register,
     reset,
-    getValues,
     handleSubmit,
     formState: { errors, isValid },
   } = useForm<Partial<Tale>>()
