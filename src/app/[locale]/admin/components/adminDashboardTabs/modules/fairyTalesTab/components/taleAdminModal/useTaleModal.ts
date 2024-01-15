@@ -19,15 +19,15 @@ export const useTaleModal = (
     formState: { errors, isValid },
   } = useForm<Partial<Tale>>()
   const initialFields: Fields[] = fields
-  let fieldsWithDefaultValues: Fields[] = []
   const update = useUpdateTaleHandler()
 
   useEffect(() => {
     // clear the form
     reset({})
-  }, [initialValues])
+  }, [initialValues, reset])
 
   const formFields: React.ReactNode[] = useMemo(() => {
+    let fieldsWithDefaultValues: Fields[] = []
     if (initialValues) {
       fieldsWithDefaultValues = fields.map((field: Fields) => {
         if (
@@ -49,7 +49,7 @@ export const useTaleModal = (
       errors,
       register
     )
-  }, [errors, fieldsWithDefaultValues, initialFields, initialValues, register])
+  }, [errors, initialFields, initialValues, register])
 
   const onSubmit: SubmitHandler<Partial<Tale>> = async (data) => {
     const normalizeData = formatTaleData(data)

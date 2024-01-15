@@ -15,7 +15,7 @@ const TaleItem = ({ tale }: { tale: Tale }): React.ReactNode | null => {
 
   const { id, title, forAge, mainImage, createdAt, shortDescription } = tale
 
-  const onClick = () => {
+  const onClick = (id: string) => {
     if (id) {
       router.push(`${Pages.FAIRY_TALES}/${id}`, { scroll: true })
     }
@@ -27,7 +27,7 @@ const TaleItem = ({ tale }: { tale: Tale }): React.ReactNode | null => {
       isPressable
       isBlurred
       isHoverable
-      onClick={onClick}
+      onClick={() => onClick(id)}
     >
       <CardHeader className="flex gap-3 relative p-0">
         <Image
