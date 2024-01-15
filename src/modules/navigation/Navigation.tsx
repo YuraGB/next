@@ -33,24 +33,22 @@ const Navigation = (): React.ReactNode => {
       isBordered
       isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen}
+      className={'[&>header]:px-1'}
     >
-      <NavbarContent className="sm:hidden" justify="start">
-        <li>
-          <NavbarMenuToggle />
-        </li>
-      </NavbarContent>
-
-      <NavbarContent className=" pr-3" justify="center">
-        <li className={'flex'}>
+      <NavbarContent
+        className="pr-3 max-w-[50%] sm:max-w-[fit-content]"
+        justify="start"
+      >
+        <li className={'flex w-full'}>
           <ThemeSwitcher />
           <LangSwitcher />
-          <NavbarBrand>
+          <NavbarBrand className={'justify-end mr-[-18px] sm:mr-0'}>
             <Link
               href={'/'}
               className={'flex justify-center content-center items-center'}
             >
               <AcmeLogo />
-              <p className="font-bold text-inherit">
+              <p className="font-bold text-inherit hidden sm:block">
                 <FormattedMessage id={'logo'} />
               </p>
             </Link>
@@ -63,8 +61,17 @@ const Navigation = (): React.ReactNode => {
       <ProfileMenuItems />
 
       <MobileMenu items={menuItems} />
-      <NavbarContent className={'max-w-[40px]'}>
-        <Search />
+
+      <NavbarContent className={'max-w-[fit-content]'}>
+        <NavbarContent className={'max-w-[40px]'}>
+          <Search />
+        </NavbarContent>
+
+        <NavbarContent className="md:hidden max-w-[25px]" justify="start">
+          <li>
+            <NavbarMenuToggle className={'h-5'} />
+          </li>
+        </NavbarContent>
       </NavbarContent>
     </Navbar>
   )
