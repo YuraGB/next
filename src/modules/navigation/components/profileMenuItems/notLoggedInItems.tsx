@@ -4,19 +4,40 @@ import Link from 'next/link'
 import { Button } from '@nextui-org/button'
 import { Pages } from '@/utils/pages'
 import { FormattedMessage } from 'react-intl'
+import {
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  DropdownTrigger,
+} from '@nextui-org/dropdown'
 
 const NotLoggedInItems = (): React.ReactNode => {
   return (
-    <NavbarContent justify="end">
+    <NavbarContent justify="end" className={'max-w-[40px] ml-[auto]'}>
       <NavbarItem>
-        <Link href={Pages.LOGIN}>
-          <FormattedMessage id={'login_button'} />
-        </Link>
-      </NavbarItem>
-      <NavbarItem>
-        <Button as={Link} color="primary" href={Pages.SIGNUP} variant="flat">
-          <FormattedMessage id={'sign_up_button'} />
-        </Button>
+        <Dropdown>
+          <DropdownTrigger>
+            <Button>
+              <FormattedMessage
+                id={'profile_button'}
+                defaultMessage={'Profile'}
+              />
+            </Button>
+          </DropdownTrigger>
+          <DropdownMenu aria-label="Static Actions">
+            <DropdownItem key={Pages.SIGNUP}>
+              <Link href={Pages.SIGNUP}>
+                <FormattedMessage id={'sign_up_button'} />
+              </Link>
+            </DropdownItem>
+
+            <DropdownItem key={Pages.LOGIN}>
+              <Link href={Pages.LOGIN}>
+                <FormattedMessage id={'login_button'} />
+              </Link>
+            </DropdownItem>
+          </DropdownMenu>
+        </Dropdown>
       </NavbarItem>
     </NavbarContent>
   )

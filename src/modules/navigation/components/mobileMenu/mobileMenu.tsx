@@ -2,7 +2,6 @@ import React, { memo } from 'react'
 import { NavBarItemType } from '@/modules/navigation/components/types'
 import { NavbarMenu, NavbarMenuItem } from '@nextui-org/navbar'
 import Link from 'next/link'
-import ProfileMenuItems from '@/modules/navigation/components/profileMenuItems/profileMenuItems'
 
 type NavItemsProps = {
   items: NavBarItemType[]
@@ -22,8 +21,6 @@ const MobileMenu = ({ items }: NavItemsProps): React.ReactNode | null => {
           </Link>
         </NavbarMenuItem>
       ))}
-
-      <ProfileMenuItems />
     </NavbarMenu>
   )
 }
