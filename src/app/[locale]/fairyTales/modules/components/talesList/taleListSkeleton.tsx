@@ -7,8 +7,8 @@ const TalesListSkeleton = () => {
     <section className={'grid grid-cols-1 justify-start gap-2 w-full'}>
       {Array(3)
         .fill(1)
-        .map((item) => (
-          <TaleItemSkeleton key={item.index} />
+        .map((item, index) => (
+          <TaleItemSkeleton key={index} />
         ))}
     </section>
   )

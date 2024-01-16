@@ -27,7 +27,9 @@ const ResultItem: FC<ResultItemT> = ({ tale, onClick }): ReactNode | null => {
         <small className="text-default-500">
           {tale.categoryTale?.name ? tale.categoryTale.name : tale.forAge}
         </small>
-        <h4 className="font-light text-sm">{tale.shortDescription}</h4>
+        <h4 className="font-light text-sm text-left">
+          {tale.shortDescription}
+        </h4>
       </CardHeader>
       <CardBody className="overflow-visible py-2">
         <Image

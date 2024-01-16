@@ -10,6 +10,14 @@ export default [
   },
   {
     type: 'text',
+    label: 'Category',
+    name: 'forAge',
+    errorMessage: 'Please enter the category',
+    required: true,
+    additionalClasses: 'w-full',
+  },
+  {
+    type: 'text',
     label: 'Short description',
     name: 'shortDescription',
     errorMessage: 'Please enter a short description',

@@ -11,5 +11,8 @@
   "intro.p4": "From classic fables to original tales penned by Yurii Hurianov, Fairy\n        tale world is a treasure trove of literary delights. Whether it&apos;s\n        bedtime stories that whisk little ones off to dreamland or educational\n        narratives that spark curiosity, our collection is designed to be a\n        source of joy, inspiration, and wholesome entertainment.",
   "intro.p5": "Embark on a magical journey with us, and let the pages of Fairy tale\n        world unfold countless tales that will leave a lasting imprint on the\n        hearts of young readers. Join us in fostering a love for storytelling\n        and a lifelong appreciation for the beauty of imagination. Thank you for\n        being a part of our magical world. Happy reading!",
   "intro.author": "Yurii Hurianov",
-  "intro.creator": "Creator of Fairy tale world."
+  "intro.creator": "Creator of Fairy tale world.",
+  "catalog.page": "Catalog of the Tales",
+  "modal.admin.addTale": "Add a new tale",
+  "modal.admin.editTale": "Edit the tale"
 }
