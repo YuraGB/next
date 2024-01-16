@@ -1,6 +1,8 @@
 import PageWrapper from '@/components/pageWrapper/PageWrapper'
 import { Metadata } from 'next'
 import TalesList from '@/app/[locale]/fairyTales/modules/components/talesList/talesList'
+import { FormattedMessage } from 'react-intl'
+import PageTitle from '@/app/[locale]/fairyTales/components/pageTitle/PageTitle'
 
 export const metadata: Metadata = {
   title: 'Fairy tales page',
@@ -17,7 +19,7 @@ export const metadata: Metadata = {
 export default function FairyTales() {
   return (
     <PageWrapper>
-      <h1>Fairy tales page</h1>
+      <PageTitle />
       <TalesList />
     </PageWrapper>
   )

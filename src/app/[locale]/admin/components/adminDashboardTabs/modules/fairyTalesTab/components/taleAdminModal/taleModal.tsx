@@ -11,6 +11,8 @@ import { Button } from '@nextui-org/button'
 import { useTaleModal } from '@/app/[locale]/admin/components/adminDashboardTabs/modules/fairyTalesTab/components/taleAdminModal/useTaleModal'
 import { Tale } from '.prisma/client'
 import ImagesInputs from '@/app/[locale]/admin/components/adminDashboardTabs/modules/fairyTalesTab/components/imagesInputs/imagesInputs'
+import { FormattedMessage } from 'react-intl'
+import CategorySelect from '@/app/[locale]/admin/components/adminDashboardTabs/modules/fairyTalesTab/components/categorySelect/CategorySelect'
 
 type propsInit = {
   initialValues: Tale | null
@@ -26,12 +28,21 @@ const TaleModal = ({
   )
 
   return (
-    <Modal size={'5xl'} isOpen={isOpen} onClose={onClose}>
+    <Modal
+      size={'5xl'}
+      isOpen={isOpen}
+      onClose={onClose}
+      className={'max-h-full overflow-auto'}
+    >
       <ModalContent>
         {(onClose) => (
           <>
             <ModalHeader className="flex flex-col gap-1">
-              Add a new tale
+              {initialValues ? (
+                <FormattedMessage id={'modal.admin.editTale'} />
+              ) : (
+                <FormattedMessage id={'modal.admin.addTale'} />
+              )}
             </ModalHeader>
             <ModalBody>
               <form
@@ -40,6 +51,7 @@ const TaleModal = ({
                 onSubmit={handleSubmit(onSubmit)}
               >
                 {formFields}
+                <CategorySelect register={register} />
                 <ImagesInputs
                   register={register}
                   initialImages={initialValues?.images}

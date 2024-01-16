@@ -5,8 +5,8 @@ import React, { useEffect, useMemo } from 'react'
 import formFieldsMapping from '@/modules/utils/formFieldsMapping'
 import { Tale } from '.prisma/client'
 import { formatTaleData } from '@/app/[locale]/admin/components/adminDashboardTabs/modules/fairyTalesTab/components/taleAdminModal/util/formatData'
-import addNewTale from '@/actions/addNewTale'
 import useUpdateTaleHandler from '@/app/[locale]/admin/components/adminDashboardTabs/modules/fairyTalesTab/components/taleAdminModal/util/updateTaleHandler'
+import { useAddNewTale } from '@/app/[locale]/admin/components/adminDashboardTabs/modules/fairyTalesTab/components/taleAdminModal/util/useAddNewTale'
 
 export const useTaleModal = (
   initialValues: Tale | null,
@@ -19,7 +19,17 @@ export const useTaleModal = (
     formState: { errors, isValid },
   } = useForm<Partial<Tale>>()
   const initialFields: Fields[] = fields
-  const update = useUpdateTaleHandler()
+
+  const { onUpdateTale, data: updatedTale } = useUpdateTaleHandler()
+  const { onAddTale, data: newTale } = useAddNewTale()
+
+  useEffect(() => {
+    if (newTale || updatedTale) {
+      // clear data after submit and close popUp
+      reset()
+      onClose()
+    }
+  }, [newTale, updatedTale])
 
   useEffect(() => {
     // clear the form
@@ -54,13 +64,10 @@ export const useTaleModal = (
   const onSubmit: SubmitHandler<Partial<Tale>> = async (data) => {
     const normalizeData = formatTaleData(data)
     if (initialValues) {
-      update.mutate({ id: initialValues.id, data: normalizeData })
+      onUpdateTale({ id: initialValues.id, data: normalizeData })
     } else {
-      await addNewTale(normalizeData)
+      onAddTale(normalizeData)
     }
-    // clear data after submit
-    reset()
-    onClose()
   }
 
   return {
