@@ -1,5 +1,4 @@
 import { Select, SelectItem } from '@nextui-org/select'
-import { CategoryTale } from '@prisma/client'
 import { UseFormRegister } from 'react-hook-form/dist/types/form'
 import { FieldValues } from 'react-hook-form/dist/types/fields'
 import { FC, memo } from 'react'
@@ -12,7 +11,7 @@ type Props = {
 const CategorySelect: FC<Props> = ({ register }) => {
   const { categoryList } = useCategoryList()
 
-  if (!categoryList || categoryList.length === 0) {
+  if (categoryList.length === 0) {
     return null
   }
 
