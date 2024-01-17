@@ -1,6 +1,6 @@
-import { getAllFairyTales } from '@/actions/getAllFairyTales'
+import { getAllFairyTales } from '@/server/actions/getAllFairyTales'
 import { useQuery } from '@tanstack/react-query'
-import { GET_ALL_TALES } from '@/actions/queryNaming'
+import { GET_ALL_TALES } from '@/server/actions/queryNaming'
 
 export const useFairyTales = () => {
   const { data, isLoading, error } = useQuery({

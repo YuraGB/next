@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 
-import { updateTale } from '@/actions/updateTale'
-import { GET_ALL_TALES } from '@/actions/queryNaming'
+import { updateTale } from '@/server/actions/updateTale'
+import { GET_ALL_TALES } from '@/server/actions/queryNaming'
 import { Tale } from '.prisma/client'
 
 const useUpdateTaleHandler = () => {

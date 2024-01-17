@@ -3,7 +3,6 @@ import { Metadata } from 'next'
 import React, { Suspense } from 'react'
 import dynamic from 'next/dynamic'
 import HomePageIntro from '@/modules/homePageIntro'
-// import { create } from '@/app/create'
 const HomePageSlider = dynamic(() => import('@/modules/homePageSlider'))
 
 export const metadata: Metadata = {
@@ -14,7 +13,6 @@ export const metadata: Metadata = {
 export const preferredRegion = ['fra1']
 
 export default function Home() {
-  // create()
   return (
     <PageWrapper>
       <Suspense fallback={<p>Loading...</p>}>

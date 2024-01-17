@@ -2,14 +2,14 @@ import React, { ReactNode } from 'react'
 import type { Metadata } from 'next'
 
 import { SpeedInsights } from '@vercel/speed-insights/next'
-import ReactQueryProvider from '@/app/context/ReactQueryProvider'
-import AuthProvider from '@/app/context/AuthProvider'
-import NextUiProviderComponent from '@/app/context/NextUiProviderComponent'
+import ReactQueryProvider from '@/context/ReactQueryProvider'
+import AuthProvider from '@/context/AuthProvider'
+import NextUiProviderComponent from '@/context/NextUiProviderComponent'
 
 import './globals.css'
 
 import dynamic from 'next/dynamic'
-import ServerIntlProvider from '@/app/context/i18nProvider'
+import ServerIntlProvider from '@/context/i18nProvider'
 import getIntl from '@/utils/intl'
 const Navigation = dynamic(() => import('@/modules/navigation/Navigation'))
 const Footer = dynamic(() => import('@/modules/footer'))
@@ -51,3 +51,11 @@ export default async function RootLayout({
     </html>
   )
 }
+
+export async function generateStaticParams() {
+  const locales = ['en', 'uk']
+
+  return locales.map((locale) => ({ locale }))
+}
+
+export const revalidate = 60

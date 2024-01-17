@@ -1,8 +1,8 @@
 import PageWrapper from '@/components/pageWrapper/PageWrapper'
 import { Metadata } from 'next'
 import React from 'react'
-import { getAllFairyTales } from '@/actions/getAllFairyTales'
-import { getTale } from '@/actions/getTale'
+import { getAllFairyTales } from '@/server/actions/getAllFairyTales'
+import { getTale } from '@/server/actions/getTale'
 import TaleContent from '@/app/[locale]/fairyTales/[id]/components/taleContent'
 
 export const dynamicParams = true

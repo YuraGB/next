@@ -4,7 +4,7 @@ import Home from '@/app/[locale]/page'
 import { createIntl } from '@formatjs/intl'
 import en from '@/i18n/en.json'
 import { ReactNode } from 'react'
-import ServerIntlProvider from '@/app/context/i18nProvider'
+import ServerIntlProvider from '@/context/i18nProvider'
 
 jest.mock('../src/modules/homePageSlider', () => {
   // Replace with the actual path to your FirebaseComponent
