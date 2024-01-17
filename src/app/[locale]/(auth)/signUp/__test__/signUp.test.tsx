@@ -1,9 +1,9 @@
 import { render, screen } from '@testing-library/react'
-import RegisterPage from '@/app/[locale]/signUp/page'
+import RegisterPage from '@/app/[locale]/(auth)/signUp/page'
 import ServerIntlProvider from '@/context/i18nProvider'
 import { ReactNode } from 'react'
 import { createIntl } from '@formatjs/intl'
-import en from '../../../../i18n/en.json'
+import en from '../../../../../i18n/en.json'
 
 // Mock useRouter:
 jest.mock('next/navigation', () => ({

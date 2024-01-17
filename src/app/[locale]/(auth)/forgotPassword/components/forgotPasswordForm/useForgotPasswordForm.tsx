@@ -1,7 +1,7 @@
 import React from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { Inputs } from '@/modules/types/formTypes'
-import fields from '@/app/[locale]/forgotPassword/components/forgotPasswordForm/fields'
+import fields from '@/app/[locale]/(auth)/forgotPassword/components/forgotPasswordForm/fields'
 import formFieldsMapping from '@/modules/utils/formFieldsMapping'
 
 export const useForgotPasswordForm = () => {

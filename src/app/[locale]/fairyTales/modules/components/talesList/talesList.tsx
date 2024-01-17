@@ -19,4 +19,4 @@ const TalesList = async () => {
   )
 }
 
-export default React.memo(TalesList)
+export default TalesList

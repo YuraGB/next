@@ -1,5 +1,5 @@
 import { render, screen, waitFor } from '@testing-library/react'
-import ForgotPassword from '@/app/[locale]/forgotPassword/page'
+import ForgotPassword from '@/app/[locale]/(auth)/forgotPassword/page'
 
 describe('Forgot password page', () => {
   it('Forgot password H1 Forgot passwprd', async () => {
