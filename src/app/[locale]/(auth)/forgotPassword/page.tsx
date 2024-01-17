@@ -5,7 +5,7 @@ import { Metadata } from 'next'
 const ForgotPasswordFormLazy = lazy(
   () =>
     import(
-      '@/app/[locale]/forgotPassword/components/forgotPasswordForm/ForgotPasswordForm'
+      '@/app/[locale]/(auth)/forgotPassword/components/forgotPasswordForm/ForgotPasswordForm'
     )
 )
 

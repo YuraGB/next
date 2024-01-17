@@ -19,7 +19,7 @@ const NotLoggedInItems = (): React.ReactNode => {
           <DropdownTrigger>
             <Button>
               <FormattedMessage
-                id={'profile_button'}
+                id={'profile.button'}
                 defaultMessage={'Profile'}
               />
             </Button>

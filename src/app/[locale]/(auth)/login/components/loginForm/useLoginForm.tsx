@@ -1,12 +1,12 @@
 'use client'
-import fields from '@/app/[locale]/login/components/loginForm/fields'
+import fields from '@/app/[locale]/(auth)/login/components/loginForm/fields'
 import React from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { Inputs } from '@/modules/types/formTypes'
 import formFieldsMapping from '@/modules/utils/formFieldsMapping'
-import { LoginFormType } from '@/app/[locale]/login/components/loginForm/LoginForm'
+import { LoginFormType } from '@/app/[locale]/(auth)/login/components/loginForm/LoginForm'
 import toast from 'react-hot-toast'
-import signInService from '@/app/[locale]/login/components/loginForm/service/signInService'
+import signInService from '@/app/[locale]/(auth)/login/components/loginForm/service/signInService'
 import { useRouter } from 'next/navigation'
 
 export const useLoginForm = ({ redirectUrl }: LoginFormType) => {

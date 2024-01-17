@@ -14,5 +14,6 @@
   "intro.creator": "Creator of Fairy tale world.",
   "catalog.page": "Catalog of the Tales",
   "modal.admin.addTale": "Add a new tale",
-  "modal.admin.editTale": "Edit the tale"
+  "modal.admin.editTale": "Edit the tale",
+  "profile.button":"Profile"
 }

@@ -1,11 +1,10 @@
-'use client'
 import React from 'react'
-import { useFairyTales } from '@/app/[locale]/fairyTales/modules/components/talesList/useFairyTales'
 import TaleItem from '@/app/[locale]/fairyTales/modules/components/taleItem/taleItem'
 import TalesListSkeleton from '@/app/[locale]/fairyTales/modules/components/talesList/taleListSkeleton'
+import { getAllFairyTales } from '@/server/actions/getAllFairyTales'
 
-const TalesList = () => {
-  const { tales } = useFairyTales()
+const TalesList = async () => {
+  const tales = await getAllFairyTales()
 
   if (!tales || tales.length === 0) {
     return <TalesListSkeleton />

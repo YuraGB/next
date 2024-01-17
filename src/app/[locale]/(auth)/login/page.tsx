@@ -1,4 +1,4 @@
-import LoginForm from '@/app/[locale]/login/components/loginForm/LoginForm'
+import LoginForm from '@/app/[locale]/(auth)/login/components/loginForm/LoginForm'
 import PageWrapper from '@/components/pageWrapper/PageWrapper'
 import { Metadata } from 'next'
 import React, { Suspense } from 'react'

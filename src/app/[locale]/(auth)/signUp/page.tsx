@@ -1,4 +1,4 @@
-import { RegistrationForm } from '@/app/[locale]/signUp/components/registrationForm/RegistrationForm'
+import { RegistrationForm } from '@/app/[locale]/(auth)/signUp/components/registrationForm/RegistrationForm'
 import { Metadata } from 'next'
 import PageWrapper from '@/components/pageWrapper/PageWrapper'
 import React, { Suspense } from 'react'
