@@ -14,5 +14,6 @@
   "intro.creator": "Творець 'Світу казок.'",
   "catalog.page": "Каталог казок",
   "modal.admin.addTale": "Добавити нову казку",
-  "modal.admin.editTale": "Редагувати казку"
+  "modal.admin.editTale": "Редагувати казку",
+  "profile.button":"Профіль"
 }

@@ -1,5 +1,5 @@
 import bcrypt from 'bcrypt'
-import { CreateUser } from '@/app/[locale]/signUp/components/registrationForm/service/createUser'
+import { CreateUser } from '@/app/[locale]/(auth)/signUp/components/registrationForm/service/createUser'
 
 export const passwordToHash = (password: string) => {
   if (!password) {

@@ -2,6 +2,7 @@ import PageWrapper from '@/components/pageWrapper/PageWrapper'
 import { Metadata } from 'next'
 import TalesList from '@/app/[locale]/fairyTales/modules/components/talesList/talesList'
 import PageTitle from '@/app/[locale]/fairyTales/components/pageTitle/PageTitle'
+import { Suspense } from 'react'
 
 export const metadata: Metadata = {
   title: 'Fairy tales page',
@@ -19,7 +20,9 @@ export default function FairyTales() {
   return (
     <PageWrapper>
       <PageTitle />
-      <TalesList />
+      <Suspense fallback={null}>
+        <TalesList />
+      </Suspense>
     </PageWrapper>
   )
 }

@@ -1,9 +1,9 @@
 import NextAuth from 'next-auth'
 import type { NextAuthOptions } from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
-import { findUser } from '@/app/[locale]/signUp/components/registrationForm/service/createUser'
+import { findUser } from '@/app/[locale]/(auth)/signUp/components/registrationForm/service/createUser'
 import { PrismaAdapter } from '@next-auth/prisma-adapter'
-import { toComparePasswords } from '@/app/[locale]/signUp/components/registrationForm/service/util/validateUser'
+import { toComparePasswords } from '@/app/[locale]/(auth)/signUp/components/registrationForm/service/util/validateUser'
 import { Pages } from '@/utils/pages'
 import prisma from '$prismaClient/prisma'
 

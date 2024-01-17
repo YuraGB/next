@@ -4,9 +4,9 @@ import { Inputs } from '@/modules/types/formTypes'
 import formFieldsMapping from '@/modules/utils/formFieldsMapping'
 import fields from './fields'
 import validateFields from '@/utils/validation/validateFields'
-import { createUser } from '@/app/[locale]/signUp/components/registrationForm/service/createUser'
+import { createUser } from '@/app/[locale]/(auth)/signUp/components/registrationForm/service/createUser'
 import toast from 'react-hot-toast'
-import signInService from '@/app/[locale]/login/components/loginForm/service/signInService'
+import signInService from '@/app/[locale]/(auth)/login/components/loginForm/service/signInService'
 import { useRouter } from 'next/navigation'
 
 export const useSignUp = () => {
