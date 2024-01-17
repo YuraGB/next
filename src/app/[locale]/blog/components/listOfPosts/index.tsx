@@ -1,4 +1,4 @@
-import { getPublicPosts } from '@/actions/getPublicPosts'
+import { getPublicPosts } from '@/server/actions/getPublicPosts'
 import PostOverview from '@/app/[locale]/blog//components/postOverview'
 
 const ListOfPosts = async () => {

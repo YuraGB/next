@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import getCategories from '@/actions/getCategories'
+import getCategories from '@/server/actions/getCategories'
 import { useMemo } from 'react'
 
 export const useCategoryList = () => {

@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import RegisterPage from '@/app/[locale]/signUp/page'
-import ServerIntlProvider from '@/app/context/i18nProvider'
+import ServerIntlProvider from '@/context/i18nProvider'
 import { ReactNode } from 'react'
 import { createIntl } from '@formatjs/intl'
 import en from '../../../../i18n/en.json'

@@ -1,6 +1,6 @@
 'use client'
 import React from 'react'
-import { useLangSwitcher } from '@/components/langSwitcher/useLangSwitcher'
+import { useLangSwitcher } from '@/modules/langSwitcher/useLangSwitcher'
 import { Select, SelectItem } from '@nextui-org/select'
 
 const LangSwitcher = () => {

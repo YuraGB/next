@@ -11,7 +11,7 @@ import MenuList from '@/modules/navigation/components/menuList/menuList'
 import { useNavigation } from '@/modules/navigation/useNavigation'
 import dynamic from 'next/dynamic'
 import { ThemeSwitcher } from '@/components/themeSwitcher/ThemeSwitcher'
-import LangSwitcher from '@/components/langSwitcher/langSwitcher'
+import LangSwitcher from '@/modules/langSwitcher/langSwitcher'
 import { FormattedMessage } from 'react-intl'
 import Search from '@/modules/search'
 

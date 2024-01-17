@@ -29,7 +29,7 @@ export const useTaleModal = (
       reset()
       onClose()
     }
-  }, [newTale, updatedTale])
+  }, [newTale, onClose, reset, updatedTale])
 
   useEffect(() => {
     // clear the form

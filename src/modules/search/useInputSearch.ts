@@ -1,7 +1,7 @@
 import { ChangeEvent, useCallback, useMemo, useState } from 'react'
 import useDebounce from '@/modules/search/useDebounce'
 import { useQuery } from '@tanstack/react-query'
-import getSearch from '@/actions/searchTale'
+import getSearch from '@/server/actions/searchTale'
 import { useRouter } from 'next/navigation'
 import { Pages } from '@/utils/pages'
 
