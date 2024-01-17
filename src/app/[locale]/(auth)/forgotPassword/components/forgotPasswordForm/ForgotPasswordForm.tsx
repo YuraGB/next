@@ -1,7 +1,7 @@
 'use client'
 import React, { memo } from 'react'
 import { Button } from '@nextui-org/button'
-import { useForgotPasswordForm } from '@/app/[locale]/forgotPassword/components/forgotPasswordForm/useForgotPasswordForm'
+import { useForgotPasswordForm } from '@/app/[locale]/(auth)/forgotPassword/components/forgotPasswordForm/useForgotPasswordForm'
 
 const ForgotPasswordForm = (): React.ReactNode => {
   const { formFields, onSubmit, handleSubmit } = useForgotPasswordForm()

@@ -15,7 +15,7 @@ export type TCreateUser = {
 }
 
 export const createUser = async (
-  user: CreateUser
+  user: TCreateUser
 ): Promise<Promise<Pick<User, 'email' | 'hashPassword'>> | undefined> => {
   try {
     return await prisma.user.create(user)
