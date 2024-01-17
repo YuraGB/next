@@ -9,6 +9,8 @@ describe('Navigation', () => {
     // Start from the index page
     cy.visit('http://localhost:3000/en')
 
+    cy.get('button').contains('Profile').click()
+
     // Find a link with an href attribute containing "login" and click it
     cy.get('a[href*="/login"]')
       .should('not.have.css', 'display', 'none')
