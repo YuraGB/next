@@ -37,7 +37,9 @@ mockedGetDownloadURL.mockImplementation(() => {
 
 describe('Slider tests', () => {
   it('Props photo will be null', async () => {
-    render(<HomePageSlider />) //ARRANGE
+    const Result = await HomePageSlider()
+
+    render(Result)
 
     const elem = screen.queryByAltText('Yuhur photo') //ACT
     await waitFor(
