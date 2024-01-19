@@ -1,3 +1,4 @@
+'use client'
 import { Slide } from '@/modules/homePageSlider/types'
 import React, { ReactNode, useEffect, useState } from 'react'
 import ImageComponent from 'next/image'
