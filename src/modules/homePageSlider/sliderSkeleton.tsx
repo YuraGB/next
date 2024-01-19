@@ -1,3 +1,5 @@
+'use client'
+
 import React, { FC, ReactNode } from 'react'
 import { Skeleton } from '@nextui-org/skeleton'
 
