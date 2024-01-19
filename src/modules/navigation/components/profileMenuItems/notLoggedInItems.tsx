@@ -26,13 +26,13 @@ const NotLoggedInItems = (): React.ReactNode => {
           </DropdownTrigger>
           <DropdownMenu aria-label="Static Actions">
             <DropdownItem key={Pages.SIGNUP}>
-              <Link href={Pages.SIGNUP}>
+              <Link href={Pages.SIGNUP} className={'w-full flex'}>
                 <FormattedMessage id={'sign_up_button'} />
               </Link>
             </DropdownItem>
 
             <DropdownItem key={Pages.LOGIN}>
-              <Link href={Pages.LOGIN}>
+              <Link href={Pages.LOGIN} className={'w-full flex'}>
                 <FormattedMessage id={'login_button'} />
               </Link>
             </DropdownItem>

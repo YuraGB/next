@@ -1,8 +1,9 @@
-import React, { lazy, Suspense } from 'react'
+import React, { Suspense } from 'react'
 import PageWrapper from '@/components/pageWrapper/PageWrapper'
 import { Metadata } from 'next'
+import dynamic from 'next/dynamic'
 
-const ForgotPasswordFormLazy = lazy(
+const ForgotPasswordFormLazy = dynamic(
   () =>
     import(
       '@/app/[locale]/(auth)/forgotPassword/components/forgotPasswordForm/ForgotPasswordForm'
