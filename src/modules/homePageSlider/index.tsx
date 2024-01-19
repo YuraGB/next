@@ -1,4 +1,4 @@
-import React, { memo } from 'react'
+import React from 'react'
 import { SliderSkeleton } from '@/modules/homePageSlider/sliderSkeleton'
 
 import Carousel from '@/components/carousel'
@@ -24,4 +24,4 @@ const HomePageSlider = async () => {
   )
 }
 
-export default memo(HomePageSlider)
+export default HomePageSlider
