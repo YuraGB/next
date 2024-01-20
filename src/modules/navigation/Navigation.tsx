@@ -9,7 +9,6 @@ import {
 } from '@nextui-org/navbar'
 import MenuList from '@/modules/navigation/components/menuList/menuList'
 import { useNavigation } from '@/modules/navigation/useNavigation'
-import dynamic from 'next/dynamic'
 
 import { FormattedMessage } from 'react-intl'
 
