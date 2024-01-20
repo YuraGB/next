@@ -1,36 +1,13 @@
 'use server'
 import prisma from '$prismaClient/prisma'
 import { replacePasswordToHash } from '@/app/[locale]/(auth)/signUp/components/registrationForm/service/util/validateUser'
+import { findUser } from '@/server/actions/findUser'
+import {
+  createUser as createNewUser,
+  TCreateUser,
+} from '@/server/actions/createUser'
 
-export type CreateUser = {
-  data: {
-    name: string
-    email: string
-    hashPassword: string
-  }
-  select: {
-    email: boolean
-    hashPassword: boolean
-  }
-}
-
-export const findUser = async (email: string) => {
-  if (!email) {
-    return null
-  }
-
-  if (prisma === null || prisma === undefined) {
-    throw 'prisma absent'
-  }
-
-  return await prisma.user.findUnique({
-    where: {
-      email: email,
-    },
-  })
-}
-
-export const createUser = async (newUser: CreateUser) => {
+export const createUser = async (newUser: TCreateUser) => {
   if (prisma === null || prisma === undefined) {
     throw 'prisma absent'
   }
@@ -57,7 +34,7 @@ export const createUser = async (newUser: CreateUser) => {
       select: newUser.select,
     }
     try {
-      return await prisma.user.create(newUserData)
+      return await createNewUser(newUserData)
     } catch (e) {
       console.log(e)
     }

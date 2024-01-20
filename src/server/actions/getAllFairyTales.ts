@@ -1,6 +1,8 @@
 'use server'
 import prisma from '$prismaClient/prisma'
-export const getAllFairyTales = async () => {
+import { Tale } from '.prisma/client'
+
+export const getAllFairyTales = async (): Promise<Tale[] | undefined> => {
   try {
     return prisma?.tale.findMany({
       include: {

@@ -1,8 +1,15 @@
 'use server'
 import prisma from '$prismaClient/prisma'
+import { User } from '@/app/[locale]/admin/components/adminDashboardTabs/modules/adminUserTab/model/User'
+import { z } from 'zod'
 
-export const findUser = async (email: string) => {
-  if (!email) {
+const FindUserSchema = z.string().email()
+
+type TFindUser = z.infer<typeof FindUserSchema>
+export const findUser = async (
+  email: TFindUser
+): Promise<User | null | undefined> => {
+  if (!FindUserSchema.safeParse(email).success) {
     return null
   }
 
@@ -10,9 +17,13 @@ export const findUser = async (email: string) => {
     throw 'prisma absent'
   }
 
-  return await prisma.user.findUnique({
-    where: {
-      email: email,
-    },
-  })
+  try {
+    return await prisma.user.findUnique({
+      where: {
+        email: email,
+      },
+    })
+  } catch (e) {
+    console.log(e)
+  }
 }

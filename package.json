@@ -38,7 +38,8 @@
     "server-only": "^0.0.1",
     "sharp": "^0.33.1",
     "slick-carousel": "^1.8.1",
-    "undici": "^5.8.0"
+    "undici": "^5.8.0",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@next-auth/prisma-adapter": "^0.4.4-canary.81",
