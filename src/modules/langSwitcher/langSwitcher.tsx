@@ -10,7 +10,9 @@ const LangSwitcher = () => {
     <Select
       onChange={handleChange}
       defaultSelectedKeys={[currentLocale as string]}
-      aria-label={'language switcher'}
+      aria-labelledby={'language switcher'}
+      data-cy={'language-switcher'}
+      role={'listbox'}
       className={'w-[70px]'}
       size={'sm'}
     >

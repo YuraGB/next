@@ -25,6 +25,8 @@ const LoginForm = ({ redirectUrl }: LoginFormType): React.ReactNode => {
             fullWidth={true}
             className={'mb-4'}
             role={'button'}
+            aria-labelledby={'login in button'}
+            data-cy={'login-in-button'}
           >
             Login in
           </Button>
