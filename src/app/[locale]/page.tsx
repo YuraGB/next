@@ -3,7 +3,7 @@ import { Metadata } from 'next'
 import React, { Suspense } from 'react'
 import dynamic from 'next/dynamic'
 const HomePageIntro = dynamic(() => import('@/modules/homePageIntro'))
-const HomePageSlider = dynamic(() => import('@/modules/homePageSlider'))
+import HomePageSlider from '@/modules/homePageSlider'
 
 export const metadata: Metadata = {
   title: 'Gyb Nextjs Home Page',
@@ -15,10 +15,14 @@ export const preferredRegion = ['fra1']
 export default function Home() {
   return (
     <PageWrapper>
-      <Suspense fallback={<p>Loading...</p>}>
+      <Suspense
+        fallback={<section style={{ height: '300px', width: '100%' }} />}
+      >
         <HomePageSlider />
       </Suspense>
-      <Suspense fallback={<p>Loading...</p>}>
+      <Suspense
+        fallback={<section style={{ height: '840px', width: '100%' }} />}
+      >
         <HomePageIntro />
       </Suspense>
     </PageWrapper>

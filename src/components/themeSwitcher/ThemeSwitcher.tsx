@@ -12,10 +12,6 @@ const ThemeSwitcher = () => {
   const { theme, setTheme } = useTheme()
 
   useEffect(() => {
-    console.log('theme', theme)
-  }, [theme])
-
-  useEffect(() => {
     setMounted(true)
   }, [])
 

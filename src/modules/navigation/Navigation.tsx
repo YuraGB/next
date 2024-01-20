@@ -13,20 +13,15 @@ import dynamic from 'next/dynamic'
 
 import { FormattedMessage } from 'react-intl'
 
-const Search = dynamic(() => import('@/modules/search'))
+import Search from '@/modules/search'
 const ThemeSwitcher = dynamic(
   () => import('@/components/themeSwitcher/ThemeSwitcher')
 )
 const LangSwitcher = dynamic(
   () => import('@/modules/langSwitcher/langSwitcher')
 )
-const MobileMenu = dynamic(
-  () => import('@/modules/navigation/components/mobileMenu/mobileMenu')
-)
-const ProfileMenuItems = dynamic(
-  () =>
-    import('@/modules/navigation/components/profileMenuItems/profileMenuItems')
-)
+import MobileMenu from '@/modules/navigation/components/mobileMenu/mobileMenu'
+import ProfileMenuItems from '@/modules/navigation/components/profileMenuItems/profileMenuItems'
 
 const Navigation = (): React.ReactNode => {
   const menuItems = useNavigation()
