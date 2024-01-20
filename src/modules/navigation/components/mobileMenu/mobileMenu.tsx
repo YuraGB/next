@@ -15,7 +15,12 @@ const MobileMenu = ({ items }: NavItemsProps): React.ReactNode | null => {
   return (
     <NavbarMenu>
       {items.map((item) => (
-        <NavbarMenuItem key={item.url}>
+        <NavbarMenuItem
+          key={item.url}
+          title={item.name}
+          role={'listitem'}
+          aria-label={item.name}
+        >
           <Link className="w-full" href={item.url}>
             {item.name}
           </Link>

@@ -5,9 +5,9 @@ import { Skeleton } from '@nextui-org/skeleton'
 
 export const SliderSkeleton: FC = (): ReactNode => {
   return (
-    <div style={{ position: 'relative', width: '256px', height: '341' }}>
-      <div className={'[clip-path:ellipse(209px_205px_at_10%_20%)]'}>
-        <Skeleton className="h-[300px] w-[341px] " />
+    <div className={'flex justify-center items-center'}>
+      <div className={''}>
+        <Skeleton className="h-[260px] w-[200px] rounded-[50%]" />
       </div>
     </div>
   )

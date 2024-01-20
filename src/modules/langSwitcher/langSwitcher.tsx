@@ -12,14 +12,23 @@ const LangSwitcher = () => {
       defaultSelectedKeys={[currentLocale as string]}
       aria-labelledby={'language switcher'}
       data-cy={'language-switcher'}
-      role={'listbox'}
       className={'w-[70px]'}
       size={'sm'}
     >
-      <SelectItem key={'uk'} value={'uk'} className={'w-[55px]'}>
+      <SelectItem
+        key={'uk'}
+        value={'uk'}
+        className={'w-[55px]'}
+        aria-labelledby={'Ukraine language switcher'}
+      >
         ua
       </SelectItem>
-      <SelectItem key={'en'} value={'en'} className={'w-[55px]'}>
+      <SelectItem
+        key={'en'}
+        value={'en'}
+        className={'w-[55px]'}
+        aria-labelledby={'English language switcher'}
+      >
         en
       </SelectItem>
     </Select>

@@ -2,39 +2,23 @@
 'use client'
 
 import { useTheme } from 'next-themes'
-import { useEffect, useState } from 'react'
-import Image from 'next/image'
-import MoonIcon from './assets/moon.svg'
-import SunIcon from './assets/sun.svg'
 import { Button } from '@nextui-org/button'
+import { memo, useEffect, useState } from 'react'
+import ImageSwitcher from '@/components/themeSwitcher/ImageSwitcher'
+import { Skeleton } from '@nextui-org/skeleton'
 
-export function ThemeSwitcher() {
+const ThemeSwitcher = () => {
   const [mounted, setMounted] = useState(false)
   const { theme, setTheme } = useTheme()
+
+  useEffect(() => {
+    console.log('theme', theme)
+  }, [theme])
 
   useEffect(() => {
     setMounted(true)
   }, [])
 
-  if (!mounted) {
-    return (
-      <div className={'flex items-center'}>
-        <Button
-          isIconOnly={true}
-          variant={'shadow'}
-          className={'bg-neutral-700'}
-        >
-          <Image
-            src={SunIcon}
-            alt={'Switch to the light theme mode'}
-            loading={'lazy'}
-            width={40}
-            height={40}
-          />
-        </Button>
-      </div>
-    )
-  }
   const isLight = theme === 'light'
 
   return (
@@ -44,24 +28,20 @@ export function ThemeSwitcher() {
         isIconOnly={true}
         variant={'shadow'}
       >
-        {isLight ? (
-          <Image
-            src={MoonIcon}
-            alt={'Switch to the light theme mode'}
-            loading={'lazy'}
-            width={40}
-            height={40}
-          />
+        {mounted ? (
+          <ImageSwitcher theme={theme} />
         ) : (
-          <Image
-            src={SunIcon}
-            alt={'Switch to the light theme mode'}
-            loading={'lazy'}
-            width={40}
-            height={40}
+          <Skeleton
+            style={{
+              width: '40px',
+              height: '40px',
+            }}
+            className={'rounded-[12px]'}
           />
         )}
       </Button>
     </div>
   )
 }
+
+export default memo(ThemeSwitcher)
