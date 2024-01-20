@@ -15,11 +15,7 @@ export const preferredRegion = ['fra1']
 export default function Home() {
   return (
     <PageWrapper>
-      <Suspense
-        fallback={<section style={{ height: '300px', width: '100%' }} />}
-      >
-        <HomePageSlider />
-      </Suspense>
+      <HomePageSlider />
       <Suspense
         fallback={<section style={{ height: '840px', width: '100%' }} />}
       >
