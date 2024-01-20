@@ -10,11 +10,16 @@ import {
 import MenuList from '@/modules/navigation/components/menuList/menuList'
 import { useNavigation } from '@/modules/navigation/useNavigation'
 import dynamic from 'next/dynamic'
-import { ThemeSwitcher } from '@/components/themeSwitcher/ThemeSwitcher'
-import LangSwitcher from '@/modules/langSwitcher/langSwitcher'
-import { FormattedMessage } from 'react-intl'
-import Search from '@/modules/search'
 
+import { FormattedMessage } from 'react-intl'
+
+const Search = dynamic(() => import('@/modules/search'))
+const ThemeSwitcher = dynamic(
+  () => import('@/components/themeSwitcher/ThemeSwitcher')
+)
+const LangSwitcher = dynamic(
+  () => import('@/modules/langSwitcher/langSwitcher')
+)
 const MobileMenu = dynamic(
   () => import('@/modules/navigation/components/mobileMenu/mobileMenu')
 )
@@ -26,7 +31,6 @@ const ProfileMenuItems = dynamic(
 const Navigation = (): React.ReactNode => {
   const menuItems = useNavigation()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-
   return (
     <Navbar
       disableAnimation
@@ -42,13 +46,15 @@ const Navigation = (): React.ReactNode => {
         <li className={'flex w-full'}>
           <ThemeSwitcher />
           <LangSwitcher />
-          <NavbarBrand className={'justify-end mr-[-18px] sm:mr-0'}>
+          <NavbarBrand
+            className={'justify-end mr-[-18px] sm:mr-0  hidden sm:flex'}
+          >
             <Link
               href={'/'}
               className={'flex justify-center content-center items-center'}
             >
-              <AcmeLogo />
-              <p className="font-bold text-inherit hidden sm:block">
+              <p className="font-bold text-inherit hidden sm:flex items-center">
+                <AcmeLogo />
                 <FormattedMessage id={'logo'} />
               </p>
             </Link>

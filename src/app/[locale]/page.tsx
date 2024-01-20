@@ -2,7 +2,7 @@ import PageWrapper from '@/components/pageWrapper/PageWrapper'
 import { Metadata } from 'next'
 import React, { Suspense } from 'react'
 import dynamic from 'next/dynamic'
-import HomePageIntro from '@/modules/homePageIntro'
+const HomePageIntro = dynamic(() => import('@/modules/homePageIntro'))
 const HomePageSlider = dynamic(() => import('@/modules/homePageSlider'))
 
 export const metadata: Metadata = {
@@ -18,7 +18,9 @@ export default function Home() {
       <Suspense fallback={<p>Loading...</p>}>
         <HomePageSlider />
       </Suspense>
-      <HomePageIntro />
+      <Suspense fallback={<p>Loading...</p>}>
+        <HomePageIntro />
+      </Suspense>
     </PageWrapper>
   )
 }

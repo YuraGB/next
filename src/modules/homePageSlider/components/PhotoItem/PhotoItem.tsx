@@ -42,7 +42,10 @@ const PhotoItem = ({ photo }: Props): ReactNode | null => {
     return null
   }
   return (
-    <div style={{ position: 'relative', width: 'auto', height: '300px' }}>
+    <div
+      className={'flex items-center justify-center'}
+      style={{ position: 'relative', width: 'auto', height: '300px' }}
+    >
       {isLoaded ? (
         <ImageComponent
           src={photo.image}
@@ -51,7 +54,7 @@ const PhotoItem = ({ photo }: Props): ReactNode | null => {
           width={200}
           height={200}
           loading={'eager'}
-          className="h-auto w-auto [clip-path:ellipse(229px_245px_at_10%_20%)]"
+          className="rounded-[50%] w-[200px]"
           blurDataURL={`data:image/svg+xml;base64,${toBase64(
             shimmer(700, 475)
           )}`}
