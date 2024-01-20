@@ -1,8 +1,29 @@
 'use server'
 import prisma from '$prismaClient/prisma'
 import { Tale } from '.prisma/client'
+import { z } from 'zod'
 
-const createTale = async (newTale: Tale) => {
+const TaleSchema = z.object({
+  content: z.string(),
+  shortDescription: z.string(),
+  mainImage: z.string(),
+  forAge: z.string(),
+  title: z.string(),
+  images: z.array(z.string()),
+  categoryTaleId: z.string(),
+})
+
+export type TCreateTale = z.infer<typeof TaleSchema>
+
+export type TCreateTaleResponse = Pick<Tale, 'id' | 'title'> | undefined
+
+const createTale = async (
+  newTale: TCreateTale
+): Promise<TCreateTaleResponse> => {
+  if (!TaleSchema.safeParse(newTale).success) {
+    throw 'Not all tale data provided'
+  }
+
   try {
     return await prisma.tale.create({
       data: {

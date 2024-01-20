@@ -1,5 +1,5 @@
 import bcrypt from 'bcrypt'
-import { CreateUser } from '@/app/[locale]/(auth)/signUp/components/registrationForm/service/createUser'
+import { TCreateUser } from '@/server/actions/createUser'
 
 export const passwordToHash = (password: string) => {
   if (!password) {
@@ -20,7 +20,7 @@ export const toComparePasswords = (
   return bcrypt.compareSync(inputPassword, dbPassword)
 }
 
-type NewUser = Pick<CreateUser, 'data'>
+type NewUser = Pick<TCreateUser, 'data'>
 
 export const replacePasswordToHash = (newUser: NewUser) => {
   if (!newUser?.data) {

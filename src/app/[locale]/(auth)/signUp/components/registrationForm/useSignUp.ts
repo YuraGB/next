@@ -37,7 +37,7 @@ export const useSignUp = () => {
         },
       })
 
-      if (typeof user !== 'string' && user.email && user.hashPassword) {
+      if (user && user.email && user.hashPassword) {
         const response = await signInService({
           email: user.email,
           password: data.password,
