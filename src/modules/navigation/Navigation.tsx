@@ -14,12 +14,8 @@ import dynamic from 'next/dynamic'
 import { FormattedMessage } from 'react-intl'
 
 import Search from '@/modules/search'
-const ThemeSwitcher = dynamic(
-  () => import('@/components/themeSwitcher/ThemeSwitcher')
-)
-const LangSwitcher = dynamic(
-  () => import('@/modules/langSwitcher/langSwitcher')
-)
+import ThemeSwitcher from '@/components/themeSwitcher/ThemeSwitcher'
+import LangSwitcher from '@/modules/langSwitcher/langSwitcher'
 import MobileMenu from '@/modules/navigation/components/mobileMenu/mobileMenu'
 import ProfileMenuItems from '@/modules/navigation/components/profileMenuItems/profileMenuItems'
 

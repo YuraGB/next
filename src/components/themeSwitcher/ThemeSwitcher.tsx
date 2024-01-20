@@ -1,6 +1,5 @@
 // app/components/ThemeSwitcher.tsx
 'use client'
-
 import { useTheme } from 'next-themes'
 import { Button } from '@nextui-org/button'
 import { memo, useEffect, useState } from 'react'
