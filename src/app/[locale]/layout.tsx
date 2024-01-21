@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react'
+import React, { ReactNode, Suspense } from 'react'
 import type { Metadata } from 'next'
 
 import { SpeedInsights } from '@vercel/speed-insights/next'
@@ -44,7 +44,9 @@ export default async function RootLayout({
               </ServerIntlProvider>
             </AuthProvider>
           </ReactQueryProvider>
-          <Footer />
+          <Suspense fallback={null}>
+            <Footer />
+          </Suspense>
         </NextUiProviderComponent>
         <SpeedInsights />
       </body>

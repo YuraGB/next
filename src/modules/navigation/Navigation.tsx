@@ -1,6 +1,6 @@
 'use client'
 import Link from 'next/link'
-import React, { useState } from 'react'
+import React, { Suspense, useState } from 'react'
 import {
   Navbar,
   NavbarBrand,
@@ -15,8 +15,15 @@ import { FormattedMessage } from 'react-intl'
 import Search from '@/modules/search'
 import ThemeSwitcher from '@/components/themeSwitcher/ThemeSwitcher'
 import LangSwitcher from '@/modules/langSwitcher/langSwitcher'
-import MobileMenu from '@/modules/navigation/components/mobileMenu/mobileMenu'
-import ProfileMenuItems from '@/modules/navigation/components/profileMenuItems/profileMenuItems'
+import dynamic from 'next/dynamic'
+
+const MobileMenu = dynamic(
+  () => import('@/modules/navigation/components/mobileMenu/mobileMenu')
+)
+const ProfileMenuItems = dynamic(
+  () =>
+    import('@/modules/navigation/components/profileMenuItems/profileMenuItems')
+)
 
 const Navigation = (): React.ReactNode => {
   const menuItems = useNavigation()
@@ -55,9 +62,13 @@ const Navigation = (): React.ReactNode => {
 
       <MenuList items={menuItems} />
 
-      <ProfileMenuItems />
+      <Suspense fallback={null}>
+        <ProfileMenuItems />
+      </Suspense>
 
-      <MobileMenu items={menuItems} />
+      <Suspense fallback={null}>
+        <MobileMenu items={menuItems} />
+      </Suspense>
 
       <NavbarContent className={'max-w-[fit-content]'}>
         <NavbarContent className={'max-w-[40px]'}>

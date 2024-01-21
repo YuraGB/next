@@ -17,5 +17,9 @@ export default function Carousel({ children }: Props): ReactNode {
     arrows: false,
     autoplay: true,
   }
-  return <Slider {...settings}>{children}</Slider>
+  return (
+    <Slider {...settings} className={'min-h-[300px] w-full'}>
+      {children}
+    </Slider>
+  )
 }
