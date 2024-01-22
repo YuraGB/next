@@ -71,15 +71,10 @@ const Navigation = (): React.ReactNode => {
       </Suspense>
 
       <NavbarContent className={'max-w-[fit-content]'}>
-        <NavbarContent className={'max-w-[40px]'}>
-          <Search />
-        </NavbarContent>
-
-        <NavbarContent className="md:hidden max-w-[25px]" justify="start">
-          <li>
-            <NavbarMenuToggle className={'h-5'} />
-          </li>
-        </NavbarContent>
+        <Search />
+        <li className="md:hidden max-w-[25px]">
+          <NavbarMenuToggle className={'h-5'} />
+        </li>
       </NavbarContent>
     </Navbar>
   )

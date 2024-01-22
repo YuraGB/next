@@ -26,9 +26,6 @@ export const toBase64 = (str: string) =>
     : window.btoa(str)
 
 const PhotoItem = ({ photo }: Props): ReactNode | null => {
-  if (!photo) {
-    return null
-  }
   return (
     <div
       className={'flex items-center justify-center'}
@@ -39,12 +36,11 @@ const PhotoItem = ({ photo }: Props): ReactNode | null => {
         fetchPriority={'high'}
         priority={true}
         alt={'Yuhur photo'}
-        width={200}
-        height={300}
+        width={0}
+        height={0}
         loading={'eager'}
-        className="rounded-[50%] w-[200px] m-auto"
-        blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
-        placeholder="blur" // Optional blur-up while loading
+        className="rounded-[50%] w-[200px] m-auto min-h-[200px]"
+        sizes={'200px'}
       />
     </div>
   )

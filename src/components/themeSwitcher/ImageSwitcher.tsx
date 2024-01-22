@@ -20,8 +20,9 @@ const ImageSwitcher = ({ theme }: { theme: string | undefined }) => {
         width: 'auto',
         height: 'auto',
       }}
-      width={40}
-      height={40}
+      width={0}
+      height={0}
+      sizes={'40px'}
     />
   )
 }

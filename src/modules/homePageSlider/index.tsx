@@ -14,7 +14,9 @@ const HomePageSlider = async () => {
     photos && photos.slide && photos.slide.length ? (
       photos.slide.map((photo) => <PhotoItem key={photo.id} photo={photo} />)
     ) : (
-      <SliderSkeleton />
+      <>
+        <SliderSkeleton />
+      </>
     )
 
   return (

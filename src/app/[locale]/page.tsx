@@ -1,8 +1,7 @@
 import PageWrapper from '@/components/pageWrapper/PageWrapper'
 import { Metadata } from 'next'
-import React, { Suspense } from 'react'
-import dynamic from 'next/dynamic'
-const HomePageIntro = dynamic(() => import('@/modules/homePageIntro'))
+import React from 'react'
+import HomePageIntro from '@/modules/homePageIntro'
 import HomePageSlider from '@/modules/homePageSlider'
 
 export const metadata: Metadata = {
@@ -16,11 +15,7 @@ export default function Home() {
   return (
     <PageWrapper>
       <HomePageSlider />
-      <Suspense
-        fallback={<section style={{ height: '840px', width: '100%' }} />}
-      >
-        <HomePageIntro />
-      </Suspense>
+      <HomePageIntro />
     </PageWrapper>
   )
 }
