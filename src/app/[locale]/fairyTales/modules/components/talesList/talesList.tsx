@@ -11,7 +11,7 @@ const TalesList = async () => {
   }
 
   return (
-    <section className={'grid justify-start gap-2'}>
+    <section className={'grid justify-start gap-3 grid-cols-1 sm:grid-cols-2'}>
       {tales.map((tale) => (
         <TaleItem key={tale.id} tale={tale} />
       ))}

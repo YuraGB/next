@@ -1,12 +1,18 @@
 'use server'
 import prisma from '$prismaClient/prisma'
-import { Tale } from '.prisma/client'
+import { Rating, Tale } from '.prisma/client'
 
-export const getTale = async (id: string): Promise<Tale | undefined | null> => {
+type TaleWithRating = Tale & { rating: Rating | null }
+export const getTale = async (
+  id: string
+): Promise<TaleWithRating | undefined | null> => {
   try {
     return await prisma?.tale.findUnique({
       where: {
         id,
+      },
+      include: {
+        rating: true,
       },
     })
   } catch (e) {
