@@ -20,6 +20,26 @@ model Post {
   publishedAt DateTime @default(now())
 }
 
+model Rating {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  rating    Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  count     Int      @default(0)
+  Tale      Tale[]
+}
+
+model Comment {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  content   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String   @db.ObjectId
+  tale      Tale     @relation(fields: [taleId], references: [id])
+  taleId    String   @db.ObjectId
+}
+
 model CategoryTale {
   id    String @id @default(auto()) @map("_id") @db.ObjectId
   name  String @unique @default("general")
@@ -37,6 +57,9 @@ model Tale {
   content          String
   categoryTaleId   String       @db.ObjectId
   categoryTale     CategoryTale @relation(fields: [categoryTaleId], references: [id])
+  rating           Rating?      @relation(fields: [ratingId], references: [id])
+  ratingId         String?      @db.ObjectId
+  comments         Comment[]
 }
 
 model Slide {
@@ -68,6 +91,9 @@ model User {
   accessToken        String?
   accessTokenExpires DateTime?
   Account            Account?
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+  comments           Comment[]
   Session            Session?
 
   @@unique([email])

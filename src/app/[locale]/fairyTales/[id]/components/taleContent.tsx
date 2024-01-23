@@ -1,14 +1,15 @@
 'use client'
-import { Tale } from '.prisma/client'
+import { Rating, Tale } from '.prisma/client'
 import { memo, ReactNode } from 'react'
 import Image from 'next/image'
 import { useTaleContent } from '@/app/[locale]/fairyTales/[id]/components/useTaleContent'
 import placeholder from '@/assets/placeholder.webp'
+import RatingComponent from '@/components/rating/Rating'
 
 const TaleContent = ({
   taleContent,
 }: {
-  taleContent: Tale
+  taleContent: Tale & { rating: Rating | null }
 }): ReactNode | null => {
   const { forAge, mainImage, createdAt, title, content } =
     useTaleContent(taleContent)
@@ -43,6 +44,7 @@ const TaleContent = ({
         />
       </header>
       <section className={'relative'}>{content}</section>
+      <RatingComponent taleId={taleContent.id} rating={taleContent.rating} />
     </article>
   )
 }

@@ -26,6 +26,7 @@ export const toBase64 = (str: string) =>
     : window.btoa(str)
 
 const PhotoItem = ({ photo }: Props): ReactNode | null => {
+  if (!photo) return null
   return (
     <div
       className={'flex items-center justify-center'}
