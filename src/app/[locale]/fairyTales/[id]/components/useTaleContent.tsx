@@ -1,16 +1,16 @@
-import { Tale } from '.prisma/client'
 import { Fragment, useMemo } from 'react'
 import Paragraph from '@/app/[locale]/fairyTales/[id]/components/paragraph'
+import { TaleWithRelations } from '@/server/actions/types'
 
-export const useTaleContent = (taleData: Tale) => {
+export const useTaleContent = (taleData: Partial<TaleWithRelations>) => {
   const {
-    content,
-    forAge,
-    mainImage,
-    createdAt,
-    images,
-    shortDescription,
-    title,
+    content = '',
+    forAge = '',
+    mainImage = '',
+    createdAt = new Date(),
+    images = [],
+    shortDescription = '',
+    title = '',
   } = taleData
 
   const normalizeContent = useMemo(() => {

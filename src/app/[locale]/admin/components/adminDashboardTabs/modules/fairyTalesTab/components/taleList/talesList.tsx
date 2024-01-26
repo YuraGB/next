@@ -3,9 +3,10 @@ import React, { FC, memo } from 'react'
 import { Tale } from '.prisma/client'
 import TaleAdminItem from '@/app/[locale]/admin/components/adminDashboardTabs/modules/fairyTalesTab/components/taleItem/taleListItem'
 import TaleListSkeleton from '@/app/[locale]/admin/components/adminDashboardTabs/modules/fairyTalesTab/components/taleList/taleListSkeleton'
+import { TFindAllTales } from '@/server/actions/types'
 
 const TalesList: FC<{
-  tales: Tale[] | undefined
+  tales: TFindAllTales[] | undefined
   onEdit: (tale: Tale) => void
 }> = ({ tales, onEdit }) => {
   if (!tales) {

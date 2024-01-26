@@ -4,8 +4,11 @@ import { Tale } from '.prisma/client'
 import TaleModal from '@/app/[locale]/admin/components/adminDashboardTabs/modules/fairyTalesTab/components/taleAdminModal/taleModal'
 import { useDisclosure } from '@nextui-org/use-disclosure'
 import { Button } from '@nextui-org/button'
+import { TFindAllTales } from '@/server/actions/types'
 
-const AdminTalesTab: FC<{ tales: Tale[] | undefined }> = ({ tales }) => {
+const AdminTalesTab: FC<{ tales: TFindAllTales[] | undefined }> = ({
+  tales,
+}) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const editedTale = useRef<Tale | null>(null)
   const onEdit = useCallback(

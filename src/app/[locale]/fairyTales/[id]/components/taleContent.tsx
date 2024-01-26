@@ -1,15 +1,18 @@
 'use client'
-import { Rating, Tale } from '.prisma/client'
-import { memo, ReactNode } from 'react'
+import { memo, ReactNode, Suspense } from 'react'
 import Image from 'next/image'
 import { useTaleContent } from '@/app/[locale]/fairyTales/[id]/components/useTaleContent'
 import placeholder from '@/assets/placeholder.webp'
-import RatingComponent from '@/components/rating/Rating'
+import dynamic from 'next/dynamic'
+import { TaleWithRelations } from '@/server/actions/types'
+
+const RatingComponent = dynamic(() => import('@/modules/rating/Rating'))
+const Comments = dynamic(() => import('@/modules/comments'))
 
 const TaleContent = ({
   taleContent,
 }: {
-  taleContent: Tale & { rating: Rating | null }
+  taleContent: Partial<TaleWithRelations>
 }): ReactNode | null => {
   const { forAge, mainImage, createdAt, title, content } =
     useTaleContent(taleContent)
@@ -44,7 +47,13 @@ const TaleContent = ({
         />
       </header>
       <section className={'relative'}>{content}</section>
-      <RatingComponent taleId={taleContent.id} rating={taleContent.rating} />
+      <Suspense fallback={null}>
+        <RatingComponent taleId={taleContent.id} rating={taleContent.rating} />
+      </Suspense>
+
+      <Suspense fallback={null}>
+        <Comments shouldAddComment={true} messages={taleContent.comments} />
+      </Suspense>
     </article>
   )
 }

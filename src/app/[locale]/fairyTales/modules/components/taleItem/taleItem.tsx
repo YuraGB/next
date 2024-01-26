@@ -3,24 +3,32 @@ import React from 'react'
 import { Card, CardFooter, CardHeader } from '@nextui-org/card'
 import Image from 'next/image'
 import { Divider } from '@nextui-org/react'
-import { Rating, Tale } from '.prisma/client'
 import { useRouter } from 'next/navigation'
 import { Pages } from '@/utils/pages'
 import placeholder from '@/assets/placeholder.webp'
-import RatingComponent from '@/components/rating/Rating'
+import RatingComponent from '@/modules/rating/Rating'
+import CreatedAt from '@/app/[locale]/fairyTales/modules/components/taleItem/CreatedAt'
+import { TFindAllTales } from '@/server/actions/types'
 
 const TaleItem = ({
   tale,
 }: {
-  tale: Tale & { rating: Rating | null }
+  tale: TFindAllTales
 }): React.ReactNode | null => {
   const router = useRouter()
   if (!tale) {
     return null
   }
 
-  const { id, title, forAge, mainImage, createdAt, shortDescription, rating } =
-    tale
+  const {
+    id,
+    title,
+    categoryTale,
+    mainImage,
+    createdAt,
+    shortDescription,
+    rating,
+  } = tale
 
   const onClick = (id: string) => {
     if (id) {
@@ -59,8 +67,8 @@ const TaleItem = ({
         }
       >
         <div className={'flex flex-col justify-start items-start'}>
-          <p>Category: {forAge}</p>
-          <p>Published: {createdAt.toLocaleDateString()}</p>
+          <p>Category: {categoryTale.name}</p>
+          <CreatedAt createdAt={createdAt} />
         </div>
 
         <RatingComponent rating={rating} taleId={id} />

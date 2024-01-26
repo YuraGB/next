@@ -5,7 +5,7 @@ import { useUsersList } from '@/app/[locale]/admin/components/adminDashboardTabs
 import { PostT } from '@/app/[locale]/admin/components/adminDashboardTabs/modules/blogDashboardTab/model/Post'
 import { User } from '@/app/[locale]/admin/components/adminDashboardTabs/modules/adminUserTab/model/User'
 import { useFairyTales } from '@/app/[locale]/fairyTales/modules/components/talesList/useFairyTales'
-import { Tale } from '.prisma/client'
+import { TFindAllTales } from '@/server/actions/types'
 
 export enum tabNames {
   USERS = 'USERS',
@@ -18,7 +18,7 @@ export type AdminTabs = {
   setSelected: Dispatch<SetStateAction<string>>
   posts: PostT[] | undefined
   users: User[] | undefined | null
-  tales: Tale[] | undefined
+  tales: TFindAllTales[] | undefined
 }
 
 export const useAdminTabs = (): AdminTabs => {
