@@ -7,4 +7,5 @@ export enum Pages {
   LOGIN = '/login',
   SIGNUP = '/signUp',
   HOME = '/',
+  CONTACT = '/contact',
 }

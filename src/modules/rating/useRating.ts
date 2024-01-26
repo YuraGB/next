@@ -2,7 +2,10 @@ import { useMutation } from '@tanstack/react-query'
 import { setRating, TRating } from '@/server/actions/setRating'
 import { useRouter } from 'next/navigation'
 
-export const useRating = (rating: TRating | null, id: string) => {
+export const useRating = (
+  rating: TRating | null | undefined,
+  id: string | undefined
+) => {
   const router = useRouter()
   const { mutate, data, error, status } = useMutation({
     mutationFn: async ({ id, data }: { id: string; data: TRating }) =>
@@ -11,6 +14,7 @@ export const useRating = (rating: TRating | null, id: string) => {
       router.refresh()
     },
   })
+
   const isPending = status === 'pending'
 
   const onClick = (rate: number) => {
@@ -18,7 +22,7 @@ export const useRating = (rating: TRating | null, id: string) => {
       rating: rating?.rating ? rating?.rating + rate : rate,
       count: rating?.count ? rating?.count + 1 : 1,
     }
-    if (!isPending) {
+    if (!isPending && id) {
       mutate({ id, data: newRating })
     }
   }

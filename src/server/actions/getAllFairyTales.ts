@@ -1,16 +1,16 @@
 'use server'
 import prisma from '$prismaClient/prisma'
-import { Rating, Tale } from '.prisma/client'
+import { TFindAllTales } from '@/server/actions/types'
 
-type TaleWithRating = Tale & { rating: Rating | null }
 export const getAllFairyTales = async (): Promise<
-  TaleWithRating[] | undefined
+  TFindAllTales[] | undefined
 > => {
   try {
     return prisma?.tale.findMany({
       include: {
         categoryTale: {
           select: {
+            id: true,
             name: true,
           },
         },
