@@ -1,6 +1,7 @@
 'use server'
 import prisma from '$prismaClient/prisma'
 import { Slider } from '@/modules/homePageSlider/types'
+
 type GetPhotosT = () => Promise<Slider | null | undefined>
 
 export const getPhotos: GetPhotosT = async () => {
