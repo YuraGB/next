@@ -9,6 +9,7 @@ import React, {
 import { CommentWithUser } from '@/server/actions/types'
 import Author from '@/modules/comments/components/Author/Author'
 import RemoveButton from '@/components/removeButton'
+import { Skeleton } from '@nextui-org/skeleton'
 
 type TProps = {
   comment: CommentWithUser | null
@@ -20,6 +21,7 @@ const CommentComponent: FC<TProps> = ({
   comment,
   isAdmin,
   onDelete,
+  status,
 }): ReactNode | null => {
   const [mounted, setMounted] = useState<boolean>(false)
 
@@ -34,6 +36,10 @@ const CommentComponent: FC<TProps> = ({
 
   if (!comment || !mounted) {
     return null
+  }
+
+  if (status === 'loading') {
+    return <Skeleton className={'w-full h-20'} />
   }
 
   return (

@@ -16,6 +16,7 @@ const TaleItem = ({
   tale: TFindAllTales
 }): React.ReactNode | null => {
   const router = useRouter()
+
   if (!tale) {
     return null
   }
@@ -39,7 +40,7 @@ const TaleItem = ({
   return (
     <Card className="w-full rounded-[0]" isPressable isBlurred isHoverable>
       <CardHeader
-        className="flex gap-3 relative p-0"
+        className="flex gap-3 relative p-0 flex-col items-start w-full h-[300px] rounded-[0] overflow-hidden"
         onClick={() => onClick(id)}
       >
         <Image
@@ -47,15 +48,17 @@ const TaleItem = ({
           height={200}
           src={mainImage ? mainImage : placeholder}
           width={600}
-          className={'w-full h-[300px] object-cover'}
+          className={
+            'w-full h-[300px] object-cover min-h-full w-full absolute top-0 left-0'
+          }
         />
-        <div className="flex flex-col absolute left-0 top-0 max-w-[50%] w-full max-h-[50%]">
+        <div className="flex flex-col left-0 top-0 sm:max-w-[50%] max-w-100% w-full max-h-[50%]">
           <p className="font-['cinzel_decorativeregular'] text-[22px] text-md relative text-amber-50 p-3 h-auto flex w-full items-center overflow-hidden color-inherit subpixel-antialiased rounded-b-large backdrop-blur backdrop-saturate-150 bg-black/40 bottom-0 z-10 border-t-1 border-default-600 dark:border-default-100">
             {title}
           </p>
         </div>
-        <div className="flex flex-col items-start absolute left-6 button-[50%] max-w-[50%] w-full h-[50%]">
-          <p className="font-['cormorant_it'] italic text-[18px] text-left line-clamp-4 relative text-amber-50 p-0  items-center color-inherit subpixel-antialiased  backdrop-blur ">
+        <div className="flex flex-col items-start left-6 button-[50%] max-w-[50%] w-full h-[50%] mt-3">
+          <p className="font-['cormorant_it'] pl-4 italic text-[18px] text-left line-clamp-4 relative text-amber-50 p-0  items-center color-inherit subpixel-antialiased  backdrop-blur ">
             {shortDescription}
           </p>
         </div>
@@ -63,7 +66,7 @@ const TaleItem = ({
       <Divider />
       <CardFooter
         className={
-          'bg-white border-t-1 border-default-600 dark:border-default-100 text-gray-700 flex justify-between rounded-[0] px-6'
+          'bg-white border-t-1 border-default-600 dark:border-default-100 text-gray-700 flex justify-between rounded-[0] px-6 sm:p-3 p-2'
         }
       >
         <div className={'flex flex-col justify-start items-start'}>

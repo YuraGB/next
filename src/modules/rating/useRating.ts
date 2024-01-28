@@ -1,19 +1,11 @@
-import { useMutation } from '@tanstack/react-query'
-import { setRating, TRating } from '@/server/actions/setRating'
-import { useRouter } from 'next/navigation'
+import { TRating } from '@/server/actions/setRating'
+import { useAddRattingService } from '@/modules/rating/useAddRatting'
 
 export const useRating = (
   rating: TRating | null | undefined,
   id: string | undefined
 ) => {
-  const router = useRouter()
-  const { mutate, data, error, status } = useMutation({
-    mutationFn: async ({ id, data }: { id: string; data: TRating }) =>
-      await setRating({ id, data }),
-    onSuccess: () => {
-      router.refresh()
-    },
-  })
+  const { mutate, status, error, data } = useAddRattingService(id)
 
   const isPending = status === 'pending'
 
