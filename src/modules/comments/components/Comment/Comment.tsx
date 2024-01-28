@@ -1,4 +1,11 @@
-import React, { FC, memo, ReactNode, useEffect, useState } from 'react'
+import React, {
+  FC,
+  memo,
+  ReactNode,
+  useCallback,
+  useEffect,
+  useState,
+} from 'react'
 import { CommentWithUser } from '@/server/actions/types'
 import Author from '@/modules/comments/components/Author/Author'
 import RemoveButton from '@/components/removeButton'
@@ -11,11 +18,16 @@ type TProps = {
 }
 const CommentComponent: FC<TProps> = ({
   comment,
-  status,
   isAdmin,
   onDelete,
 }): ReactNode | null => {
   const [mounted, setMounted] = useState<boolean>(false)
+
+  const onDeleteHandler = useCallback(
+    (id: string) => () => onDelete(id),
+    [comment?.id]
+  )
+
   useEffect(() => {
     setMounted(true)
   }, [])
@@ -34,7 +46,7 @@ const CommentComponent: FC<TProps> = ({
         </small>
         {isAdmin ? (
           <div className={'absolute right-5 top-5'}>
-            <RemoveButton onClick={() => onDelete(comment.id)} />
+            <RemoveButton onClick={onDeleteHandler(comment.id)} />
           </div>
         ) : null}
       </div>
