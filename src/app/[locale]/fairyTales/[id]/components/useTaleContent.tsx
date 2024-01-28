@@ -1,8 +1,18 @@
 import { Fragment, useMemo } from 'react'
 import Paragraph from '@/app/[locale]/fairyTales/[id]/components/paragraph'
 import { TaleWithRelations } from '@/server/actions/types'
+import { useQuery } from '@tanstack/react-query'
+import { getTale } from '@/server/actions/getTale'
+import { GET_ONE_TALE } from '@/server/actions/queryNaming'
 
 export const useTaleContent = (taleData: Partial<TaleWithRelations>) => {
+  const { data } = useQuery({
+    queryKey: [GET_ONE_TALE, taleData.id],
+    queryFn: async () => await getTale(taleData.id ? taleData.id : ''),
+    initialData: taleData,
+    enabled: !!taleData.id,
+  })
+
   const {
     content = '',
     forAge = '',
@@ -11,7 +21,8 @@ export const useTaleContent = (taleData: Partial<TaleWithRelations>) => {
     images = [],
     shortDescription = '',
     title = '',
-  } = taleData
+    comments = [],
+  } = data || {}
 
   const normalizeContent = useMemo(() => {
     if (content) {
@@ -38,6 +49,7 @@ export const useTaleContent = (taleData: Partial<TaleWithRelations>) => {
     images,
     shortDescription,
     title,
+    comments,
     content: normalizeContent,
   }
 }

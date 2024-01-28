@@ -3,15 +3,11 @@ import { useInputComment } from '@/modules/comments/components/InputMessage/useI
 
 type TProps = {
   isVisible: boolean
-  setComment: () => void
+  taleId?: string
 }
 
-const InputMessage: FC<TProps> = ({
-  isVisible,
-  setComment,
-}): ReactNode | null => {
-  console.log(setComment)
-  const { handleSubmit, onSubmit, fields } = useInputComment()
+const InputMessage: FC<TProps> = ({ isVisible, taleId }): ReactNode | null => {
+  const { handleSubmit, onSubmit, fields } = useInputComment(taleId)
 
   if (!isVisible) {
     return null

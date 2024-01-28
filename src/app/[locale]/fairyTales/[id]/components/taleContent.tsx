@@ -5,6 +5,7 @@ import { useTaleContent } from '@/app/[locale]/fairyTales/[id]/components/useTal
 import placeholder from '@/assets/placeholder.webp'
 import dynamic from 'next/dynamic'
 import { TaleWithRelations } from '@/server/actions/types'
+import { FormattedMessage } from 'react-intl'
 
 const RatingComponent = dynamic(() => import('@/modules/rating/Rating'))
 const Comments = dynamic(() => import('@/modules/comments'))
@@ -14,7 +15,7 @@ const TaleContent = ({
 }: {
   taleContent: Partial<TaleWithRelations>
 }): ReactNode | null => {
-  const { forAge, mainImage, createdAt, title, content } =
+  const { forAge, mainImage, createdAt, title, content, comments } =
     useTaleContent(taleContent)
 
   return (
@@ -51,9 +52,21 @@ const TaleContent = ({
         <RatingComponent taleId={taleContent.id} rating={taleContent.rating} />
       </Suspense>
 
-      <Suspense fallback={null}>
-        <Comments shouldAddComment={true} messages={taleContent.comments} />
-      </Suspense>
+      <section>
+        <h3 className={'text-amber-50 text-center text-[32px] mt-8'}>
+          <FormattedMessage
+            id={'comments.section'}
+            defaultMessage={'You can leave comment below'}
+          />{' '}
+        </h3>
+        <Suspense fallback={null}>
+          <Comments
+            shouldAddComment={true}
+            messages={comments}
+            taleId={taleContent.id}
+          />
+        </Suspense>
+      </section>
     </article>
   )
 }

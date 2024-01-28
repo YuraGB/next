@@ -1,17 +1,28 @@
+import { emailPattern } from '@/utils/validation/patterns'
+
 const commentFields = [
   {
-    type: 'textarea',
-    label: 'Comment',
-    name: 'comment_text',
-    errorMessage: 'Please enter a comment',
+    type: 'text',
+    label: 'user nickname',
+    name: 'name',
+    errorMessage: 'Please enter your nickname',
     required: true,
     additionalClasses: 'w-full',
   },
   {
     type: 'text',
-    label: 'user nickname',
-    name: 'user_nickname',
-    errorMessage: 'Please enter a user nickname',
+    label: 'email',
+    name: 'email',
+    errorMessage: 'Please enter your email',
+    required: true,
+    additionalClasses: 'w-full',
+    pattern: emailPattern,
+  },
+  {
+    type: 'textarea',
+    label: 'Comment',
+    name: 'comment',
+    errorMessage: 'Please enter a comment',
     required: true,
     additionalClasses: 'w-full',
   },

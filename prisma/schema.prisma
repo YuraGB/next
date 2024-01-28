@@ -124,6 +124,7 @@ model VerificationRequest {
 enum Role {
   USER
   ADMIN
+  VISITOR
 }
 
 model Session {

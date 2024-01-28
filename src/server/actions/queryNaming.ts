@@ -1,7 +1,7 @@
 export const GET_ALL_TALES: string = 'GET_ALL_TALES'
 export const UPDATE_TALE: string = 'UPDATE_TALE'
 export const GET_ALL_USERS: string = 'GET_ALL_USERS'
-export const GAT_ONE_TALE: string = 'GAT_ONE_TALE'
+export const GET_ONE_TALE: string = 'GET_ONE_TALE'
 export const GET_PUBLIC_POSTS: string = 'GET_PUBLIC_POSTS'
 export const GET_ALL_POSTS: string = 'GET_ALL_POSTS'
 export const GET_POST_BY_ID: string = 'GET_POST_BY_ID'
