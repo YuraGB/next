@@ -44,7 +44,7 @@
   },
   "devDependencies": {
     "@next-auth/prisma-adapter": "^0.4.4-canary.81",
-    "@prisma/client": "^5.7.1",
+    "@prisma/client": "^5.8.1",
     "@tanstack/eslint-plugin-query": "^5.17.7",
     "@tanstack/react-query-devtools": "^5.17.9",
     "@testing-library/jest-dom": "^6.1.4",

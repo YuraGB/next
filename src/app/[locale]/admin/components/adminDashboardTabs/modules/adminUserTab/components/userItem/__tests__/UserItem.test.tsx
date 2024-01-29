@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react'
-import { UserItem } from '@/app/[locale]/admin/components/adminDashboardTabs/modules/adminUserTab/components/userItem/UserItem'
+import UserItem from '@/app/[locale]/admin/components/adminDashboardTabs/modules/adminUserTab/components/userItem/UserItem'
 
 describe('User item Dashboard', () => {
   it('show null if there is no data ', () => {

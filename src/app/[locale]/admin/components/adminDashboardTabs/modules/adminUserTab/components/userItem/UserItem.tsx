@@ -1,12 +1,16 @@
-import React from 'react'
+import React, { FC } from 'react'
 import { User as UserComponent } from '@nextui-org/react'
 import { User } from '@/app/[locale]/admin/components/adminDashboardTabs/modules/adminUserTab/model/User'
 
 type UserItemProps = {
   user: Partial<User>
+  onEdit: (user: User) => void
 }
 
-export const UserItem = ({ user }: UserItemProps): React.ReactNode | null => {
+const UserItem: FC<UserItemProps> = ({
+  user,
+  onEdit,
+}): React.ReactNode | null => {
   if (!user) {
     return null
   }
@@ -15,12 +19,16 @@ export const UserItem = ({ user }: UserItemProps): React.ReactNode | null => {
 
   return (
     <UserComponent
+      isFocusable={true}
       name={name}
       description={role?.toLowerCase()}
       avatarProps={{
         src: imageUrl ? imageUrl : '',
       }}
-      className={'justify-start'}
+      className={'justify-start cursor-pointer'}
+      onClick={() => onEdit(user as User)}
     />
   )
 }
+
+export default React.memo(UserItem)

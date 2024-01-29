@@ -5,8 +5,8 @@ import React, { useEffect, useMemo } from 'react'
 import formFieldsMapping from '@/modules/utils/formFieldsMapping'
 import { Tale } from '.prisma/client'
 import { formatTaleData } from '@/app/[locale]/admin/components/adminDashboardTabs/modules/fairyTalesTab/components/taleAdminModal/util/formatData'
-import useUpdateTaleHandler from '@/app/[locale]/admin/components/adminDashboardTabs/modules/fairyTalesTab/components/taleAdminModal/util/updateTaleHandler'
-import { useAddNewTale } from '@/app/[locale]/admin/components/adminDashboardTabs/modules/fairyTalesTab/components/taleAdminModal/util/useAddNewTale'
+import useUpdateTaleHandler from '@/app/[locale]/admin/components/adminDashboardTabs/modules/fairyTalesTab/service/updateTaleHandler'
+import { useAddNewTale } from '@/app/[locale]/admin/components/adminDashboardTabs/modules/fairyTalesTab/service/useAddNewTale'
 
 export const useTaleModal = (
   initialValues: Tale | null,
