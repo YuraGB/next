@@ -74,7 +74,10 @@ const TaleItem = ({
           <CreatedAt createdAt={createdAt} />
         </div>
 
-        <RatingComponent rating={rating} taleId={id} />
+        <div className={'relative'}>
+          <div className={'absolute w-full h-full [z-index:1]'} />
+          <RatingComponent rating={rating} taleId={id} />
+        </div>
       </CardFooter>
     </Card>
   )

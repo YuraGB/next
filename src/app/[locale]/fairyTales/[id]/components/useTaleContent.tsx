@@ -22,6 +22,7 @@ export const useTaleContent = (taleData: Partial<TaleWithRelations>) => {
     shortDescription = '',
     title = '',
     comments = [],
+    rating = null,
   } = data || {}
 
   const normalizeContent = useMemo(() => {
@@ -51,5 +52,6 @@ export const useTaleContent = (taleData: Partial<TaleWithRelations>) => {
     title,
     comments,
     content: normalizeContent,
+    rating,
   }
 }

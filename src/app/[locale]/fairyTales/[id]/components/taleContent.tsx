@@ -15,7 +15,7 @@ const TaleContent = ({
 }: {
   taleContent: Partial<TaleWithRelations>
 }): ReactNode | null => {
-  const { forAge, mainImage, createdAt, title, content, comments } =
+  const { forAge, mainImage, createdAt, title, content, comments, rating } =
     useTaleContent(taleContent)
 
   return (
@@ -49,7 +49,7 @@ const TaleContent = ({
       </header>
       <section className={'relative'}>{content}</section>
       <Suspense fallback={null}>
-        <RatingComponent taleId={taleContent.id} rating={taleContent.rating} />
+        <RatingComponent taleId={taleContent.id} rating={rating} />
       </Suspense>
 
       <section>
