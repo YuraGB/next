@@ -32,7 +32,7 @@ export default async function RootLayout({
     <html lang={intl.locale}>
       <body
         className={
-          'min-h-[100dvh] flex flex-col [&>div]:min-h-[100dvh] [&>div]:flex [&>div]:flex-col'
+          'min-h-[100dvh] flex flex-col [&>div:first-child]:min-h-[100dvh] [&>div:first-child]:flex [&>div:first-child]:flex-col'
         }
       >
         <NextUiProviderComponent>

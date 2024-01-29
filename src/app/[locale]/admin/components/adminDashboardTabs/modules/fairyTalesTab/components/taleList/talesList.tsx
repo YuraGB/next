@@ -14,7 +14,11 @@ const TalesList: FC<{
   }
 
   return (
-    <section className={'grid justify-start gap-2 max-w-full grid-cols-2'}>
+    <section
+      className={
+        'grid justify-start gap-2 max-w-full grid-cols-1 sm:grid-cols-2'
+      }
+    >
       {tales.map((tale) => (
         <TaleAdminItem key={tale.id} tale={tale} onEdit={onEdit} />
       ))}
