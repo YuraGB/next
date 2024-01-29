@@ -12,7 +12,7 @@ import dynamic from 'next/dynamic'
 import ServerIntlProvider from '@/context/i18nProvider'
 import getIntl from '@/utils/intl'
 const Navigation = dynamic(() => import('@/modules/navigation/Navigation'))
-const Footer = dynamic(() => import('@/modules/footer'))
+const Footer = dynamic(() => import('../../components/footer'))
 
 export const metadata: Metadata = {
   title: 'Create Next App',
