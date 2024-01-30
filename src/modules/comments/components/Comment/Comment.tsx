@@ -27,7 +27,7 @@ const CommentComponent: FC<TProps> = ({
 
   const onDeleteHandler = useCallback(
     (id: string) => () => onDelete(id),
-    [comment?.id]
+    [onDelete]
   )
 
   useEffect(() => {

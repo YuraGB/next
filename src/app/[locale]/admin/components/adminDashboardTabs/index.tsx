@@ -9,7 +9,7 @@ import {
 } from '@/app/[locale]/admin/components/adminDashboardTabs/useAdminTabs'
 import AdminTalesTab from '@/app/[locale]/admin/components/adminDashboardTabs/modules/fairyTalesTab'
 
-export const AdminDashboardTabs = (): React.ReactNode => {
+const AdminDashboardTabs = (): React.ReactNode => {
   const { selected, tales, setSelected, posts, users } = useAdminTabs()
 
   return (
