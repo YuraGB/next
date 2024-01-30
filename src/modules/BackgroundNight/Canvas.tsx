@@ -3,13 +3,15 @@ import { useEffect } from 'react'
 import start from '@/modules/BackgroundNight/util/canvasCalculations'
 
 const BackgroundNight = () => {
+  const handler = () => start('dark')
+
   useEffect(() => {
     start('dark')
 
-    window.addEventListener('resize', () => start('dark'))
+    window.addEventListener('resize', handler)
 
     return () => {
-      window.removeEventListener('resize', () => start('dark'))
+      window.removeEventListener('resize', handler)
     }
   }, [])
   return (
