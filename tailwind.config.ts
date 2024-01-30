@@ -29,7 +29,7 @@ const config: Config = {
         dark: {
           layout: {}, // dark theme layout tokens
           colors: {
-            background: '#807f7f',
+            background: '#0f0f18',
             foreground: {
               DEFAULT: '#e9e6e6',
             },

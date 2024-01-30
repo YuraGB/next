@@ -1,5 +1,5 @@
 import { GetByRole, render, screen } from '@testing-library/react'
-import { AdminDashboardTabs } from '@/app/[locale]/admin/components/adminDashboardTabs'
+import AdminDashboardTabs from '@/app/[locale]/admin/components/adminDashboardTabs'
 
 describe('Admin Dashboard', () => {
   it('Should be users tab', () => {

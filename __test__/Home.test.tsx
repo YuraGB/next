@@ -5,6 +5,7 @@ import { createIntl } from '@formatjs/intl'
 import en from '@/i18n/en.json'
 import { ReactNode } from 'react'
 import ServerIntlProvider from '@/context/i18nProvider'
+import 'jest-canvas-mock'
 
 jest.mock('../src/modules/homePageSlider', () => {
   // Replace with the actual path to your FirebaseComponent
