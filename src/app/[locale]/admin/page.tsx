@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 
 export default function Admin() {
   return (
-    <PageWrapper additionalClasses={'items-start'}>
+    <PageWrapper additionalClasses={'items-start'} showBackground={false}>
       <Suspense fallback={<p>Loading</p>}>
         <AdminDashboardTabs />
       </Suspense>
