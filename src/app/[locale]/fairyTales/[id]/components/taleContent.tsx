@@ -26,7 +26,7 @@ const TaleContent = ({
         >
           <h1
             className={
-              'font-["Cinzel_Decorative"] [color:white] text-[32px] text-center  mt-[10%]'
+              'font-["Cinzel_Decorative"] [color:white] text-[32px] text-center  mt-[10%] mb-3'
             }
           >
             {title ? title : 'Fairy Tale'}

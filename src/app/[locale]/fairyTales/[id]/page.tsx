@@ -12,6 +12,7 @@ export const metadata: Metadata = {
   title: 'The tale',
   description: 'tale description',
   keywords: ['yuhur', 'Fairy tales'],
+  robots: 'index, follow',
   authors: [
     {
       name: 'Yurii Hurianov',
