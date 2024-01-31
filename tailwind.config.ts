@@ -24,12 +24,21 @@ const config: Config = {
       themes: {
         light: {
           layout: {}, // light theme layout tokens
-          colors: {},
+          colors: {
+            background: {
+              DEFAULT: '#326596',
+              50: '#e9e6e6',
+              '100': 'rgba(233,230,230,0.53)',
+            },
+          },
         }, // light theme colors
         dark: {
           layout: {}, // dark theme layout tokens
           colors: {
-            background: '#0f0f18',
+            background: {
+              DEFAULT: '#0f0f18',
+              50: 'rgba(15,15,24,0.85)',
+            },
             foreground: {
               DEFAULT: '#e9e6e6',
             },

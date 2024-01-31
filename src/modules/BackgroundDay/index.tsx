@@ -1,17 +1,32 @@
 'use client'
 import { Canvas } from '@react-three/fiber'
 import { Clouds, Cloud, PerspectiveCamera } from '@react-three/drei'
-import { useEffect, useState } from 'react'
+import { useBackgroundHook } from '@/modules/BacgroundHook/useBackgroundHook'
+import { ResizeObserver } from '@juggle/resize-observer'
 
 const BackgroundDay = () => {
-  const [mounted, setMounted] = useState<boolean>(false)
-  useEffect(() => {
-    setMounted(true)
-  }, [])
-  if (!mounted) return null
+  const { ref } = useBackgroundHook()
+
   return (
-    <div className={'fixed top-0 bottom-0 left-0 right-0'}>
-      <Canvas camera={{ position: [0, -10, 2000], fov: 75 }}>
+    <div
+      ref={ref}
+      style={{
+        opacity: 0,
+        transition: 'all .5s ease-in-out',
+      }}
+    >
+      <Canvas
+        resize={{ polyfill: ResizeObserver }}
+        camera={{ position: [0, -10, 2000], fov: 75 }}
+        style={{
+          position: 'fixed',
+        }}
+        gl={{
+          antialias: true,
+          alpha: true,
+          powerPreference: 'high-performance',
+        }}
+      >
         <ambientLight intensity={Math.PI / 2} />
         <Clouds limit={100} scale={2.2} position={[0, -10, 0]}>
           <Cloud
@@ -23,7 +38,7 @@ const BackgroundDay = () => {
             growth={7}
             segments={100}
             volume={10}
-            opacity={1}
+            opacity={0.9}
             bounds={[30, 5, 5]}
           />
         </Clouds>

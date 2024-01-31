@@ -27,7 +27,6 @@ export default async function RootLayout({
   params: { locale: string }
 }) {
   const intl = await getIntl(params.locale)
-  // console.log(params, intl)
   return (
     <html lang={intl.locale}>
       <body

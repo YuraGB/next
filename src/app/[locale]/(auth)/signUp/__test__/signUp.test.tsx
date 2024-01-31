@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react'
+import { render, screen, waitFor } from '@testing-library/react'
 import RegisterPage from '@/app/[locale]/(auth)/signUp/page'
 import ServerIntlProvider from '@/context/i18nProvider'
 import { ReactNode } from 'react'
@@ -28,7 +28,7 @@ describe('Sign up page', () => {
     )
   }
 
-  it('should have H1 Sign up', () => {
+  it('should have H1 Sign up', async () => {
     render(<RegisterPage />, {
       wrapper: Wrapper,
     }) //ARRANGE
@@ -37,9 +37,12 @@ describe('Sign up page', () => {
       name: 'Registration',
     }) //ACT
 
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-expect-error
-    expect(elem).toBeInTheDocument() //ASSERT
+    await waitFor(
+      () =>
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-expect-error
+        expect(elem).toBeInTheDocument() //ASSERT
+    )
   })
 
   it('should have submit button Sign up of the Registration form', async () => {

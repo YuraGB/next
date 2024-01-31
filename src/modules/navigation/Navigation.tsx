@@ -35,7 +35,7 @@ const Navigation = (): React.ReactNode => {
       isBordered
       isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen}
-      className={'[&>header]:px-1'}
+      className={'[&>header]:px-1 bg-background-50'}
     >
       <NavbarContent
         className="pr-3 max-w-[50%] sm:max-w-[fit-content]"
