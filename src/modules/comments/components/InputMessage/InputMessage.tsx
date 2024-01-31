@@ -1,5 +1,7 @@
 import { FC, ReactNode } from 'react'
 import { useInputComment } from '@/modules/comments/components/InputMessage/useInputComment'
+import { FormattedMessage } from 'react-intl'
+import { Button } from '@nextui-org/button'
 
 type TProps = {
   isVisible: boolean
@@ -7,7 +9,7 @@ type TProps = {
 }
 
 const InputMessage: FC<TProps> = ({ isVisible, taleId }): ReactNode | null => {
-  const { handleSubmit, onSubmit, fields } = useInputComment(taleId)
+  const { handleSubmit, onSubmit, fields, status } = useInputComment(taleId)
 
   if (!isVisible) {
     return null
@@ -21,7 +23,19 @@ const InputMessage: FC<TProps> = ({ isVisible, taleId }): ReactNode | null => {
     >
       {fields}
 
-      <button type="submit">Send</button>
+      <Button
+        variant={'solid'}
+        size={'lg'}
+        color={'primary'}
+        disabled={status === 'pending'}
+        isLoading={status === 'pending'}
+        type="submit"
+      >
+        <FormattedMessage
+          id={'submit.message'}
+          defaultMessage={'Place the comment'}
+        />
+      </Button>
     </form>
   )
 }

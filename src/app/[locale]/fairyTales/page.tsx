@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   title: 'Fairy tales page',
   description: 'Catalog of the Fairy Tales',
   keywords: ['Fairy tales', 'Catalog of the Fairy Tales'],
+  robots: 'index, follow',
   authors: [
     {
       name: 'Yurii Hurianov',

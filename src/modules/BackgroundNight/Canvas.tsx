@@ -8,10 +8,10 @@ const BackgroundNight = () => {
   const { ref } = useBackgroundHook(handler)
 
   useEffect(() => {
-    window.addEventListener('resize', handler)
+    window?.addEventListener('resize', handler)
 
     return () => {
-      window.removeEventListener('resize', handler)
+      window?.removeEventListener('resize', handler)
     }
   }, [])
 
