@@ -74,6 +74,6 @@ describe('Navigation', () => {
       .click({ force: true }) // -> init of the header make link hidden
 
     // The new page should contain an h1 with "Catalog of the Tales"
-    cy.get('h1').contains('Каталог казок')
+    cy.get('h1').contains('Catalog of the Tales')
   })
 })

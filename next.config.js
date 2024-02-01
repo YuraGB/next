@@ -9,7 +9,7 @@ const nextConfig = {
   },
   async headers() {
     const headers = []
-    if (process.env.NEXT_PUBLIC_VERCEL_ENV !== 'production') {
+    if (process.env.NEXT_PUBLIC_VERCEL_ENV === 'production') {
       headers.push({
         headers: [
           {
