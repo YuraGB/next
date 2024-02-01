@@ -29,6 +29,18 @@ export default async function RootLayout({
   const intl = await getIntl(params.locale)
   return (
     <html lang={intl.locale}>
+      <head>
+        {/* https://app.meticulous.ai/*/}
+        {(process.env.NODE_ENV === 'development' ||
+          process.env.VERCEL_ENV === 'preview') && (
+          // eslint-disable-next-line @next/next/no-sync-scripts
+          <script
+            data-project-id="3iCmTK9IupQqGwPHt1Q6HqhKqA5iEnLivImBlwer"
+            data-is-production-environment="false"
+            src="https://snippet.meticulous.ai/v1/meticulous.js"
+          />
+        )}
+      </head>
       <body
         className={
           'min-h-[100dvh] flex flex-col [&>div:first-child]:min-h-[100dvh] [&>div:first-child]:flex [&>div:first-child]:flex-col bg-background'
