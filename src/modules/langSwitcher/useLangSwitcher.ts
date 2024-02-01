@@ -1,6 +1,6 @@
 import { usePathname, useRouter } from 'next/navigation'
 import { useCurrentLocale } from 'next-i18n-router/client'
-import i18nConfig from '../../../i18nConfig'
+import { i18nConfig } from '../../../i18nConfig'
 import { ChangeEvent } from 'react'
 
 export const useLangSwitcher = () => {

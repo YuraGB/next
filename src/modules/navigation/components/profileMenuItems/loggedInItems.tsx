@@ -27,21 +27,23 @@ const LoggedInItems = ({ user }: Props): React.ReactNode => {
 
   return (
     <NavbarContent justify="end" className={'max-w-[40px] ml-[auto]'}>
-      <Dropdown>
-        <DropdownTrigger>
-          <Avatar name={name as string} size={'sm'} />
-        </DropdownTrigger>
-        <DropdownMenu aria-label="Static Actions">
-          <DropdownItem key={Pages.ADMIN}>
-            {isAdmin ? <Link href={Pages.ADMIN}>Dashboard</Link> : null}
-          </DropdownItem>
-          <DropdownItem key="new">
-            <Button color="primary" onClick={() => signOut()} variant="flat">
-              Sign Out
-            </Button>
-          </DropdownItem>
-        </DropdownMenu>
-      </Dropdown>
+      <li>
+        <Dropdown>
+          <DropdownTrigger>
+            <Avatar name={name as string} size={'sm'} />
+          </DropdownTrigger>
+          <DropdownMenu aria-label="Static Actions">
+            <DropdownItem key={Pages.ADMIN}>
+              {isAdmin ? <Link href={Pages.ADMIN}>Dashboard</Link> : null}
+            </DropdownItem>
+            <DropdownItem key="new">
+              <Button color="primary" onClick={() => signOut()} variant="flat">
+                Sign Out
+              </Button>
+            </DropdownItem>
+          </DropdownMenu>
+        </Dropdown>
+      </li>
     </NavbarContent>
   )
 }

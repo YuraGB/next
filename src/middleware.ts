@@ -1,7 +1,7 @@
 import { NextRequestWithAuth } from 'next-auth/middleware'
 import { i18nRouter } from 'next-i18n-router'
 import { NextResponse } from 'next/server'
-import i18nConfig from '@/../i18nConfig'
+import { i18nConfig } from '@/../i18nConfig'
 import { getToken } from 'next-auth/jwt'
 
 export default async function middleware(request: NextRequestWithAuth) {

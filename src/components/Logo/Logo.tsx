@@ -8,10 +8,12 @@ const Logo = () => {
       <Image
         src={logo}
         alt="Picture of the author"
-        width={500}
-        height={300}
+        width={0}
+        height={0}
         className="object-contain w-auto h-auto"
         loading={'eager'}
+        fetchPriority={'high'}
+        priority={true}
       />
     </section>
   )
