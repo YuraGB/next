@@ -4,3 +4,4 @@
 - CI  / CD 
 - Unit tests / e2e tests
 - NextUI
+- ZOD
