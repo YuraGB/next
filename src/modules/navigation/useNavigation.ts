@@ -9,5 +9,6 @@ export const useNavigation = () => {
     // { url: Pages.BLOG, name: 'Blog' },
     // { url: Pages.KNOWLEDGE, name: 'Knowledge' },
     { url: Pages.FAIRY_TALES, name },
+    { url: Pages.CONTACT, name: 'Contacts' },
   ]
 }

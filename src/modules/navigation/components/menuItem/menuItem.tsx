@@ -3,7 +3,6 @@ import { NavbarItem } from '@nextui-org/navbar'
 import React, { memo } from 'react'
 import { NavBarItemType } from '@/modules/navigation/components/types'
 import { usePathname } from 'next/navigation'
-import { useIntl } from 'react-intl'
 
 type NavItemProps = {
   item: NavBarItemType
@@ -11,15 +10,15 @@ type NavItemProps = {
 
 const MenuItem = ({ item }: NavItemProps): React.ReactNode | null => {
   const pathname = usePathname()
-  const { locale } = useIntl()
 
   if (!item) {
     return null
   }
 
   const { url, name } = item
+
   return (
-    <NavbarItem isActive={pathname === `/${locale}${url}`}>
+    <NavbarItem isActive={pathname === url}>
       <Link color="foreground" href={url}>
         {name}
       </Link>
