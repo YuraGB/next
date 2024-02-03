@@ -19,9 +19,28 @@ export const useLangSwitcher = () => {
     document.cookie = `NEXT_LOCALE=${newLocale};expires=${expires};path=/`
 
     if (currentLocale === i18nConfig.defaultLocale) {
-      router.push('/' + newLocale + currentPathname)
+      console.log(
+        newLocale,
+        i18nConfig.defaultLocale,
+        currentPathname.replace(`/${currentLocale}`, `/${newLocale}`)
+      )
+      if (newLocale === i18nConfig.defaultLocale) {
+        router.push('/' + currentPathname.replace(`/${newLocale}`, ''))
+      } else {
+        // If the old locale is still in the pathname, replace it with the empty string
+        router.push(
+          '/' +
+            newLocale +
+            currentPathname.replace(`/${i18nConfig.defaultLocale}`, '')
+        )
+      }
     } else {
-      router.push(currentPathname.replace(`/${currentLocale}`, `/${newLocale}`))
+      router.push(
+        currentPathname.replace(
+          `/${currentLocale}`,
+          `${newLocale === i18nConfig.defaultLocale ? '' : '/' + newLocale}`
+        )
+      )
     }
 
     router.refresh()

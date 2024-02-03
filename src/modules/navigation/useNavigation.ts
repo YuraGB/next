@@ -1,7 +1,12 @@
 import { Pages } from '@/utils/pages'
 import { useIntl } from 'react-intl'
 
-export const useNavigation = () => {
+export type NavigationItem = {
+  url: string
+  name: string
+}
+
+export const useNavigation = (): NavigationItem[] => {
   const { formatMessage } = useIntl()
   const name = formatMessage({ id: 'fairy_tales' })
   return [
