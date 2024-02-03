@@ -54,12 +54,12 @@ export default async function RootLayout({
               <ServerIntlProvider messages={intl.messages} locale={intl.locale}>
                 <Navigation />
                 {children}
+                <Suspense fallback={null}>
+                  <Footer />
+                </Suspense>
               </ServerIntlProvider>
             </AuthProvider>
           </ReactQueryProvider>
-          <Suspense fallback={null}>
-            <Footer />
-          </Suspense>
         </NextUiProviderComponent>
         <SpeedInsights />
         <Analytics />
