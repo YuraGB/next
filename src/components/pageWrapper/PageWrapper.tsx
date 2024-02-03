@@ -2,6 +2,7 @@
 import React, { ReactNode, Suspense } from 'react'
 import { Toaster } from 'react-hot-toast'
 import dynamic from 'next/dynamic'
+import ScrollToTop from 'react-scroll-to-top'
 const BackgroundSwithcer = dynamic(
   () => import('@/components/BackgroundSwitcher/BackgroundSwithcer')
 )
@@ -31,6 +32,7 @@ export default function PageWrapper({
         {children}
         <Toaster />
       </main>
+      <ScrollToTop smooth color="#6f00ff" />
     </>
   )
 }
