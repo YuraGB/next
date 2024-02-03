@@ -28,7 +28,7 @@ const config: Config = {
             background: {
               DEFAULT: '#326596',
               50: '#e9e6e6',
-              '100': 'rgba(233,230,230,0.53)',
+              '100': 'rgba(255,255,255,0.1)',
             },
           },
         }, // light theme colors

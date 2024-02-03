@@ -27,7 +27,7 @@ export default function PageWrapper({
         </Suspense>
       ) : null}
       <main
-        className={` ${additionalClasses} flex flex-col pt-12 items-center [flex-grow:1] max-w-7xl m-auto sm:p-24 relative mt-0 w-full backdrop-blur-[10px] sm:backdrop-blur-md bg-opacity-50 bg-background-100`}
+        className={` ${additionalClasses} flex flex-col pt-12 items-center [flex-grow:1] max-w-7xl m-auto md:p-24 relative mt-0 w-full backdrop-blur-[5px] sm:backdrop-blur-[5px] bg-opacity-50 bg-background-100`}
       >
         {children}
         <Toaster />
