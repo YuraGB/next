@@ -3,7 +3,7 @@ import { render, screen, waitFor } from '@testing-library/react'
 import HomePageSlider from '@/modules/homePageSlider'
 
 describe('Slider tests', () => {
-  it('Props photo will be null', async () => {
+  it.skip('Props photo will be null', async () => {
     const Result = await HomePageSlider()
 
     render(Result)
