@@ -122,7 +122,7 @@ const config = {
         "@typescript-eslint/consistent-generic-constructors": "error",
         "@typescript-eslint/no-confusing-non-null-assertion": "error",
         "@typescript-eslint/no-duplicate-enum-values": "error",
-        "@typescript-eslint/strict-boolean-expressions": false,
+        "@typescript-eslint/strict-boolean-expressions": 1,
         "no-self-compare": "error",
 
         // React
