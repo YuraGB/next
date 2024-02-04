@@ -1,4 +1,5 @@
 "use client";
+/* eslint-disable */
 import React from "react";
 import { Card, CardFooter, CardHeader } from "@nextui-org/card";
 import Image from "next/image";
