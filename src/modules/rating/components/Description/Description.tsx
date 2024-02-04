@@ -8,7 +8,7 @@ const Description = ({
   canVote: boolean;
   userId: string | null | undefined;
 }): ReactNode => {
-  if (userId === undefined) {
+  if (userId === undefined || userId === null) {
     return (
       <p>
         <FormattedMessage
@@ -18,6 +18,7 @@ const Description = ({
       </p>
     );
   }
+
   if (canVote) {
     return null;
   }
