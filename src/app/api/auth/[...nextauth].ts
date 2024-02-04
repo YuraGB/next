@@ -32,7 +32,7 @@ export const authOptions: NextAuthOptions = {
         if (credentials?.email) {
           try {
             const user = await findUser(credentials?.email)
-            console.log(user, credentials)
+
             if (
               user &&
               typeof user !== 'string' &&
@@ -56,13 +56,17 @@ export const authOptions: NextAuthOptions = {
   },
   callbacks: {
     async jwt({ token, user }) {
-      if (user) token.role = user?.role
+      if (user) {
+        token.role = user?.role
+        token.sub = user?.id
+      }
       return token
     },
 
     async session({ session, token }) {
       if (token && session.user) {
         session.user.role = token.role
+        session.user.id = token.sub as string
       }
       return session
     },

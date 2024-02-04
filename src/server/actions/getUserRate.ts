@@ -1,0 +1,39 @@
+'use server'
+import prisma from '$prismaClient/prisma'
+
+export const getUsers = async ({
+  userId,
+  taleId,
+}: {
+  userId: string | null | undefined
+  taleId: string | undefined
+}) => {
+  if (!userId || !taleId) {
+    return null
+  }
+  try {
+    return await prisma?.user.findUnique({
+      where: {
+        id: userId,
+        rating: {
+          some: {
+            Tale: {
+              some: {
+                id: taleId,
+              },
+            },
+          },
+        },
+      },
+      select: {
+        rating: {
+          select: {
+            id: true,
+          },
+        },
+      },
+    })
+  } catch (e) {
+    console.log(e)
+  }
+}

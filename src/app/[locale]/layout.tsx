@@ -9,6 +9,7 @@ import AuthProvider from '@/context/AuthProvider'
 import NextUiProviderComponent from '@/context/NextUiProviderComponent'
 
 import './globals.css'
+import '@smastrom/react-rating/style.css'
 
 import dynamic from 'next/dynamic'
 import ServerIntlProvider from '@/context/i18nProvider'
