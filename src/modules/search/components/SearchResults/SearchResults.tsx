@@ -1,15 +1,15 @@
-import { FC, memo, ReactNode } from 'react'
-import { LoaderIcon } from 'react-hot-toast'
+import { type FC, memo, type ReactNode } from "react";
+import { LoaderIcon } from "react-hot-toast";
 import ListSearchResults, {
-  TaleWithCategory,
-} from '@/modules/search/components/ListSearchResults/ListSearchResults'
+  type TaleWithCategory,
+} from "@/modules/search/components/ListSearchResults/ListSearchResults";
 
 type SearchResultsProps = {
-  isLoading: boolean
-  searchResults: TaleWithCategory[] | []
-  error: Error | null
-  onClick: (id: string) => void
-}
+  isLoading: boolean;
+  searchResults: TaleWithCategory[] | [];
+  error: Error | null;
+  onClick: (id: string) => void;
+};
 const SearchResults: FC<SearchResultsProps> = ({
   isLoading,
   searchResults,
@@ -17,14 +17,14 @@ const SearchResults: FC<SearchResultsProps> = ({
   onClick,
 }): ReactNode | null => {
   if (isLoading) {
-    return <LoaderIcon className={'my-5'} />
+    return <LoaderIcon className={"my-5"} />;
   }
 
   if (!searchResults?.length || error) {
-    return null
+    return null;
   }
 
-  return <ListSearchResults results={searchResults} onClick={onClick} />
-}
+  return <ListSearchResults results={searchResults} onClick={onClick} />;
+};
 
-export default memo(SearchResults)
+export default memo(SearchResults);

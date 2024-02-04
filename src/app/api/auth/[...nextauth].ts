@@ -29,6 +29,7 @@ export const authOptions: NextAuthOptions = {
         // e.g. return { id: 1, name: 'J Smith', email: 'jsmith@example.com' }
         // You can also use the `req` object to obtain additional parameters
         // (i.e., the request IP address)
+        //eslint-disable-next-line
         if (credentials?.email) {
           try {
             const user = await findUser(credentials?.email);
@@ -56,6 +57,7 @@ export const authOptions: NextAuthOptions = {
   },
   callbacks: {
     async jwt({ token, user }) {
+      // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
       if (user) {
         token.role = user?.role;
         token.sub = user?.id;
@@ -64,6 +66,7 @@ export const authOptions: NextAuthOptions = {
     },
 
     async session({ session, token }) {
+      // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
       if (token && session.user) {
         session.user.role = token.role;
         session.user.id = token.sub!;

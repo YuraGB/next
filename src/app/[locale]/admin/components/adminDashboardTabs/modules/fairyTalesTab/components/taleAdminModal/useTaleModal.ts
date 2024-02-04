@@ -11,6 +11,7 @@ import { formatTaleData } from "@/app/[locale]/admin/components/adminDashboardTa
 import useUpdateTaleHandler from "@/app/[locale]/admin/components/adminDashboardTabs/modules/fairyTalesTab/service/updateTaleHandler";
 import { useAddNewTale } from "@/app/[locale]/admin/components/adminDashboardTabs/modules/fairyTalesTab/service/useAddNewTale";
 
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export const useTaleModal = (initialValues: Tale | null, onClose: () => void = () => undefined) => {
   const {
     register,

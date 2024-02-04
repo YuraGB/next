@@ -9,6 +9,7 @@ import formFieldsMapping from "@/modules/utils/formFieldsMapping";
 import { useAddNewUser } from "@/app/[locale]/admin/components/adminDashboardTabs/modules/adminUserTab/service/useAddNewUser";
 import useUpdateUser from "@/app/[locale]/admin/components/adminDashboardTabs/modules/adminUserTab/service/useUpdateUser";
 
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export const useUserPopup = (initialValues: User | null, onClose: () => void = () => undefined) => {
   const {
     register,

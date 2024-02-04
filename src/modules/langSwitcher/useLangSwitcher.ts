@@ -4,11 +4,13 @@ import { useCurrentLocale } from "next-i18n-router/client";
 import { i18nConfig } from "../../../i18nConfig";
 import { type ChangeEvent } from "react";
 
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export const useLangSwitcher = () => {
   const router = useRouter();
   const currentPathname = usePathname();
   const currentLocale = useCurrentLocale(i18nConfig);
 
+  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
   const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
     const newLocale = e.target.value;
 

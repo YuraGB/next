@@ -11,6 +11,7 @@ type TSubmitData = {
   email: string;
 };
 
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export const useInputComment = (taleId: string | undefined) => {
   const {
     reset,

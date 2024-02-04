@@ -8,6 +8,7 @@ const TalesListSkeleton = (): ReactNode => {
       {Array(3)
         .fill(1)
         .map((item, index) => (
+          // eslint-disable-next-line react/no-array-index-key
           <TaleItemSkeleton key={index} />
         ))}
     </section>

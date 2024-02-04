@@ -18,6 +18,7 @@ export default function PageWrapper({
   additionalClasses = "",
   showBackground = true,
 }: Props): React.ReactNode {
+  const wrapperClass = `${additionalClasses} relative m-auto mt-0 flex w-full max-w-7xl flex-col items-center bg-background-100 bg-opacity-50 pt-12 backdrop-blur-[5px] [grow:1] sm:backdrop-blur-[5px] md:p-24`;
   return (
     <React.Fragment>
       {" "}
@@ -26,9 +27,7 @@ export default function PageWrapper({
           <BackgroundSwithcer />
         </Suspense>
       ) : null}
-      <main
-        className={` ${additionalClasses} relative m-auto mt-0 flex w-full max-w-7xl flex-col items-center bg-background-100 bg-opacity-50 pt-12 backdrop-blur-[5px] [grow:1] sm:backdrop-blur-[5px] md:p-24`}
-      >
+      <main className={wrapperClass}>
         {children}
         <Toaster />
       </main>

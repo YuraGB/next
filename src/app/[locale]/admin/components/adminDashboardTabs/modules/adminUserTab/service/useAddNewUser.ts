@@ -2,6 +2,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { GET_ALL_USERS } from "@/server/actions/queryNaming";
 import { createUser, type TCreateUser } from "@/server/actions/createUser";
 
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export const useAddNewUser = () => {
   const queryClient = useQueryClient();
   const { mutate, data, error } = useMutation({

@@ -1,5 +1,7 @@
 // https://codepen.io/frexuz/pen/eYvBVW
 // legacy code
+
+/* eslint-disable */
 export default function start(theme: string) {
   //Helpers
   function lineToAngle(x1: number, y1: number, length: number, radians: number) {

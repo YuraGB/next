@@ -1,6 +1,6 @@
 "use client"; // Error components must be Client Components
 
-import { useEffect } from "react";
+import { type ReactNode, useEffect } from "react";
 import { type Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -14,7 +14,7 @@ export default function Error({
 }: {
   error: Error & { digest?: string };
   reset: () => void;
-}) {
+}): ReactNode {
   useEffect(() => {
     // Log the error to an error reporting service
     console.error(error);

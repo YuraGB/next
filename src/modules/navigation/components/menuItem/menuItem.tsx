@@ -1,26 +1,25 @@
-import Link from 'next/link'
-import { NavbarItem } from '@nextui-org/navbar'
-import React, { memo } from 'react'
-import { NavBarItemType } from '@/modules/navigation/components/types'
-import { usePathname } from 'next/navigation'
-import { useIntl } from 'react-intl'
+import Link from "next/link";
+import { NavbarItem } from "@nextui-org/navbar";
+import React, { memo } from "react";
+import { type NavBarItemType } from "@/modules/navigation/components/types";
+import { usePathname } from "next/navigation";
+import { useIntl } from "react-intl";
 
 type NavItemProps = {
-  item: NavBarItemType
-}
+  item: NavBarItemType;
+};
 
 const MenuItem = ({ item }: NavItemProps): React.ReactNode | null => {
-  const pathname = usePathname()
-  const { locale } = useIntl()
+  const pathname = usePathname();
+  const { locale } = useIntl();
 
   if (!item) {
-    return null
+    return null;
   }
 
-  const { url, name } = item
+  const { url, name } = item;
 
-  const isActive: boolean =
-    locale !== 'uk' ? pathname === url : pathname === `/${locale}${url}`
+  const isActive: boolean = locale !== "uk" ? pathname === url : pathname === `/${locale}${url}`;
 
   return (
     <NavbarItem isActive={isActive}>
@@ -28,7 +27,7 @@ const MenuItem = ({ item }: NavItemProps): React.ReactNode | null => {
         {name}
       </Link>
     </NavbarItem>
-  )
-}
+  );
+};
 
-export default memo(MenuItem)
+export default memo(MenuItem);

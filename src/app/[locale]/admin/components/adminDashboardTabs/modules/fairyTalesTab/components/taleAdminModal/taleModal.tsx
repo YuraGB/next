@@ -1,5 +1,5 @@
 "use client";
-import React, { memo } from "react";
+import React, { memo, type ReactNode } from "react";
 import { Modal, ModalBody, ModalContent, ModalFooter, ModalHeader } from "@nextui-org/modal";
 import { Button } from "@nextui-org/button";
 import { useTaleModal } from "@/app/[locale]/admin/components/adminDashboardTabs/modules/fairyTalesTab/components/taleAdminModal/useTaleModal";
@@ -15,7 +15,7 @@ const TaleModal = ({
   isOpen = false,
   onClose = () => undefined,
   initialValues = null,
-}: { isOpen: boolean; onClose: () => void } & propsInit) => {
+}: { isOpen: boolean; onClose: () => void } & propsInit): ReactNode => {
   const { handleSubmit, register, onSubmit, formFields } = useTaleModal(initialValues, onClose);
 
   return (

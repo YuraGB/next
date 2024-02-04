@@ -1,16 +1,17 @@
-import { useDeleteCommentService } from '@/modules/comments/components/service/useDeleteCommentService'
-import { useSession } from 'next-auth/react'
+import { useDeleteCommentService } from "@/modules/comments/components/service/useDeleteCommentService";
+import { useSession } from "next-auth/react";
 
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export const useComments = (taleId: string) => {
-  const { data: sessionData } = useSession()
-  const { mutate, status, error, data } = useDeleteCommentService(taleId)
+  const { data: sessionData } = useSession();
+  const { mutate, status, error, data } = useDeleteCommentService(taleId);
 
-  const isAdmin = sessionData?.user?.role === 'ADMIN'
-  const onDelete = (id: string) => {
+  const isAdmin = sessionData?.user?.role === "ADMIN";
+  const onDelete = (id: string): void => {
     if (isAdmin && id) {
-      mutate(id)
+      mutate(id);
     }
-  }
+  };
 
   return {
     isAdmin,
@@ -18,5 +19,5 @@ export const useComments = (taleId: string) => {
     status,
     error,
     data,
-  }
-}
+  };
+};

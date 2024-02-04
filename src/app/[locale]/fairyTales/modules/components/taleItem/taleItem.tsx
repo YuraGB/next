@@ -41,12 +41,16 @@ const TaleItem = ({ tale }: { tale: TFindAllTales }): React.ReactNode | null => 
           width={600}
           className={"absolute left-0 top-0 h-[300px] min-h-full w-full object-cover"}
         />
-        <div className="max-w-100% left-0 top-0 flex max-h-[50%] w-full flex-col sm:max-w-[50%]">
+        {/* eslint-disable-next-line tailwindcss/no-custom-classname */}
+        <div className="left-0 top-0 flex max-h-[50%] w-full max-w-[100%] flex-col sm:max-w-[50%]">
+          {/* eslint-disable-next-line tailwindcss/no-custom-classname */}
           <p className="text-md color-inherit relative bottom-0 z-10 flex h-auto w-full items-center overflow-hidden rounded-b-large border-t-1 border-default-600 bg-black/40 p-3 font-['cinzel_decorativeregular'] text-[22px] text-amber-50 subpixel-antialiased backdrop-blur backdrop-saturate-150 dark:border-default-100">
             {title}
           </p>
         </div>
+        {/* eslint-disable-next-line tailwindcss/no-custom-classname */}
         <div className="button-[50%] left-6 mt-3 flex h-[50%] w-full max-w-[50%] flex-col items-start">
+          {/* eslint-disable-next-line tailwindcss/no-custom-classname */}
           <p className="color-inherit relative line-clamp-4 items-center p-0 pl-4 text-left font-['cormorant_it'] text-[18px]  italic text-amber-50 subpixel-antialiased  backdrop-blur ">
             {shortDescription}
           </p>

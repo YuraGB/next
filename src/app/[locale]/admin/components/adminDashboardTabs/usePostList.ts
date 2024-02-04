@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { GET_ALL_POSTS } from "@/server/actions/queryNaming";
 import { getAllPosts } from "@/server/actions/getPublicPosts";
 
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export const usePostList = () => {
   const { data, isLoading, error } = useQuery({
     queryKey: [GET_ALL_POSTS],

@@ -1,19 +1,19 @@
-'use client'
-import React, { memo, ReactNode } from 'react'
-import { useSession } from 'next-auth/react'
-import NotLoggedInItems from '@/modules/navigation/components/profileMenuItems/notLoggedInItems'
-import LoggedInItems from '@/modules/navigation/components/profileMenuItems/loggedInItems'
-import { SkeletonComponent } from '@/modules/navigation/components/skeleton/Skeleton'
+"use client";
+import React, { memo, type ReactNode } from "react";
+import { useSession } from "next-auth/react";
+import NotLoggedInItems from "@/modules/navigation/components/profileMenuItems/notLoggedInItems";
+import LoggedInItems from "@/modules/navigation/components/profileMenuItems/loggedInItems";
+import { SkeletonComponent } from "@/modules/navigation/components/skeleton/Skeleton";
 
 const ProfileMenuItems = (): ReactNode => {
-  const { status, data } = useSession()
-  const isLoggedIn = status === 'authenticated'
+  const { status, data } = useSession();
+  const isLoggedIn = status === "authenticated";
 
-  if (status === 'loading') {
-    return <SkeletonComponent />
+  if (status === "loading") {
+    return <SkeletonComponent />;
   }
 
-  return isLoggedIn ? <LoggedInItems user={data?.user} /> : <NotLoggedInItems />
-}
+  return isLoggedIn ? <LoggedInItems user={data?.user} /> : <NotLoggedInItems />;
+};
 
-export default memo(ProfileMenuItems)
+export default memo(ProfileMenuItems);

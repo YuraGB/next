@@ -1,11 +1,11 @@
 // Code: ContuctUsForm
 "use client";
 import { Button } from "@nextui-org/button";
-import React from "react";
+import React, { type ReactNode } from "react";
 import { useContuctUs } from "@/app/[locale]/contacts/_components/ContactUsForm/useContuctUs";
 import { FormattedMessage } from "react-intl";
 
-const ContactUsForm = () => {
+const ContactUsForm = (): ReactNode => {
   const { formFields, onSubmit, handleSubmit } = useContuctUs();
 
   return (

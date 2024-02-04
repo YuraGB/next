@@ -1,6 +1,7 @@
 "use server";
 import prisma from "$prismaClient/prisma";
 
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export const getPosts = async () => {
   try {
     return await prisma?.post.findMany({
