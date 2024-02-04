@@ -1,9 +1,5 @@
-export const GET_ALL_TALES: string = 'GET_ALL_TALES'
-export const UPDATE_TALE: string = 'UPDATE_TALE'
-export const GET_ALL_USERS: string = 'GET_ALL_USERS'
-export const GET_ONE_TALE: string = 'GET_ONE_TALE'
-export const GET_ONE_USER_WITH_VOTE: string = 'GET_ONE_USER_WITH_VOTE'
-export const GET_PUBLIC_POSTS: string = 'GET_PUBLIC_POSTS'
-export const GET_ALL_POSTS: string = 'GET_ALL_POSTS'
-export const GET_POST_BY_ID: string = 'GET_POST_BY_ID'
-export const ADD_NEW_TALE: string = 'ADD_NEW_TALE'
+export const GET_ALL_TALES = "GET_ALL_TALES";
+export const GET_ALL_USERS = "GET_ALL_USERS";
+export const GET_ONE_TALE = "GET_ONE_TALE";
+export const GET_ONE_USER_WITH_VOTE = "GET_ONE_USER_WITH_VOTE";
+export const GET_ALL_POSTS = "GET_ALL_POSTS";

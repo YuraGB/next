@@ -1,15 +1,15 @@
-'use server'
-import prisma from '$prismaClient/prisma'
+"use server";
+import prisma from "$prismaClient/prisma";
 
 export const getUsers = async ({
   userId,
   taleId,
 }: {
-  userId: string | null | undefined
-  taleId: string | undefined
+  userId: string | null | undefined;
+  taleId: string | undefined;
 }) => {
   if (!userId || !taleId) {
-    return null
+    return null;
   }
   try {
     return await prisma?.user.findUnique({
@@ -32,8 +32,9 @@ export const getUsers = async ({
           },
         },
       },
-    })
+    });
   } catch (e) {
-    console.log(e)
+    console.log(e);
+    throw new Error("Error getting user rate");
   }
-}
+};

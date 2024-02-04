@@ -1,11 +1,11 @@
-'use server'
-import { cache } from 'react'
-import 'server-only'
-import prisma from '$prismaClient/prisma'
+"use server";
+import { cache } from "react";
+import "server-only";
+import prisma from "$prismaClient/prisma";
 
 export const getPublicPosts = cache(async () => {
   try {
-    return prisma?.post.findMany({
+    return await prisma?.post.findMany({
       where: { public: true },
       select: {
         title: true,
@@ -19,16 +19,18 @@ export const getPublicPosts = cache(async () => {
         //   },
         // },
       },
-    })
+    });
   } catch (e) {
-    console.log(e)
+    console.log(e);
+    throw new Error("Error getting public posts");
   }
-})
+});
 
 export const getAllPosts = cache(async () => {
   try {
-    return prisma?.post.findMany()
+    return await prisma?.post.findMany();
   } catch (e) {
-    console.log(e)
+    console.log(e);
+    throw new Error("Error getting all posts");
   }
-})
+});

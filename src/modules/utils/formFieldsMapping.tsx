@@ -1,9 +1,9 @@
-import { Fields } from '@/modules/types/formTypes'
-import { Input, Textarea } from '@nextui-org/input'
-import React from 'react'
-import { FieldErrors } from 'react-hook-form/dist/types/errors'
-import { UseFormRegister } from 'react-hook-form/dist/types/form'
-import { FieldValues } from 'react-hook-form/dist/types/fields'
+import { type Fields } from "@/modules/types/formTypes";
+import { Input, Textarea } from "@nextui-org/input";
+import React from "react";
+import { type FieldErrors } from "react-hook-form/dist/types/errors";
+import { type UseFormRegister } from "react-hook-form/dist/types/form";
+import { type FieldValues } from "react-hook-form/dist/types/fields";
 
 export default function formFieldsMapping(
   fields: Fields[],
@@ -28,14 +28,14 @@ export default function formFieldsMapping(
       index: number
     ) => (
       <div className={`mb-6 ${additionalClasses}`} key={label + index}>
-        {type === 'textarea' ? (
+        {type === "textarea" ? (
           <Textarea
             label={label}
             className="w-full"
             {...rest}
             {...register(name as keyof Fields, {
-              required: required,
-              pattern: pattern,
+              required,
+              pattern,
             })}
             defaultValue={defaultValue}
           />
@@ -46,11 +46,11 @@ export default function formFieldsMapping(
             label={label}
             defaultValue={defaultValue}
             {...register(name as keyof Fields, {
-              required: required,
-              pattern: pattern,
+              required,
+              pattern,
             })}
-            isInvalid={!!errors[name as keyof Fields]}
-            errorMessage={errors[name as keyof Fields] ? errorMessage : ''}
+            isInvalid={Boolean(errors[name as keyof Fields])}
+            errorMessage={errors[name as keyof Fields] ? errorMessage : ""}
             description={description}
             autoComplete={autoComplete}
             {...rest}
@@ -58,5 +58,5 @@ export default function formFieldsMapping(
         )}
       </div>
     )
-  )
+  );
 }

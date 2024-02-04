@@ -1,16 +1,11 @@
-import {
-  Button,
-  Popover,
-  PopoverTrigger,
-  PopoverContent,
-} from '@nextui-org/react'
-import { memo, SyntheticEvent } from 'react'
-import { SearchIcon } from '@nextui-org/shared-icons'
-import InputSearch from '@/modules/search/components/InputSearch/InputSearch'
-import { useInputSearch } from '@/modules/search/useInputSearch'
-import SearchResults from '@/modules/search/components/SearchResults/SearchResults'
+import { Button, Popover, PopoverTrigger, PopoverContent } from "@nextui-org/react";
+import { memo, type ReactNode, type SyntheticEvent } from "react";
+import { SearchIcon } from "@nextui-org/shared-icons";
+import InputSearch from "@/modules/search/components/InputSearch/InputSearch";
+import { useInputSearch } from "@/modules/search/useInputSearch";
+import SearchResults from "@/modules/search/components/SearchResults/SearchResults";
 
-const Search = () => {
+const Search = (): ReactNode => {
   const {
     searchResults,
     error,
@@ -18,20 +13,18 @@ const Search = () => {
     onChangeHandler,
     redirectToTale,
     isPopoverOpen,
-    setIsOpen,
-  } = useInputSearch()
+    setIsPopoverOpen,
+  } = useInputSearch();
 
-  const onClose = (e: SyntheticEvent<HTMLElement>) => {
-    const isClickOnContent = (e.target as HTMLElement)?.closest(
-      '[data-slot="content"]'
-    )
+  const onClose = (e: SyntheticEvent<HTMLElement>): void => {
+    const isClickOnContent = (e.target as HTMLElement)?.closest('[data-slot="content"]');
     if (!isClickOnContent) {
-      setIsOpen(false)
+      setIsPopoverOpen(false);
     }
-  }
+  };
 
   return (
-    <li className={'relative'}>
+    <li className={"relative"}>
       <Popover
         showArrow
         backdrop="opaque"
@@ -40,33 +33,35 @@ const Search = () => {
         shouldCloseOnBlur={true}
         isOpen={isPopoverOpen}
         classNames={{
-          arrow: ['sm:block hidden'],
+          arrow: ["sm:block hidden"],
           base: [
-            'before:bg-default-200',
-            'w-[500px] max-w-full rounded-0',
-            'max-w-full',
-            'md:w-[500px]',
-            'w-[100vw]',
+            "before:bg-default-200",
+            "w-[500px] max-w-full rounded-0",
+            "max-w-full",
+            "md:w-[500px]",
+            "w-[100vw]",
           ],
           content: [
-            'py-3 px-4 border border-default-200',
-            'bg-gradient-to-br from-white to-default-300',
-            'dark:from-default-100 dark:to-default-50',
-            'rounded-0',
-            'max-w-full',
+            "py-3 px-4 border border-default-200",
+            "bg-gradient-to-br from-white to-default-300",
+            "dark:from-default-100 dark:to-default-50",
+            "rounded-0",
+            "max-w-full",
           ],
         }}
       >
         <PopoverTrigger>
           <Button
             isIconOnly={true}
-            aria-labelledby={'Search button'}
-            aria-label={'Search button'}
-            role={'button'}
-            title={'Search button'}
-            onClick={() => setIsOpen((st) => !st)}
+            aria-labelledby={"Search button"}
+            aria-label={"Search button"}
+            role={"button"}
+            title={"Search button"}
+            onClick={() => {
+              setIsPopoverOpen((st) => !st);
+            }}
           >
-            <SearchIcon aria-labelledby={'Search icon'} />
+            <SearchIcon aria-labelledby={"Search icon"} />
           </Button>
         </PopoverTrigger>
         <PopoverContent>
@@ -80,7 +75,7 @@ const Search = () => {
         </PopoverContent>
       </Popover>
     </li>
-  )
-}
+  );
+};
 
-export default memo(Search)
+export default memo(Search);

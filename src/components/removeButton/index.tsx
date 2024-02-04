@@ -1,19 +1,15 @@
-import React from 'react'
-import { Button } from '@nextui-org/button'
-import { Tooltip } from '@nextui-org/tooltip'
+import React from "react";
+import { Button } from "@nextui-org/button";
+import { Tooltip } from "@nextui-org/tooltip";
 
-const RemoveButton = ({
-  onClick,
-}: {
-  onClick: () => void
-}): React.ReactNode => {
+const RemoveButton = ({ onClick }: { onClick: () => void }): React.ReactNode => {
   return (
-    <Tooltip content={'Remove'} placement={'top'}>
+    <Tooltip content={"Remove"} placement={"top"}>
       <Button
         isIconOnly={true}
         onClick={onClick}
-        className={'flex items-center w-[10px] ml-2 border-0'}
-        variant={'ghost'}
+        className={"ml-2 flex w-[10px] items-center border-0"}
+        variant={"ghost"}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -28,7 +24,7 @@ const RemoveButton = ({
         </svg>
       </Button>
     </Tooltip>
-  )
-}
+  );
+};
 
-export default React.memo(RemoveButton)
+export default React.memo(RemoveButton);

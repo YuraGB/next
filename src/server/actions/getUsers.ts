@@ -1,12 +1,13 @@
-'use server'
-import prisma from '$prismaClient/prisma'
-import { User } from '@/app/[locale]/admin/components/adminDashboardTabs/modules/adminUserTab/model/User'
-type GetUsersT = () => Promise<User[] | null | undefined>
+"use server";
+import prisma from "$prismaClient/prisma";
+import { type User } from "@/app/[locale]/admin/components/adminDashboardTabs/modules/adminUserTab/model/User";
+type GetUsersT = () => Promise<User[] | null | undefined>;
 
 export const getUsers: GetUsersT = async () => {
   try {
-    return await prisma?.user.findMany()
+    return await prisma?.user.findMany();
   } catch (e) {
-    console.log(e)
+    console.log(e);
+    throw new Error("Error getting users");
   }
-}
+};

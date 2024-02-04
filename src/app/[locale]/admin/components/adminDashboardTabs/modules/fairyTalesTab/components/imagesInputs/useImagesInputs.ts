@@ -1,45 +1,46 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from "react";
 
 const defaultState = {
-  defaultValue: '',
-  id: 'defaultValue',
-}
+  defaultValue: "",
+  id: "defaultValue",
+};
 
 export const useImagesInputs = (initialImages: string[] | undefined) => {
-  const [images, setImages] = useState<(typeof defaultState)[]>([])
+  const [images, setImages] = useState<Array<typeof defaultState>>([]);
 
   useEffect(() => {
-    if (initialImages && initialImages.length) {
+    if (initialImages?.length) {
       const setInitials = initialImages
         .filter((image) => image)
         .map((image) => ({
           id: image,
           defaultValue: image,
-        }))
+        }));
 
-      setImages(setInitials)
+      setImages(setInitials);
     } else {
-      setImages([defaultState])
+      setImages([defaultState]);
     }
-  }, [initialImages])
+  }, [initialImages]);
 
   const onDelete = useCallback(
     (id: string) => {
       if (id) {
-        const updatedImages = images.filter((images) => images.id !== id)
-        setImages(updatedImages)
+        // eslint-disable-next-line no-shadow
+        const updatedImages = images.filter((images) => images.id !== id);
+        setImages(updatedImages);
       }
     },
     [images]
-  )
+  );
 
   const onAdd: () => void = () => {
-    const newInput = [...images, defaultState]
-    setImages(newInput)
-  }
+    const newInput = [...images, defaultState];
+    setImages(newInput);
+  };
   return {
     onAdd,
     images,
     onDelete,
-  }
-}
+  };
+};

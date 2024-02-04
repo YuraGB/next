@@ -1,33 +1,25 @@
-'use client'
-import Link from 'next/link'
-import React, { Suspense, useState } from 'react'
-import {
-  Navbar,
-  NavbarBrand,
-  NavbarContent,
-  NavbarMenuToggle,
-} from '@nextui-org/navbar'
-import MenuList from '@/modules/navigation/components/menuList/menuList'
-import { useNavigation } from '@/modules/navigation/useNavigation'
+"use client";
+import Link from "next/link";
+import React, { Suspense, useState } from "react";
+import { Navbar, NavbarBrand, NavbarContent, NavbarMenuToggle } from "@nextui-org/navbar";
+import MenuList from "@/modules/navigation/components/menuList/menuList";
+import { useNavigation } from "@/modules/navigation/useNavigation";
 
-import { FormattedMessage } from 'react-intl'
+import { FormattedMessage } from "react-intl";
 
-import Search from '@/modules/search'
-import ThemeSwitcher from '@/components/themeSwitcher/ThemeSwitcher'
-import LangSwitcher from '@/modules/langSwitcher/langSwitcher'
-import dynamic from 'next/dynamic'
+import Search from "@/modules/search";
+import ThemeSwitcher from "@/components/themeSwitcher/ThemeSwitcher";
+import LangSwitcher from "@/modules/langSwitcher/langSwitcher";
+import dynamic from "next/dynamic";
 
-const MobileMenu = dynamic(
-  () => import('@/modules/navigation/components/mobileMenu/mobileMenu')
-)
+const MobileMenu = dynamic(() => import("@/modules/navigation/components/mobileMenu/mobileMenu"));
 const ProfileMenuItems = dynamic(
-  () =>
-    import('@/modules/navigation/components/profileMenuItems/profileMenuItems')
-)
+  () => import("@/modules/navigation/components/profileMenuItems/profileMenuItems")
+);
 
 const Navigation = (): React.ReactNode => {
-  const menuItems = useNavigation()
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const menuItems = useNavigation();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <Navbar
@@ -35,25 +27,18 @@ const Navigation = (): React.ReactNode => {
       isBordered
       isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen}
-      className={'[&>header]:px-1 bg-background-50'}
+      className={"bg-background-50 [&>header]:px-1"}
     >
-      <NavbarContent
-        className="pr-3 max-w-[50%] sm:max-w-[fit-content]"
-        justify="start"
-      >
-        <li className={'flex w-full'}>
+      <NavbarContent className="max-w-[50%] pr-3 sm:max-w-[fit-content]" justify="start">
+        <li className={"flex w-full"}>
           <ThemeSwitcher />
           <LangSwitcher />
-          <NavbarBrand
-            className={'justify-end mr-[-18px] sm:mr-0  hidden sm:flex'}
-          >
-            <Link
-              href={'/'}
-              className={'flex justify-center content-center items-center'}
-            >
-              <p className="font-bold text-inherit hidden sm:flex items-center">
+          <NavbarBrand className={"mr-[-18px] hidden justify-end  sm:mr-0 sm:flex"}>
+            <Link href={"/"} className={"flex content-center items-center justify-center"}>
+              <p className="hidden items-center font-bold text-inherit sm:flex">
+                {/* eslint-disable-next-line no-use-before-define */}
                 <AcmeLogo />
-                <FormattedMessage id={'logo'} />
+                <FormattedMessage id={"logo"} />
               </p>
             </Link>
           </NavbarBrand>
@@ -70,19 +55,19 @@ const Navigation = (): React.ReactNode => {
         <MobileMenu items={menuItems} />
       </Suspense>
 
-      <NavbarContent className={'max-w-[fit-content]'}>
+      <NavbarContent className={"max-w-[fit-content]"}>
         <Search />
-        <li className="md:hidden max-w-[25px]">
-          <NavbarMenuToggle className={'h-5'} />
+        <li className="max-w-[25px] md:hidden">
+          <NavbarMenuToggle className={"h-5"} />
         </li>
       </NavbarContent>
     </Navbar>
-  )
-}
+  );
+};
 
-export default React.memo(Navigation)
+export default React.memo(Navigation);
 
-export const AcmeLogo = () => (
+export const AcmeLogo = (): React.ReactNode => (
   <svg fill="none" height="36" viewBox="0 0 32 32" width="36">
     <path
       clipRule="evenodd"
@@ -91,4 +76,4 @@ export const AcmeLogo = () => (
       fillRule="evenodd"
     />
   </svg>
-)
+);

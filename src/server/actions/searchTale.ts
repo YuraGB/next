@@ -1,21 +1,18 @@
-'use server'
-import prisma from '$prismaClient/prisma'
-import { CategoryTale } from '@prisma/client'
+"use server";
+import prisma from "$prismaClient/prisma";
+import { type CategoryTale } from "@prisma/client";
 
 type SearchTaleResponse = {
-  title: string
-  id: string
-  categoryTale: CategoryTale
-  forAge: string
-  mainImage: string
-  content: string
-  shortDescription: string
-}
+  title: string;
+  id: string;
+  categoryTale: CategoryTale;
+  forAge: string;
+  mainImage: string;
+  content: string;
+  shortDescription: string;
+};
 
-// eslint-disable-next-line import/no-anonymous-default-export
-export default async (
-  value: string
-): Promise<SearchTaleResponse[] | undefined> => {
+export default async (value: string): Promise<SearchTaleResponse[] | undefined> => {
   try {
     return await prisma.tale.findMany({
       where: {
@@ -32,8 +29,9 @@ export default async (
         content: true,
         shortDescription: true,
       },
-    })
+    });
   } catch (e) {
-    console.log(e)
+    console.log(e);
+    throw new Error("Error searching tale");
   }
-}
+};

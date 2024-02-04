@@ -1,13 +1,13 @@
-import { NavbarContent, NavbarItem } from '@nextui-org/navbar'
-import React from 'react'
-import { Skeleton } from '@nextui-org/skeleton'
+import { NavbarContent, NavbarItem } from "@nextui-org/navbar";
+import React, { type ReactNode } from "react";
+import { Skeleton } from "@nextui-org/skeleton";
 
-export const SkeletonComponent = () => {
+export const SkeletonComponent = (): ReactNode => {
   return (
     <NavbarContent justify="end">
       <NavbarItem>
-        <Skeleton className={'flex rounded-full w-12 h-12'} />
+        <Skeleton className={"flex size-12 rounded-full"} />
       </NavbarItem>
     </NavbarContent>
-  )
-}
+  );
+};

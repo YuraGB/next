@@ -1,26 +1,26 @@
-import { Select, SelectItem } from '@nextui-org/select'
-import { UseFormRegister } from 'react-hook-form/dist/types/form'
-import { FieldValues } from 'react-hook-form/dist/types/fields'
-import { FC, memo } from 'react'
-import { useCategoryList } from '@/app/[locale]/admin/components/adminDashboardTabs/modules/fairyTalesTab/components/categorySelect/useCategoryList'
+import { Select, SelectItem } from "@nextui-org/select";
+import { type UseFormRegister } from "react-hook-form/dist/types/form";
+import { type FieldValues } from "react-hook-form/dist/types/fields";
+import { type FC, memo } from "react";
+import { useCategoryList } from "@/app/[locale]/admin/components/adminDashboardTabs/modules/fairyTalesTab/components/categorySelect/useCategoryList";
 
 type Props = {
-  register: UseFormRegister<FieldValues>
-}
+  register: UseFormRegister<FieldValues>;
+};
 
 const CategorySelect: FC<Props> = ({ register }) => {
-  const { categoryList } = useCategoryList()
+  const { categoryList } = useCategoryList();
 
   if (categoryList.length === 0) {
-    return null
+    return null;
   }
 
   return (
     <Select
       label="Select an animal"
-      className="max-w-xs mb-6"
-      {...register('categoryTaleId', {})}
-      name={'categoryTaleId'}
+      className="mb-6 max-w-xs"
+      {...register("categoryTaleId", {})}
+      name={"categoryTaleId"}
     >
       {categoryList.map((category) => (
         <SelectItem key={category.id} value={category.id}>
@@ -28,7 +28,7 @@ const CategorySelect: FC<Props> = ({ register }) => {
         </SelectItem>
       ))}
     </Select>
-  )
-}
+  );
+};
 
-export default memo(CategorySelect)
+export default memo(CategorySelect);

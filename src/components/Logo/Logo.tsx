@@ -1,22 +1,22 @@
-import Image from 'next/image'
-import { memo } from 'react'
-import logo from '@/assets/logo.webp'
+import Image from "next/image";
+import { memo, type ReactNode } from "react";
+import logo from "@/assets/logo.webp";
 
-const Logo = () => {
+const Logo = (): ReactNode => {
   return (
-    <section className="flex justify-center relative max-h-[300px]">
+    <section className="relative flex max-h-[300px] justify-center">
       <Image
         src={logo}
         alt="Picture of the author"
         width={0}
         height={0}
-        className="object-contain w-auto h-auto"
-        loading={'eager'}
-        fetchPriority={'high'}
+        className="size-auto object-contain"
+        loading={"eager"}
+        fetchPriority={"high"}
         priority={true}
       />
     </section>
-  )
-}
+  );
+};
 
-export default memo(Logo)
+export default memo(Logo);

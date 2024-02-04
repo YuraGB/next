@@ -1,14 +1,14 @@
-'use server'
-import prisma from '$prismaClient/prisma'
-import { Slider } from '@/modules/homePageSlider/types'
+"use server";
+import prisma from "$prismaClient/prisma";
+import { type Slider } from "@/modules/homePageSlider/types";
 
-type GetPhotosT = () => Promise<Slider | null | undefined>
+type GetPhotosT = () => Promise<Slider | null | undefined>;
 
 export const getPhotos: GetPhotosT = async () => {
   try {
     return await prisma?.slider.findFirst({
       where: {
-        title: 'Home page slider',
+        title: "Home page slider",
       },
       select: {
         slide: {
@@ -21,8 +21,9 @@ export const getPhotos: GetPhotosT = async () => {
           },
         },
       },
-    })
+    });
   } catch (e) {
-    console.log(e)
+    console.log(e);
+    throw new Error("Error while fetching photos");
   }
-}
+};

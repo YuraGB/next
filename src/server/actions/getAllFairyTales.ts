@@ -1,12 +1,10 @@
-'use server'
-import prisma from '$prismaClient/prisma'
-import { TFindAllTales } from '@/server/actions/types'
+"use server";
+import prisma from "$prismaClient/prisma";
+import { type TFindAllTales } from "@/server/actions/types";
 
-export const getAllFairyTales = async (): Promise<
-  TFindAllTales[] | undefined
-> => {
+export const getAllFairyTales = async (): Promise<TFindAllTales[] | undefined> => {
   try {
-    return prisma?.tale.findMany({
+    return await prisma?.tale.findMany({
       include: {
         categoryTale: {
           select: {
@@ -16,8 +14,9 @@ export const getAllFairyTales = async (): Promise<
         },
         rating: true,
       },
-    })
+    });
   } catch (e) {
-    console.log(e)
+    console.log(e);
+    throw new Error("Error getting all fairy tales");
   }
-}
+};
