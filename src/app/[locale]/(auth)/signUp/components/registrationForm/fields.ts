@@ -9,6 +9,7 @@ export default [
     type: 'text',
     label: 'First name',
     name: 'firstName',
+    maxLength: 128,
     errorMessage: 'Please enter a valid name',
     pattern: requirePattern,
     required: true,
@@ -17,6 +18,7 @@ export default [
   {
     type: 'text',
     label: 'Last name',
+    maxLength: 128,
     name: 'lastName',
     errorMessage: 'Please enter a valid name',
     required: true,
@@ -26,6 +28,7 @@ export default [
   {
     type: 'email',
     label: 'email',
+    maxLength: 128,
     name: 'email',
     errorMessage: 'Please enter a valid name',
     required: true,
@@ -36,6 +39,7 @@ export default [
     type: 'password',
     label: 'password',
     name: 'password',
+    maxLength: 128,
     required: true,
     pattern: requirePattern,
     errorMessage: 'Incorrect password',
