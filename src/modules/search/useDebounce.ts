@@ -1,18 +1,19 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from "react";
 
-const useDebounce = <T>(value: T, delay: number = 500) => {
-  const [debouncedValue, setDebouncedValue] = useState<T>(value)
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+const useDebounce = <T>(value: T, delay = 500) => {
+  const [debouncedValue, setDebouncedValue] = useState<T>(value);
 
   useEffect(() => {
     const id: NodeJS.Timeout = setTimeout((): void => {
-      setDebouncedValue(value)
-    }, delay)
+      setDebouncedValue(value);
+    }, delay);
 
     return () => {
-      clearTimeout(id)
-    }
-  }, [value, delay])
+      clearTimeout(id);
+    };
+  }, [value, delay]);
 
-  return debouncedValue
-}
-export default useDebounce
+  return debouncedValue;
+};
+export default useDebounce;

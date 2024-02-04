@@ -1,22 +1,22 @@
-import { signIn } from 'next-auth/react'
-import { Inputs } from '@/modules/types/formTypes'
+import { signIn } from "next-auth/react";
+import { type Inputs } from "@/modules/types/formTypes";
 
-// eslint-disable-next-line import/no-anonymous-default-export
 export default async (data: Partial<Inputs>) => {
-  const { email, password } = data
+  const { email, password } = data;
 
   if (email && password) {
     try {
-      return await signIn('credentials', {
-        email: email,
-        password: password,
+      return await signIn("credentials", {
+        email,
+        password,
         redirect: false,
-        callbackUrl: '/',
-      })
+        callbackUrl: "/",
+      });
     } catch (e) {
-      console.log(e)
+      console.log(e);
+      throw "There is an error during logging";
     }
   } else {
-    throw 'The email or password is missing'
+    throw "The email or password is missing";
   }
-}
+};

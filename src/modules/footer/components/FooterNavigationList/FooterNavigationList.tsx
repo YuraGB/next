@@ -1,15 +1,14 @@
-import { NavigationItem } from '@/modules/navigation/useNavigation'
-import FooterNavigationItem from '@/modules/footer/components/FooterNavigationItem/FooterNavigationItem'
+import { type NavigationItem } from "@/modules/navigation/useNavigation";
+import FooterNavigationItem from "@/modules/footer/components/FooterNavigationItem/FooterNavigationItem";
+import { type ReactNode } from "react";
 
 type FooterNavigationListProps = {
-  navigationList: NavigationItem[] | undefined
-}
+  navigationList: NavigationItem[] | undefined;
+};
 
-const FooterNavigationList = ({
-  navigationList,
-}: FooterNavigationListProps) => {
-  if (!navigationList || !navigationList.length) {
-    return null
+const FooterNavigationList = ({ navigationList }: FooterNavigationListProps): ReactNode | null => {
+  if (!navigationList?.length) {
+    return null;
   }
 
   return (
@@ -20,7 +19,7 @@ const FooterNavigationList = ({
         </li>
       ))}
     </ul>
-  )
-}
+  );
+};
 
-export default FooterNavigationList
+export default FooterNavigationList;

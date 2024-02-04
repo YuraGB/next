@@ -1,37 +1,37 @@
-'use client'
-import React, { memo } from 'react'
-import { Button } from '@nextui-org/button'
-import { useLoginForm } from '@/app/[locale]/(auth)/login/components/loginForm/useLoginForm'
+"use client";
+import React, { memo } from "react";
+import { Button } from "@nextui-org/button";
+import { useLoginForm } from "@/app/[locale]/(auth)/login/components/loginForm/useLoginForm";
 
 export type LoginFormType = {
-  redirectUrl: string
-}
+  redirectUrl: string;
+};
 
 const LoginForm = ({ redirectUrl }: LoginFormType): React.ReactNode => {
-  const { formFields, onSubmit, handleSubmit } = useLoginForm({ redirectUrl })
+  const { formFields, onSubmit, handleSubmit } = useLoginForm({ redirectUrl });
   return (
-    <article className={'flex flex-col justify-center mt-3'}>
+    <article className={"mt-3 flex flex-col justify-center"}>
       <form
-        className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-[500px]"
+        className="mb-4 w-[500px] rounded bg-white px-8 pb-8 pt-6 shadow-md"
         onSubmit={handleSubmit(onSubmit)}
-        aria-label={'Login in form'}
+        aria-label={"Login in form"}
       >
         {formFields}
-        <div className="flex items-center justify-between flex-wrap">
+        <div className="flex flex-wrap items-center justify-between">
           <Button
-            variant={'flat'}
-            type={'submit'}
-            color={'primary'}
+            variant={"flat"}
+            type={"submit"}
+            color={"primary"}
             fullWidth={true}
-            className={'mb-4'}
-            role={'button'}
-            aria-labelledby={'login in button'}
-            data-cy={'login-in-button'}
+            className={"mb-4"}
+            role={"button"}
+            aria-labelledby={"login in button"}
+            data-cy={"login-in-button"}
           >
             Login in
           </Button>
           <a
-            className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
+            className="inline-block align-baseline text-sm font-bold text-blue-500 hover:text-blue-800"
             href="/forgotPassword"
           >
             Forgot Password?
@@ -39,7 +39,7 @@ const LoginForm = ({ redirectUrl }: LoginFormType): React.ReactNode => {
         </div>
       </form>
     </article>
-  )
-}
+  );
+};
 
-export default memo(LoginForm)
+export default memo(LoginForm);

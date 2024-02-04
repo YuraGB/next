@@ -1,5 +1,5 @@
-import prisma from '$prismaClient/prisma'
-import { User } from '@/app/[locale]/admin/components/adminDashboardTabs/modules/adminUserTab/model/User'
+import prisma from "$prismaClient/prisma";
+import { type User } from "@/app/[locale]/admin/components/adminDashboardTabs/modules/adminUserTab/model/User";
 
 const updateUser = async (user: User) => {
   try {
@@ -12,10 +12,11 @@ const updateUser = async (user: User) => {
         email: user.email,
         hashPassword: user.hashPassword,
       },
-    })
+    });
   } catch (e) {
-    console.log(e)
+    console.log(e);
+    throw new Error("Error updating user");
   }
-}
+};
 
-export default updateUser
+export default updateUser;

@@ -1,12 +1,13 @@
-import React from 'react'
-import Home from '../page'
+import React from "react";
+// eslint-disable-next-line @typescript-eslint/no-restricted-imports
+import Home from "../page";
 
-describe('<Home />', () => {
-  it('renders', () => {
+describe("<Home />", () => {
+  it("renders", () => {
     // see: https://on.cypress.io/mounting-react
-    cy.mount(<Home />) //ARRANGE
+    cy.mount(<Home />); //ARRANGE
 
     //ACT
-    cy.get('h1').contains('Home')
-  })
-})
+    cy.get("h1").contains("Home");
+  });
+});

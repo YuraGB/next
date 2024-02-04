@@ -1,23 +1,20 @@
-'use client'
-import { FormattedMessage } from 'react-intl'
-import { memo } from 'react'
-import { useNavigation } from '@/modules/navigation/useNavigation'
-import FooterNavigationList from '@/modules/footer/components/FooterNavigationList/FooterNavigationList'
+"use client";
+import { FormattedMessage } from "react-intl";
+import { memo, type ReactNode } from "react";
+import { useNavigation } from "@/modules/navigation/useNavigation";
+import FooterNavigationList from "@/modules/footer/components/FooterNavigationList/FooterNavigationList";
 
-const FooterNavigation = () => {
-  const menuItems = useNavigation()
+const FooterNavigation = (): ReactNode => {
+  const menuItems = useNavigation();
 
   return (
     <nav>
-      <h2 className={'text-xl mb-2'}>
-        <FormattedMessage
-          id={'footer.navigation.title'}
-          defaultMessage={'Footer navigation'}
-        />{' '}
+      <h2 className={"mb-2 text-xl"}>
+        <FormattedMessage id={"footer.navigation.title"} defaultMessage={"Footer navigation"} />{" "}
       </h2>
       <FooterNavigationList navigationList={menuItems} />
     </nav>
-  )
-}
+  );
+};
 
-export default memo(FooterNavigation)
+export default memo(FooterNavigation);

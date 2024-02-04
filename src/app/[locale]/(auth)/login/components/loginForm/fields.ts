@@ -1,26 +1,23 @@
 // Login form fields
+import { emailPattern } from "@/utils/validation/patterns";
 
-// eslint-disable-next-line import/no-anonymous-default-export
-import { emailPattern } from '@/utils/validation/patterns'
-
-// eslint-disable-next-line import/no-anonymous-default-export
 export default [
   {
-    type: 'text',
-    label: 'email',
+    type: "text",
+    label: "email",
     maxLength: 128,
-    name: 'email',
-    errorMessage: 'Please enter a valid name',
+    name: "email",
+    errorMessage: "Please enter a valid name",
     required: true,
     pattern: emailPattern,
   },
   {
-    type: 'password',
-    label: 'password',
+    type: "password",
+    label: "password",
     maxLength: 128,
-    name: 'password',
+    name: "password",
     required: true,
-    errorMessage: 'Incorrect password',
-    autoComplete: 'on',
+    errorMessage: "Incorrect password",
+    autoComplete: "on",
   },
-]
+];

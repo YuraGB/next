@@ -1,5 +1,5 @@
-'use server'
-import prisma from '$prismaClient/prisma'
+"use server";
+import prisma from "$prismaClient/prisma";
 
 export const getPosts = async () => {
   try {
@@ -7,8 +7,9 @@ export const getPosts = async () => {
       include: {
         author: true,
       },
-    })
+    });
   } catch (e) {
-    console.log(e)
+    console.log(e);
+    throw new Error("Error getting posts");
   }
-}
+};

@@ -1,8 +1,8 @@
-'use server'
-import prisma from '$prismaClient/prisma'
-import { TaleWithRelations } from '@/server/actions/types'
+"use server";
+import prisma from "$prismaClient/prisma";
+import { type TaleWithRelations } from "@/server/actions/types";
 
-export type TGetTale = Promise<Partial<TaleWithRelations> | undefined | null>
+export type TGetTale = Promise<Partial<TaleWithRelations> | undefined | null>;
 
 export const getTale = async (id: string): TGetTale => {
   try {
@@ -18,8 +18,9 @@ export const getTale = async (id: string): TGetTale => {
           },
         },
       },
-    })
+    });
   } catch (e) {
-    console.log(e)
+    console.log(e);
+    throw new Error("Error getting tale");
   }
-}
+};

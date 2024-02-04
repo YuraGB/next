@@ -1,25 +1,25 @@
-'use server'
-import prisma from '$prismaClient/prisma'
-import { z } from 'zod'
+"use server";
+import prisma from "$prismaClient/prisma";
+import { z } from "zod";
 
 const RatingSchema = z.object({
   rating: z.number(),
   count: z.number(),
-})
+});
 
-export type TRating = z.infer<typeof RatingSchema>
+export type TRating = z.infer<typeof RatingSchema>;
 
 export const setRating = async ({
   taleId,
   data,
   userId,
 }: {
-  taleId: string
-  data: TRating
-  userId: string
+  taleId: string;
+  data: TRating;
+  userId: string;
 }) => {
   if (!RatingSchema.safeParse(data).success) {
-    throw 'Not all rating data provided'
+    throw "Not all rating data provided";
   }
 
   try {
@@ -32,7 +32,7 @@ export const setRating = async ({
             create: {
               rating: data.rating,
               count: data.count,
-              userId: userId,
+              userId,
             },
             update: {
               rating: data.rating,
@@ -41,8 +41,9 @@ export const setRating = async ({
           },
         },
       },
-    })
+    });
   } catch (e) {
-    console.log(e)
+    console.log(e);
+    throw new Error("Error setting rating");
   }
-}
+};

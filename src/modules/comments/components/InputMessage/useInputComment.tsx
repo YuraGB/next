@@ -1,15 +1,15 @@
-import { SubmitHandler, useForm } from 'react-hook-form'
-import commentFields from './fields'
-import formFieldsMapping from '@/modules/utils/formFieldsMapping'
-import { TCreateComment } from '@/server/actions/addComment'
-import { useAddCommentService } from '@/modules/comments/components/service/addCommentService'
-import { useEffect } from 'react'
+import { type SubmitHandler, useForm } from "react-hook-form";
+import commentFields from "./fields";
+import formFieldsMapping from "@/modules/utils/formFieldsMapping";
+import { type TCreateComment } from "@/server/actions/addComment";
+import { useAddCommentService } from "@/modules/comments/components/service/addCommentService";
+import { useEffect } from "react";
 
 type TSubmitData = {
-  comment: string
-  name: string
-  email: string
-}
+  comment: string;
+  name: string;
+  email: string;
+};
 
 export const useInputComment = (taleId: string | undefined) => {
   const {
@@ -17,20 +17,21 @@ export const useInputComment = (taleId: string | undefined) => {
     register,
     handleSubmit,
     formState: { errors, isValid },
-  } = useForm<Partial<TSubmitData>>()
+  } = useForm<Partial<TSubmitData>>();
 
-  const { mutate, error, status, data } = useAddCommentService(taleId || '')
+  const { mutate, error, status, data } = useAddCommentService(taleId ?? "");
 
-  const fields = formFieldsMapping(commentFields, errors, register)
+  const fields = formFieldsMapping(commentFields, errors, register);
 
   useEffect(() => {
-    if (status === 'success') {
-      reset()
+    if (status === "success") {
+      reset();
     }
-  }, [reset, status])
+  }, [reset, status]);
 
+  // eslint-disable-next-line no-shadow
   const onSubmit: SubmitHandler<Partial<TSubmitData>> = (data) => {
-    const { comment, name, email } = data
+    const { comment, name, email } = data;
 
     if (taleId && comment && name && email) {
       const commentData: TCreateComment = {
@@ -40,10 +41,10 @@ export const useInputComment = (taleId: string | undefined) => {
           name,
           email,
         },
-      }
-      mutate(commentData)
+      };
+      mutate(commentData);
     }
-  }
+  };
 
   return {
     fields,
@@ -53,5 +54,5 @@ export const useInputComment = (taleId: string | undefined) => {
     error,
     status,
     data,
-  }
-}
+  };
+};

@@ -1,32 +1,32 @@
-'use client'
-import React, { memo } from 'react'
-import { Button } from '@nextui-org/button'
-import { useForgotPasswordForm } from '@/app/[locale]/(auth)/forgotPassword/components/forgotPasswordForm/useForgotPasswordForm'
+"use client";
+import React, { memo } from "react";
+import { Button } from "@nextui-org/button";
+import { useForgotPasswordForm } from "@/app/[locale]/(auth)/forgotPassword/components/forgotPasswordForm/useForgotPasswordForm";
 
 const ForgotPasswordForm = (): React.ReactNode => {
-  const { formFields, onSubmit, handleSubmit } = useForgotPasswordForm()
+  const { formFields, onSubmit, handleSubmit } = useForgotPasswordForm();
   return (
-    <article className={'flex flex-col justify-center mt-3'}>
+    <article className={"mt-3 flex flex-col justify-center"}>
       <form
-        aria-label={'Forgot password form'}
-        className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-[500px]"
+        aria-label={"Forgot password form"}
+        className="mb-4 w-[500px] rounded bg-white px-8 pb-8 pt-6 shadow-md"
         onSubmit={handleSubmit(onSubmit)}
       >
         {formFields}
-        <div className="flex items-center justify-between flex-wrap">
+        <div className="flex flex-wrap items-center justify-between">
           <Button
-            variant={'flat'}
-            color={'primary'}
+            variant={"flat"}
+            color={"primary"}
             fullWidth={true}
-            className={'mb-4'}
-            type={'submit'}
+            className={"mb-4"}
+            type={"submit"}
           >
             Send me recovery letter
           </Button>
         </div>
       </form>
     </article>
-  )
-}
+  );
+};
 
-export default memo(ForgotPasswordForm)
+export default memo(ForgotPasswordForm);

@@ -1,14 +1,15 @@
-'use server'
-import prisma from '$prismaClient/prisma'
+"use server";
+import prisma from "$prismaClient/prisma";
 
 export const deleteComment = (id: string) => {
   try {
     return prisma?.comment.delete({
       where: {
-        id: id,
+        id,
       },
-    })
+    });
   } catch (e) {
-    console.log(e)
+    console.log(e);
+    throw new Error("Error deleting comment");
   }
-}
+};

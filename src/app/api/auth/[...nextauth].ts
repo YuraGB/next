@@ -1,26 +1,26 @@
-import NextAuth from 'next-auth'
-import type { NextAuthOptions } from 'next-auth'
-import CredentialsProvider from 'next-auth/providers/credentials'
-import { PrismaAdapter } from '@next-auth/prisma-adapter'
-import { toComparePasswords } from '@/app/[locale]/(auth)/signUp/components/registrationForm/service/util/validateUser'
-import { Pages } from '@/utils/pages'
-import prisma from '$prismaClient/prisma'
-import { findUser } from '@/server/actions/findUser'
+import NextAuth, { type NextAuthOptions } from "next-auth";
+import CredentialsProvider from "next-auth/providers/credentials";
+import { PrismaAdapter } from "@next-auth/prisma-adapter";
+import { toComparePasswords } from "@/app/[locale]/(auth)/signUp/components/registrationForm/service/util/validateUser";
+import { Pages } from "@/utils/pages";
+import prisma from "$prismaClient/prisma";
+import { findUser } from "@/server/actions/findUser";
 
 export const authOptions: NextAuthOptions = {
+  // eslint-disable-next-line
   adapter: PrismaAdapter(prisma),
   providers: [
     CredentialsProvider({
       // The name to display on the sign in form (e.g. 'Sign in with...')
-      name: 'Credentials',
+      name: "Credentials",
       // The credentials is used to generate a suitable form on the sign in page.
       // You can specify whatever fields you are expecting to be submitted.
       // e.g. domain, username, password, 2FA token, etc.
       // You can pass any HTML attribute to the <input> tag through the object.
       credentials: {
-        username: { label: 'Username', type: 'text', placeholder: 'Full name' },
-        email: { label: 'Username', type: 'text', placeholder: 'Email' },
-        password: { label: 'Password', type: 'password' },
+        username: { label: "Username", type: "text", placeholder: "Full name" },
+        email: { label: "Username", type: "text", placeholder: "Email" },
+        password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
         // You need to provide your own logic here that takes the credentials
@@ -31,44 +31,44 @@ export const authOptions: NextAuthOptions = {
         // (i.e., the request IP address)
         if (credentials?.email) {
           try {
-            const user = await findUser(credentials?.email)
+            const user = await findUser(credentials?.email);
 
             if (
               user &&
-              typeof user !== 'string' &&
+              typeof user !== "string" &&
               credentials?.email === user.email &&
               toComparePasswords(credentials?.password, user.hashPassword)
             ) {
-              return user
+              return user;
             }
           } catch (e) {
-            throw 'there is an error during logging'
+            throw "there is an error during logging";
           }
         }
-        return null
+        return null;
       },
     }),
   ],
   session: {
-    strategy: 'jwt',
+    strategy: "jwt",
     maxAge: 30 * 24 * 60 * 60, // 30 days
     updateAge: 24 * 60 * 60, // 24 hours
   },
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
-        token.role = user?.role
-        token.sub = user?.id
+        token.role = user?.role;
+        token.sub = user?.id;
       }
-      return token
+      return token;
     },
 
     async session({ session, token }) {
       if (token && session.user) {
-        session.user.role = token.role
-        session.user.id = token.sub as string
+        session.user.role = token.role;
+        session.user.id = token.sub!;
       }
-      return session
+      return session;
     },
   },
   pages: {
@@ -89,6 +89,6 @@ export const authOptions: NextAuthOptions = {
   //   },
   // },
   // your configs
-}
+};
 
-export default NextAuth(authOptions)
+export default NextAuth(authOptions);

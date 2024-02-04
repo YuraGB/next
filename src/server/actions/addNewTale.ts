@@ -1,7 +1,7 @@
-'use server'
-import prisma from '$prismaClient/prisma'
-import { Tale } from '.prisma/client'
-import { z } from 'zod'
+"use server";
+import prisma from "$prismaClient/prisma";
+import { type Tale } from ".prisma/client";
+import { z } from "zod";
 
 const TaleSchema = z.object({
   content: z.string(),
@@ -11,17 +11,15 @@ const TaleSchema = z.object({
   title: z.string(),
   images: z.array(z.string()),
   categoryTaleId: z.string(),
-})
+});
 
-export type TCreateTale = z.infer<typeof TaleSchema>
+export type TCreateTale = z.infer<typeof TaleSchema>;
 
-export type TCreateTaleResponse = Pick<Tale, 'id' | 'title'> | undefined
+export type TCreateTaleResponse = Pick<Tale, "id" | "title"> | undefined;
 
-const createTale = async (
-  newTale: TCreateTale
-): Promise<TCreateTaleResponse> => {
+const createTale = async (newTale: TCreateTale): Promise<TCreateTaleResponse> => {
   if (!TaleSchema.safeParse(newTale).success) {
-    throw 'Not all tale data provided'
+    throw "Not all tale data provided";
   }
 
   try {
@@ -43,10 +41,11 @@ const createTale = async (
         id: true,
         title: true,
       },
-    })
+    });
   } catch (e) {
-    console.log(e)
+    console.log(e);
+    throw new Error("Error creating tale");
   }
-}
+};
 
-export default createTale
+export default createTale;
