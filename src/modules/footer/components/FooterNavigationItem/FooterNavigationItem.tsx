@@ -1,18 +1,13 @@
-import { NavigationItem } from '@/modules/navigation/useNavigation'
-import Link from 'next/link'
+import { type NavigationItem } from "@/modules/navigation/useNavigation";
+import Link from "next/link";
+import { type ReactNode } from "react";
 
 type FooterNavigationItemProps = {
-  navigationItem: NavigationItem
-}
+  navigationItem: NavigationItem;
+};
 
-const FooterNavigationItem = ({
-  navigationItem,
-}: FooterNavigationItemProps) => {
-  return (
-    <Link href={navigationItem.url} className="footer-navigation-item">
-      {navigationItem.name}
-    </Link>
-  )
-}
+const FooterNavigationItem = ({ navigationItem }: FooterNavigationItemProps): ReactNode => {
+  return <Link href={navigationItem.url}>{navigationItem.name}</Link>;
+};
 
-export default FooterNavigationItem
+export default FooterNavigationItem;

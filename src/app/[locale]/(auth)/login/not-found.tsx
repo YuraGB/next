@@ -1,6 +1,6 @@
-import Link from 'next/link'
-import { ReactNode } from 'react'
-import { Pages } from '@/utils/pages'
+import Link from "next/link";
+import { type ReactNode } from "react";
+import { Pages } from "@/utils/pages";
 
 export default function NotFound(): ReactNode {
   return (
@@ -9,5 +9,5 @@ export default function NotFound(): ReactNode {
       <p>Could not find requested resource</p>
       <Link href={Pages.HOME}>Return Home</Link>
     </div>
-  )
+  );
 }

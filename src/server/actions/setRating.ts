@@ -17,6 +17,7 @@ export const setRating = async ({
   taleId: string;
   data: TRating;
   userId: string;
+  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 }) => {
   if (!RatingSchema.safeParse(data).success) {
     throw "Not all rating data provided";

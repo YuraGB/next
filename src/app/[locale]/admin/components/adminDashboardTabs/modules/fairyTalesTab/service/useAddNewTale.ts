@@ -3,6 +3,7 @@ import { type Tale } from ".prisma/client";
 import { GET_ALL_TALES } from "@/server/actions/queryNaming";
 import addNewTale from "@/server/actions/addNewTale";
 
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export const useAddNewTale = () => {
   const queryClient = useQueryClient();
   const { mutate, data, error } = useMutation({

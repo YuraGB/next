@@ -1,10 +1,10 @@
-'use client'
-import React, { ReactNode } from 'react'
-import Slider from 'react-slick'
+"use client";
+import React, { type ReactNode } from "react";
+import Slider from "react-slick";
 
 type Props = {
-  children: ReactNode | ReactNode[]
-}
+  children: ReactNode | ReactNode[];
+};
 
 export default function Carousel({ children }: Props): ReactNode {
   const settings = {
@@ -16,10 +16,10 @@ export default function Carousel({ children }: Props): ReactNode {
     slidesToScroll: 1,
     arrows: false,
     autoplay: true,
-  }
+  };
   return (
-    <Slider {...settings} className={'min-h-[300px] w-full'}>
+    <Slider {...settings} className={"min-h-[300px] w-full"}>
       {children}
     </Slider>
-  )
+  );
 }

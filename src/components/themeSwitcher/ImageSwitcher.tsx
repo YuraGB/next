@@ -1,9 +1,9 @@
-import { memo, useMemo } from "react";
+import { memo, type ReactNode, useMemo } from "react";
 import Image from "next/image";
 import MoonIcon from "@/components/themeSwitcher/assets/moon.svg";
 import SunIcon from "@/components/themeSwitcher/assets/sun.svg";
 
-const ImageSwitcher = ({ theme }: { theme: string | undefined }) => {
+const ImageSwitcher = ({ theme }: { theme: string | undefined }): ReactNode => {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const srcDependency: string = useMemo(() => {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-return

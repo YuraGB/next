@@ -1,12 +1,12 @@
-import { User } from '@/app/[locale]/admin/components/adminDashboardTabs/modules/adminUserTab/model/User'
+import { type User } from "@/app/[locale]/admin/components/adminDashboardTabs/modules/adminUserTab/model/User";
 
 export type PostT = {
-  id: string
-  title: string
-  content: string
-  published: boolean
-  author?: Partial<User>
-  authorId: string
-  public: boolean
-  image: string | null
-}
+  id: string;
+  title: string;
+  content: string;
+  published: boolean;
+  author?: Partial<User>;
+  authorId: string;
+  public: boolean;
+  image: string | null;
+};

@@ -5,6 +5,7 @@ import { GET_ONE_TALE, GET_ONE_USER_WITH_VOTE } from "@/server/actions/queryNami
 export const useAddRattingService = (
   taleId: string | undefined,
   userId: string | null | undefined
+  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 ) => {
   const queryClient = useQueryClient();
   const { mutate, data, error, status } = useMutation({

@@ -1,26 +1,21 @@
-import { FC, memo } from 'react'
-import { CommentWithUser } from '@/server/actions/types'
-import CommentComponent from '@/modules/comments/components/Comment/Comment'
+import { type FC, memo } from "react";
+import { type CommentWithUser } from "@/server/actions/types";
+import CommentComponent from "@/modules/comments/components/Comment/Comment";
 
 type TProps = {
-  messages: CommentWithUser[] | undefined | null
-  onDelete: (id: string) => void
-  isAdmin?: boolean
-  status?: string
-}
+  messages: CommentWithUser[] | undefined | null;
+  onDelete: (id: string) => void;
+  isAdmin?: boolean;
+  status?: string;
+};
 
-const ListOfMessages: FC<TProps> = ({
-  messages,
-  status,
-  isAdmin,
-  onDelete,
-}) => {
+const ListOfMessages: FC<TProps> = ({ messages, status, isAdmin, onDelete }) => {
   if (!messages) {
-    return null
+    return null;
   }
 
   return (
-    <section className={'flex flex-col'}>
+    <section className={"flex flex-col"}>
       {messages.map((message) => (
         <CommentComponent
           key={message.id}
@@ -31,7 +26,7 @@ const ListOfMessages: FC<TProps> = ({
         />
       ))}
     </section>
-  )
-}
+  );
+};
 
-export default memo(ListOfMessages)
+export default memo(ListOfMessages);

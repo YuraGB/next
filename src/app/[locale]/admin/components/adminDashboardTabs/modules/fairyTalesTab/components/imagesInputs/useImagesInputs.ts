@@ -5,6 +5,7 @@ const defaultState = {
   id: "defaultValue",
 };
 
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export const useImagesInputs = (initialImages: string[] | undefined) => {
   const [images, setImages] = useState<Array<typeof defaultState>>([]);
 

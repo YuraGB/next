@@ -1,10 +1,10 @@
-import React, { FC, ReactNode } from 'react'
-import { Card } from '@nextui-org/card'
-import { Skeleton } from '@nextui-org/skeleton'
+import React, { type FC, type ReactNode } from "react";
+import { Card } from "@nextui-org/card";
+import { Skeleton } from "@nextui-org/skeleton";
 
 const PostsListSkeleton: FC = (): ReactNode => {
   return (
-    <section className={'grid justify-start gap-2'}>
+    <section className={"grid justify-start gap-2"}>
       <Card className="w-[200px] space-y-5 p-4" radius="lg">
         <Skeleton className="rounded-lg">
           <div className="h-24 rounded-lg bg-default-300"></div>
@@ -38,7 +38,7 @@ const PostsListSkeleton: FC = (): ReactNode => {
         </div>
       </Card>
     </section>
-  )
-}
+  );
+};
 
-export default React.memo(PostsListSkeleton)
+export default React.memo(PostsListSkeleton);

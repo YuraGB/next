@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 
-export const useBackgroundHook = (callback = () => undefined) => {
+// eslint-disable-next-line
+export const useBackgroundHook = (callback = () => {}) => {
   const [mounted, setMounted] = useState<boolean>(false);
   const ref = useRef<HTMLDivElement>(null);
 

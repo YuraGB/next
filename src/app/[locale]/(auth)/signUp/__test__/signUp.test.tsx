@@ -9,9 +9,7 @@ import en from "../../../../../i18n/en.json";
 // Mock useRouter:
 jest.mock("next/navigation", () => ({
   useRouter() {
-    return {
-      prefetch: () => null,
-    };
+    return {};
   },
 }));
 
@@ -23,7 +21,7 @@ describe("Sign up page", () => {
       console.log(e);
     },
   });
-  function Wrapper({ children }: { children: ReactNode }) {
+  function Wrapper({ children }: { children: ReactNode }): ReactNode {
     return (
       <ServerIntlProvider locale={intl.locale} messages={intl.messages}>
         {children}

@@ -1,7 +1,7 @@
 import { Modal, ModalBody, ModalContent, ModalFooter, ModalHeader } from "@nextui-org/modal";
 import { FormattedMessage } from "react-intl";
 import { Button } from "@nextui-org/button";
-import React, { memo } from "react";
+import React, { memo, type ReactNode } from "react";
 import { type User } from "@/app/[locale]/admin/components/adminDashboardTabs/modules/adminUserTab/model/User";
 import { useUserPopup } from "@/app/[locale]/admin/components/adminDashboardTabs/modules/adminUserTab/components/UserModal/useUserPopup";
 
@@ -13,7 +13,7 @@ const UserPopup = ({
   isOpen: boolean;
   onClose: () => void;
   initialValues: User | null;
-}) => {
+}): ReactNode => {
   const { handleSubmit, onSubmit, formFields } = useUserPopup(initialValues, onClose);
 
   return (

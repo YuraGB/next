@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
-import { FirebaseApp, initializeApp } from 'firebase/app'
-import { FirebaseOptions } from '@firebase/app'
-import { FirebaseStorage, getStorage } from '@firebase/storage'
+import { type FirebaseApp, initializeApp } from "firebase/app";
+import { type FirebaseOptions } from "@firebase/app";
+import { type FirebaseStorage, getStorage } from "@firebase/storage";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -13,9 +13,9 @@ const firebaseConfig: FirebaseOptions = {
   storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGEBUCKET,
   messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGINGSENDERID,
   appId: process.env.NEXT_PUBLIC_FIREBASE_APPID,
-}
+};
 
 // Initialize Firebase
-const app: FirebaseApp = initializeApp(firebaseConfig)
+const app: FirebaseApp = initializeApp(firebaseConfig);
 
-export const storage: FirebaseStorage = getStorage(app)
+export const storage: FirebaseStorage = getStorage(app);

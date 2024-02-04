@@ -11,23 +11,20 @@ export default function formFieldsMapping(
   register: UseFormRegister<FieldValues>
 ): React.ReactNode[] {
   return fields.map(
-    (
-      {
-        type,
-        name,
-        label,
-        required,
-        errorMessage,
-        pattern,
-        description,
-        autoComplete,
-        additionalClasses,
-        defaultValue,
-        ...rest
-      }: Fields,
-      index: number
-    ) => (
-      <div className={`mb-6 ${additionalClasses}`} key={label + index}>
+    ({
+      type,
+      name,
+      label,
+      required,
+      errorMessage,
+      pattern,
+      description,
+      autoComplete,
+      additionalClasses,
+      defaultValue,
+      ...rest
+    }: Fields) => (
+      <div className={`mb-6 ${additionalClasses}`} key={label + name}>
         {type === "textarea" ? (
           <Textarea
             label={label}

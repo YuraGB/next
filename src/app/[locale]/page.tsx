@@ -1,6 +1,6 @@
 import PageWrapper from "@/components/pageWrapper/PageWrapper";
 import { type Metadata } from "next";
-import React from "react";
+import React, { type ReactNode } from "react";
 import HomePageIntro from "@/modules/homePageIntro";
 import Logo from "@/components/Logo/Logo";
 
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 export const preferredRegion = ["fra1"];
 
-export default function Home() {
+export default function Home(): ReactNode {
   return (
     <PageWrapper>
       <Logo />

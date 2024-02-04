@@ -1,10 +1,10 @@
 "use client";
-import { useEffect } from "react";
+import { type ReactNode, useEffect } from "react";
 import start from "@/modules/BackgroundNight/util/canvasCalculations";
 import { useBackgroundHook } from "@/modules/BacgroundHook/useBackgroundHook";
 
-const BackgroundNight = () => {
-  const handler = () => {
+const BackgroundNight = (): ReactNode => {
+  const handler = (): void => {
     start("dark");
   };
   const { ref } = useBackgroundHook(handler);

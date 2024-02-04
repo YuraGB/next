@@ -6,6 +6,7 @@ import PhotoItem from "@/modules/homePageSlider/components/PhotoItem/PhotoItem";
 import { getPhotos } from "@/modules/homePageSlider/api/getPhotos";
 
 // server component
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 const HomePageSlider = async () => {
   // server actions
   const photos = await getPhotos();

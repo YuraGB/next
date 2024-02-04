@@ -12,6 +12,7 @@ const ImagesInputs = ({
 }: {
   register: UseFormRegister<FieldValues>;
   initialImages: string[] | undefined;
+  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 }) => {
   const { onAdd, images, onDelete } = useImagesInputs(initialImages);
 
@@ -29,7 +30,7 @@ const ImagesInputs = ({
         Add new image
       </Button>
       {images.map((input, i) => (
-        <div className={"flex w-full"} key={i}>
+        <div className={"flex w-full"} key={input.id}>
           <Input
             {...register(`images-${i}`, {})}
             name={`images-${i}`}

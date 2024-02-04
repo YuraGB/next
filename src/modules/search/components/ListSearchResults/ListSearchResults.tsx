@@ -1,21 +1,18 @@
-import { Tale } from '.prisma/client'
-import { FC, memo, ReactNode } from 'react'
-import ResultItem from '@/modules/search/components/ResultItem/ResultItem'
-import { CategoryTale } from '@prisma/client'
+import { type Tale } from ".prisma/client";
+import { type FC, memo, type ReactNode } from "react";
+import ResultItem from "@/modules/search/components/ResultItem/ResultItem";
+import { type CategoryTale } from "@prisma/client";
 
-export type TaleWithCategory = Partial<Tale> & { categoryTale: CategoryTale }
+export type TaleWithCategory = Partial<Tale> & { categoryTale: CategoryTale };
 
 type ListResultsT = {
-  results: TaleWithCategory[]
-  onClick: (id: string) => void
-}
+  results: TaleWithCategory[];
+  onClick: (id: string) => void;
+};
 
-const ListSearchResults: FC<ListResultsT> = ({
-  results,
-  onClick,
-}): ReactNode | null => {
+const ListSearchResults: FC<ListResultsT> = ({ results, onClick }): ReactNode | null => {
   if (!results?.length) {
-    return null
+    return null;
   }
   return (
     <section>
@@ -23,7 +20,7 @@ const ListSearchResults: FC<ListResultsT> = ({
         <ResultItem key={tale.id} tale={tale} onClick={onClick} />
       ))}
     </section>
-  )
-}
+  );
+};
 
-export default memo(ListSearchResults)
+export default memo(ListSearchResults);

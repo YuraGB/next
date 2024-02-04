@@ -27,7 +27,7 @@ const Paragraph = ({
           width={900}
           height={300}
           loading={"lazy"}
-          className="z-1 absolute box-border block h-auto min-h-full w-full max-w-full object-cover"
+          className="absolute box-border block h-auto min-h-full w-full max-w-full object-cover"
         />
       ) : null}
     </div>

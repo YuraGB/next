@@ -4,6 +4,7 @@ import { type Inputs } from "@/modules/types/formTypes";
 import fields from "@/app/[locale]/(auth)/forgotPassword/components/forgotPasswordForm/fields";
 import formFieldsMapping from "@/modules/utils/formFieldsMapping";
 
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export const useForgotPasswordForm = () => {
   const {
     register,

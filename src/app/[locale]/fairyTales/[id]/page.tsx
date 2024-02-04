@@ -21,13 +21,14 @@ export const metadata: Metadata = {
   ],
 };
 
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export default async function FairyTale({ params }: { params: { id: string } }) {
   const taleData = await getTale(params.id);
 
   return <PageWrapper>{taleData ? <TaleContent taleContent={taleData} /> : null}</PageWrapper>;
 }
 
-export async function generateStaticParams() {
+export async function generateStaticParams(): Promise<string[]> {
   const tales = await getAllFairyTales();
 
   if (tales?.length) {

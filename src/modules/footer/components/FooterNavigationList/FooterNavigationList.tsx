@@ -12,9 +12,9 @@ const FooterNavigationList = ({ navigationList }: FooterNavigationListProps): Re
   }
 
   return (
-    <ul className="footer-navigation-list">
-      {navigationList.map((navigationItem, index) => (
-        <li key={index} className="mb-2">
+    <ul>
+      {navigationList.map((navigationItem) => (
+        <li key={navigationItem.url} className="mb-2">
           <FooterNavigationItem navigationItem={navigationItem} />
         </li>
       ))}

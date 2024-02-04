@@ -9,6 +9,7 @@ import toast from "react-hot-toast";
 import signInService from "@/app/[locale]/(auth)/login/components/loginForm/service/signInService";
 import { useRouter } from "next/navigation";
 
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export const useSignUp = () => {
   const {
     register,

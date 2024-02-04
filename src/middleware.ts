@@ -1,32 +1,31 @@
-import { NextRequestWithAuth } from 'next-auth/middleware'
-import { i18nRouter } from 'next-i18n-router'
-import { NextResponse } from 'next/server'
-import { i18nConfig } from '@/../i18nConfig'
-import { getToken } from 'next-auth/jwt'
+import { type NextRequestWithAuth } from "next-auth/middleware";
+import { i18nRouter } from "next-i18n-router";
+import { NextResponse } from "next/server";
+import { i18nConfig } from "@/../i18nConfig";
+import { getToken } from "next-auth/jwt";
 
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export default async function middleware(request: NextRequestWithAuth) {
-  const token = await getToken({ req: request })
-  const locale = request.nextUrl.locale || 'en'
+  const token = await getToken({ req: request });
+  const locale = request.nextUrl.locale || "en";
 
-  request.nextauth = request.nextauth || {}
-  request.nextauth.token = token
+  request.nextauth = request.nextauth || {};
+  request.nextauth.token = token;
 
   if (
-    request.nextUrl.pathname.includes('/admin') &&
-    request.nextauth.token?.role.toLowerCase() !== 'admin'
+    request.nextUrl.pathname.includes("/admin") &&
+    request.nextauth.token?.role.toLowerCase() !== "admin"
   ) {
-    return NextResponse.rewrite(
-      new URL(`/${locale}/denied`, request.nextUrl.origin)
-    )
+    return NextResponse.rewrite(new URL(`/${locale}/denied`, request.nextUrl.origin));
   }
-  return i18nRouter(request, i18nConfig)
+  return i18nRouter(request, i18nConfig);
 }
 
 export const config = {
   matcher: [
     // Skip all internal paths (_next)
-    '/((?!_next|api|favicon.ico).*)',
+    "/((?!_next|api|favicon.ico).*)",
     // Optional: only run on root (/) URL
     // '/admin',
   ],
-}
+};

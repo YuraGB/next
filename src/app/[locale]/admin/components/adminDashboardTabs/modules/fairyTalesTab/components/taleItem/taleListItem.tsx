@@ -18,7 +18,7 @@ const TaleAdminItem = ({
 
   const { id, title, forAge, createdAt } = tale;
 
-  const onClick = () => {
+  const onClick = (): void => {
     if (id) {
       onEdit(tale);
     }
