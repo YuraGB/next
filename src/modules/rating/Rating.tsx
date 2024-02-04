@@ -2,7 +2,6 @@ import { Rating } from '.prisma/client'
 import React, { FC, ReactNode } from 'react'
 import { useRating } from '@/modules/rating/useRating'
 import { Rating as ReactRating } from '@smastrom/react-rating'
-import { FormattedMessage } from 'react-intl'
 import Description from '@/modules/rating/components/Description/Description'
 
 const RatingComponent: FC<{
