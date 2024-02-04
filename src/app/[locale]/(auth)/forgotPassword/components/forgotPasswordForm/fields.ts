@@ -6,6 +6,7 @@ export default [
   {
     type: 'text',
     label: 'email',
+    maxLength: 128,
     name: 'email',
     required: true,
     pattern: emailPattern,

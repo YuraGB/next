@@ -16,6 +16,7 @@ const InputSearch = ({
       aria-label={'Search input'}
       className={'w-full min-w-[200px]'}
       startContent={<SearchIcon />}
+      maxLength={128}
     />
   )
 }

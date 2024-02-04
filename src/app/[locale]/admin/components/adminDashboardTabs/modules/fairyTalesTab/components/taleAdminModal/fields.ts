@@ -3,6 +3,7 @@ export default [
   {
     type: 'text',
     label: 'Title',
+    maxLength: 128,
     name: 'title',
     errorMessage: 'Please enter the title',
     required: true,
@@ -11,6 +12,7 @@ export default [
   {
     type: 'text',
     label: 'Category',
+    maxLength: 128,
     name: 'forAge',
     errorMessage: 'Please enter the category',
     required: true,
@@ -20,6 +22,7 @@ export default [
     type: 'text',
     label: 'Short description',
     name: 'shortDescription',
+    maxLength: 512,
     errorMessage: 'Please enter a short description',
     required: true,
     additionalClasses: 'w-full',
@@ -41,6 +44,7 @@ export default [
     type: 'textarea',
     label: 'Content',
     name: 'content',
+    maxLength: 1028,
     errorMessage: 'Please enter a content',
     required: true,
     additionalClasses: 'w-full',
