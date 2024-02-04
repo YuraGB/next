@@ -10,11 +10,13 @@ const RatingSchema = z.object({
 export type TRating = z.infer<typeof RatingSchema>
 
 export const setRating = async ({
-  id,
+  taleId,
   data,
+  userId,
 }: {
-  id: string
+  taleId: string
   data: TRating
+  userId: string
 }) => {
   if (!RatingSchema.safeParse(data).success) {
     throw 'Not all rating data provided'
@@ -22,14 +24,15 @@ export const setRating = async ({
 
   try {
     return await prisma.tale.update({
-      where: { id },
+      where: { id: taleId },
       data: {
         rating: {
           upsert: {
-            where: { id },
+            where: { id: taleId },
             create: {
               rating: data.rating,
               count: data.count,
+              userId: userId,
             },
             update: {
               rating: data.rating,

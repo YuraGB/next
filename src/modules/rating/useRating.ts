@@ -1,11 +1,19 @@
 import { TRating } from '@/server/actions/setRating'
 import { useAddRattingService } from '@/modules/rating/useAddRatting'
+import { useUserId } from '@/modules/rating/useUserId'
+import { useCanUserVote } from '@/modules/rating/useCanUserVote'
+import { useRouter } from 'next/navigation'
+import { Pages } from '@/utils/pages'
 
 export const useRating = (
   rating: TRating | null | undefined,
   id: string | undefined
 ) => {
-  const { mutate, status, error, data } = useAddRattingService(id)
+  const userId = useUserId()
+  const { mutate, status, error, data } = useAddRattingService(id, userId)
+  // Find Did user already vote
+  const { canEdit } = useCanUserVote(userId, id)
+  const router = useRouter()
 
   const isPending = status === 'pending'
 
@@ -14,8 +22,9 @@ export const useRating = (
       rating: rating?.rating ? rating?.rating + rate : rate,
       count: rating?.count ? rating?.count + 1 : 1,
     }
-    if (!isPending && id) {
-      mutate({ id, data: newRating })
+
+    if (!isPending && id && userId) {
+      mutate({ taleId: id, data: newRating, userId })
     }
   }
 
@@ -27,7 +36,14 @@ export const useRating = (
     data,
     error,
     isPending,
-    onClick,
+    onClick: userId
+      ? onClick
+      : () => {
+          console.log('You need to login to vote')
+          router.push(Pages.LOGIN)
+        },
     averageRating,
+    canEdit,
+    userId,
   }
 }
