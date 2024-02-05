@@ -36,7 +36,7 @@ const CommentComponent: FC<TProps> = ({ comment, isAdmin, onDelete, status }): R
     <section className={"relative"}>
       <div className={"my-3 inline-block w-full bg-white p-2"}>
         <Author author={comment.user} />
-        <p className={"flex border-b-1 px-3 py-5"}>{comment.content}</p>
+        <p className={"flex border-b-1 px-3 py-5 text-foreground-50"}>{comment.content}</p>
         <small className={"flex justify-end p-2 text-[12px] text-gray-600"}>
           {new Date(comment.createdAt).toLocaleDateString()}
         </small>
