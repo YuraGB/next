@@ -7,7 +7,7 @@ const SocialLinks = (): ReactNode => {
         "grid size-[100px] grid-cols-2 items-center justify-center gap-1 [justify-items:center]"
       }
     >
-      <a href="#!" role="button">
+      <a href="#!" role="button" aria-label="Facebook" target="_blank" rel="noopener">
         {/* <!-- Facebook --> */}
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -20,7 +20,7 @@ const SocialLinks = (): ReactNode => {
         </svg>
       </a>
 
-      <a href="#!" role="button">
+      <a href="#!" role="button" aria-label="Instagram" target="_blank" rel="noopener">
         {/* <!-- Instagram --> */}
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -33,7 +33,7 @@ const SocialLinks = (): ReactNode => {
         </svg>
       </a>
 
-      <a href="#!" role="button">
+      <a href="#!" role="button" aria-label="Google" target="_blank" rel="noopener">
         {/* <!-- Google --> */}
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -50,7 +50,7 @@ const SocialLinks = (): ReactNode => {
         </svg>
       </a>
 
-      <a href="#!" role="button">
+      <a href="#!" role="button" aria-label="Twitter" target="_blank" rel="noopener">
         {/* <!-- Twitter --> */}
         <svg
           xmlns="http://www.w3.org/2000/svg"
