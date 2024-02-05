@@ -1,7 +1,7 @@
-
 - Next Auth
 - TS
-- CI  / CD 
+- CI / CD
 - Unit tests / e2e tests
 - NextUI
 - ZOD
+- Husky
