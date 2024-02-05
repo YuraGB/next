@@ -3,7 +3,7 @@ import { emailPattern } from "@/utils/validation/patterns";
 export default [
   {
     type: "text",
-    label: "email",
+    label: "Email",
     maxLength: 128,
     name: "email",
     required: true,

@@ -4,7 +4,7 @@ import { emailPattern } from "@/utils/validation/patterns";
 export default [
   {
     type: "text",
-    label: "email",
+    label: "Email",
     maxLength: 128,
     name: "email",
     errorMessage: "Please enter a valid name",
@@ -13,7 +13,7 @@ export default [
   },
   {
     type: "password",
-    label: "password",
+    label: "Password",
     maxLength: 128,
     name: "password",
     required: true,

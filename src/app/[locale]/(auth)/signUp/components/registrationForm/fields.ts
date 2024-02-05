@@ -25,7 +25,7 @@ export default [
   },
   {
     type: "email",
-    label: "email",
+    label: "Email",
     maxLength: 128,
     name: "email",
     errorMessage: "Please enter a valid name",
@@ -35,7 +35,7 @@ export default [
   },
   {
     type: "password",
-    label: "password",
+    label: "Password",
     name: "password",
     maxLength: 128,
     required: true,
