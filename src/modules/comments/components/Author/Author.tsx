@@ -22,7 +22,7 @@ const Author: FC<TProps> = ({ author }): ReactNode | null => {
           icon: "text-black/80",
         }}
       />
-      <h3 className={"ml-2"}>{name}</h3>
+      <h3 className={"ml-2 text-foreground-50"}>{name}</h3>
     </div>
   );
 };

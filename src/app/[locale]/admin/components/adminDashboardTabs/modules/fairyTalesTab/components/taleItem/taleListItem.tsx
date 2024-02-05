@@ -39,8 +39,8 @@ const TaleAdminItem = ({
       </CardHeader>
       <Divider />
       <CardFooter className={"flex justify-between"}>
-        <p className={"mr-2 text-sm text-gray-700"}>Category: {forAge}</p>
-        <p className={"text-sm text-gray-700"}>Published: {createdAt.toLocaleDateString()}</p>
+        <p className={"mr-2 text-sm text-foreground-100"}>Category: {forAge}</p>
+        <p className={"text-sm text-foreground-100"}>Published: {createdAt.toLocaleDateString()}</p>
       </CardFooter>
     </Card>
   );
