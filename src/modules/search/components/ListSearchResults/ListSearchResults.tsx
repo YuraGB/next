@@ -6,7 +6,7 @@ import { type CategoryTale } from "@prisma/client";
 export type TaleWithCategory = Partial<Tale> & { categoryTale: CategoryTale };
 
 type ListResultsT = {
-  results: TaleWithCategory[];
+  results: TaleWithCategory[] | string | [];
   onClick: (id: string) => void;
 };
 
@@ -14,6 +14,11 @@ const ListSearchResults: FC<ListResultsT> = ({ results, onClick }): ReactNode | 
   if (!results?.length) {
     return null;
   }
+
+  if (typeof results === "string") {
+    return <p className={"flex justify-center p-4"}>{results}</p>;
+  }
+
   return (
     <section>
       {results.map((tale) => (

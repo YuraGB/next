@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import getSearch from "@/server/actions/searchTale";
 import { useRouter } from "next/navigation";
 import { Pages } from "@/utils/pages";
+import type { TaleWithCategory } from "@/modules/search/components/ListSearchResults/ListSearchResults";
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export const useInputSearch = () => {
@@ -32,11 +33,15 @@ export const useInputSearch = () => {
     enabled: Boolean(value),
   });
 
-  const searchResults = useMemo(() => {
+  const searchResults: TaleWithCategory[] | string | [] = useMemo(() => {
+    if (data === undefined) {
+      return [];
+    }
     if (data?.length) {
       return data;
     }
-    return [];
+
+    return "The is no such tale in the database. Please try another search query.";
   }, [data]);
 
   const onChangeHandler = useCallback((event: ChangeEvent<HTMLInputElement>) => {
