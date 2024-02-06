@@ -32,7 +32,7 @@
     "@nextui-org/react": "^2.2.9",
     "@react-three/fiber": "^8.15.15",
     "@smastrom/react-rating": "^1.5.0",
-    "@tanstack/react-query": "^5.17.9",
+    "@tanstack/react-query": "^5.18.1",
     "@types/three": "^0.160.0",
     "@vercel/speed-insights": "^1.0.2",
     "bcrypt": "^5.1.1",
@@ -63,8 +63,8 @@
     "@prisma/client": "^5.8.1",
     "@react-three/drei": "^9.96.5",
     "@react-three/rapier": "^1.2.1",
-    "@tanstack/eslint-plugin-query": "^5.17.7",
-    "@tanstack/react-query-devtools": "^5.17.9",
+    "@tanstack/eslint-plugin-query": "^5.18.1",
+    "@tanstack/react-query-devtools": "^5.18.1",
     "@testing-library/jest-dom": "^6.1.4",
     "@testing-library/react": "^14.1.2",
     "@testing-library/user-event": "^14.5.1",
@@ -95,7 +95,7 @@
     "jest-environment-jsdom": "^29.7.0",
     "lint-staged": "^15.2.1",
     "next-i18n-router": "^5.2.0",
-    "next-optimized-images": "^2.6.2",
+    "next-optimized-images": "^1.4.2",
     "postcss": "^8",
     "prettier": "^3.0.3",
     "prettier-plugin-tailwindcss": "^0.5.11",
@@ -107,6 +107,6 @@
     "ts-jest": "^29.1.1",
     "ts-node": "^10.9.2",
     "typescript": "^5",
-    "webp-loader": "^0.6.0"
+    "webp-loader": "^0.4.0"
   }
 }
