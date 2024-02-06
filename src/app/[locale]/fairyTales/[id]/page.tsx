@@ -5,7 +5,6 @@ import { getAllFairyTales } from "@/server/actions/getAllFairyTales";
 import { getTale } from "@/server/actions/getTale";
 import TaleContent from "@/app/[locale]/fairyTales/[id]/components/taleContent";
 
-export const dynamicParams = true;
 export const revalidate = 60;
 
 export const metadata: Metadata = {

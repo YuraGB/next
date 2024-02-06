@@ -4,8 +4,13 @@ const nextConfig = {
   // experimental: {
   //   ppr: true,
   // },
+  logging: {
+    fetches: {
+      fullUrl: true,
+    },
+  },
   images: {
-    domains: ['firebasestorage.googleapis.com', 'www.firstbenefits.org'],
+    domains: ["firebasestorage.googleapis.com"],
   },
   // async headers() {
   //   const headers = []
@@ -22,6 +27,6 @@ const nextConfig = {
   //   }
   //   return headers
   // },
-}
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
