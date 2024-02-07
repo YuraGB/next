@@ -10,9 +10,9 @@ export type LoginFormType = {
 const LoginForm = ({ redirectUrl }: LoginFormType): React.ReactNode => {
   const { formFields, onSubmit, handleSubmit } = useLoginForm({ redirectUrl });
   return (
-    <article className={"mt-3 flex flex-col justify-center"}>
+    <article className={"mt-3 flex w-full flex-col justify-center md:w-auto"}>
       <form
-        className="mb-4 w-[500px] rounded bg-white px-8 pb-8 pt-6 shadow-md"
+        className="mb-4 rounded  bg-white px-8 pb-8 pt-6 shadow-md [grow:1] md:w-[500px]"
         onSubmit={handleSubmit(onSubmit)}
         aria-label={"Login in form"}
       >
