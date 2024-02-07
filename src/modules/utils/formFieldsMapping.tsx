@@ -28,6 +28,7 @@ export default function formFieldsMapping(
         {type === "textarea" ? (
           <Textarea
             label={label}
+            isRequired={required}
             className="w-full"
             {...rest}
             {...register(name as keyof Fields, {
