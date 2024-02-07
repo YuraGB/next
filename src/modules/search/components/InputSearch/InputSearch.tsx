@@ -1,7 +1,8 @@
 import { Input } from "@nextui-org/input";
-import { type ChangeEvent, memo, type ReactNode, useRef } from "react";
+import { type ChangeEvent, memo, type ReactNode } from "react";
 import { SearchIcon } from "@nextui-org/shared-icons";
 import RemoveButton from "@/components/removeButton";
+import { useInputSearchField } from "@/modules/search/components/InputSearch/useInputSearchField";
 
 const InputSearch = ({
   onChange,
@@ -12,15 +13,7 @@ const InputSearch = ({
   isValue: boolean;
   clearSearch: () => void;
 }): ReactNode => {
-  const searchRef = useRef<HTMLFormElement>(null);
-
-  const onReset = (): void => {
-    if (searchRef?.current?.reset) {
-      searchRef.current?.reset();
-      clearSearch();
-    }
-  };
-
+  const { onReset, searchRef } = useInputSearchField(clearSearch);
   return (
     <form aria-label={"search input"} ref={searchRef} className={"w-full"}>
       <Input
