@@ -23,7 +23,7 @@ const LoggedInItems = ({ user }: Props): React.ReactNode => {
   return (
     <NavbarContent justify="center" className={"ml-[auto] max-w-[40px]"}>
       <li>
-        <Dropdown backdrop={"blur"}>
+        <Dropdown>
           <DropdownTrigger>
             <Avatar name={name!} size={"sm"} />
           </DropdownTrigger>

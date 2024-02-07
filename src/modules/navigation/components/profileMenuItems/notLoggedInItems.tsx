@@ -10,7 +10,7 @@ const NotLoggedInItems = (): React.ReactNode => {
   return (
     <NavbarContent justify="center" className={"ml-[auto] max-w-[140px]"}>
       <NavbarItem>
-        <Dropdown backdrop={"blur"}>
+        <Dropdown>
           <DropdownTrigger>
             <Button>
               <FormattedMessage id={"profile.button"} defaultMessage={"Profile"} />
