@@ -32,6 +32,7 @@ const config: Config = {
             foreground: {
               "50": "#161616",
               "100": "#808084",
+              "200": "#e9e6e6",
             },
           },
         }, // light theme colors
@@ -47,6 +48,7 @@ const config: Config = {
               DEFAULT: "#e9e6e6",
               "50": "#161616",
               "100": "#808084",
+              "200": "#e9e6e6",
             },
             default: {
               foreground: "#e9e6e6",
