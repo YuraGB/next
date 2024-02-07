@@ -54,8 +54,12 @@ const Navigation = (): React.ReactNode => {
       </Suspense>
 
       <NavbarContent className={"max-w-[fit-content]"}>
-        <ThemeSwitcher />
-        <LangSwitcher />
+        <li>
+          <ThemeSwitcher />
+        </li>
+        <li>
+          <LangSwitcher />
+        </li>
         <Search />
         <li className="max-w-[25px] md:hidden">
           <NavbarMenuToggle className={"h-5"} />
