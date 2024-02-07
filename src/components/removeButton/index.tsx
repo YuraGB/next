@@ -13,7 +13,7 @@ const RemoveButton = ({ onClick }: { onClick: () => void }): React.ReactNode => 
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          fill="#000000"
+          fill="rgb(113, 113, 122)"
           height="20px"
           width="20px"
           version="1.1"
