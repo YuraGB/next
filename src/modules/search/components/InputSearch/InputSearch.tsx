@@ -14,6 +14,7 @@ const InputSearch = ({
   clearSearch: () => void;
 }): ReactNode => {
   const { onReset, searchRef } = useInputSearchField(clearSearch);
+
   return (
     <form aria-label={"search input"} ref={searchRef} className={"w-full"}>
       <Input
