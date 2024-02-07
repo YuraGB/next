@@ -6,7 +6,7 @@ import ProfileMenuItems from "@/modules/navigation/components/profileMenuItems/p
 
 type NavItemsProps = {
   items: NavBarItemType[];
-  onClose: (isOpen: (open: boolean) => boolean) => void;
+  onClose: (isOpen: boolean) => void;
 };
 
 const MobileMenu = ({ items, onClose }: NavItemsProps): React.ReactNode | null => {
@@ -14,9 +14,7 @@ const MobileMenu = ({ items, onClose }: NavItemsProps): React.ReactNode | null =
     return null;
   }
   const onCloseHandler = (): void => {
-    onClose((open: boolean): boolean => {
-      return !open;
-    });
+    onClose(false);
   };
 
   return (
