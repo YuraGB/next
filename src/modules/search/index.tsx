@@ -13,7 +13,9 @@ const Search = (): ReactNode => {
     onChangeHandler,
     redirectToTale,
     isPopoverOpen,
+    searchValue,
     setIsPopoverOpen,
+    clearSearch,
   } = useInputSearch();
 
   const onClose = (e: SyntheticEvent<HTMLElement>): void => {
@@ -65,7 +67,11 @@ const Search = (): ReactNode => {
           </Button>
         </PopoverTrigger>
         <PopoverContent>
-          <InputSearch onChange={onChangeHandler} />
+          <InputSearch
+            onChange={onChangeHandler}
+            isValue={Boolean(searchValue)}
+            clearSearch={clearSearch}
+          />
           <SearchResults
             searchResults={searchResults}
             error={error}

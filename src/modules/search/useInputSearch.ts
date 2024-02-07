@@ -50,6 +50,13 @@ export const useInputSearch = () => {
     }
   }, []);
 
+  const clearSearch = useCallback((cb: () => void | undefined): void => {
+    setSearchValue("");
+    if (cb) {
+      cb();
+    }
+  }, []);
+
   return {
     onChangeHandler,
     searchResults,
@@ -58,5 +65,7 @@ export const useInputSearch = () => {
     redirectToTale,
     isPopoverOpen,
     setIsPopoverOpen,
+    searchValue,
+    clearSearch,
   };
 };
