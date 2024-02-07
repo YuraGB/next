@@ -17,7 +17,7 @@ const ThemeSwitcher = (): ReactNode => {
   const isLight = theme === "light";
 
   return (
-    <div className={"mr-2 flex items-center"}>
+    <div className={"flex items-center"}>
       <Button
         onClick={() => {
           setTheme(isLight ? "dark" : "light");

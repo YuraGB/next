@@ -31,11 +31,9 @@ const Navigation = (): React.ReactNode => {
     >
       <NavbarContent className="max-w-[50%] pr-3 sm:max-w-[fit-content]" justify="start">
         <li className={"flex w-full"}>
-          <ThemeSwitcher />
-          <LangSwitcher />
-          <NavbarBrand className={"mr-[-18px] hidden justify-end  sm:mr-0 sm:flex"}>
+          <NavbarBrand className={"mr-[-18px] flex  justify-start sm:mr-0"}>
             <Link href={"/"} className={"flex content-center items-center justify-center"}>
-              <p className="hidden items-center font-bold text-inherit sm:flex">
+              <p className="flex items-center font-bold text-inherit">
                 {/* eslint-disable-next-line no-use-before-define */}
                 <AcmeLogo />
                 <FormattedMessage id={"logo"} />
@@ -47,15 +45,17 @@ const Navigation = (): React.ReactNode => {
 
       <MenuList items={menuItems} />
 
-      <Suspense fallback={null}>
+      <div className={"hidden md:inline"}>
         <ProfileMenuItems />
-      </Suspense>
+      </div>
 
       <Suspense fallback={null}>
-        <MobileMenu items={menuItems} />
+        <MobileMenu items={menuItems} onClose={setIsMenuOpen} />
       </Suspense>
 
       <NavbarContent className={"max-w-[fit-content]"}>
+        <ThemeSwitcher />
+        <LangSwitcher />
         <Search />
         <li className="max-w-[25px] md:hidden">
           <NavbarMenuToggle className={"h-5"} />

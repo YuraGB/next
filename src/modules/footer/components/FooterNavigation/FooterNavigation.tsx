@@ -9,7 +9,7 @@ const FooterNavigation = (): ReactNode => {
 
   return (
     <nav>
-      <h2 className={"mb-2 text-xl"}>
+      <h2 className={"mb-2 text-xl underline"}>
         <FormattedMessage id={"footer.navigation.title"} defaultMessage={"Footer navigation"} />{" "}
       </h2>
       <FooterNavigationList navigationList={menuItems} />

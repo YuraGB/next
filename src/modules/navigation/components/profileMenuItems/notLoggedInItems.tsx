@@ -8,22 +8,25 @@ import { Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from "@nextui-o
 
 const NotLoggedInItems = (): React.ReactNode => {
   return (
-    <NavbarContent justify="end" className={"ml-[auto] max-w-[40px]"}>
+    <NavbarContent justify="center" className={"ml-[auto] max-w-[140px]"}>
       <NavbarItem>
-        <Dropdown>
+        <Dropdown backdrop={"blur"}>
           <DropdownTrigger>
             <Button>
               <FormattedMessage id={"profile.button"} defaultMessage={"Profile"} />
             </Button>
           </DropdownTrigger>
           <DropdownMenu aria-label="Static Actions">
-            <DropdownItem key={Pages.SIGNUP}>
-              <Link href={Pages.SIGNUP} className={"flex w-full"}>
+            <DropdownItem
+              key={Pages.SIGNUP}
+              className={"rounded-none border-b-1 border-gray-200 py-3"}
+            >
+              <Link href={Pages.SIGNUP} className={"flex w-full "}>
                 <FormattedMessage id={"sign_up_button"} />
               </Link>
             </DropdownItem>
 
-            <DropdownItem key={Pages.LOGIN}>
+            <DropdownItem key={Pages.LOGIN} className={"py-3"}>
               <Link href={Pages.LOGIN} className={"flex w-full"}>
                 <FormattedMessage id={"login_button"} />
               </Link>
