@@ -50,11 +50,8 @@ export const useInputSearch = () => {
     }
   }, []);
 
-  const clearSearch = useCallback((cb: () => void | undefined): void => {
+  const clearSearch = useCallback((): void => {
     setSearchValue("");
-    if (cb) {
-      cb();
-    }
   }, []);
 
   return {

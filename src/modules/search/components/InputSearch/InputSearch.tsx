@@ -10,13 +10,14 @@ const InputSearch = ({
 }: {
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
   isValue: boolean;
-  clearSearch: (arg: () => void) => void;
+  clearSearch: () => void;
 }): ReactNode => {
   const searchRef = useRef<HTMLFormElement>(null);
 
   const onReset = (): void => {
     if (searchRef?.current?.reset) {
       searchRef.current?.reset();
+      clearSearch();
     }
   };
 
@@ -31,15 +32,7 @@ const InputSearch = ({
         className={"w-full min-w-[200px]"}
         startContent={<SearchIcon />}
         maxLength={128}
-        endContent={
-          isValue ? (
-            <RemoveButton
-              onClick={() => {
-                clearSearch(onReset);
-              }}
-            />
-          ) : null
-        }
+        endContent={isValue ? <RemoveButton onClick={onReset} /> : null}
       />
     </form>
   );
