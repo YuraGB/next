@@ -10,7 +10,7 @@ const Description = ({
 }): ReactNode => {
   if (userId === undefined || userId === null) {
     return (
-      <p>
+      <p className={"text-[12px]"}>
         <FormattedMessage
           id={"notLoggedIn.user.vote"}
           defaultMessage={"You need to log in to vote"}

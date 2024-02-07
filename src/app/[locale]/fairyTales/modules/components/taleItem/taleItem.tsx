@@ -60,10 +60,10 @@ const TaleItem = ({ tale }: { tale: TFindAllTales }): React.ReactNode | null => 
       <Divider />
       <CardFooter
         className={
-          "flex justify-between rounded-[0] border-t-1 border-default-600 bg-white p-2 px-6 text-gray-700 sm:p-3 dark:border-default-100"
+          "flex justify-between rounded-[0] border-t-1 border-default-600 bg-white p-2 px-4 text-gray-700 sm:p-3 dark:border-default-100"
         }
       >
-        <div className={"flex flex-col items-start justify-start"}>
+        <div className={"max-w[50%] flex flex-col items-start justify-start"}>
           <p>Category: {categoryTale.name}</p>
           <CreatedAt createdAt={createdAt} />
         </div>

@@ -13,7 +13,7 @@ const MenuList = ({ items }: NavItemsProps): React.ReactNode | null => {
   }
 
   return (
-    <NavbarContent className="mr-auto hidden gap-4 sm:flex" justify="center">
+    <NavbarContent className="mr-auto hidden gap-1 sm:gap-4 md:flex" justify="center">
       {items.map((item) => (
         <MenuItem key={item.url} item={item} />
       ))}
