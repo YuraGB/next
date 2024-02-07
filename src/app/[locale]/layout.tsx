@@ -14,8 +14,12 @@ import "@smastrom/react-rating/style.css";
 import dynamic from "next/dynamic";
 import ServerIntlProvider from "@/context/i18nProvider";
 import getIntl from "@/utils/intl";
+import { EdgeStoreProvider } from "@/context/Edgestore";
 const Navigation = dynamic(() => import("@/modules/navigation/Navigation"));
 const Footer = dynamic(() => import("../../modules/footer"));
+const BackgroundSwithcer = dynamic(
+  () => import("@/components/BackgroundSwitcher/BackgroundSwithcer")
+);
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -41,13 +45,16 @@ export default async function RootLayout({
         <NextUiProviderComponent>
           <ReactQueryProvider>
             <AuthProvider>
-              <ServerIntlProvider messages={intl.messages} locale={intl.locale}>
-                <Navigation />
-                {children}
-                <Suspense fallback={null}>
-                  <Footer />
-                </Suspense>
-              </ServerIntlProvider>
+              <EdgeStoreProvider>
+                <ServerIntlProvider messages={intl.messages} locale={intl.locale}>
+                  <BackgroundSwithcer />
+                  <Navigation />
+                  {children}
+                  <Suspense fallback={null}>
+                    <Footer />
+                  </Suspense>
+                </ServerIntlProvider>
+              </EdgeStoreProvider>
             </AuthProvider>
           </ReactQueryProvider>
         </NextUiProviderComponent>

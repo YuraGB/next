@@ -21,6 +21,8 @@ const BackgroundDay = () => {
         camera={{ position: [0, -10, 2000], fov: 75 }}
         style={{
           position: "fixed",
+          minHeight: "500px",
+          minWidth: "101vw",
         }}
         gl={{
           antialias: true,
@@ -34,7 +36,7 @@ const BackgroundDay = () => {
             seed={0.01}
             concentrate={"outside"}
             fade={10}
-            speed={0.05}
+            speed={0.08}
             position={[0, 1, 0]}
             growth={7}
             segments={100}
