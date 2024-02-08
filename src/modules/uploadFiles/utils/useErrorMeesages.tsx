@@ -6,7 +6,7 @@ export const useErrorMeesages = (
   fileRejections: FileRejection[],
   dropzoneOptions: Omit<DropzoneOptions, "disabled"> | undefined
 ): string | undefined => {
-  const errorMessage: string | undefined = React.useMemo((): string | undefined => {
+  return React.useMemo((): string | undefined => {
     if (fileRejections[0]) {
       const { errors } = fileRejections[0];
       if (errors[0]?.code === "file-too-large") {
@@ -21,6 +21,4 @@ export const useErrorMeesages = (
     }
     return undefined;
   }, [fileRejections, dropzoneOptions]);
-
-  return errorMessage;
 };
