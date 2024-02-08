@@ -4,6 +4,7 @@ import React from "react";
 import { getAllFairyTales } from "@/server/actions/getAllFairyTales";
 import { getTale } from "@/server/actions/getTale";
 import TaleContent from "@/app/[locale]/fairyTales/[id]/components/taleContent";
+import BreadcrumbsModule from "@/modules/Breadcrumbs/Breadcrumbs";
 
 export const revalidate = 60;
 
@@ -23,8 +24,19 @@ export const metadata: Metadata = {
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export default async function FairyTale({ params }: { params: { id: string } }) {
   const taleData = await getTale(params.id);
+  const brdcrPath = [
+    {
+      url: "/fairyTales",
+      name: "Catalog of the Tales",
+    },
+  ];
 
-  return <PageWrapper>{taleData ? <TaleContent taleContent={taleData} /> : null}</PageWrapper>;
+  return (
+    <PageWrapper>
+      <BreadcrumbsModule current={taleData?.title ?? "Tale"} path={brdcrPath} />
+      {taleData ? <TaleContent taleContent={taleData} /> : null}
+    </PageWrapper>
+  );
 }
 
 export async function generateStaticParams(): Promise<string[]> {

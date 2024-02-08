@@ -3,6 +3,7 @@ import { type Metadata } from "next";
 import TalesList from "@/app/[locale]/fairyTales/modules/components/talesList/talesList";
 import PageTitle from "@/app/[locale]/fairyTales/components/pageTitle/PageTitle";
 import { type ReactNode, Suspense } from "react";
+import BreadcrumbsModule from "@/modules/Breadcrumbs/Breadcrumbs";
 
 export const metadata: Metadata = {
   title: "Fairy tales page",
@@ -20,6 +21,7 @@ export const metadata: Metadata = {
 export default function FairyTales(): ReactNode {
   return (
     <PageWrapper>
+      <BreadcrumbsModule current={"Catalog of the Tales"} />
       <PageTitle />
       <Suspense fallback={null}>
         <TalesList />
