@@ -15,6 +15,14 @@ export const useUploadSingle = ({
   disabled,
   onChange,
 }: InputProps) => {
+  const onDrop = (acceptedFiles: any[]): void => {
+    const file = acceptedFiles[0];
+    if (file) {
+      void onChange?.(file);
+    }
+  };
+
+  // image url
   const imageUrl: string | null = React.useMemo(() => {
     if (typeof value === "string") {
       // in case a url is passed in, use it to display the image
@@ -38,13 +46,7 @@ export const useUploadSingle = ({
     accept: { "image/*": [] },
     multiple: false,
     disabled,
-    // eslint-disable-next-line no-shadow
-    onDrop: (acceptedFiles) => {
-      const file = acceptedFiles[0];
-      if (file) {
-        void onChange?.(file);
-      }
-    },
+    onDrop,
     ...dropzoneOptions,
   });
   const errorMessage = useErrorMeesages(fileRejections, dropzoneOptions);
