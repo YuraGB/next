@@ -5,6 +5,7 @@ import { type ReactNode } from "react";
 import { createIntl } from "@formatjs/intl";
 // eslint-disable-next-line @typescript-eslint/no-restricted-imports
 import en from "../../../../../i18n/en.json";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 // Mock useRouter:
 jest.mock("next/navigation", () => ({
@@ -22,10 +23,13 @@ describe("Sign up page", () => {
     },
   });
   function Wrapper({ children }: { children: ReactNode }): ReactNode {
+    const queryClient = new QueryClient();
     return (
-      <ServerIntlProvider locale={intl.locale} messages={intl.messages}>
-        {children}
-      </ServerIntlProvider>
+      <QueryClientProvider client={queryClient}>
+        <ServerIntlProvider locale={intl.locale} messages={intl.messages}>
+          {children}
+        </ServerIntlProvider>
+      </QueryClientProvider>
     );
   }
 
