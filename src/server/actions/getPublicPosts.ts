@@ -22,7 +22,7 @@ export const getPublicPosts = cache(async () => {
     });
   } catch (e) {
     console.log(e);
-    throw new Error("Error getting public posts");
+    throw new Error("Error getting posts");
   }
 });
 
@@ -31,6 +31,6 @@ export const getAllPosts = cache(async () => {
     return await prisma?.post.findMany();
   } catch (e) {
     console.log(e);
-    throw new Error("Error getting all posts");
+    throw new Error("Error getting posts");
   }
 });

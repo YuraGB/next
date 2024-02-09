@@ -3,6 +3,7 @@ import { type Metadata } from "next";
 import React, { type ReactNode } from "react";
 import HomePageIntro from "@/modules/homePageIntro";
 import Logo from "@/components/Logo/Logo";
+import HomePageSlider from "@/modules/homePageSlider";
 
 export const metadata: Metadata = {
   title: "Fairy Tales Catalog Home page",
@@ -18,6 +19,7 @@ export default function Home(): ReactNode {
     <PageWrapper>
       <Logo />
       <HomePageIntro />
+      <HomePageSlider />
     </PageWrapper>
   );
 }
