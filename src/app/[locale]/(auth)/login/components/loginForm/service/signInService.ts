@@ -5,7 +5,6 @@ import { type Inputs } from "@/modules/types/formTypes";
 export default async (data: Partial<Inputs>) => {
   const { email, password } = data;
 
-  //eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
   if (email && password) {
     try {
       return await signIn("credentials", {

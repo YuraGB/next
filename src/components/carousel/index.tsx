@@ -1,38 +1,55 @@
 "use client";
 
-import { Navigation, A11y } from "swiper/modules";
+import { Navigation, A11y, Autoplay, Pagination } from "swiper/modules";
 
 import { Swiper } from "swiper/react";
 
 // Import Swiper styles
 import "swiper/css";
-import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/autoplay";
+
 import { type ReactNode } from "react";
 import type { Swiper as SwiperClass } from "swiper/types";
 import { type SwiperProps } from "swiper/swiper-react";
 
 type Props = {
   children: ReactNode[];
-  config?: SwiperProps;
+  config: SwiperProps | NonNullable<unknown>;
 };
 // eslint-disable-next-line react/display-name
-export default function Carousel({ children }: Props): ReactNode {
+export default function Carousel({ children, config = {} }: Props): ReactNode {
+  const configDefault = {
+    spaceBetween: 10,
+    slidesPerView: 3,
+    autoplay: {
+      delay: 3500,
+      disableOnInteraction: false,
+      pauseOnMouseEnter: true,
+      waitForTransition: true,
+    },
+    speed: 2000,
+    loop: true,
+    pagination: { clickable: true },
+    scrollbar: { draggable: true },
+    modules: [Navigation, A11y, Autoplay, Pagination],
+    breakpoints: {
+      // when window width is >= 640px
+      640: {
+        width: 640,
+        slidesPerView: 1,
+      },
+      // when window width is >= 768px
+      768: {
+        width: 768,
+        slidesPerView: 2,
+      },
+    },
+    ...config,
+  };
+
   return (
-    <Swiper
-      // install Swiper modules
-      modules={[Navigation, A11y]}
-      spaceBetween={10}
-      slidesPerView={3}
-      navigation
-      pagination={{ clickable: true }}
-      scrollbar={{ draggable: true }}
-      onSwiper={(swiper: SwiperClass): void => {
-        console.log(swiper);
-      }}
-      onSlideChange={(): void => {
-        console.log("slide change");
-      }}
-    >
+    <Swiper {...configDefault} className={"!pb-12"}>
       {children}
     </Swiper>
   );
