@@ -10,18 +10,17 @@ import "swiper/css/pagination";
 import "swiper/css/autoplay";
 
 import { type ReactNode } from "react";
-import type { Swiper as SwiperClass } from "swiper/types";
 import { type SwiperProps } from "swiper/swiper-react";
 
 type Props = {
   children: ReactNode[];
-  config: SwiperProps | NonNullable<unknown>;
+  config?: SwiperProps | NonNullable<unknown>;
 };
 // eslint-disable-next-line react/display-name
 export default function Carousel({ children, config = {} }: Props): ReactNode {
   const configDefault = {
     spaceBetween: 10,
-    slidesPerView: 3,
+    slidesPerView: 1,
     autoplay: {
       delay: 3500,
       disableOnInteraction: false,
@@ -35,21 +34,19 @@ export default function Carousel({ children, config = {} }: Props): ReactNode {
     modules: [Navigation, A11y, Autoplay, Pagination],
     breakpoints: {
       // when window width is >= 640px
-      640: {
-        width: 640,
-        slidesPerView: 1,
+      480: {
+        slidesPerView: 2,
       },
       // when window width is >= 768px
       768: {
-        width: 768,
-        slidesPerView: 2,
+        slidesPerView: 3,
       },
     },
     ...config,
   };
 
   return (
-    <Swiper {...configDefault} className={"!pb-12"}>
+    <Swiper {...configDefault} className={"sm:!pb-12"}>
       {children}
     </Swiper>
   );
