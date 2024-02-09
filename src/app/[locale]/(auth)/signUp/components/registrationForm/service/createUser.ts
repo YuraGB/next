@@ -17,7 +17,7 @@ export const createUser = async (newUser: TCreateUser) => {
   const findMatch = await findUser(newUser.data.email);
 
   if (findMatch) {
-    throw "This email is already registered";
+    throw new Error("This email is already registered");
   }
 
   const userDataWithHashedPassword = replacePasswordToHash(newUser);

@@ -33,7 +33,6 @@ export const authOptions: NextAuthOptions = {
         if (credentials?.email) {
           try {
             const user = await findUser(credentials?.email);
-
             if (
               user &&
               typeof user !== "string" &&
