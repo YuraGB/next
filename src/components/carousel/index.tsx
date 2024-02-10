@@ -1,16 +1,19 @@
 "use client";
 
-import { Navigation, A11y, Autoplay, Pagination } from "swiper/modules";
+import { Navigation, A11y, Autoplay } from "swiper/modules";
+import { type Swiper as SwiperType } from "swiper";
+
+import { Fragment, type ReactNode, useRef } from "react";
+import { type SwiperProps } from "swiper/swiper-react";
+import { Button } from "@nextui-org/button";
 
 import { Swiper } from "swiper/react";
 
 // Import Swiper styles
 import "swiper/css";
-import "swiper/css/pagination";
 import "swiper/css/autoplay";
-
-import { type ReactNode } from "react";
-import { type SwiperProps } from "swiper/swiper-react";
+import LeftArrow from "@/components/carousel/LeftArrow";
+import RightArrow from "@/components/carousel/RightArrow";
 
 type Props = {
   children: ReactNode[];
@@ -18,6 +21,7 @@ type Props = {
 };
 // eslint-disable-next-line react/display-name
 export default function Carousel({ children, config = {} }: Props): ReactNode {
+  const swiperRef = useRef<SwiperType>();
   const configDefault = {
     spaceBetween: 10,
     slidesPerView: 1,
@@ -29,9 +33,9 @@ export default function Carousel({ children, config = {} }: Props): ReactNode {
     },
     speed: 2000,
     loop: true,
-    pagination: { clickable: true },
+    navigation: true,
     scrollbar: { draggable: true },
-    modules: [Navigation, A11y, Autoplay, Pagination],
+    modules: [Navigation, A11y, Autoplay],
     breakpoints: {
       // when window width is >= 640px
       480: {
@@ -46,8 +50,37 @@ export default function Carousel({ children, config = {} }: Props): ReactNode {
   };
 
   return (
-    <Swiper {...configDefault} className={"sm:!pb-12"}>
-      {children}
-    </Swiper>
+    <Fragment>
+      <Swiper
+        {...configDefault}
+        onBeforeInit={(swiper) => {
+          swiperRef.current = swiper;
+        }}
+      >
+        {children}
+      </Swiper>
+      <div>
+        <Button
+          type={"button"}
+          className={
+            "absolute left-0 top-1/2 z-10 -translate-y-1/2 rounded-full bg-white p-2 shadow-lg md:left-[-50px]"
+          }
+          isIconOnly={true}
+          onClick={() => swiperRef.current?.slidePrev()}
+        >
+          <LeftArrow />
+        </Button>
+        <Button
+          className={
+            "absolute right-0 top-1/2 z-10 -translate-y-1/2 rounded-full bg-white p-2 shadow-lg  md:right-[-50px]"
+          }
+          type={"button"}
+          isIconOnly={true}
+          onClick={() => swiperRef.current?.slideNext()}
+        >
+          <RightArrow />
+        </Button>
+      </div>
+    </Fragment>
   );
 }
