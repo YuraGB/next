@@ -9,7 +9,7 @@ const Slide = ({ item }: { item: TFindAllTales }): ReactNode => {
         <Image
           src={item.mainImage}
           alt={item.title}
-          height={200}
+          height={142}
           width={300}
           loading={"lazy"}
           className={"h-auto w-[500px]"}

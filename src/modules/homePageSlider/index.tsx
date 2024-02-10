@@ -5,6 +5,7 @@ import type { TFindAllTales } from "@/server/actions/types";
 import Slide from "@/modules/homePageSlider/components/Slide/Slide";
 import { SwiperSlide } from "swiper/react";
 import { useHPSlider } from "@/modules/homePageSlider/useHPSlider";
+import SkeletonSlider from "@/modules/homePageSlider/components/SkeletonSlider/SkeletonSlider";
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 const HomePageSlider = () => {
@@ -23,7 +24,11 @@ const HomePageSlider = () => {
                   </SwiperSlide>
                 );
               })
-          : []}
+          : new Array(4).fill(0).map((_, index) => (
+              <SwiperSlide key={index}>
+                <SkeletonSlider />
+              </SwiperSlide>
+            ))}
       </Carousel>
     </section>
   );

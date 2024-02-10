@@ -41,6 +41,9 @@ export type TFindAllTales = Tale & {
   categoryTale: Pick<CategoryTale, "name" | "id">;
 } & { rating: Rating | null };
 
+// At the production the errors are overriden.
+// The error messages are not returned to the client.
+//It was decided to replace the error  with a generic message.
 export type TErrorObject = {
   isError: boolean;
   errorCode: string;

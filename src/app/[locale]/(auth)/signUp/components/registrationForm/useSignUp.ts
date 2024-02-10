@@ -8,7 +8,6 @@ import fields from "./fields";
 import validateFields from "@/utils/validation/validateFields";
 import { useServiceCreate } from "@/app/[locale]/(auth)/signUp/components/registrationForm/service/useServiceCreate";
 import { useServiceSignIn } from "@/app/[locale]/(auth)/signUp/components/registrationForm/service/useServiceSignIn";
-import { useRouter } from "next/navigation";
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export const useSignUp = () => {
@@ -18,11 +17,11 @@ export const useSignUp = () => {
     formState: { errors, isValid },
   } = useForm<Partial<Inputs>>();
 
+  // save the password to use it in the signIn mutation
   const refPassword = useRef<string | null>(null);
-  const router = useRouter();
 
   const { createNewUser, newUserData, onCreateStatus } = useServiceCreate();
-  const { signIn, signInData, onSignInStatus } = useServiceSignIn();
+  const { signIn, onSignInStatus } = useServiceSignIn();
 
   const onSubmit: SubmitHandler<Partial<Inputs>> = async (data) => {
     const areAllFieldsFilled = validateFields(data);
@@ -30,10 +29,11 @@ export const useSignUp = () => {
     if (areAllFieldsFilled) {
       const newUser = {
         name: `${data.firstName} ${data.lastName}`,
-        email: data.email ? data.email : "",
-        hashPassword: data.password ? data.password : "",
+        email: data.email ?? "",
+        hashPassword: data.password ?? "",
       };
 
+      // save the password to use it in the signIn mutation
       refPassword.current = newUser.hashPassword;
 
       createNewUser({
@@ -51,20 +51,15 @@ export const useSignUp = () => {
 
   useEffect(() => {
     if (newUserData && "email" in newUserData && refPassword.current) {
-      console.log("newUserData", newUserData);
-      console.log("refPassword", refPassword.current);
       signIn({
         email: newUserData.email,
         password: refPassword.current,
       });
+
+      // reset the password
+      refPassword.current = null;
     }
   }, [newUserData]);
-
-  useEffect(() => {
-    if (signInData?.ok === true) {
-      router.push("/");
-    }
-  }, [signInData]);
 
   const formFields: React.ReactNode[] = formFieldsMapping(fields, errors, register);
 
