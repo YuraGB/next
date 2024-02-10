@@ -4,10 +4,8 @@ import { Navigation, A11y, Autoplay } from "swiper/modules";
 import { type Swiper as SwiperType } from "swiper";
 
 import { Fragment, type ReactNode, useRef } from "react";
-import { type SwiperProps } from "swiper/swiper-react";
+import { type SwiperProps, Swiper } from "swiper/react";
 import { Button } from "@nextui-org/button";
-
-import { Swiper } from "swiper/react";
 
 // Import Swiper styles
 import "swiper/css";
