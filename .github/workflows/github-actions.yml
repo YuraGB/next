@@ -18,8 +18,8 @@ jobs:
       NEXT_PUBLIC_JWT_SECRET_KEY: ${{ secrets.NEXT_PUBLIC_JWT_SECRET_KEY }}
       NEXTAUTH_SECRET: ${{ secrets.NEXTAUTH_SECRET }}
       DATABASE_URL: ${{ secrets.DATABASE_URL }}
-      EDGE_STORE_ACCESS_KEY: ${{ WhL0W06sJFxQNsV4ZwMH4wEInNKqBx5s }}
-      EDGE_STORE_SECRET_KEY: ${{ J7hHDRbCLPl5RC7zmRiuGgGXnJTbfQqhhqhWG6HqxF3ZIA2v }}
+      EDGE_STORE_ACCESS_KEY: ${{ secrets.EDGE_STORE_ACCESS_KEY }}
+      EDGE_STORE_SECRET_KEY: ${{ secrets.EDGE_STORE_SECRET_KEY }}
     strategy:
       matrix:
         node-version: [18.x]
