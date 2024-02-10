@@ -11,7 +11,6 @@ export default async (data: Partial<Inputs>) => {
         email,
         password,
         redirect: false,
-        callbackUrl: "/",
       });
     } catch (e) {
       console.log(e);

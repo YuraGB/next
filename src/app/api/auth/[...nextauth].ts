@@ -40,6 +40,8 @@ export const authOptions: NextAuthOptions = {
               toComparePasswords(credentials?.password, user.hashPassword)
             ) {
               return user;
+            } else {
+              console.log("user not found");
             }
           } catch (e) {
             throw "there is an error during logging";

@@ -1,7 +1,11 @@
 import { useMutation } from "@tanstack/react-query";
-import { createUser } from "@/app/[locale]/(auth)/signUp/components/registrationForm/service/createUser";
 import toast from "react-hot-toast";
+import type { User } from "@/app/[locale]/admin/components/adminDashboardTabs/modules/adminUserTab/model/User";
+import type { TErrorObject } from "@/server/actions/types";
+import { getErrorMessage } from "@/utils/getErrorMessage";
+import { createUser } from "@/app/[locale]/(auth)/signUp/components/registrationForm/service/createUser";
 
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export const useServiceCreate = () => {
   const {
     mutate: createNewUser,
@@ -9,8 +13,12 @@ export const useServiceCreate = () => {
     status: onCreateStatus,
   } = useMutation({
     mutationFn: createUser,
-    onError: (error) => {
-      toast.error(error.message);
+    onSuccess: (data: Pick<User, "email" | "hashPassword"> | TErrorObject) => {
+      if ("isError" in data && data.errorCode) {
+        const message = getErrorMessage(data);
+
+        toast.error(message);
+      }
     },
   });
 

@@ -1,12 +1,14 @@
 // Type definitions for the Prisma schema
 // Path: prisma/schema.prisma
-import { type CategoryTale, Prisma, type Tale } from "@prisma/client";
-import { type Comment, type Rating } from ".prisma/client";
+import { type CategoryTale, type Tale } from "@prisma/client";
+import { type Comment, Prisma, type Rating } from ".prisma/client";
+import CategoryTale$talesArgs = Prisma.CategoryTale$talesArgs;
+import Rating$TaleArgs = Prisma.Rating$TaleArgs;
+import validator = Prisma.validator;
+import { type Record } from "@prisma/client/runtime/library";
 
 // TaleWithRelations is a type that extends the Tale type with the relations
-const talesWithRelations = Prisma.validator<
-  Prisma.CategoryTale$talesArgs[] | Prisma.Rating$TaleArgs
->()({
+const talesWithRelations = validator<CategoryTale$talesArgs[] | Rating$TaleArgs>()({
   include: {
     categoryTale: true,
     rating: true,
@@ -38,3 +40,10 @@ export type CommentWithUser = Comment & Prisma.CommentGetPayload<typeof commentW
 export type TFindAllTales = Tale & {
   categoryTale: Pick<CategoryTale, "name" | "id">;
 } & { rating: Rating | null };
+
+export type TErrorObject = {
+  isError: boolean;
+  errorCode: string;
+  meta?: Record<string, unknown>;
+  message: string;
+};

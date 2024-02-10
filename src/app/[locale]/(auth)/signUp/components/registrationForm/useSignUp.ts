@@ -50,7 +50,9 @@ export const useSignUp = () => {
   };
 
   useEffect(() => {
-    if (newUserData?.hashPassword && newUserData?.email && refPassword.current) {
+    if (newUserData && "email" in newUserData && refPassword.current) {
+      console.log("newUserData", newUserData);
+      console.log("refPassword", refPassword.current);
       signIn({
         email: newUserData.email,
         password: refPassword.current,

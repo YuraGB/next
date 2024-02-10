@@ -18,7 +18,7 @@ export const RegistrationForm = (): React.ReactNode => {
         color={"primary"}
         fullWidth={true}
         className={"mb-4"}
-        isLoading={loading}
+        isLoading={loading as boolean}
         type={"submit"}
       >
         <FormattedMessage id={"sign_up_button"} />
