@@ -6,6 +6,7 @@ import { z } from "zod";
 const CommentSchema = z.object({
   comment: z.string(),
   taleId: z.string(),
+  avatar: z.string(),
   user: z.object({
     name: z.string(),
     email: z.string().email(),
@@ -30,6 +31,7 @@ export const addComment: TAddComment = async (data) => {
             id: data.taleId,
           },
         },
+        avatar: data.avatar,
         user: {
           connectOrCreate: {
             where: {
