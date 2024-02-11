@@ -4,6 +4,7 @@ import formFieldsMapping from "@/modules/utils/formFieldsMapping";
 import { type TCreateComment } from "@/server/actions/addComment";
 import { useAddCommentService } from "@/modules/comments/components/service/addCommentService";
 import { useEffect } from "react";
+import { getRandomInt } from "@/utils/getRandom";
 
 type TSubmitData = {
   comment: string;
@@ -38,6 +39,7 @@ export const useInputComment = (taleId: string | undefined) => {
       const commentData: TCreateComment = {
         comment,
         taleId,
+        avatar: getRandomInt(17).toString(),
         user: {
           name,
           email,
