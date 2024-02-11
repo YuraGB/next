@@ -1,6 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  productionBrowserSourceMaps: true,
   // experimental: {
   //   ppr: true,
   // },
@@ -8,9 +7,6 @@ const nextConfig = {
     fetches: {
       fullUrl: true,
     },
-  },
-  images: {
-    domains: ["firebasestorage.googleapis.com"],
   },
   // async headers() {
   //   const headers = []

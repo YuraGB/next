@@ -27,15 +27,15 @@ export const useMultipleLoad = ({
 }: InputProps): MultipleReturn => {
   const [customError, setCustomError] = React.useState<string>();
 
-  // image urls
+  // images urls
   const imageUrls: string[] = React.useMemo(() => {
     if (value) {
       return value.map((fileState) => {
         if (typeof fileState.file === "string") {
-          // in case a url is passed in, use it to display the image
+          // in case a url is passed in, use it to display the images
           return fileState.file;
         } else {
-          // in case a file is passed in, create a base64 url to display the image
+          // in case a file is passed in, create a base64 url to display the images
           return URL.createObjectURL(fileState.file);
         }
       });

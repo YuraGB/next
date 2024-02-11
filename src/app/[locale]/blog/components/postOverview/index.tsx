@@ -20,7 +20,7 @@ const PostOverview = ({ post }: Props): ReactNode | null => {
       <p>{title}</p>
       <p>{content}</p>
       {image ? (
-        <Image src={image} alt={"post image"} width={500} height={500} loading={"lazy"} />
+        <Image src={image} alt={"post images"} width={500} height={500} loading={"lazy"} />
       ) : null}
       <p>{publishedAt.toLocaleDateString()}</p>
     </article>
