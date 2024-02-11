@@ -40,12 +40,18 @@ const CommentComponent: FC<TProps> = ({
   }
 
   return (
-    <section className={`relative flex flex-col ${isOdd ? "items-end" : "items-start"}`}>
-      <div className={"my-3 inline-block w-full max-w-[300px] bg-white p-2"}>
-        <p className={"flex border-b-1 px-3 py-5 text-foreground-50"}>{comment.content}</p>
-        <small className={"flex justify-end p-2 text-[12px] text-gray-600"}>
-          {new Date(comment.createdAt).toLocaleDateString()}
-        </small>
+    <section
+      className={`relative flex flex-col ${
+        isOdd ? "items-end" : "items-start"
+      } m-auto w-full max-w-[768px]`}
+    >
+      <div className={`comment ${isOdd ? "" : "odd"} `}>
+        <p className={"flex w-full border-b-1 px-3 py-5 text-foreground-50"}>{comment.content}</p>
+        <div className={"flex w-full justify-end"}>
+          <small className={"flex justify-end p-2 text-[12px] text-gray-600"}>
+            {new Date(comment.createdAt).toLocaleDateString()}
+          </small>
+        </div>
         {isAdmin === true ? (
           <div className={"absolute right-5 top-5"}>
             <RemoveButton onClick={onDeleteHandler(comment.id)} />
