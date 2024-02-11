@@ -19,6 +19,7 @@ export const useInputComment = (taleId: string | undefined) => {
   const {
     reset,
     register,
+    setValue,
     handleSubmit,
     formState: { errors, isValid },
   } = useForm<Partial<TSubmitData>>();
@@ -32,10 +33,12 @@ export const useInputComment = (taleId: string | undefined) => {
       const { email, name } = sessionData.user as User;
 
       fieldsData = fieldsData.map((field) => {
-        if (field.name === "name") {
+        if (field.name === "name" && name) {
+          setValue("name", name);
           return { ...field, defaultValue: name, disabled: true };
         }
-        if (field.name === "email") {
+        if (field.name === "email" && email) {
+          setValue("email", email);
           return { ...field, defaultValue: email, disabled: true };
         }
         return field;
