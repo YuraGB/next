@@ -29,6 +29,8 @@ export const useInputComment = (taleId: string | undefined) => {
 
   const fields = useMemo(() => {
     let fieldsData = commentFields;
+
+    // if the user is logged in, fill the name and email fields
     if (sessionData?.user) {
       const { email, name } = sessionData.user as User;
 

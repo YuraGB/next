@@ -5,12 +5,11 @@ import ImageComponent from "next/image";
 import { getRandomInt } from "@/utils/getRandom";
 
 type Props = {
-  numberOfThePet?: number;
+  numberOfThePet?: string;
 };
 
 const Avatar = ({ numberOfThePet }: Props): ReactNode => {
   let imageLoad;
-
   if (!numberOfThePet) {
     imageLoad = getRandomInt(17);
   } else {

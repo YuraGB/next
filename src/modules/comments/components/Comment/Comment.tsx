@@ -1,36 +1,20 @@
-import React, { type FC, memo, type ReactNode, useCallback, useEffect, useState } from "react";
+import React, { type FC, memo, type ReactNode } from "react";
 import { type CommentWithUser } from "@/server/actions/types";
 import RemoveButton from "@/components/removeButton";
 import { Skeleton } from "@nextui-org/skeleton";
 import Avatar from "@/modules/comments/components/Avatar/Avatar";
+import { useComment } from "@/modules/comments/components/Comment/useComment";
 
-type TProps = {
+export type TProps = {
   comment: CommentWithUser | null;
   onDelete: (id: string) => void;
   isAdmin?: boolean;
   status?: string;
   isOdd?: boolean;
 };
-const CommentComponent: FC<TProps> = ({
-  isOdd,
-  comment,
-  isAdmin,
-  onDelete,
-  status,
-}): ReactNode | null => {
-  const [mounted, setMounted] = useState<boolean>(false);
-
-  const onDeleteHandler = useCallback(
-    (id: string) => () => {
-      onDelete(id);
-    },
-    [onDelete]
-  );
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
+const CommentComponent: FC<TProps> = (props): ReactNode | null => {
+  const { onDeleteHandler, mounted, numberOfThePet } = useComment(props);
+  const { isOdd, isAdmin, status, comment } = props;
   if (!comment || !mounted) {
     return null;
   }
@@ -58,7 +42,7 @@ const CommentComponent: FC<TProps> = ({
           </div>
         ) : null}
       </div>
-      <Avatar />
+      <Avatar numberOfThePet={numberOfThePet} />
     </section>
   );
 };
