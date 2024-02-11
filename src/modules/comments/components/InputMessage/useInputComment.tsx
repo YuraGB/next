@@ -3,8 +3,10 @@ import commentFields from "./fields";
 import formFieldsMapping from "@/modules/utils/formFieldsMapping";
 import { type TCreateComment } from "@/server/actions/addComment";
 import { useAddCommentService } from "@/modules/comments/components/service/addCommentService";
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { getRandomInt } from "@/utils/getRandom";
+import { useSession } from "next-auth/react";
+import { type User } from "next-auth";
 
 type TSubmitData = {
   comment: string;
@@ -20,10 +22,28 @@ export const useInputComment = (taleId: string | undefined) => {
     handleSubmit,
     formState: { errors, isValid },
   } = useForm<Partial<TSubmitData>>();
+  const { data: sessionData } = useSession();
 
   const { mutate, error, status, data } = useAddCommentService(taleId ?? "");
 
-  const fields = formFieldsMapping(commentFields, errors, register);
+  const fields = useMemo(() => {
+    let fieldsData = commentFields;
+    if (sessionData?.user) {
+      const { email, name } = sessionData.user as User;
+
+      fieldsData = fieldsData.map((field) => {
+        if (field.name === "name") {
+          return { ...field, defaultValue: name, disabled: true };
+        }
+        if (field.name === "email") {
+          return { ...field, defaultValue: email, disabled: true };
+        }
+        return field;
+      });
+    }
+
+    return formFieldsMapping(fieldsData, errors, register);
+  }, [sessionData?.user?.user, errors, register]);
 
   useEffect(() => {
     if (status === "success") {
