@@ -13,12 +13,12 @@ const ListOfMessages: FC<TProps> = ({ messages, status, isAdmin, onDelete }) => 
   if (!messages) {
     return null;
   }
-  const sortedMessages = messages.toSorted((a: CommentWithUser, b: CommentWithUser) => {
+  const sortedMessages = messages.sort((a: CommentWithUser, b: CommentWithUser) => {
     return Number(b.createdAt) - Number(a.createdAt);
   });
 
   return (
-    <section className={"my-2 flex flex-col"}>
+    <section className={"my-2 flex flex-col "}>
       {sortedMessages.map((message, index) => (
         <CommentComponent
           key={message.id}
