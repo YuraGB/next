@@ -3,6 +3,7 @@ import { type CommentWithUser } from "@/server/actions/types";
 import Author from "@/modules/comments/components/Author/Author";
 import RemoveButton from "@/components/removeButton";
 import { Skeleton } from "@nextui-org/skeleton";
+import Avatar from "@/modules/comments/components/Avatar/Avatar";
 
 type TProps = {
   comment: CommentWithUser | null;
@@ -46,6 +47,7 @@ const CommentComponent: FC<TProps> = ({ comment, isAdmin, onDelete, status }): R
           </div>
         ) : null}
       </div>
+      <Avatar />
     </section>
   );
 };

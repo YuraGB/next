@@ -49,6 +49,7 @@ model Comment {
   userId    String   @db.ObjectId
   tale      Tale     @relation(fields: [taleId], references: [id])
   taleId    String   @db.ObjectId
+  avatar    String?
 }
 
 model CategoryTale {

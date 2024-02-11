@@ -22,13 +22,13 @@ export const useUploadSingle = ({
     }
   };
 
-  // image url
+  // images url
   const imageUrl: string | null = React.useMemo(() => {
     if (typeof value === "string") {
-      // in case a url is passed in, use it to display the image
+      // in case a url is passed in, use it to display the images
       return value;
     } else if (value) {
-      // in case a file is passed in, create a base64 url to display the image
+      // in case a file is passed in, create a base64 url to display the images
       return URL.createObjectURL(value);
     }
     return null;
