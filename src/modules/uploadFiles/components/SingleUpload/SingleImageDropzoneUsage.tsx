@@ -1,7 +1,7 @@
 "use client";
 /* eslint-disable */
 import * as React from "react";
-import { useDropzone, type DropzoneOptions } from "react-dropzone";
+import { type DropzoneOptions } from "react-dropzone";
 import { useUploadSingle } from "@/modules/uploadFiles/components/SingleUpload/useUploadSingle";
 import ImageUpload from "@/modules/uploadFiles/components/InputUpload/InputUpload";
 import { RemoveImageIcon } from "@/modules/uploadFiles/components/RemoveImageIcon/RemoveImageIcon";
@@ -11,7 +11,7 @@ export type InputProps = {
   height: number;
   className?: string;
   value?: File | string;
-  onChange?: (file?: File) => void | Promise<void>;
+  onChange?: (file?: File, imageUrl?: string) => void | Promise<void>;
   disabled?: boolean;
   dropzoneOptions?: Omit<DropzoneOptions, "disabled">;
 };
@@ -29,7 +29,6 @@ const SingleImageDropzone = React.forwardRef<HTMLInputElement, InputProps>((prop
     width,
     height,
   } = useUploadSingle(props);
-
   return (
     <div>
       <div

@@ -16,6 +16,7 @@ export const useTaleModal = (initialValues: Tale | null, onClose: () => void = (
   const {
     register,
     reset,
+    setValue,
     handleSubmit,
     formState: { errors, isValid },
   } = useForm<Partial<Tale>>();
@@ -54,14 +55,16 @@ export const useTaleModal = (initialValues: Tale | null, onClose: () => void = (
     return formFieldsMapping(
       initialValues ? fieldsWithDefaultValues : initialFields,
       errors,
-      register
+      register,
+      setValue
     );
-  }, [errors, initialFields, initialValues, register]);
+  }, [{ ...errors }, initialFields, initialValues, register, setValue]);
 
   const onSubmit: SubmitHandler<Partial<Tale>> = async (data) => {
     const normalizeData = formatTaleData(data);
+
     if (initialValues) {
-      onUpdateTale({ id: initialValues.id, data: normalizeData });
+      onUpdateTale({ id: initialValues.id, updateTaleData: normalizeData });
     } else {
       onAddTale(normalizeData);
     }
