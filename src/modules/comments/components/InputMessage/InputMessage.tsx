@@ -17,7 +17,7 @@ const InputMessage: FC<TProps> = ({ isVisible, taleId }): ReactNode | null => {
 
   return (
     <form
-      className={"mt-3 flex w-full max-w-xl flex-wrap bg-white p-4"}
+      className={"mt-3 flex w-full flex-wrap bg-white p-4"}
       aria-label={"registration form"}
       onSubmit={handleSubmit(onSubmit)}
     >
@@ -30,6 +30,7 @@ const InputMessage: FC<TProps> = ({ isVisible, taleId }): ReactNode | null => {
         disabled={status === "pending"}
         isLoading={status === "pending"}
         type="submit"
+        className={"m-auto"}
       >
         <FormattedMessage id={"submit.message"} defaultMessage={"Place the comment"} />
       </Button>

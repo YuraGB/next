@@ -18,7 +18,7 @@ const ListOfMessages: FC<TProps> = ({ messages, status, isAdmin, onDelete }) => 
   });
 
   return (
-    <section className={"my-2 flex flex-col "}>
+    <section className={"my-2 flex flex-col overflow-hidden"}>
       {sortedMessages.map((message, index) => (
         <CommentComponent
           key={message.id}

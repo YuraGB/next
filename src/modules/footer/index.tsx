@@ -8,7 +8,9 @@ import Copyright from "@/modules/footer/components/Copyright/Copyright";
 const Footer = (): ReactNode => {
   return (
     <footer
-      className={"mt-auto rounded bg-gray-800 p-6 text-center text-white shadow-lg backdrop-blur"}
+      className={
+        "mt-auto rounded bg-gray-800 p-6 px-0 pb-0 text-center text-white shadow-lg backdrop-blur"
+      }
     >
       <article
         className={"mb-[50px] grid items-start justify-items-center gap-1 sm:grid-cols-3 sm:gap-3"}
