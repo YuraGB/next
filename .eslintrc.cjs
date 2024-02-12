@@ -2,6 +2,10 @@ const path = require("path");
 
 /** @type {import("eslint").Linter.Config} */
 const config = {
+  parserOptions: {
+    project: true,
+    tsconfigRootDir: __dirname,
+  },
   overrides: [
     {
       files: ["*.js", "*.jsx", "*.cjs"],

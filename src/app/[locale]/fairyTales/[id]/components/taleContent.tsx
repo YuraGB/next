@@ -1,11 +1,10 @@
 "use client";
 import { memo, type ReactNode, Suspense } from "react";
-import Image, { type StaticImageData } from "next/image";
 import { useTaleContent } from "@/app/[locale]/fairyTales/[id]/components/useTaleContent";
-import placeholder from "@/assets/placeholder.webp";
 import dynamic from "next/dynamic";
 import { type TaleWithRelations } from "@/server/actions/types";
 import { FormattedMessage } from "react-intl";
+import MainImage from "@/app/[locale]/fairyTales/[id]/components/MainImage";
 
 const RatingComponent = dynamic(() => import("@/modules/rating/Rating"));
 const Comments = dynamic(() => import("@/modules/comments"));
@@ -17,10 +16,6 @@ const TaleContent = ({
 }): ReactNode | null => {
   const { forAge, mainImage, createdAt, title, content, comments, rating } =
     useTaleContent(taleContent);
-
-  console.log(mainImage);
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-  const image: string | StaticImageData = mainImage?.url ? mainImage.url : placeholder;
 
   return (
     <article className={"w-full"}>
@@ -34,20 +29,14 @@ const TaleContent = ({
             {title ? title : "Fairy Tale"}
           </h1>
           <div className={"flex justify-between p-4 text-amber-50"}>
-            <em>Published : {createdAt.toLocaleDateString()}</em>
+            <em>Published : {Boolean(createdAt) && createdAt?.toLocaleDateString()}</em>
             <p>
               <em>Category: {forAge}</em>
             </p>
           </div>
         </section>
-        <Image
-          width={700}
-          height={200}
-          alt="NextUI hero Image with delay"
-          src={image}
-          loading={"lazy"}
-          className={"h-auto w-full object-cover"}
-        />
+
+        <MainImage src={mainImage} alt={title ? title : "Fairy Tale"} />
       </header>
       <section className={"relative"}>{content}</section>
       <Suspense fallback={null}>

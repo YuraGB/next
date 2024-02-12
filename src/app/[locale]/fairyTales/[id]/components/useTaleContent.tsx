@@ -14,43 +14,35 @@ export const useTaleContent = (taleData: Partial<TaleWithRelations>) => {
     enabled: Boolean(taleData.id),
   });
 
-  const {
-    content = "",
-    forAge = "",
-    mainImage,
-    createdAt = new Date(),
-    images = [],
-    shortDescription = "",
-    title = "",
-    comments = [],
-    rating = null,
-  } = data ?? {};
-
   const normalizeContent = useMemo(() => {
-    if (content) {
-      return content
+    if (data?.content) {
+      return data.content
         .split(/\n/g)
         .filter((e) => e)
         .map((paragraph, i) => (
           // eslint-disable-next-line react/no-array-index-key
           <Fragment key={i + "p"}>
-            <Paragraph content={paragraph} image={images[i]} isOdd={i % 2 === 0} />
+            <Paragraph
+              content={paragraph}
+              image={data?.images ? data.images[i] : undefined}
+              isOdd={i % 2 === 0}
+            />
             <br />
           </Fragment>
         ));
     }
     return [];
-  }, [content, images]);
+  }, [data?.content, data?.images]);
 
   return {
-    forAge,
-    mainImage,
-    createdAt,
-    images,
-    shortDescription,
-    title,
-    comments,
+    forAge: data?.forAge,
+    mainImage: data?.mainImage,
+    createdAt: data?.createdAt,
+    images: data?.images,
+    shortDescription: data?.shortDescription,
+    title: data?.title,
+    comments: data?.comments,
     content: normalizeContent,
-    rating,
+    rating: data?.rating,
   };
 };
