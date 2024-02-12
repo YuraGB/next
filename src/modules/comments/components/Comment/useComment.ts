@@ -1,7 +1,13 @@
 import { type TProps } from "@/modules/comments/components/Comment/Comment";
 import { useCallback, useEffect, useMemo, useState } from "react";
 
-export const useComment = (props: TProps) => {
+export const useComment = (
+  props: TProps
+): {
+  onDeleteHandler: (id: string) => () => void;
+  mounted: boolean;
+  numberOfThePet: string | undefined;
+} => {
   const { comment, onDelete } = props;
 
   const [mounted, setMounted] = useState<boolean>(false);

@@ -26,6 +26,7 @@ export const useTaleModal = (initialValues: Tale | null, onClose: () => void = (
   const { onAddTale, data: newTale } = useAddNewTale();
 
   useEffect(() => {
+    console.log(newTale);
     if (newTale ?? updatedTale) {
       // clear data after submit and close popUp
       reset();
@@ -58,7 +59,7 @@ export const useTaleModal = (initialValues: Tale | null, onClose: () => void = (
       register,
       setValue
     );
-  }, [{ ...errors }, initialFields, initialValues, register, setValue]);
+  }, [Object.keys(errors), initialFields, initialValues, register, setValue]);
 
   const onSubmit: SubmitHandler<Partial<Tale>> = async (data) => {
     const normalizeData = formatTaleData(data);
@@ -66,6 +67,7 @@ export const useTaleModal = (initialValues: Tale | null, onClose: () => void = (
     if (initialValues) {
       onUpdateTale({ id: initialValues.id, updateTaleData: normalizeData });
     } else {
+      console.log(normalizeData);
       onAddTale(normalizeData);
     }
   };

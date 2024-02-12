@@ -1,9 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import { getAllFairyTales } from "@/server/actions/getAllFairyTales";
-import { type TFindAllTales } from "@/server/actions/types";
+import { type TaleWithRelations } from "@/server/actions/types";
 
 type TUSeSlides = {
-  slides: TFindAllTales[] | undefined;
+  slides: TaleWithRelations[] | undefined;
   isLoading: boolean;
 };
 

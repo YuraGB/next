@@ -1,11 +1,10 @@
-import { type Tale } from ".prisma/client";
 import { type FC, memo, type ReactNode } from "react";
 import { Card, CardBody, CardHeader } from "@nextui-org/card";
 import Image from "next/image";
-import { type CategoryTale } from "@prisma/client";
+import type { SearchTaleResponse } from "@/server/actions/searchTale";
 
 type ResultItemT = {
-  tale: Partial<Tale> & { categoryTale: CategoryTale | undefined };
+  tale: SearchTaleResponse | undefined | null;
   onClick: (id: string) => void;
 };
 
@@ -14,7 +13,11 @@ const ResultItem: FC<ResultItemT> = ({ tale, onClick }): ReactNode | null => {
     return null;
   }
 
-  const { id } = tale;
+  const {
+    id,
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+    mainImage: { url },
+  } = tale;
 
   return (
     <Card
@@ -35,7 +38,7 @@ const ResultItem: FC<ResultItemT> = ({ tale, onClick }): ReactNode | null => {
         <Image
           alt="Card background"
           className="rounded-xl object-cover"
-          src={tale.mainImage ?? ""}
+          src={url}
           width={270}
           height={400}
         />

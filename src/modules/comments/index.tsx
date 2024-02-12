@@ -3,12 +3,12 @@ import dynamic from "next/dynamic";
 const ListOfMessages = dynamic(
   () => import("@/modules/comments/components/ListOfMessages/ListOfMessages")
 );
-import { type CommentWithUser } from "@/server/actions/types";
 import { type FC, type ReactNode, Suspense } from "react";
 import { useComments } from "@/modules/comments/useComments";
+import { type Comment } from ".prisma/client";
 
 type TProps = {
-  messages: CommentWithUser[] | undefined;
+  messages: Comment[] | undefined;
   shouldAddComment?: boolean;
   taleId?: string;
 };

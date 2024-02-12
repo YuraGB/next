@@ -1,13 +1,14 @@
 "use server";
 import prisma from "$prismaClient/prisma";
 import { type CategoryTale } from "@prisma/client";
+import { type Image } from ".prisma/client";
 
-type SearchTaleResponse = {
+export type SearchTaleResponse = {
   title: string;
   id: string;
   categoryTale: CategoryTale;
   forAge: string;
-  mainImage: string;
+  mainImage: Image;
   content: string;
   shortDescription: string;
 };
@@ -25,9 +26,9 @@ export default async (value: string): Promise<SearchTaleResponse[] | undefined> 
         id: true,
         categoryTale: true,
         forAge: true,
-        mainImage: true,
         content: true,
         shortDescription: true,
+        mainImage: true,
       },
     });
   } catch (e) {

@@ -1,13 +1,15 @@
-import type { TFindAllTales } from "@/server/actions/types";
+import { type TaleWithRelations } from "@/server/actions/types";
 import Image from "next/image";
 import React, { type ReactNode } from "react";
 
-const Slide = ({ item }: { item: TFindAllTales }): ReactNode => {
+const Slide = ({ item }: { item: TaleWithRelations }): ReactNode => {
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+  const imageUrl = item.mainImage.url;
   return (
     <section className={"flex flex-col overflow-x-hidden bg-gray-100 shadow-lg"}>
       <div className={"min-h-[100px]"}>
         <Image
-          src={item.mainImage}
+          src={imageUrl}
           alt={item.title}
           height={142}
           width={300}

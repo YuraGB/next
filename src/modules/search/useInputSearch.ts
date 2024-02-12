@@ -1,10 +1,9 @@
 import { type ChangeEvent, useCallback, useMemo, useState } from "react";
 import useDebounce from "@/modules/search/useDebounce";
 import { useQuery } from "@tanstack/react-query";
-import getSearch from "@/server/actions/searchTale";
+import getSearch, { type SearchTaleResponse } from "@/server/actions/searchTale";
 import { useRouter } from "next/navigation";
 import { Pages } from "@/utils/pages";
-import type { TaleWithCategory } from "@/modules/search/components/ListSearchResults/ListSearchResults";
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export const useInputSearch = () => {
@@ -33,7 +32,7 @@ export const useInputSearch = () => {
     enabled: Boolean(value),
   });
 
-  const searchResults: TaleWithCategory[] | string | [] = useMemo(() => {
+  const searchResults: SearchTaleResponse[] | string | [] = useMemo(() => {
     if (data === undefined) {
       return [];
     }
