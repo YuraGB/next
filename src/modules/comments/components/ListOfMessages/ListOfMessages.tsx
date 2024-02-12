@@ -1,19 +1,19 @@
-import { type FC, memo } from "react";
-import { type CommentWithUser } from "@/server/actions/types";
+import { type FC, memo, type ReactNode } from "react";
 import CommentComponent from "@/modules/comments/components/Comment/Comment";
+import { type Comment } from ".prisma/client";
 
 type TProps = {
-  messages: CommentWithUser[] | undefined | null;
+  messages: Comment[] | undefined | null;
   onDelete: (id: string) => void;
   isAdmin?: boolean;
   status?: string;
 };
 
-const ListOfMessages: FC<TProps> = ({ messages, status, isAdmin, onDelete }) => {
+const ListOfMessages: FC<TProps> = ({ messages, status, isAdmin, onDelete }): null | ReactNode => {
   if (!messages) {
     return null;
   }
-  const sortedMessages = messages.sort((a: CommentWithUser, b: CommentWithUser) => {
+  const sortedMessages = messages.sort((a: Comment, b: Comment) => {
     return Number(b.createdAt) - Number(a.createdAt);
   });
 

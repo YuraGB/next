@@ -1,12 +1,11 @@
 import { type FC, memo, type ReactNode } from "react";
 import { LoaderIcon } from "react-hot-toast";
-import ListSearchResults, {
-  type TaleWithCategory,
-} from "@/modules/search/components/ListSearchResults/ListSearchResults";
+import ListSearchResults from "@/modules/search/components/ListSearchResults/ListSearchResults";
+import { type SearchTaleResponse } from "@/server/actions/searchTale";
 
 type SearchResultsProps = {
   isLoading: boolean;
-  searchResults: TaleWithCategory[] | string | [];
+  searchResults: SearchTaleResponse[] | string | [];
   error: Error | null;
   onClick: (id: string) => void;
 };
@@ -16,7 +15,6 @@ const SearchResults: FC<SearchResultsProps> = ({
   error,
   onClick,
 }): ReactNode | null => {
-  console.log(searchResults);
   if (isLoading) {
     return <LoaderIcon className={"my-5"} />;
   }

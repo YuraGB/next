@@ -1,12 +1,9 @@
-import { type Tale } from ".prisma/client";
 import { type FC, memo, type ReactNode } from "react";
 import ResultItem from "@/modules/search/components/ResultItem/ResultItem";
-import { type CategoryTale } from "@prisma/client";
-
-export type TaleWithCategory = Partial<Tale> & { categoryTale: CategoryTale };
+import { type SearchTaleResponse } from "@/server/actions/searchTale";
 
 type ListResultsT = {
-  results: TaleWithCategory[] | string | [];
+  results: SearchTaleResponse[] | string | [];
   onClick: (id: string) => void;
 };
 

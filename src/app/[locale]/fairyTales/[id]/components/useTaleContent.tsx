@@ -17,7 +17,7 @@ export const useTaleContent = (taleData: Partial<TaleWithRelations>) => {
   const {
     content = "",
     forAge = "",
-    mainImage = "",
+    mainImage,
     createdAt = new Date(),
     images = [],
     shortDescription = "",

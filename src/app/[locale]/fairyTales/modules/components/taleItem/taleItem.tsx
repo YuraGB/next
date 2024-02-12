@@ -27,6 +27,8 @@ const TaleItem = ({ tale }: { tale: TFindAllTales }): React.ReactNode | null => 
     }
   };
 
+  const image = mainImage?.url ? mainImage.url : placeholder;
+
   return (
     <Card className="w-full rounded-[0]" isPressable isBlurred isHoverable>
       <CardHeader
@@ -38,7 +40,7 @@ const TaleItem = ({ tale }: { tale: TFindAllTales }): React.ReactNode | null => 
         <Image
           alt="nextui logo"
           height={200}
-          src={mainImage ? mainImage : placeholder}
+          src={image}
           width={600}
           className={"absolute left-0 top-0 h-[300px] min-h-full w-full object-cover"}
         />

@@ -1,6 +1,6 @@
 "use client";
 import { memo, type ReactNode, Suspense } from "react";
-import Image from "next/image";
+import Image, { type StaticImageData } from "next/image";
 import { useTaleContent } from "@/app/[locale]/fairyTales/[id]/components/useTaleContent";
 import placeholder from "@/assets/placeholder.webp";
 import dynamic from "next/dynamic";
@@ -17,6 +17,10 @@ const TaleContent = ({
 }): ReactNode | null => {
   const { forAge, mainImage, createdAt, title, content, comments, rating } =
     useTaleContent(taleContent);
+
+  console.log(mainImage);
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+  const image: string | StaticImageData = mainImage?.url ? mainImage.url : placeholder;
 
   return (
     <article className={"w-full"}>
@@ -40,7 +44,7 @@ const TaleContent = ({
           width={700}
           height={200}
           alt="NextUI hero Image with delay"
-          src={mainImage ? mainImage : placeholder}
+          src={image}
           loading={"lazy"}
           className={"h-auto w-full object-cover"}
         />

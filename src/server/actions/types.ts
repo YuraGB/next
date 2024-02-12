@@ -1,7 +1,7 @@
 // Type definitions for the Prisma schema
 // Path: prisma/schema.prisma
 import { type CategoryTale, type Tale } from "@prisma/client";
-import { type Comment, Prisma, type Rating } from ".prisma/client";
+import { type Comment, Prisma, type Rating, type Image } from ".prisma/client";
 import CategoryTale$talesArgs = Prisma.CategoryTale$talesArgs;
 import Rating$TaleArgs = Prisma.Rating$TaleArgs;
 import validator = Prisma.validator;
@@ -12,11 +12,8 @@ const talesWithRelations = validator<CategoryTale$talesArgs[] | Rating$TaleArgs>
   include: {
     categoryTale: true,
     rating: true,
-    comments: {
-      include: {
-        user: true,
-      },
-    },
+    mainImage: true,
+    comments: true,
   },
 });
 
@@ -39,7 +36,7 @@ export type CommentWithUser = Comment & Prisma.CommentGetPayload<typeof commentW
 
 export type TFindAllTales = Tale & {
   categoryTale: Pick<CategoryTale, "name" | "id">;
-} & { rating: Rating | null };
+} & { rating: Rating | null } & { mainImage: Image };
 
 // At the production the errors are overriden.
 // The error messages are not returned to the client.

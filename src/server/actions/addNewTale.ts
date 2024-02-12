@@ -6,7 +6,10 @@ import { z } from "zod";
 const TaleSchema = z.object({
   content: z.string(),
   shortDescription: z.string(),
-  mainImage: z.string(),
+  mainImage: z.object({
+    url: z.string(),
+    thumbnailUrl: z.string().optional(),
+  }),
   forAge: z.string(),
   title: z.string(),
   images: z.array(z.string()),
@@ -18,6 +21,7 @@ export type TCreateTale = z.infer<typeof TaleSchema>;
 export type TCreateTaleResponse = Pick<Tale, "id" | "title"> | undefined;
 
 const createTale = async (newTale: TCreateTale): Promise<TCreateTaleResponse> => {
+  console.log(newTale);
   if (!TaleSchema.safeParse(newTale).success) {
     throw "Not all tale data provided";
   }
@@ -27,7 +31,12 @@ const createTale = async (newTale: TCreateTale): Promise<TCreateTaleResponse> =>
       data: {
         content: newTale.content,
         shortDescription: newTale.shortDescription,
-        mainImage: newTale.mainImage,
+        mainImage: {
+          create: {
+            url: newTale.mainImage.url,
+            thumbnailUrl: newTale.mainImage.thumbnailUrl ?? "",
+          },
+        },
         forAge: newTale.forAge,
         title: newTale.title,
         images: newTale.images,

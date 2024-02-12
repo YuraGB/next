@@ -1,12 +1,12 @@
 import React, { type FC, memo, type ReactNode } from "react";
-import { type CommentWithUser } from "@/server/actions/types";
 import RemoveButton from "@/components/removeButton";
 import { Skeleton } from "@nextui-org/skeleton";
 import Avatar from "@/modules/comments/components/Avatar/Avatar";
 import { useComment } from "@/modules/comments/components/Comment/useComment";
+import { type Comment } from ".prisma/client";
 
 export type TProps = {
-  comment: CommentWithUser | null;
+  comment: Comment | null;
   onDelete: (id: string) => void;
   isAdmin?: boolean;
   status?: string;
