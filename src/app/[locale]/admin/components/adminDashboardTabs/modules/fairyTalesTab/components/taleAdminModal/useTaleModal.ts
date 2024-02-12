@@ -59,7 +59,7 @@ export const useTaleModal = (initialValues: Tale | null, onClose: () => void = (
       register,
       setValue
     );
-  }, [Object.keys(errors), initialFields, initialValues, register, setValue]);
+  }, [errors, initialFields, initialValues, register, setValue]);
 
   const onSubmit: SubmitHandler<Partial<Tale>> = async (data) => {
     const normalizeData = formatTaleData(data);
