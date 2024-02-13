@@ -1,4 +1,4 @@
-import { forwardRef, type ReactNode } from "react";
+import { type ReactNode } from "react";
 import MultiImageDropzone from "@/modules/uploadFiles/components/MultipleUpload/MultipleLoad";
 import type { UseFormSetValue } from "react-hook-form/dist/types/form";
 import type { FieldValues } from "react-hook-form/dist/types/fields";
@@ -13,8 +13,7 @@ export type TProps = {
   defaultValue?: Image[];
 };
 
-// eslint-disable-next-line react/display-name
-export const MultiImageDropzoneUsage = forwardRef<HTMLInputElement, TProps>((props): ReactNode => {
+export const MultiImageDropzoneUsage = (props: TProps): ReactNode => {
   const { fileStates, setFileStates, onFileLoader, uploadFiles } = useHelper(props);
   return (
     <div>
@@ -32,4 +31,4 @@ export const MultiImageDropzoneUsage = forwardRef<HTMLInputElement, TProps>((pro
       />
     </div>
   );
-});
+};
