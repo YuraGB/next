@@ -1,10 +1,10 @@
 "use client";
-/* eslint-disable */
 import * as React from "react";
 import { type DropzoneOptions } from "react-dropzone";
 import { useUploadSingle } from "@/modules/uploadFiles/components/SingleUpload/useUploadSingle";
 import ImageUpload from "@/modules/uploadFiles/components/InputUpload/InputUpload";
 import { RemoveImageIcon } from "@/modules/uploadFiles/components/RemoveImageIcon/RemoveImageIcon";
+import { type Image } from ".prisma/client";
 
 export type InputProps = {
   width: number;
@@ -14,6 +14,7 @@ export type InputProps = {
   onChange?: (file?: File, imageUrl?: string) => void | Promise<void>;
   disabled?: boolean;
   dropzoneOptions?: Omit<DropzoneOptions, "disabled">;
+  defaultValue?: Image;
 };
 
 const SingleImageDropzone = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
@@ -29,6 +30,7 @@ const SingleImageDropzone = React.forwardRef<HTMLInputElement, InputProps>((prop
     width,
     height,
   } = useUploadSingle(props);
+
   return (
     <div>
       <div

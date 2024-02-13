@@ -5,6 +5,7 @@ import type { FieldError } from "react-hook-form/dist/types/errors";
 import type { UseFormRegister, UseFormSetValue } from "react-hook-form/dist/types/form";
 import type { FieldValues } from "react-hook-form/dist/types/fields";
 import SingleImageDropzoneUsage from "@/modules/uploadFiles/components/SingleUpload";
+import { type Image } from ".prisma/client";
 
 type TProps = {
   errors: FieldError | undefined;
@@ -36,7 +37,7 @@ const FormField = (props: TProps): ReactNode => {
           isRequired={required}
           type={type}
           label={label}
-          defaultValue={defaultValue}
+          defaultValue={defaultValue as string}
           {...register(name as keyof Fields, {
             required: errorMessage ?? required,
             pattern,
@@ -59,7 +60,7 @@ const FormField = (props: TProps): ReactNode => {
             required: errorMessage ?? required,
             pattern,
           })}
-          defaultValue={defaultValue}
+          defaultValue={defaultValue as string}
         />
       );
     case "uploadSingleImage":
@@ -71,6 +72,7 @@ const FormField = (props: TProps): ReactNode => {
             required: errorMessage ?? required,
             pattern,
           })}
+          defaultValue={defaultValue as Image}
         />
       );
     default:
@@ -79,7 +81,7 @@ const FormField = (props: TProps): ReactNode => {
           isRequired={required}
           type={type}
           label={label}
-          defaultValue={defaultValue}
+          defaultValue={defaultValue as string}
           {...register(name as keyof Fields, {
             required: errorMessage ?? required,
             pattern,

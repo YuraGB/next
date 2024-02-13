@@ -21,7 +21,6 @@ export type TCreateTale = z.infer<typeof TaleSchema>;
 export type TCreateTaleResponse = Pick<Tale, "id" | "title"> | undefined;
 
 const createTale = async (newTale: TCreateTale): Promise<TCreateTaleResponse> => {
-  console.log(newTale);
   if (!TaleSchema.safeParse(newTale).success) {
     throw "Not all tale data provided";
   }

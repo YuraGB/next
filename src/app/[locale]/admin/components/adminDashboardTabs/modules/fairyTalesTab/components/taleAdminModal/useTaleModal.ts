@@ -10,6 +10,9 @@ import { type Tale } from ".prisma/client";
 import { formatTaleData } from "@/app/[locale]/admin/components/adminDashboardTabs/modules/fairyTalesTab/components/taleAdminModal/util/formatData";
 import useUpdateTaleHandler from "@/app/[locale]/admin/components/adminDashboardTabs/modules/fairyTalesTab/service/updateTaleHandler";
 import { useAddNewTale } from "@/app/[locale]/admin/components/adminDashboardTabs/modules/fairyTalesTab/service/useAddNewTale";
+import toast from "react-hot-toast";
+
+export type TSubmit = Omit<Tale, "id" | "ratingId" | "createdAt" | "imageId" | "images">;
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export const useTaleModal = (initialValues: Tale | null, onClose: () => void = () => undefined) => {
@@ -22,15 +25,22 @@ export const useTaleModal = (initialValues: Tale | null, onClose: () => void = (
   } = useForm<Partial<Tale>>();
   const initialFields: Fields[] = fields;
 
-  const { onUpdateTale, data: updatedTale } = useUpdateTaleHandler();
-  const { onAddTale, data: newTale } = useAddNewTale();
+  const { onUpdateTale, data: updatedTale, error: errorUpdate } = useUpdateTaleHandler();
+  const { onAddTale, data: newTale, error: errorOnCreate } = useAddNewTale();
 
   useEffect(() => {
-    console.log(newTale);
     if (newTale ?? updatedTale) {
       // clear data after submit and close popUp
       reset();
       onClose();
+    }
+
+    if (newTale) {
+      toast.success("The tale has been created");
+    }
+
+    if (updatedTale) {
+      toast.success("The tale has been updated");
     }
   }, [newTale, onClose, reset, updatedTale]);
 
@@ -38,6 +48,18 @@ export const useTaleModal = (initialValues: Tale | null, onClose: () => void = (
     // clear the form
     reset({});
   }, [initialValues, reset]);
+
+  useEffect(() => {
+    if (errorOnCreate) {
+      toast.error("There is an error during creating the tale");
+    }
+
+    if (errorUpdate) {
+      toast.error("There is an error during updating tale. Please, try again later.");
+    }
+  }, [errorOnCreate, errorUpdate]);
+
+  const arrayOfTheErrors = Array.from(Object.keys(errors));
 
   const formFields: React.ReactNode[] = useMemo(() => {
     let fieldsWithDefaultValues: Fields[] = [];
@@ -59,15 +81,13 @@ export const useTaleModal = (initialValues: Tale | null, onClose: () => void = (
       register,
       setValue
     );
-  }, [errors, initialFields, initialValues, register, setValue]);
+  }, [arrayOfTheErrors, initialFields, initialValues, register, setValue]);
 
-  const onSubmit: SubmitHandler<Partial<Tale>> = async (data) => {
+  const onSubmit: SubmitHandler<Partial<TSubmit>> = async (data) => {
     const normalizeData = formatTaleData(data);
-
-    if (initialValues) {
+    if (initialValues?.id) {
       onUpdateTale({ id: initialValues.id, updateTaleData: normalizeData });
     } else {
-      console.log(normalizeData);
       onAddTale(normalizeData);
     }
   };

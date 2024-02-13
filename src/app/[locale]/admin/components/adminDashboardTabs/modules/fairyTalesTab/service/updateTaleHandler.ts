@@ -3,11 +3,12 @@ import { type UseMutateFunction, useMutation, useQueryClient } from "@tanstack/r
 import { updateTale } from "@/server/actions/updateTale";
 import { GET_ALL_TALES } from "@/server/actions/queryNaming";
 import { type Tale } from ".prisma/client";
+import { type TCreateTale } from "@/server/actions/addNewTale";
 
 type TMutateFn = UseMutateFunction<
   Tale | undefined,
   Error,
-  { id: string; updateTaleData: Partial<Tale> },
+  { id: string; updateTaleData: TCreateTale },
   unknown
 >;
 
@@ -18,9 +19,9 @@ const useUpdateTaleHandler = (): {
 } => {
   const queryClient = useQueryClient();
   const { mutate, data, error } = useMutation({
-    mutationFn: ({ id, updateTaleData }: { id: string; updateTaleData: Partial<Tale> }) =>
+    mutationFn: ({ id, updateTaleData }: { id: string; updateTaleData: TCreateTale }) =>
       updateTale(id, updateTaleData),
-    onSettled: () => queryClient.invalidateQueries({ queryKey: [GET_ALL_TALES] }),
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: [GET_ALL_TALES] }),
   });
   return { onUpdateTale: mutate, data, error };
 };
