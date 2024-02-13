@@ -12,9 +12,9 @@ type propsInit = {
   initialValues: Tale | null;
 };
 const TaleModal = ({
-  isOpen = false,
-  onClose = () => undefined,
-  initialValues = null,
+  isOpen,
+  onClose,
+  initialValues,
 }: { isOpen: boolean; onClose: () => void } & propsInit): ReactNode => {
   const { handleSubmit, register, onSubmit, formFields } = useTaleModal(initialValues, onClose);
 

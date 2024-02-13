@@ -33,6 +33,7 @@ export const useUploadSingle = ({
     }
     return null;
   }, [value]);
+
   // dropzone configuration
   const {
     getRootProps,
@@ -49,9 +50,10 @@ export const useUploadSingle = ({
     onDrop,
     ...dropzoneOptions,
   });
-  const errorMessage = useErrorMeesages(fileRejections, dropzoneOptions);
-  // styling
 
+  const errorMessage = useErrorMeesages(fileRejections, dropzoneOptions);
+
+  // styling
   const dropZoneClassName = React.useMemo(
     () =>
       (

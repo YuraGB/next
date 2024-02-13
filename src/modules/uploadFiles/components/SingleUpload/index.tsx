@@ -8,16 +8,21 @@ import { FormattedMessage } from "react-intl";
 import type { FieldError } from "react-hook-form/dist/types/errors";
 import { useSingleUpload } from "@/modules/uploadFiles/components/SingleUpload/useSingleUpload";
 import ErrorMessage from "@/components/ErrorMessage/ErrorMessage";
+import { type Image } from ".prisma/client";
 
 type TProps = {
   setMainImage: UseFormSetValue<Partial<FieldValues>> | undefined;
   error: FieldError | undefined;
+  defaultValue?: Image;
 };
 
 // eslint-disable-next-line react/display-name
 export const SingleImageDropzoneUsage = forwardRef<HTMLInputElement, TProps>(
-  ({ setMainImage, error }, ref) => {
-    const { onUpload, imageSrc, setFile, file, onDelete } = useSingleUpload(setMainImage);
+  ({ setMainImage, error, defaultValue }, ref) => {
+    const { onUpload, imageSrc, setFile, file, onDelete } = useSingleUpload(
+      setMainImage,
+      defaultValue
+    );
 
     return (
       <div
@@ -30,9 +35,10 @@ export const SingleImageDropzoneUsage = forwardRef<HTMLInputElement, TProps>(
           width={200}
           height={200}
           value={file}
+          defaultValue={defaultValue}
           onChange={async (fileOnChange: File | undefined): Promise<void> => {
             setFile(fileOnChange);
-            await onDelete(imageSrc.current);
+            await onDelete(imageSrc.current?.url);
           }}
         />
         <Button type={"button"} variant={"solid"} color={"primary"} size={"lg"} onClick={onUpload}>

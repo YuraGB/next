@@ -1,3 +1,5 @@
+import { type Image } from ".prisma/client";
+
 export type Fields = {
   type: string;
   required: boolean;
@@ -10,7 +12,7 @@ export type Fields = {
   description?: string;
   autoComplete?: string;
   additionalClasses?: string;
-  defaultValue?: string;
+  defaultValue?: string | null | Image | Date;
   disabled?: boolean;
 };
 
