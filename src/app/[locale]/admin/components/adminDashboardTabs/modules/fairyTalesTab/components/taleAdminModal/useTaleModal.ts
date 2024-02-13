@@ -59,12 +59,9 @@ export const useTaleModal = (initialValues: Tale | null, onClose: () => void = (
     }
   }, [errorOnCreate, errorUpdate]);
 
-  const arrayOfTheErrors = Array.from(Object.keys(errors));
-
-  const formFields: React.ReactNode[] = useMemo(() => {
-    let fieldsWithDefaultValues: Fields[] = [];
+  const fieldsWithDefaultValues: Fields[] = useMemo(() => {
     if (initialValues) {
-      fieldsWithDefaultValues = fields.map((field: Fields) => {
+      return fields.map((field: Fields) => {
         if (initialValues && field.name && initialValues[field.name as keyof Tale] !== undefined) {
           return {
             defaultValue: initialValues[field.name as keyof Tale] as string,
@@ -74,17 +71,19 @@ export const useTaleModal = (initialValues: Tale | null, onClose: () => void = (
         return field;
       });
     }
+    return fields;
+  }, [initialFields, initialValues]);
 
-    return formFieldsMapping(
-      initialValues ? fieldsWithDefaultValues : initialFields,
-      errors,
-      register,
-      setValue
-    );
-  }, [arrayOfTheErrors, initialFields, initialValues, register, setValue]);
+  const formFields: React.ReactNode[] = formFieldsMapping(
+    fieldsWithDefaultValues,
+    errors,
+    register,
+    setValue
+  );
 
   const onSubmit: SubmitHandler<Partial<TSubmit>> = async (data) => {
     const normalizeData = formatTaleData(data);
+    console.log(data);
     if (initialValues?.id) {
       onUpdateTale({ id: initialValues.id, updateTaleData: normalizeData });
     } else {
