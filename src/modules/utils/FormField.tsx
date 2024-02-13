@@ -1,11 +1,12 @@
 import { Input, Textarea } from "@nextui-org/input";
 import type { Fields } from "@/modules/types/formTypes";
-import React, { type ReactNode } from "react";
+import React, { Fragment, type ReactNode } from "react";
 import type { FieldError } from "react-hook-form/dist/types/errors";
 import type { UseFormRegister, UseFormSetValue } from "react-hook-form/dist/types/form";
 import type { FieldValues } from "react-hook-form/dist/types/fields";
 import SingleImageDropzoneUsage from "@/modules/uploadFiles/components/SingleUpload";
 import { type Image } from ".prisma/client";
+import { MultiImageDropzoneUsage } from "@/modules/uploadFiles/components/MultipleUpload";
 
 type TProps = {
   errors: FieldError | undefined;
@@ -65,15 +66,29 @@ const FormField = (props: TProps): ReactNode => {
       );
     case "uploadSingleImage":
       return (
-        <SingleImageDropzoneUsage
-          setMainImage={setValue}
-          error={errors}
-          {...register(name as keyof Fields, {
-            required: errorMessage ?? required,
-            pattern,
-          })}
-          defaultValue={defaultValue as Image}
-        />
+        <Fragment>
+          <label>{label}</label>
+          <SingleImageDropzoneUsage
+            setMainImage={setValue}
+            error={errors}
+            {...register(name as keyof Fields, {
+              required: errorMessage ?? required,
+              pattern,
+            })}
+            defaultValue={defaultValue as Image}
+          />
+        </Fragment>
+      );
+    case "uploadMultipleImages":
+      return (
+        <Fragment>
+          <label>{label}</label>
+          <MultiImageDropzoneUsage
+            setImage={setValue}
+            error={errors}
+            defaultValue={defaultValue as Image[]}
+          />
+        </Fragment>
       );
     default:
       return (

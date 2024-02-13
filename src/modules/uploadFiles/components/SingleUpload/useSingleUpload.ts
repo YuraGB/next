@@ -27,6 +27,9 @@ export const useSingleUpload = (
       setMainImage("mainImage", defaultValue.url);
       setMainImage("thumbnailUrl", defaultValue.thumbnailUrl);
       setFile(defaultValue.thumbnailUrl);
+    } else {
+      setMainImage?.("mainImage", "");
+      setMainImage?.("thumbnailUrl", "");
     }
   }, []);
 

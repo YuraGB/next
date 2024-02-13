@@ -12,7 +12,7 @@ export type Fields = {
   description?: string;
   autoComplete?: string;
   additionalClasses?: string;
-  defaultValue?: string | null | Image | Date;
+  defaultValue?: string | null | Image | Date | Image[];
   disabled?: boolean;
 };
 

@@ -4,7 +4,6 @@ import { Modal, ModalBody, ModalContent, ModalFooter, ModalHeader } from "@nextu
 import { Button } from "@nextui-org/button";
 import { useTaleModal } from "@/app/[locale]/admin/components/adminDashboardTabs/modules/fairyTalesTab/components/taleAdminModal/useTaleModal";
 import { type Tale } from ".prisma/client";
-import ImagesInputs from "@/app/[locale]/admin/components/adminDashboardTabs/modules/fairyTalesTab/components/imagesInputs/imagesInputs";
 import { FormattedMessage } from "react-intl";
 import CategorySelect from "@/app/[locale]/admin/components/adminDashboardTabs/modules/fairyTalesTab/components/categorySelect/CategorySelect";
 
@@ -32,13 +31,12 @@ const TaleModal = ({
             </ModalHeader>
             <ModalBody>
               <form
-                className={"mt-3 flex w-full max-w-xl flex-wrap bg-white p-4"}
+                className={"mt-3 flex w-full flex-wrap bg-white p-4"}
                 aria-label={"registration form"}
                 onSubmit={handleSubmit(onSubmit)}
               >
                 {formFields}
                 <CategorySelect register={register} />
-                <ImagesInputs register={register} initialImages={initialValues?.images} />
                 <Button
                   variant={"flat"}
                   color={"primary"}
