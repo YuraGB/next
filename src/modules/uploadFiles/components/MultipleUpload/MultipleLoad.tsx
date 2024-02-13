@@ -2,7 +2,7 @@
 import * as React from "react";
 import { type DropzoneOptions } from "react-dropzone";
 import { useMultipleLoad } from "@/modules/uploadFiles/components/MultipleUpload/useMultipleLoad";
-import { type MutableRefObject } from "react";
+import { type MutableRefObject, type ReactNode } from "react";
 import { type TUploadFiles } from "@/modules/uploadFiles/components/MultipleUpload/useHelper";
 import InputMultipleUpload from "@/modules/uploadFiles/components/InputMultipleUpload/InputMultipleUpload";
 import MultipleImagesContainer from "@/modules/uploadFiles/components/MultipleImagesContainer/MultipleImagesContainer";
@@ -23,7 +23,7 @@ export type InputProps = {
   uploadFiles?: MutableRefObject<TUploadFiles>;
 };
 
-const MultiImageDropzone = React.forwardRef<HTMLInputElement, InputProps>((props) => {
+const MultiImageDropzone = (props: InputProps): ReactNode => {
   const { value, disabled, onChange, uploadFiles, dropzoneOptions } = props;
   const { getRootProps, getInputProps, imageUrls, errorMessage, dropZoneClassName } =
     useMultipleLoad(props);
@@ -53,7 +53,8 @@ const MultiImageDropzone = React.forwardRef<HTMLInputElement, InputProps>((props
       <div className="mt-1 text-xs text-red-500">{errorMessage}</div>
     </div>
   );
-});
+};
+
 MultiImageDropzone.displayName = "MultiImageDropzone";
 
 export default MultiImageDropzone;
