@@ -9,10 +9,13 @@ const TaleSchema = z.object({
   mainImage: z.object({
     url: z.string(),
     thumbnailUrl: z.string().optional(),
+    id: z.string().optional(),
   }),
   forAge: z.string(),
   title: z.string(),
-  images: z.array(z.string()),
+  images: z.array(
+    z.object({ url: z.string(), thumbnailUrl: z.string(), id: z.string().optional() })
+  ),
   categoryTaleId: z.string(),
 });
 
@@ -22,6 +25,7 @@ export type TCreateTaleResponse = Pick<Tale, "id" | "title"> | undefined;
 
 const createTale = async (newTale: TCreateTale): Promise<TCreateTaleResponse> => {
   if (!TaleSchema.safeParse(newTale).success) {
+    console.log(newTale, TaleSchema.parse(newTale));
     throw "Not all tale data provided";
   }
 
@@ -38,7 +42,9 @@ const createTale = async (newTale: TCreateTale): Promise<TCreateTaleResponse> =>
         },
         forAge: newTale.forAge,
         title: newTale.title,
-        images: newTale.images,
+        images: {
+          create: newTale.images,
+        },
         categoryTale: {
           connect: {
             id: newTale.categoryTaleId,
