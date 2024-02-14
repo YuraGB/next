@@ -13,6 +13,7 @@ const talesWithRelations = validator<CategoryTale$talesArgs[] | Rating$TaleArgs>
     categoryTale: true,
     rating: true,
     mainImage: true,
+    images: true,
     comments: true,
   },
 });

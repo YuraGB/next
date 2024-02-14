@@ -5,29 +5,72 @@ import { type TCreateTale } from "@/server/actions/addNewTale";
 
 export const updateTale = async (id: string, data: TCreateTale): Promise<Tale | undefined> => {
   const { title, images, forAge, categoryTaleId, shortDescription, mainImage, content } = data;
+  console.log(
+    data,
+    id,
+    title,
+    images,
+    forAge,
+    categoryTaleId,
+    shortDescription,
+    mainImage,
+    content
+  );
 
-  try {
-    return await prisma.tale.update({
-      where: { id },
-      data: {
-        title,
-        images,
-        forAge,
-        shortDescription,
-        mainImage: {
-          create: {
-            url: mainImage.url,
-            thumbnailUrl: mainImage.thumbnailUrl ?? "",
-          },
+  const mainImageObj = {
+    mainImage: {
+      connectOrCreate: {
+        where: {
+          url: mainImage.url ?? "",
         },
-        content,
-        categoryTale: {
-          connect: {
-            id: categoryTaleId,
-          },
+        create: {
+          url: mainImage.url ?? "",
+          thumbnailUrl: mainImage.thumbnailUrl ?? "",
         },
       },
-    });
+    },
+  };
+
+  const catalogObj = {
+    categoryTale: {
+      connect: {
+        id: categoryTaleId,
+      },
+    },
+  };
+
+  const imagesObj = {
+    images: {
+      // clear all images
+      set: [],
+      // connect or create new images
+      connectOrCreate: images.map((image) => ({
+        where: {
+          url: image.url,
+        },
+        create: {
+          url: image.url,
+          thumbnailUrl: image.thumbnailUrl,
+        },
+      })),
+    },
+  };
+
+  const updateObj = {
+    where: { id },
+    data: {
+      title,
+      forAge,
+      content,
+      shortDescription,
+      ...mainImageObj,
+      ...imagesObj,
+      ...catalogObj,
+    },
+  };
+
+  try {
+    return await prisma.tale.update(updateObj);
   } catch (e) {
     console.log(e);
     throw new Error("Error updating tale");

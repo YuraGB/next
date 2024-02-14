@@ -6,13 +6,19 @@ import type React from "react";
 // eslint-disable-next-line no-duplicate-imports
 import { useEffect, useMemo } from "react";
 import formFieldsMapping from "@/modules/utils/formFieldsMapping";
-import { type Tale } from ".prisma/client";
 import { formatTaleData } from "@/app/[locale]/admin/components/adminDashboardTabs/modules/fairyTalesTab/components/taleAdminModal/util/formatData";
 import useUpdateTaleHandler from "@/app/[locale]/admin/components/adminDashboardTabs/modules/fairyTalesTab/service/updateTaleHandler";
 import { useAddNewTale } from "@/app/[locale]/admin/components/adminDashboardTabs/modules/fairyTalesTab/service/useAddNewTale";
 import toast from "react-hot-toast";
+import { type Tale } from ".prisma/client";
 
-export type TSubmit = Omit<Tale, "id" | "ratingId" | "createdAt" | "imageId" | "images">;
+export type TSubmit = Pick<
+  Tale,
+  "categoryTaleId" | "forAge" | "content" | "shortDescription" | "title"
+> & {
+  mainImage: string;
+  images: Array<{ url: string; thumbnailUrl: string }>;
+};
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export const useTaleModal = (initialValues: Tale | null, onClose: () => void = () => undefined) => {
@@ -83,7 +89,6 @@ export const useTaleModal = (initialValues: Tale | null, onClose: () => void = (
 
   const onSubmit: SubmitHandler<Partial<TSubmit>> = async (data) => {
     const normalizeData = formatTaleData(data);
-    console.log(data);
     if (initialValues?.id) {
       onUpdateTale({ id: initialValues.id, updateTaleData: normalizeData });
     } else {

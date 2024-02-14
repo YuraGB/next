@@ -14,25 +14,26 @@ export const formatTaleData = (data: Partial<TSubmit>): TCreateTale => {
     title: "",
     categoryTaleId: "",
   };
-
+  console.log(data, "data");
   for (const [key, value] of Object.entries(data)) {
     switch (key) {
       case "mainImage": {
-        formattedData.mainImage.url = value;
+        formattedData.mainImage.url = value as string;
         break;
       }
       case "images": {
-        formattedData.images.push(value);
+        formattedData.images.push(...(value as Array<{ url: string; thumbnailUrl: string }>));
         break;
       }
       case "thumbnailUrl": {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        formattedData.mainImage.thumbnailUrl = value;
+        formattedData.mainImage.thumbnailUrl = value as string;
         break;
       }
 
       default: {
-        formattedData[key as keyof typeof data] = value;
+        // eslint-disable-next-line
+        // @ts-ignore
+        formattedData[key] = value as string;
       }
     }
   }

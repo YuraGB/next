@@ -1,5 +1,6 @@
 import { memo, type ReactNode } from "react";
-import Image from "next/image";
+import ImageComponent from "next/image";
+import { type Image } from ".prisma/client";
 
 const Paragraph = ({
   content,
@@ -7,7 +8,7 @@ const Paragraph = ({
   isOdd,
 }: {
   content: string;
-  image: string | undefined;
+  image: Image | undefined;
   isOdd: boolean;
 }): ReactNode => {
   return (
@@ -20,8 +21,8 @@ const Paragraph = ({
         {content}
       </p>
       {image ? (
-        <Image
-          src={image}
+        <ImageComponent
+          src={image.url}
           fetchPriority={"low"}
           alt={"Yuhur photo"}
           width={900}

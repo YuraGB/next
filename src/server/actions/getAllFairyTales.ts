@@ -10,6 +10,7 @@ export const getAllFairyTales = async (): Promise<TaleWithRelations[] | undefine
         mainImage: true,
         rating: true,
         comments: true,
+        images: true,
       },
     });
   } catch (e) {

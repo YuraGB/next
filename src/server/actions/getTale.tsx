@@ -13,6 +13,7 @@ export const getTale = async (id: string): TGetTale => {
       include: {
         rating: true,
         mainImage: true,
+        images: true,
         comments: {
           include: {
             user: true,
