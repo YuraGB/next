@@ -3,18 +3,9 @@
     "target": "ESNext",
     "module": "esnext",
     "moduleResolution": "Node",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
-    "types": [
-      "node",
-      "cypress",
-      "jest",
-      "@testing-library/jest-dom"
-    ],
+    "types": ["node", "cypress", "jest", "@testing-library/jest-dom"],
     "skipLibCheck": true,
     "strict": true,
     "noEmit": true,
@@ -29,22 +20,14 @@
       }
     ],
     "paths": {
-      "@/*": [
-        "./src/*"
-      ],
-      "$prismaClient/*": ["./lib/*"]
+      "@/*": ["./src/*"],
+      "$prismaClient/*": ["./lib/*"],
+      "@admin": ["./src/app/[locale]/admin/*"]
     }
   },
   "ts-node": {
     "esm": true
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    ".next/types/**/*.ts"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "exclude": ["node_modules"]
 }

@@ -1,15 +1,10 @@
 import PageWrapper from "@/components/pageWrapper/PageWrapper";
 import { type Metadata } from "next";
-import React, { type ReactNode, Suspense } from "react";
-import dynamic from "next/dynamic";
-const AdminDashboardTabs = dynamic(
-  () => import("@/app/[locale]/admin/components/adminDashboardTabs")
-);
+import React, { type ReactNode } from "react";
 
 export const metadata: Metadata = {
   title: "Gyb Nextjs Admin Page",
   description: "testing Nextjs 14 Dashboard",
-  keywords: ["yuhur", "Dashboard"],
   authors: [
     {
       name: "Yurii Hurianov",
@@ -20,10 +15,8 @@ export const metadata: Metadata = {
 
 export default function Admin(): ReactNode {
   return (
-    <PageWrapper additionalClasses={"items-start"} showBackground={false}>
-      <Suspense fallback={<p>Loading</p>}>
-        <AdminDashboardTabs />
-      </Suspense>
+    <PageWrapper additionalClasses={"items-start"}>
+      <h1>Admin Page Home</h1>
     </PageWrapper>
   );
 }
