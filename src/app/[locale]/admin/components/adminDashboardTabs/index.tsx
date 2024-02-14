@@ -21,6 +21,8 @@ const AdminDashboardTabs = (): React.ReactNode => {
       onSelectionChange={(key) => {
         setSelected(key as string);
       }}
+      color={"primary"}
+      className={"text-white"}
     >
       <Tab key={tabNames.USERS} title="Users" className={"w-full"}>
         <Suspense fallback={<p>....</p>}>

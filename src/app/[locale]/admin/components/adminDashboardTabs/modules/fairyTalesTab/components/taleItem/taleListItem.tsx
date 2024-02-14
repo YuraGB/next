@@ -26,7 +26,7 @@ const TaleAdminItem = ({
 
   return (
     <Card
-      className="flex w-full max-w-full rounded-none"
+      className="flex w-full max-w-full cursor-pointer rounded-none bg-foreground-300 text-foreground-100"
       isPressable
       isBlurred
       isHoverable
@@ -34,7 +34,7 @@ const TaleAdminItem = ({
     >
       <CardHeader className="relative flex gap-3 p-0">
         <div className="flex flex-col">
-          <p className="p-3">{title}</p>
+          <p className="p-3 text-foreground-400">{title}</p>
         </div>
       </CardHeader>
       <Divider />
