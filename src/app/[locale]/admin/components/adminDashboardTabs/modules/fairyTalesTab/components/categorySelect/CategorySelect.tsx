@@ -17,10 +17,12 @@ const CategorySelect: FC<Props> = ({ register }) => {
 
   return (
     <Select
-      label="Select an animal"
+      label="Select a category"
       className="mb-6 max-w-xs"
       {...register("categoryTaleId", {})}
       name={"categoryTaleId"}
+      defaultSelectedKeys={[categoryList[0].id]}
+      isRequired={true}
     >
       {categoryList.map((category) => (
         <SelectItem key={category.id} value={category.id}>

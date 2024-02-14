@@ -31,8 +31,6 @@ export default [
     type: "uploadSingleImage",
     name: "mainImage",
     label: "Main images",
-    pattern:
-      /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/,
     description: "The url of the images",
     errorMessage: "Please attach a valid file",
     required: true,
@@ -42,19 +40,16 @@ export default [
     type: "uploadMultipleImages",
     name: "images",
     label: "Images",
-    pattern:
-      /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/,
     description: "The url of the images",
     errorMessage: "Please attach a valid file",
     required: true,
     additionalClasses: "w-full",
   },
-
   {
     type: "textarea",
     label: "Content",
     name: "content",
-    maxLength: 1028,
+    maxLength: 10028,
     errorMessage: "Please enter a content",
     required: true,
     additionalClasses: "w-full",
