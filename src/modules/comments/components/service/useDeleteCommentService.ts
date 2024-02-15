@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { deleteComment } from "@/server/actions/deleteComment";
+import { deleteComment } from "@/server/actions/CommentServises/deleteComment";
 import { GET_ONE_TALE } from "@/server/actions/queryNaming";
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type

@@ -1,6 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
 import toast from "react-hot-toast";
-import type { User } from "@/app/[locale]/admin/components/adminDashboardTabs/modules/adminUserTab/model/User";
+import type { User } from "@admin/(admin_pages)/entities/_modules/adminDashboardTabs/modules/adminUserTab/model/User";
 import type { TErrorObject } from "@/server/actions/types";
 import { getErrorMessage } from "@/utils/getErrorMessage";
 import { createUser } from "@/app/[locale]/(auth)/signUp/components/registrationForm/service/createUser";

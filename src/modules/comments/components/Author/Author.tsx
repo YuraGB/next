@@ -1,5 +1,5 @@
 import { type FC, memo, type ReactNode } from "react";
-import { type User } from "@/app/[locale]/admin/components/adminDashboardTabs/modules/adminUserTab/model/User";
+import { type User } from "@admin/(admin_pages)/entities/_modules/adminDashboardTabs/modules/adminUserTab/model/User";
 import { Avatar } from "@nextui-org/avatar";
 import { AvatarIcon } from "@nextui-org/react";
 

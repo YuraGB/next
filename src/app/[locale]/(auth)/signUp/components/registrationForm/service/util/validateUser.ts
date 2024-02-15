@@ -1,5 +1,5 @@
 import bcrypt from "bcrypt";
-import { type TCreateUser } from "@/server/actions/createUser";
+import { type TCreateUser } from "@/server/actions/UserServises/types";
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export const passwordToHash = (password: string) => {
@@ -7,7 +7,11 @@ export const passwordToHash = (password: string) => {
     throw Error("there is no password provided");
   }
 
-  return bcrypt.hashSync(password, process?.env?.SALT ? Number(process.env.SALT) : 12);
+  try {
+    return bcrypt.hashSync(password, process?.env?.SALT ? Number(process.env.SALT) : 12);
+  } catch (e) {
+    throw Error("Error hashing password");
+  }
 };
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
@@ -19,21 +23,12 @@ export const toComparePasswords = (inputPassword: string, dbPassword: string) =>
   return bcrypt.compareSync(inputPassword, dbPassword);
 };
 
-type NewUser = Pick<TCreateUser, "data">;
-
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-export const replacePasswordToHash = (newUser: NewUser) => {
-  if (!newUser?.data) {
-    throw "there is now data about new user";
-  }
-
+export const replacePasswordToHash = (newUser: TCreateUser): TCreateUser => {
   const { data } = newUser;
 
   if (data.hashPassword) {
-    return Object.assign({}, data, {
-      hashPassword: passwordToHash(data.hashPassword),
-    });
+    return { ...newUser, data: { ...data, hashPassword: passwordToHash(data.hashPassword) } };
   }
 
-  return null;
+  return newUser;
 };

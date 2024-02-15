@@ -1,6 +1,7 @@
 import { type TaleWithRelations } from "@/server/actions/types";
-import Image from "next/image";
 import React, { type ReactNode } from "react";
+
+import ImageSlide from "@/modules/homePageSlider/components/Slide/ImageSlide";
 
 const Slide = ({ item }: { item: TaleWithRelations }): ReactNode => {
   // eslint-disable-next-line
@@ -14,14 +15,7 @@ const Slide = ({ item }: { item: TaleWithRelations }): ReactNode => {
   return (
     <section className={"flex flex-col overflow-x-hidden bg-gray-100 shadow-lg"}>
       <div className={"min-h-[100px]"}>
-        <Image
-          src={url}
-          alt={title}
-          height={142}
-          width={300}
-          loading={"lazy"}
-          className={"h-auto w-[500px]"}
-        />
+        <ImageSlide url={url} title={title} />
       </div>
       <span
         slot="container-start"

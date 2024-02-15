@@ -26,6 +26,11 @@ const MainImage = ({ src, alt, width = 700, height = 200, classes }: TProps): Re
       onError={() => {
         setImage(placeholder.src);
       }}
+      placeholder={"blur"}
+      blurDataURL={
+        // this is our placeholder version using imgix query parameters.
+        "https://my-company-images-prd.imgix.net/public/bg-desktop.png?auto=format&blur=200&px=24"
+      }
     />
   );
 };

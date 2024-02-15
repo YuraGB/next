@@ -1,4 +1,4 @@
-import { getPublicPosts } from "@/server/actions/getPublicPosts";
+import { getPublicPosts } from "@/server/actions/PostsServices/getPublicPosts";
 import PostOverview from "@/app/[locale]/blog//components/postOverview";
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type

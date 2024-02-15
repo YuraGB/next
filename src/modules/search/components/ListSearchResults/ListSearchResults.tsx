@@ -1,6 +1,6 @@
 import { type FC, memo, type ReactNode } from "react";
 import ResultItem from "@/modules/search/components/ResultItem/ResultItem";
-import { type SearchTaleResponse } from "@/server/actions/searchTale";
+import { type SearchTaleResponse } from "@/server/actions/TaleServices/types";
 
 type ListResultsT = {
   results: SearchTaleResponse[] | string | [];

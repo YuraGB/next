@@ -1,6 +1,6 @@
 import { type FC, Fragment } from "react";
 import { UploadCloudIcon } from "lucide-react";
-import Button from "@/modules/uploadFiles/utils/Button";
+import Button from "@/modules/uploadFiles/UI/Button";
 import * as React from "react";
 type Props = {
   imageUrl: string | null;

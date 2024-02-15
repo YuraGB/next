@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { setRating, type TRating } from "@/server/actions/setRating";
+import { setRating, type TRating } from "@/server/actions/RatingServises/setRating";
 import { GET_ONE_TALE, GET_ONE_USER_WITH_VOTE } from "@/server/actions/queryNaming";
 
 export const useAddRattingService = (

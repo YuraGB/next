@@ -1,4 +1,4 @@
-import { type TRating } from "@/server/actions/setRating";
+import { type TRating } from "@/server/actions/RatingServises/setRating";
 import { useAddRattingService } from "@/modules/rating/useAddRatting";
 import { useUserId } from "@/modules/rating/useUserId";
 import { useCanUserVote } from "@/modules/rating/useCanUserVote";

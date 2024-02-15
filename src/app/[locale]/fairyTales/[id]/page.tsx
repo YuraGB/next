@@ -1,8 +1,8 @@
 import PageWrapper from "@/components/pageWrapper/PageWrapper";
 import { type Metadata } from "next";
 import React from "react";
-import { getAllFairyTales } from "@/server/actions/getAllFairyTales";
-import { getTale } from "@/server/actions/getTale";
+import { getAllFairyTales } from "@/server/actions/TaleServices/getAllFairyTales";
+import { getTale } from "@/server/actions/TaleServices/getTale";
 import TaleContent from "@/app/[locale]/fairyTales/[id]/components/taleContent";
 import BreadcrumbsModule from "@/modules/Breadcrumbs/Breadcrumbs";
 

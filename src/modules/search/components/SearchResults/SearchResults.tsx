@@ -1,7 +1,7 @@
 import { type FC, memo, type ReactNode } from "react";
 import { LoaderIcon } from "react-hot-toast";
 import ListSearchResults from "@/modules/search/components/ListSearchResults/ListSearchResults";
-import { type SearchTaleResponse } from "@/server/actions/searchTale";
+import { type SearchTaleResponse } from "@/server/actions/TaleServices/types";
 
 type SearchResultsProps = {
   isLoading: boolean;

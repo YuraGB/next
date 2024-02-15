@@ -1,7 +1,7 @@
 import React from "react";
 import TaleItem from "@/app/[locale]/fairyTales/modules/components/taleItem/taleItem";
 import TalesListSkeleton from "@/app/[locale]/fairyTales/modules/components/talesList/taleListSkeleton";
-import { getAllFairyTales } from "@/server/actions/getAllFairyTales";
+import { getAllFairyTales } from "@/server/actions/TaleServices/getAllFairyTales";
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 const TalesList = async () => {
@@ -12,7 +12,7 @@ const TalesList = async () => {
   }
 
   return (
-    <section className={"grid grid-cols-1 justify-start gap-3 lg:grid-cols-2"}>
+    <section className={"grid w-full grid-cols-1 justify-start gap-3 lg:grid-cols-2"}>
       {tales.map((tale) => (
         <TaleItem key={tale.id} tale={tale} />
       ))}

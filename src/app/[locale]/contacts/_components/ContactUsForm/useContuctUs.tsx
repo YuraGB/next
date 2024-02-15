@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { type IContactUs } from "@/server/actions/addContactUsMessage";
+import { type IContactUs } from "@/server/actions/ContactUsService/addContactUsMessage";
 import type React from "react";
 import formFieldsMapping from "@/modules/utils/formFieldsMapping";
 import fields from "@/app/[locale]/contacts/_components/ContactUsForm/fields";

@@ -1,9 +1,10 @@
 import { type ChangeEvent, useCallback, useMemo, useState } from "react";
 import useDebounce from "@/modules/search/useDebounce";
 import { useQuery } from "@tanstack/react-query";
-import getSearch, { type SearchTaleResponse } from "@/server/actions/searchTale";
+import getSearch from "@/server/actions/TaleServices/searchTale";
 import { useRouter } from "next/navigation";
 import { Pages } from "@/utils/pages";
+import { type SearchTaleResponse } from "@/server/actions/TaleServices/types";
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export const useInputSearch = () => {

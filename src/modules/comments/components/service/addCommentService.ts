@@ -1,4 +1,4 @@
-import { addComment, type TCreateComment } from "@/server/actions/addComment";
+import { addComment, type TCreateComment } from "@/server/actions/CommentServises/addComment";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { GET_ONE_TALE } from "@/server/actions/queryNaming";
 

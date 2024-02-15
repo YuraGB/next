@@ -20,7 +20,7 @@ export const MultiImageDropzoneUsage = (props: TProps): ReactNode => {
       <MultiImageDropzone
         value={fileStates}
         dropzoneOptions={{
-          maxFiles: 10,
+          maxFiles: 15,
         }}
         onChange={(files) => {
           setFileStates(files);
