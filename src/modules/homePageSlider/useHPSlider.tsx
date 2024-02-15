@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { getAllFairyTales } from "@/server/actions/getAllFairyTales";
+import { getAllFairyTales } from "@/server/actions/TaleServices/getAllFairyTales";
 import { type TaleWithRelations } from "@/server/actions/types";
 
 type TUSeSlides = {

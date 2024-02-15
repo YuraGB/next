@@ -2,7 +2,7 @@ import React, { type ReactNode, Suspense } from "react";
 import PageWrapper from "@/components/pageWrapper/PageWrapper";
 import dynamic from "next/dynamic";
 const AdminDashboardTabs = dynamic(
-  () => import("@/app/[locale]/admin/components/adminDashboardTabs/index")
+  () => import("@admin/(admin_pages)/entities/_modules/adminDashboardTabs/index")
 );
 
 const EntitiesPage = (): ReactNode => {

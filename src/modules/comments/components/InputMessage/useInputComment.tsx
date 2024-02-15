@@ -1,7 +1,7 @@
 import { type SubmitHandler, useForm } from "react-hook-form";
 import commentFields from "./fields";
 import formFieldsMapping from "@/modules/utils/formFieldsMapping";
-import { type TCreateComment } from "@/server/actions/addComment";
+import { type TCreateComment } from "@/server/actions/CommentServises/addComment";
 import { useAddCommentService } from "@/modules/comments/components/service/addCommentService";
 import { useEffect, useMemo } from "react";
 import { getRandomInt } from "@/utils/getRandom";

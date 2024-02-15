@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { getUsers } from "@/server/actions/getUserRate";
+import { getUsers } from "@/server/actions/UserServises/getUserRate";
 import { GET_ONE_USER_WITH_VOTE } from "@/server/actions/queryNaming";
 import { useEffect, useState } from "react";
 

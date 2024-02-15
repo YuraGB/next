@@ -1,21 +1,18 @@
 "use server";
 import { replacePasswordToHash } from "@/app/[locale]/(auth)/signUp/components/registrationForm/service/util/validateUser";
-import { createUser as createNewUser, type TCreateUser } from "@/server/actions/createUser";
-import { type User } from "@/app/[locale]/admin/components/adminDashboardTabs/modules/adminUserTab/model/User";
+import { createUser as createNewUser } from "@/server/actions/UserServises/createUser";
+import { type User } from "@admin/(admin_pages)/entities/_modules/adminDashboardTabs/modules/adminUserTab/model/User";
 import { type TErrorObject } from "@/server/actions/types";
+import { type TCreateUser } from "@/server/actions/UserServises/types";
 
 export const createUser = async (
   newUser: TCreateUser
 ): Promise<Pick<User, "email" | "hashPassword"> | TErrorObject> => {
   const userDataWithHashedPassword = replacePasswordToHash(newUser);
 
-  if (userDataWithHashedPassword?.hashPassword) {
-    const newUserData = {
-      data: userDataWithHashedPassword,
-      select: newUser.select,
-    };
+  if (userDataWithHashedPassword?.data?.hashPassword) {
     try {
-      return await createNewUser(newUserData);
+      return await createNewUser(userDataWithHashedPassword);
     } catch (e) {
       console.log(e);
       return {

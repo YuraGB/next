@@ -4,15 +4,13 @@ import React, { type ReactNode } from "react";
 import { Skeleton } from "@nextui-org/skeleton";
 
 const TaleItemSkeleton = (): ReactNode => (
-  <Card className="w-full max-w-full" isPressable isBlurred isHoverable>
-    <CardHeader className="relative flex gap-3 p-0">
-      <Skeleton className={"h-[400px] w-full object-cover"} />
+  <Card className="w-full rounded-[0]" isPressable isBlurred isHoverable>
+    <CardHeader className="relative flex h-[300px] w-full flex-col items-start gap-3 overflow-hidden rounded-[0] p-0">
+      <Skeleton className={"h-[300px] w-full object-cover"} />
     </CardHeader>
     <Divider />
     <CardFooter
-      className={
-        "absolute bottom-0 z-10 flex justify-between border-t-1 border-default-600 bg-black/40 text-amber-50 dark:border-default-100"
-      }
+      className={"flex h-[73px] border-t-1 bg-gray-400/40 dark:border-default-100"}
     ></CardFooter>
   </Card>
 );

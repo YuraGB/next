@@ -9,19 +9,7 @@ const nextConfig = {
     },
   },
   images: {
-    domains: ["firebasestorage.googleapis.com"],
     remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "assets.vercel.com",
-        port: "",
-        pathname: "/image/upload/**",
-      },
-      {
-        protocol: "https",
-        hostname: "firebasestorage.googleapis.com",
-        port: "",
-      },
       {
         protocol: "https",
         hostname: "files.edgestore.dev",

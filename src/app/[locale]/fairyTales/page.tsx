@@ -4,6 +4,7 @@ import TalesList from "@/app/[locale]/fairyTales/modules/components/talesList/ta
 import PageTitle from "@/app/[locale]/fairyTales/components/pageTitle/PageTitle";
 import { type ReactNode, Suspense } from "react";
 import BreadcrumbsModule from "@/modules/Breadcrumbs/Breadcrumbs";
+import TalesListSkeleton from "@/app/[locale]/fairyTales/modules/components/talesList/taleListSkeleton";
 
 export const metadata: Metadata = {
   title: "Fairy tales page",
@@ -23,7 +24,7 @@ export default function FairyTales(): ReactNode {
     <PageWrapper>
       <BreadcrumbsModule current={"Catalog of the Tales"} />
       <PageTitle />
-      <Suspense fallback={null}>
+      <Suspense fallback={<TalesListSkeleton />}>
         <TalesList />
       </Suspense>
     </PageWrapper>

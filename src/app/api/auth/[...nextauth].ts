@@ -4,7 +4,7 @@ import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { toComparePasswords } from "@/app/[locale]/(auth)/signUp/components/registrationForm/service/util/validateUser";
 import { Pages } from "@/utils/pages";
 import prisma from "$prismaClient/prisma";
-import { findUser } from "@/server/actions/findUser";
+import { findUser } from "@/server/actions/UserServises/findUser";
 
 export const authOptions: NextAuthOptions = {
   // eslint-disable-next-line

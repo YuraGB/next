@@ -2,7 +2,7 @@ import { Fragment, useMemo } from "react";
 import Paragraph from "@/app/[locale]/fairyTales/[id]/components/paragraph";
 import { type TaleWithRelations } from "@/server/actions/types";
 import { useQuery } from "@tanstack/react-query";
-import { getTale } from "@/server/actions/getTale";
+import { getTale } from "@/server/actions/TaleServices/getTale";
 import { GET_ONE_TALE } from "@/server/actions/queryNaming";
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type

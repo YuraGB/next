@@ -1,7 +1,7 @@
 import { type FC, memo, type ReactNode } from "react";
 import { Card, CardBody, CardHeader } from "@nextui-org/card";
 import Image from "next/image";
-import type { SearchTaleResponse } from "@/server/actions/searchTale";
+import { type SearchTaleResponse } from "@/server/actions/TaleServices/types";
 
 type ResultItemT = {
   tale: SearchTaleResponse | undefined | null;

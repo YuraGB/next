@@ -29,6 +29,7 @@ const config: Config = {
               50: "#e9e6e6",
               "100": "rgba(255,255,255,0.5)",
               "200": "rgba(47,79,79,1)",
+              "600": "#fff5ee",
             },
             foreground: {
               "50": "#161616",
@@ -36,7 +37,6 @@ const config: Config = {
               "200": "#e9e6e6",
               "300": "rgba(47,79,79,1)",
               "400": "#b8860b",
-              "500": "#fff5ee",
             },
           },
         }, // light theme colors

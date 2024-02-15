@@ -22,7 +22,7 @@
     "paths": {
       "@/*": ["./src/*"],
       "$prismaClient/*": ["./lib/*"],
-      "@admin": ["./src/app/[locale]/admin/*"]
+      "@admin/*": ["./src/app/[locale]/admin/*"]
     }
   },
   "ts-node": {

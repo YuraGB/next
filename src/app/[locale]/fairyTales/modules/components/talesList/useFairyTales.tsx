@@ -1,4 +1,4 @@
-import { getAllFairyTales } from "@/server/actions/getAllFairyTales";
+import { getAllFairyTales } from "@/server/actions/TaleServices/getAllFairyTales";
 import { useQuery } from "@tanstack/react-query";
 import { GET_ALL_TALES } from "@/server/actions/queryNaming";
 
