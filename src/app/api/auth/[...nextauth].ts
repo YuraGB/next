@@ -57,7 +57,7 @@ export const authOptions: NextAuthOptions = {
     updateAge: 24 * 60 * 60, // 24 hours
   },
   callbacks: {
-    async jwt({ token, user }) {
+    jwt({ token, user }) {
       // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
       if (user) {
         token.role = user?.role;
@@ -66,7 +66,7 @@ export const authOptions: NextAuthOptions = {
       return token;
     },
 
-    async session({ session, token }) {
+    session({ session, token }) {
       // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
       if (token && session.user) {
         session.user.role = token.role;

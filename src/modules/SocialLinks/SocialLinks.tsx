@@ -3,9 +3,9 @@ import { type FC, type ReactNode } from "react";
 
 import { useSocials } from "@/modules/SocialLinks/useSocials";
 import SocialLink from "@/modules/SocialLinks/SocialLink";
-import { SocialLinks } from "@/server/actions/FooterService/FooterSocials/types";
+import { type FooterSocialLinks } from "@/server/actions/FooterService/FooterSocials/types";
 
-const SocialLinks: FC<{ links: SocialLinks[] }> = ({ links }): ReactNode => {
+const SocialLinks: FC<{ links: FooterSocialLinks[] }> = ({ links }): ReactNode => {
   const { links: linksData } = useSocials(links);
 
   if (linksData.length === 0) {

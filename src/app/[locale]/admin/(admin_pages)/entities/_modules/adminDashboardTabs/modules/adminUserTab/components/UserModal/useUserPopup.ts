@@ -57,7 +57,7 @@ export const useUserPopup = (initialValues: User | null, onClose: () => void = (
     );
   }, [errors, initialFields, initialValues, register]);
 
-  const onSubmit: SubmitHandler<Partial<User>> = async (userData) => {
+  const onSubmit: SubmitHandler<Partial<User>> = (userData): void => {
     if (initialValues) {
       const normalizeData = {
         ...initialValues,

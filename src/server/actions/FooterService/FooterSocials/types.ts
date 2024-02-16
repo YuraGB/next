@@ -1,7 +1,7 @@
 import { type Prisma } from ".prisma/client";
 import { z } from "zod";
 
-export type SocialLinks = Prisma.FooterSocialsGetPayload<{
+export type FooterSocialLinks = Prisma.FooterSocialsGetPayload<{
   include: {
     socials: true;
   };
@@ -13,3 +13,5 @@ export const socialLinkSchema = z.object({
 });
 
 export type TSocialLink = z.infer<typeof socialLinkSchema>;
+
+export type SocialNames = "Facebook" | "Instagram" | "Twitter" | "Google";

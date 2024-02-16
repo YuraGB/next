@@ -1,8 +1,8 @@
 "use server";
 import prisma from "$prismaClient/prisma";
-import { type SocialLinks } from "@/server/actions/FooterService/FooterSocials/types";
+import { type FooterSocialLinks } from "@/server/actions/FooterService/FooterSocials/types";
 
-export const getSocialLinks = (): Promise<SocialLinks[]> => {
+export const getSocialLinks = (): Promise<FooterSocialLinks[]> => {
   try {
     return prisma?.footerSocials.findMany({
       include: {
