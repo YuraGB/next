@@ -10,7 +10,7 @@ import { type Image } from ".prisma/client";
 
 type TUseSingleUpload = {
   onUpload: () => Promise<void>;
-  onDelete: (image: string | undefined) => Promise<void>;
+  onDelete: (image: string | undefined) => void;
   file: File | undefined | string;
   setFile: (file: File | undefined) => void;
   imageSrc: MutableRefObject<TResponse | undefined>;
@@ -42,8 +42,8 @@ export const useSingleUpload = (
     await singleUploadHandler(file, edgestore, setMainImage, imageSrc);
   };
 
-  const onDelete = async (image: string | undefined): Promise<void> => {
-    await singleImageDeleteHandler(file, setMainImage, image ?? defaultValue?.url, imageSrc);
+  const onDelete = (image: string | undefined): void => {
+    singleImageDeleteHandler(file, setMainImage, image ?? defaultValue?.url, imageSrc);
   };
 
   return { onUpload, onDelete, file, setFile, imageSrc };
