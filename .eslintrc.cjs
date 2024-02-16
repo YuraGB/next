@@ -55,13 +55,15 @@ const config = {
             caughtErrorsIgnorePattern: "^_",
           },
         ],
-        "@typescript-eslint/require-await": "off",
+        "@typescript-eslint/no-redundant-type-constituents": "off",
         "@typescript-eslint/no-misused-promises": [
           "error",
           {
             checksVoidReturn: { attributes: false },
           },
         ],
+        "@typescript-eslint/no-unsafe-call": "off",
+        "@typescript-eslint/no-unsafe-member-access": "off",
         "@typescript-eslint/interface-name-prefix": "off",
         "@typescript-eslint/explicit-module-boundary-types": "off",
         "no-unused-vars": "off",

@@ -1,11 +1,14 @@
-"use client";
-import { memo, type ReactNode } from "react";
-import SocialLinks from "@/components/SocialLinks/SocialLinks";
+import { memo, Suspense } from "react";
+import SocialLinks from "@/modules/SocialLinks/SocialLinks";
 import FooterNavigation from "@/modules/footer/components/FooterNavigation/FooterNavigation";
 import ContactInfo from "@/components/ContactInfo/ContactInfo";
 import Copyright from "@/modules/footer/components/Copyright/Copyright";
+import { getSocialLinks } from "@/server/actions/FooterService/FooterSocials/getSocialLinks";
 
-const Footer = (): ReactNode => {
+// eslint-disable-next-line
+const Footer = async () => {
+  const links = await getSocialLinks();
+
   return (
     <footer
       className={
@@ -15,7 +18,9 @@ const Footer = (): ReactNode => {
       <article
         className={"mb-[50px] grid items-start justify-items-center gap-1 sm:grid-cols-3 sm:gap-3"}
       >
-        <SocialLinks />
+        <Suspense fallback={<div>Loading...</div>}>
+          <SocialLinks links={links} />
+        </Suspense>
         <FooterNavigation />
         <ContactInfo />
       </article>

@@ -163,3 +163,58 @@ model Session {
 	updatedAt    DateTime @updatedAt
 	user         User     @relation(fields: [userId], references: [id])
 }
+
+model Copyright {
+	id        String   @id @default(auto()) @map("_id") @db.ObjectId
+	year      String
+	owner     String
+	content   String?
+	createdAt DateTime @default(now())
+	updatedAt DateTime @updatedAt
+}
+
+model SocialItem {
+	id              String         @id @default(auto()) @map("_id") @db.ObjectId
+	name            String
+	url             String
+	createdAt       DateTime       @default(now())
+	updatedAt       DateTime       @updatedAt
+	footerSocialsId String?        @db.ObjectId
+	FooterSocials   FooterSocials? @relation(fields: [footerSocialsId], references: [id])
+}
+
+model FooterSocials {
+	id        String       @id @default(auto()) @map("_id") @db.ObjectId
+	socials   SocialItem[]
+	socialsId String[]     @db.ObjectId
+	createdAt DateTime     @default(now())
+	updatedAt DateTime     @updatedAt
+}
+
+model OwnerInfo {
+	id        String   @id @default(auto()) @map("_id") @db.ObjectId
+	name      String
+	email     String
+	phone     String
+	address   String
+	createdAt DateTime @default(now())
+	updatedAt DateTime @updatedAt
+}
+
+model FooterNavLink {
+	id                 String            @id @default(auto()) @map("_id") @db.ObjectId
+	name               String
+	url                String
+	createdAt          DateTime          @default(now())
+	updatedAt          DateTime          @updatedAt
+	footerNavigationId String?           @db.ObjectId
+	FooterNavigation   FooterNavigation? @relation(fields: [footerNavigationId], references: [id])
+}
+
+model FooterNavigation {
+	id         String          @id @default(auto()) @map("_id") @db.ObjectId
+	navLinks   FooterNavLink[]
+	navLinksId String[]        @db.ObjectId
+	createdAt  DateTime        @default(now())
+	updatedAt  DateTime        @updatedAt
+}
