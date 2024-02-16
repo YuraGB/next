@@ -36,9 +36,9 @@ export const SingleImageDropzoneUsage = forwardRef<HTMLInputElement, TProps>(
           height={200}
           value={file}
           defaultValue={defaultValue}
-          onChange={async (fileOnChange: File | undefined): Promise<void> => {
+          onChange={(fileOnChange: File | undefined): void => {
             setFile(fileOnChange);
-            await onDelete(imageSrc.current?.url);
+            onDelete(imageSrc.current?.url);
           }}
         />
         <Button type={"button"} variant={"solid"} color={"primary"} size={"lg"} onClick={onUpload}>
