@@ -1,9 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import { getSocialLinks } from "@/server/actions/FooterService/FooterSocials/getSocialLinks";
-import { type SocialLinks } from "@/server/actions/FooterService/FooterSocials/types";
+import type { FooterSocialLinks } from "@/server/actions/FooterService/FooterSocials/types";
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-export const useSocialLinks = (initData: SocialLinks[]) => {
+export const useSocialLinks = (initData: FooterSocialLinks[]) => {
   const {
     data: footerSocialLinks,
     error,

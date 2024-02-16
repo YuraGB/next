@@ -12,17 +12,15 @@ const Slide = ({ item }: { item: TaleWithRelations }): ReactNode => {
     mainImage: { url },
   } = item;
 
+  const containerStart =
+    "strong flex min-h-[60px] items-center justify-center px-2 align-middle text-[16px] text-gray-900";
+
   return (
     <section className={"flex flex-col overflow-x-hidden bg-gray-100 shadow-lg"}>
       <div className={"min-h-[100px]"}>
         <ImageSlide url={url} title={title} />
       </div>
-      <span
-        slot="container-start"
-        className={
-          "strong flex min-h-[60px] items-center justify-center px-2 align-middle text-[16px] text-gray-900"
-        }
-      >
+      <span slot="container-start" className={containerStart}>
         {title}
       </span>
       <span

@@ -5,13 +5,13 @@ import type { FieldValues } from "react-hook-form/dist/types/fields";
 import type { MutableRefObject } from "react";
 import { type TResponse } from "@/modules/uploadFiles/components/SingleUpload/util/singleUploadHandler";
 
-const singleImageDeleteHandler = async (
+const singleImageDeleteHandler = (
   file: File | undefined | string,
   // edgestore: BucketFunctions<EdgeStoreRouter>,
   setMainImage: UseFormSetValue<Partial<FieldValues>> | undefined,
   imageUrl: string | undefined,
   imageSrc: MutableRefObject<TResponse | undefined>
-): Promise<void> => {
+): void => {
   if (file && typeof imageUrl === "string") {
     // eslint-disable-next-line @typescript-eslint/no-confusing-void-expression
     // try {

@@ -87,7 +87,7 @@ export const useTaleModal = (initialValues: Tale | null, onClose: () => void = (
     setValue
   );
 
-  const onSubmit: SubmitHandler<Partial<TSubmit>> = async (data) => {
+  const onSubmit: SubmitHandler<Partial<TSubmit>> = (data): void => {
     const normalizeData = formatTaleData(data);
     if (initialValues?.id) {
       onUpdateTale({ id: initialValues.id, updateTaleData: normalizeData });

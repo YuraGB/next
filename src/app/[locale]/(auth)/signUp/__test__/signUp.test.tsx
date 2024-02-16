@@ -51,7 +51,7 @@ describe("Sign up page", () => {
     );
   });
 
-  it("should have submit button Sign up of the Registration form", async () => {
+  it("should have submit button Sign up of the Registration form", () => {
     render(<RegisterPage />, { wrapper: Wrapper }); //ARRANGE
 
     const elem: HTMLParagraphElement = screen.getByRole("button", {
@@ -64,7 +64,7 @@ describe("Sign up page", () => {
     expect(elem).toBeInTheDocument(); //ASSERT
   });
 
-  it("should have the form on the Registration page", async () => {
+  it("should have the form on the Registration page", () => {
     render(<RegisterPage />, { wrapper: Wrapper }); //ARRANGE
 
     const elem: HTMLParagraphElement = screen.getByRole("form", {

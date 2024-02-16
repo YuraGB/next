@@ -65,7 +65,7 @@ export default async function RootLayout({
   );
 }
 
-export async function generateStaticParams(): Promise<Array<{ locale: string }>> {
+export function generateStaticParams(): Array<{ locale: string }> {
   const locales = ["en", "uk"];
 
   return locales.map((locale) => ({ locale }));

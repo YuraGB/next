@@ -23,7 +23,7 @@ export const useSignUp = () => {
   const { createNewUser, newUserData, onCreateStatus } = useServiceCreate();
   const { signIn, onSignInStatus } = useServiceSignIn();
 
-  const onSubmit: SubmitHandler<Partial<Inputs>> = async (data) => {
+  const onSubmit: SubmitHandler<Partial<Inputs>> = (data): void => {
     const areAllFieldsFilled = validateFields(data);
 
     if (areAllFieldsFilled) {
