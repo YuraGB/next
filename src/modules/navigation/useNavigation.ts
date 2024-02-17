@@ -15,6 +15,6 @@ export const useNavigation = (): NavigationItem[] => {
     // { url: Pages.BLOG, name: 'Blog' },
     // { url: Pages.KNOWLEDGE, name: 'Knowledge' },
     { url: Pages.FAIRY_TALES, name },
-    { url: Pages.CONTACT, name: "Contacts" },
+    { url: Pages.CONTACT_US, name: "Contacts" },
   ];
 };

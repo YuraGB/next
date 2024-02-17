@@ -3,7 +3,7 @@ import FooterNavigationItem from "@/modules/footer/components/FooterNavigationIt
 import { type ReactNode } from "react";
 
 type FooterNavigationListProps = {
-  navigationList: NavigationItem[] | undefined;
+  navigationList: NavigationItem[] | [];
 };
 
 const FooterNavigationList = ({ navigationList }: FooterNavigationListProps): ReactNode | null => {
