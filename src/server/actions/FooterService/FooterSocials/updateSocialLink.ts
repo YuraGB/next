@@ -1,3 +1,4 @@
+"use server";
 import prisma from "$prismaClient/prisma";
 import { type TSocialLink } from "@/server/actions/FooterService/FooterSocials/types";
 import { type SocialItem } from ".prisma/client";

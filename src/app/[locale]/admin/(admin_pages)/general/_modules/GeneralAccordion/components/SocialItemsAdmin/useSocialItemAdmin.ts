@@ -3,23 +3,23 @@ import type React from "react";
 import { useRef, useState } from "react";
 
 type SocialItemAdminProps = {
-  nameRef: React.RefObject<HTMLInputElement>;
+  nameRef: React.RefObject<HTMLSelectElement>;
   urlRef: React.RefObject<HTMLInputElement>;
   canSubmit: boolean;
   onChange: (
-    e: React.ChangeEvent<HTMLInputElement>,
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
     defaultValue: string,
     secondFieldValidation: boolean
   ) => void;
 };
 
 export const updateSocialLink = (): SocialItemAdminProps => {
-  const nameRef = useRef<HTMLInputElement>(null);
+  const nameRef = useRef<HTMLSelectElement>(null);
   const urlRef = useRef<HTMLInputElement>(null);
   const [canSubmit, setCanSubmit] = useState<boolean>(false);
 
   const onChange = (
-    e: React.ChangeEvent<HTMLInputElement>,
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
     defaultValue: string,
     secondFieldValidation: boolean
   ): void => {

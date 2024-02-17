@@ -4,10 +4,12 @@ import FooterNavigation from "@/modules/footer/components/FooterNavigation/Foote
 import ContactInfo from "@/components/ContactInfo/ContactInfo";
 import Copyright from "@/modules/footer/components/Copyright/Copyright";
 import { getSocialLinks } from "@/server/actions/FooterService/FooterSocials/getSocialLinks";
+import { getCopyright } from "@/server/actions/FooterService/FooterCopyright/getCopyright";
 
 // eslint-disable-next-line
 const Footer = async () => {
   const links = await getSocialLinks();
+  const copyright = await getCopyright();
 
   return (
     <footer
@@ -24,7 +26,9 @@ const Footer = async () => {
         <FooterNavigation />
         <ContactInfo />
       </article>
-      <Copyright />
+      <Suspense fallback={<div>Loading...</div>}>
+        <Copyright copyright={copyright} />
+      </Suspense>
     </footer>
   );
 };
