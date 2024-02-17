@@ -10,15 +10,15 @@ type TSelectItemName = {
   ) => void;
   urlRef: React.RefObject<HTMLInputElement>;
   url: string;
-  ref: React.RefObject<HTMLSelectElement>;
+  selectRef: React.RefObject<HTMLSelectElement>;
 };
 
-const SelectItemName = ({ name, urlRef, url, onChange, ref }: TSelectItemName): ReactNode => {
+const SelectItemName = ({ name, urlRef, url, onChange, selectRef }: TSelectItemName): ReactNode => {
   return (
     <Select
       label={"Social network"}
       isRequired={true}
-      ref={ref}
+      ref={selectRef}
       name={"name"}
       onChange={(e) => {
         onChange(e, name, urlRef.current?.value === url);

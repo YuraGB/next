@@ -9,7 +9,7 @@ import { getCopyright } from "@/server/actions/FooterService/FooterCopyright/get
 // eslint-disable-next-line
 const Footer = async () => {
   const links = await getSocialLinks();
-  const copyright = await getCopyright();
+  const copyrightBlock = await getCopyright();
 
   return (
     <footer
@@ -27,7 +27,7 @@ const Footer = async () => {
         <ContactInfo />
       </article>
       <Suspense fallback={<div>Loading...</div>}>
-        <Copyright copyright={copyright} />
+        <Copyright copyright={copyrightBlock} />
       </Suspense>
     </footer>
   );
