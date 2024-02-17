@@ -1,7 +1,7 @@
 import { type ReactNode } from "react";
 import { type Copyright } from ".prisma/client";
 
-const Copyright = ({
+const CopyrightComponent = ({
   copyright,
 }: {
   copyright: Copyright | undefined | null;
@@ -17,4 +17,4 @@ const Copyright = ({
   );
 };
 
-export default Copyright;
+export default CopyrightComponent;
