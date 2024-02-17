@@ -8,7 +8,7 @@ export enum Pages {
   LOGIN = "/login",
   SIGNUP = "/signUp",
   HOME = "/",
-  CONTACT = "/contacts",
+  CONTACT_US = "/contacts",
   ADMIN_GENERAL = "/admin/general",
   ADMIN_ENTITIES = "/admin/entities",
 }
