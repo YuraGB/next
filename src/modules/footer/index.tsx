@@ -2,9 +2,9 @@ import { memo, Suspense } from "react";
 import SocialLinks from "@/modules/SocialLinks/SocialLinks";
 import FooterNavigation from "@/modules/footer/components/FooterNavigation/FooterNavigation";
 import ContactInfo from "@/components/ContactInfo/ContactInfo";
-import Copyright from "@/modules/footer/components/Copyright/Copyright";
 import { getSocialLinks } from "@/server/actions/FooterService/FooterSocials/getSocialLinks";
 import { getCopyright } from "@/server/actions/FooterService/FooterCopyright/getCopyright";
+import CopyrightComponent from "@/modules/footer/components/Copyright/Copyright";
 
 // eslint-disable-next-line
 const Footer = async () => {
@@ -27,7 +27,7 @@ const Footer = async () => {
         <ContactInfo />
       </article>
       <Suspense fallback={<div>Loading...</div>}>
-        <Copyright copyright={copyrightBlock} />
+        <CopyrightComponent copyright={copyrightBlock} />
       </Suspense>
     </footer>
   );
