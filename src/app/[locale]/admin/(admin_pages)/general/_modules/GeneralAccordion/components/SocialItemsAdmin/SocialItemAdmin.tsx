@@ -30,7 +30,13 @@ const SocialItemAdmin: FC<SocialItemAdminProps> = ({ url, name, onSubmit, id, is
   return (
     <form onSubmit={handleSubmit} className={"mb-3"}>
       <div className="grid grid-cols-[1fr_1fr_200px] items-center justify-between gap-2">
-        <SelectItemName name={name} onChange={onChange} urlRef={urlRef} url={url} ref={nameRef} />
+        <SelectItemName
+          name={name}
+          onChange={onChange}
+          urlRef={urlRef}
+          url={url}
+          selectRef={nameRef}
+        />
         <Input
           type="text"
           ref={urlRef}
