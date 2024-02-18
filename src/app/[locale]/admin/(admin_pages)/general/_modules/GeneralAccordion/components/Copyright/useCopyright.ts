@@ -1,8 +1,8 @@
-import { useUpdateCopyright } from "@admin/(admin_pages)/general/_modules/GeneralAccordion/api/useUpdateCopyright";
+import { useUpdateCopyright } from "@admin/(admin_pages)/general/_modules/GeneralAccordion/api/copyright/useUpdateCopyright";
 import toast from "react-hot-toast";
 import { type Copyright } from ".prisma/client";
 import { useEffect } from "react";
-import { useCreateCopyright } from "@admin/(admin_pages)/general/_modules/GeneralAccordion/api/useCreateCopyright";
+import { useCreateCopyright } from "@admin/(admin_pages)/general/_modules/GeneralAccordion/api/copyright/useCreateCopyright";
 
 // eslint-disable-next-line
 export const useCopyright = (

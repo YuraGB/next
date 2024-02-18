@@ -1,9 +1,9 @@
 import { type TFooterNavWithLinks } from "@/server/actions/FooterService/FooterNavigation/types";
-import { useUpdateFooterNav } from "@admin/(admin_pages)/general/_modules/GeneralAccordion/api/useUpdateFooterNav";
+import { useUpdateFooterNav } from "@admin/(admin_pages)/general/_modules/GeneralAccordion/api/footerNav/useUpdateFooterNav";
 import type React from "react";
 // eslint-disable-next-line no-duplicate-imports
 import { useEffect } from "react";
-import { useCreateFooterNavLinks } from "@admin/(admin_pages)/general/_modules/GeneralAccordion/api/useCreateFooterNavLinks";
+import { useCreateFooterNavLinks } from "@admin/(admin_pages)/general/_modules/GeneralAccordion/api/footerNav/useCreateFooterNavLinks";
 import { useFooterNavHelper } from "@admin/(admin_pages)/general/_modules/GeneralAccordion/components/FooterNavigation/useFooterNavHelper";
 import toast from "react-hot-toast";
 

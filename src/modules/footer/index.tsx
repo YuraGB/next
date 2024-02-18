@@ -6,19 +6,21 @@ import { getSocialLinks } from "@/server/actions/FooterService/FooterSocials/get
 import { getCopyright } from "@/server/actions/FooterService/FooterCopyright/getCopyright";
 import CopyrightComponent from "@/modules/footer/components/Copyright/Copyright";
 import { getFooterNavigation } from "@/server/actions/FooterService/FooterNavigation/getFooterNavigation";
+import { getOwnerInfo } from "@/server/actions/FooterService/FooterOwnerInfo/getOwnerInfo";
 
 // eslint-disable-next-line
 const Footer = async () => {
   const links = getSocialLinks();
   const copyrightBlock = getCopyright();
   const footerNav = getFooterNavigation();
+  const contactInfo = getOwnerInfo();
 
-  const [socialLinks, copyright, navigationBlock] = await Promise.all([
+  const [socialLinks, copyright, navigationBlock, ownerInfo] = await Promise.all([
     links,
     copyrightBlock,
     footerNav,
+    contactInfo,
   ]);
-
   return (
     <footer
       className={
@@ -30,7 +32,7 @@ const Footer = async () => {
       >
         <SocialLinks links={socialLinks} />
         <FooterNavigation navigationLinks={navigationBlock?.navLinks ?? []} />
-        <ContactInfo />
+        <ContactInfo ownerInfo={ownerInfo} />
       </article>
       <CopyrightComponent copyright={copyright} />
     </footer>
