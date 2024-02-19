@@ -1,4 +1,5 @@
-import { type ReactNode } from "react";
+"use client";
+import { type ReactNode, useEffect, useState } from "react";
 import {
   EmailIcon,
   EmailShareButton,
@@ -13,6 +14,13 @@ import {
 } from "react-share";
 
 const ShareComponent = (): ReactNode => {
+  const [state, setState] = useState<boolean>(false);
+  useEffect(() => {
+    setState(true);
+  }, []);
+
+  if (!state) return null;
+
   return (
     <section className={"flex gap-3"}>
       <EmailShareButton url={window.location.href}>
