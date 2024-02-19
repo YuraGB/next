@@ -2,6 +2,7 @@ import { type TaleWithRelations } from "@/server/actions/types";
 import React, { type ReactNode } from "react";
 
 import ImageSlide from "@/modules/homePageSlider/components/Slide/ImageSlide";
+import Link from "next/link";
 
 const Slide = ({ item }: { item: TaleWithRelations }): ReactNode => {
   // eslint-disable-next-line
@@ -17,9 +18,11 @@ const Slide = ({ item }: { item: TaleWithRelations }): ReactNode => {
 
   return (
     <section className={"flex flex-col overflow-x-hidden bg-gray-100 shadow-lg"}>
-      <div className={"min-h-[100px]"}>
-        <ImageSlide url={url} title={title} />
-      </div>
+      <Link href={`/fairyTales/${item.id}`}>
+        <div className={"min-h-[100px]"}>
+          <ImageSlide url={url} title={title} />
+        </div>
+      </Link>
       <span slot="container-start" className={containerStart}>
         {title}
       </span>
