@@ -1,22 +1,30 @@
-import React from "react";
+"use client";
+import React, { Fragment, type ReactNode } from "react";
 import TaleItem from "@/app/[locale]/fairyTales/modules/components/taleItem/taleItem";
+import { useTaleList } from "@/app/[locale]/fairyTales/modules/components/talesList/useTaleList";
+import { Button } from "@nextui-org/button";
 import TalesListSkeleton from "@/app/[locale]/fairyTales/modules/components/talesList/taleListSkeleton";
-import { getAllFairyTales } from "@/server/actions/TaleServices/getAllFairyTales";
 
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-const TalesList = async () => {
-  const tales = await getAllFairyTales();
-
-  if (!tales || tales.length === 0) {
-    return <TalesListSkeleton />;
-  }
+const TalesList = (): ReactNode => {
+  const { taleList, fetchNextPage, isFetchingNextPage, status } = useTaleList();
+  if (status === "pending") return <TalesListSkeleton />;
 
   return (
-    <section className={"grid w-full grid-cols-1 justify-start gap-3 lg:grid-cols-2"}>
-      {tales.map((tale) => (
-        <TaleItem key={tale.id} tale={tale} />
-      ))}
-    </section>
+    <Fragment>
+      <section className={"grid w-full grid-cols-1 justify-start gap-3 lg:grid-cols-2"}>
+        {taleList?.map((tale) => (tale ? <TaleItem key={tale.id} tale={tale} /> : null))}
+      </section>{" "}
+      <Button
+        isLoading={isFetchingNextPage}
+        onClick={() => fetchNextPage()}
+        color="primary"
+        variant="shadow"
+        size={"lg"}
+        className={"top-2"}
+      >
+        Load more
+      </Button>
+    </Fragment>
   );
 };
 

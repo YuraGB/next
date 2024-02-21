@@ -22,11 +22,7 @@ export const useTaleContent = (taleData: Partial<TaleWithRelations>) => {
         .map((paragraph, i) => (
           // eslint-disable-next-line react/no-array-index-key
           <Fragment key={i + "p"}>
-            <Paragraph
-              content={paragraph}
-              image={data?.images ? data.images[i] : undefined}
-              isOdd={i % 2 === 0}
-            />
+            <Paragraph content={paragraph} image={data?.images?.[i]} isOdd={i % 2 === 0} />
             <br />
           </Fragment>
         ));

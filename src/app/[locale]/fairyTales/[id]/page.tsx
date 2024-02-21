@@ -40,7 +40,7 @@ export default async function FairyTale({ params }: { params: { id: string } }) 
 }
 
 export async function generateStaticParams(): Promise<string[]> {
-  const tales = await getAllFairyTales();
+  const tales = await getAllFairyTales({});
 
   if (tales?.length) {
     return tales.map(({ id }) => id);
