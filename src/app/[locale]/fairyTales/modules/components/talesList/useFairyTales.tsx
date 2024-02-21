@@ -6,7 +6,7 @@ import { GET_ALL_TALES } from "@/server/actions/queryNaming";
 export const useFairyTales = () => {
   const { data, isLoading, error } = useQuery({
     queryKey: [GET_ALL_TALES],
-    queryFn: () => getAllFairyTales(),
+    queryFn: () => getAllFairyTales({}),
   });
   return { tales: data, isLoading, error };
 };

@@ -10,7 +10,7 @@ type TUSeSlides = {
 export const useHPSlider = (): TUSeSlides => {
   const { data: slides, isLoading } = useQuery({
     queryKey: ["allTales"],
-    queryFn: () => getAllFairyTales(),
+    queryFn: () => getAllFairyTales({}),
   });
 
   return { slides, isLoading };
