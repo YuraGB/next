@@ -6,7 +6,7 @@ import { Button } from "@nextui-org/button";
 import TalesListSkeleton from "@/app/[locale]/fairyTales/modules/components/talesList/taleListSkeleton";
 
 const TalesList = (): ReactNode => {
-  const { taleList, fetchNextPage, isFetchingNextPage, status } = useTaleList();
+  const { taleList, fetchNextPage, isFetchingNextPage, status, showLoadMore } = useTaleList();
   if (status === "pending") return <TalesListSkeleton />;
 
   return (
@@ -14,16 +14,18 @@ const TalesList = (): ReactNode => {
       <section className={"grid w-full grid-cols-1 justify-start gap-3 lg:grid-cols-2"}>
         {taleList?.map((tale) => (tale ? <TaleItem key={tale.id} tale={tale} /> : null))}
       </section>{" "}
-      <Button
-        isLoading={isFetchingNextPage}
-        onClick={() => fetchNextPage()}
-        color="primary"
-        variant="shadow"
-        size={"lg"}
-        className={"top-2"}
-      >
-        Load more
-      </Button>
+      {showLoadMore.current ? (
+        <Button
+          isLoading={isFetchingNextPage}
+          onClick={() => fetchNextPage()}
+          color="primary"
+          variant="shadow"
+          size={"lg"}
+          className={"top-2"}
+        >
+          Load more
+        </Button>
+      ) : null}
     </Fragment>
   );
 };

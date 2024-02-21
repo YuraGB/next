@@ -2,6 +2,8 @@ import { z } from "zod";
 import type { CategoryTale } from "@prisma/client";
 import type { Image } from ".prisma/client";
 
+export const LIMIT = 2;
+
 export const TaleSchema = z.object({
   content: z.string({
     required_error: "Content is required",

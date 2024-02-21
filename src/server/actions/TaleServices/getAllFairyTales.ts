@@ -1,8 +1,7 @@
 "use server";
 import prisma from "$prismaClient/prisma";
 import { type TaleWithRelations } from "@/server/actions/types";
-
-const LIMIT = 2;
+import { LIMIT } from "@/server/actions/TaleServices/types";
 
 type TProps = {
   currentPage?: number;
