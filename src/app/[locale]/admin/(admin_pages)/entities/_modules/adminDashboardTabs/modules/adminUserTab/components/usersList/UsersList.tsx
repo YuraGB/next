@@ -13,7 +13,7 @@ const UsersList: FC<{
   }
 
   return (
-    <section className={"grid justify-start gap-2"}>
+    <section className={"grid justify-start gap-2 sm:grid-cols-3"}>
       {users.map((userData: User) => (
         <UserItem key={userData.id} user={userData} onEdit={onEdit} />
       ))}

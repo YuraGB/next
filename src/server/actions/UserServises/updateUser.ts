@@ -1,3 +1,4 @@
+"use server";
 import prisma from "$prismaClient/prisma";
 import { type User } from "@admin/(admin_pages)/entities/_modules/adminDashboardTabs/modules/adminUserTab/model/User";
 

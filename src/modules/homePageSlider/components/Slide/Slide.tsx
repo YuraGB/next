@@ -28,7 +28,7 @@ const Slide = ({ item }: { item: TaleWithRelations }): ReactNode => {
       </span>
       <span
         slot="container-end"
-        className={"line-clamp-3 h-[71px] px-2 py-1 text-[14px] text-foreground"}
+        className={"line-clamp-3 h-[71px] px-2 py-1 text-[14px] text-foreground-50"}
       >
         {shortDescription}
       </span>

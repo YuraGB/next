@@ -2,7 +2,7 @@ import { z } from "zod";
 import type { CategoryTale } from "@prisma/client";
 import type { Image } from ".prisma/client";
 
-export const LIMIT = 2;
+export const LIMIT = 6;
 
 export const TaleSchema = z.object({
   content: z.string({

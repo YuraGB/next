@@ -15,5 +15,6 @@
   "catalog.page": "Каталог казок",
   "modal.admin.addTale": "Добавити нову казку",
   "modal.admin.editTale": "Редагувати казку",
-  "profile.button":"Профіль"
+  "profile.button": "Профіль",
+  "admin.rating.chart": "Графік оцінок"
 }

@@ -28,8 +28,8 @@ const SocialItemAdmin: FC<SocialItemAdminProps> = ({ url, name, onSubmit, id, is
   };
 
   return (
-    <form onSubmit={handleSubmit} className={"mb-3"}>
-      <div className="grid grid-cols-[1fr_1fr_200px] items-center justify-between gap-2">
+    <form onSubmit={handleSubmit} className={"mb-5 border-b-1 pb-2"}>
+      <div className="grid items-center justify-between gap-2 sm:grid-cols-[1fr_1fr_200px]">
         <SelectItemName
           name={name}
           onChange={onChange}
