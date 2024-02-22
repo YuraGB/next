@@ -6,6 +6,7 @@ import Slide from "@/modules/homePageSlider/components/Slide/Slide";
 import { SwiperSlide } from "swiper/react";
 import { useHPSlider } from "@/modules/homePageSlider/useHPSlider";
 import SkeletonSlider from "@/modules/homePageSlider/components/SkeletonSlider/SkeletonSlider";
+import { FormattedMessage } from "react-intl";
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 const HomePageSlider = (): ReactNode | null => {
@@ -17,6 +18,9 @@ const HomePageSlider = (): ReactNode | null => {
 
   return (
     <section className={"relative mb-4 w-full"}>
+      <h3 className={"mb-4 flex justify-center text-2xl font-bold text-foreground"}>
+        <FormattedMessage id={"hp.slider.title"} defaultMessage={"The list of magic"} />
+      </h3>
       <Carousel>
         {slides?.length
           ? slides

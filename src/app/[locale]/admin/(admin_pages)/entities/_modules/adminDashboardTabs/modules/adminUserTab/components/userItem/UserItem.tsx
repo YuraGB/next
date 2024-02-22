@@ -22,7 +22,7 @@ const UserItem: FC<UserItemProps> = ({ user, onEdit }): React.ReactNode | null =
       avatarProps={{
         src: imageUrl ? imageUrl : "",
       }}
-      className={"cursor-pointer justify-start"}
+      className={"cursor-pointer justify-start bg-foreground-300 p-2"}
       onClick={() => {
         onEdit(user as User);
       }}

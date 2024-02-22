@@ -15,6 +15,7 @@ const FooterNavigation: FC<{ footerNavigation: TFooterNavWithLinks | undefined |
         name={"footer_links"}
         selectionMode="multiple"
         defaultSelectedKeys={navLinks?.map((link) => link.url) ?? []}
+        className={"grid"}
       >
         {pages.map((page) => (
           <SelectItem key={page.url} value={page.url}>
