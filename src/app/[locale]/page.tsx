@@ -2,7 +2,7 @@ import PageWrapper from "@/components/pageWrapper/PageWrapper";
 import { type Metadata } from "next";
 import React, { type ReactNode } from "react";
 import HomePageIntro from "@/modules/homePageIntro";
-import Logo from "@/components/Logo/Logo";
+import Logo from "@/components/LogoHP/Logo";
 import HomePageSlider from "@/modules/homePageSlider";
 
 export const metadata: Metadata = {

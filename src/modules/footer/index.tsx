@@ -7,6 +7,7 @@ import { getCopyright } from "@/server/actions/FooterService/FooterCopyright/get
 import CopyrightComponent from "@/modules/footer/components/Copyright/Copyright";
 import { getFooterNavigation } from "@/server/actions/FooterService/FooterNavigation/getFooterNavigation";
 import { getOwnerInfo } from "@/server/actions/FooterService/FooterOwnerInfo/getOwnerInfo";
+import { AcmeLogo } from "@/modules/navigation/Navigation";
 
 // eslint-disable-next-line
 const Footer = async () => {
@@ -30,7 +31,10 @@ const Footer = async () => {
       <article
         className={"mb-[50px] grid items-start justify-items-center gap-1 sm:grid-cols-3 sm:gap-3"}
       >
-        <SocialLinks links={socialLinks} />
+        <section className={"flex flex-col items-center justify-center"}>
+          <AcmeLogo stroke={"#FFF"} width={70} />
+          <SocialLinks links={socialLinks} />
+        </section>
         <FooterNavigation navigationLinks={navigationBlock?.navLinks ?? []} />
         <ContactInfo ownerInfo={ownerInfo} />
       </article>
