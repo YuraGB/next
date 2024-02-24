@@ -3,6 +3,10 @@ const nextConfig = {
   // experimental: {
   //   ppr: true,
   // },
+  env: {
+    NEXT_PUBLIC_RESEND_API_KEY: process.env.NEXT_PUBLIC_RESEND_API_KEY,
+    NEXT_PUBLIC_RE_SEND_FROM_DOMAIN: process.env.NEXT_PUBLIC_RE_SEND_FROM_DOMAIN,
+  },
   logging: {
     fetches: {
       fullUrl: true,
