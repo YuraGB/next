@@ -21,6 +21,7 @@ export const useForgotPasswordForm = () => {
       receiver: data.email!,
       subject: "Reset password",
       react: "ResetEmail",
+      baseUrl: window.location.origin,
     });
   };
 

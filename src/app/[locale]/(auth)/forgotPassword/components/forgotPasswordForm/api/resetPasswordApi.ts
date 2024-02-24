@@ -8,12 +8,14 @@ export const useResetPassword = () => {
       receiver,
       subject,
       react,
+      baseUrl,
     }: {
       receiver: string;
       subject: string;
       react: string;
+      baseUrl: string;
     }) => {
-      return emailSender(receiver, subject, react);
+      return emailSender(receiver, subject, react, baseUrl);
     },
   });
 };

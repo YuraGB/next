@@ -4,13 +4,18 @@ import { ResetEmail } from "@/EmailSender/components/ResetPasswordTemplate/Reset
 import resend from "$prismaClient/resend";
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-export const emailSender = async (receiver: string, subject: string, react: string) => {
+export const emailSender = async (
+  receiver: string,
+  subject: string,
+  react: string,
+  baseUrl: string
+) => {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
 
   let EmailComponent;
   switch (react) {
     case "ResetEmail":
-      EmailComponent = <ResetEmail receiver={receiver} />;
+      EmailComponent = <ResetEmail receiver={receiver} baseUrl={baseUrl} />;
       break;
     default:
       EmailComponent = null;

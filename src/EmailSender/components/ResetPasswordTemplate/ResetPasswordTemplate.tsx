@@ -6,9 +6,10 @@ import { Body, Container, Head, Img, Row, Tailwind, Text } from "@react-email/co
 
 type ResetEmailProps = {
   receiver: string;
+  baseUrl: string;
 };
 
-export function ResetEmail({ receiver }: ResetEmailProps): ReactNode {
+export function ResetEmail({ receiver, baseUrl }: ResetEmailProps): ReactNode {
   return (
     <Html lang="en">
       <Head />
@@ -16,7 +17,7 @@ export function ResetEmail({ receiver }: ResetEmailProps): ReactNode {
         <Body>
           <Container className={"p-6"}>
             <Row>
-              <Img src={"/images/1.png"} alt="Book" width="300" height="300" />
+              <Img src={baseUrl + "/images/1.png"} alt="Book" width="300" height="300" />
               <Text>W.O.Fairy tales</Text>
             </Row>
             <Text className={"text-lg font-bold"}>Reset password</Text>
