@@ -5,7 +5,6 @@ import { useForgotPasswordForm } from "@/app/[locale]/(auth)/forgotPassword/comp
 
 const ForgotPasswordForm = (): React.ReactNode => {
   const { formFields, onSubmit, handleSubmit } = useForgotPasswordForm();
-  console.log(process.env.NEXT_PUBLIC_RESEND_API_KEY);
   return (
     <article className={"mt-3 flex flex-col justify-center"}>
       <form

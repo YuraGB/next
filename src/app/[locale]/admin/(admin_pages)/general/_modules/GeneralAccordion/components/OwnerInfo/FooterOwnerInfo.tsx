@@ -9,7 +9,7 @@ export type FooterOwnerInfoProps = { footerOwnerInfo?: OwnerInfo | null };
 const FooterOwnerInfo: FC<FooterOwnerInfoProps> = ({ footerOwnerInfo }) => {
   const { onSubmit, isLoading } = useFooterOwnerInfo(footerOwnerInfo);
   const { name, email, address, phone } = footerOwnerInfo ?? {};
-  console.log("footerOwnerInfo", footerOwnerInfo);
+
   return (
     <form onSubmit={onSubmit} className={"flex flex-col gap-3"}>
       <Input label={"Owner name"} type="text" name="name" isRequired={true} defaultValue={name} />
