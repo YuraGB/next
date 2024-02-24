@@ -2,7 +2,6 @@ import * as React from "react";
 import { Html } from "@react-email/html";
 import { Button } from "@react-email/button";
 import { type ReactNode } from "react";
-import placeholder from "@/assets/placeholder.webp";
 import { Body, Container, Head, Img, Row, Tailwind, Text } from "@react-email/components";
 
 type ResetEmailProps = {
@@ -17,7 +16,7 @@ export function ResetEmail({ receiver }: ResetEmailProps): ReactNode {
         <Body>
           <Container className={"p-6"}>
             <Row>
-              <Img src={placeholder.src} alt="Book" width="300" height="300" />
+              <Img src={"/images/1.png"} alt="Book" width="300" height="300" />
               <Text>W.O.Fairy tales</Text>
             </Row>
             <Text className={"text-lg font-bold"}>Reset password</Text>
