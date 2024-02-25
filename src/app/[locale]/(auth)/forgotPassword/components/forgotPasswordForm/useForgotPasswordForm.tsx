@@ -31,6 +31,7 @@ export const useForgotPasswordForm = () => {
     if (sentEmailData) {
       //error catch from findUser or created token or resetPassword
       if ("isError" in sentEmailData) {
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
         toast.error(sentEmailData.message);
       }
 
@@ -40,8 +41,7 @@ export const useForgotPasswordForm = () => {
       }
 
       //error from resend
-      if ("error" in sentEmailData) {
-        console.log(sentEmailData.error);
+      if ("error" in sentEmailData && sentEmailData.error) {
         toast.error("An error occurred while sending the email");
       }
     }
