@@ -28,6 +28,7 @@ const FormField = (props: TProps): ReactNode => {
     errors,
     defaultValue,
     register,
+    validateCb,
     ...rest
   } = props;
 
@@ -40,14 +41,16 @@ const FormField = (props: TProps): ReactNode => {
           label={label}
           defaultValue={defaultValue as string}
           {...register(name as keyof Fields, {
-            required: errorMessage ?? required,
+            required: true,
             pattern,
+            maxLength: rest.maxLength,
+            minLength: rest.minLength,
+            validate: validateCb,
           })}
           isInvalid={Boolean(errors)}
           errorMessage={errors ? errorMessage : ""}
           description={description}
           autoComplete={autoComplete}
-          {...rest}
         />
       );
     case "textarea":

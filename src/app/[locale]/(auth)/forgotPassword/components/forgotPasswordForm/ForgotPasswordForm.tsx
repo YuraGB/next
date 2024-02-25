@@ -2,9 +2,10 @@
 import React, { memo } from "react";
 import { Button } from "@nextui-org/button";
 import { useForgotPasswordForm } from "@/app/[locale]/(auth)/forgotPassword/components/forgotPasswordForm/useForgotPasswordForm";
+import { FormattedMessage } from "react-intl";
 
 const ForgotPasswordForm = (): React.ReactNode => {
-  const { formFields, onSubmit, handleSubmit } = useForgotPasswordForm();
+  const { formFields, onSubmit, isLoading, handleSubmit } = useForgotPasswordForm();
   return (
     <article className={"mt-3 flex flex-col justify-center"}>
       <form
@@ -19,9 +20,11 @@ const ForgotPasswordForm = (): React.ReactNode => {
             color={"primary"}
             fullWidth={true}
             className={"mb-4"}
+            isLoading={isLoading}
             type={"submit"}
+            disabled={isLoading}
           >
-            Send me recovery letter
+            <FormattedMessage id="sendRecoveryLetter" defaultMessage="Send me recovery letter" />
           </Button>
         </div>
       </form>

@@ -14,6 +14,9 @@ export type Fields = {
   additionalClasses?: string;
   defaultValue?: string | null | Image | Date | Image[];
   disabled?: boolean;
+  validateCb?: (value: string) => boolean;
+  maxLength?: number;
+  minLength?: number;
 };
 
 export type Inputs = {
