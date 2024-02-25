@@ -7,9 +7,10 @@ import { Body, Container, Head, Img, Row, Tailwind, Text } from "@react-email/co
 type ResetEmailProps = {
   receiver: string;
   baseUrl: string;
+  resetLink: string;
 };
 
-export function ResetEmail({ receiver, baseUrl }: ResetEmailProps): ReactNode {
+export function ResetEmail({ receiver, baseUrl, resetLink }: ResetEmailProps): ReactNode {
   return (
     <Html lang="en">
       <Head />
@@ -25,8 +26,9 @@ export function ResetEmail({ receiver, baseUrl }: ResetEmailProps): ReactNode {
             <Text className={"text-sm font-bold"}>Please use this link to reset your password</Text>
 
             <Button
-              href="https://example.com"
-              className="rounded-md border-2 border-gray-800 bg-blue-400 px-3 py-2 font-mono leading-4 text-gray-800 underline"
+              href={resetLink}
+              className="rounded-md border-2 border-gray-800 px-3 py-2 font-mono leading-4 text-gray-800 underline"
+              color={"primary"}
             >
               Recovery link
             </Button>
