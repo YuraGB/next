@@ -1,17 +1,16 @@
 "use server";
 import { getCountOfAllTales } from "@/server/actions/TaleServices/getCountOfAllTales";
 import { getAllFairyTales } from "@/server/actions/TaleServices/getAllFairyTales";
-import type { TaleWithRelations } from "@/server/actions/types";
-import { LIMIT } from "@/server/actions/TaleServices/types";
+import {
+  LIMIT,
+  type TGetAllFairyTalesWithPagination,
+  type TProps,
+} from "@/server/actions/TaleServices/types";
 
-export type TGetAllFairyTalesWithPagination = [
-  number,
-  TaleWithRelations[] | undefined,
-  number | null,
-];
-export const getAllFairyTalesWithPagination = async (
-  currentPage = 1
-): Promise<TGetAllFairyTalesWithPagination> => {
+export const getAllFairyTalesWithPagination = async ({
+  currentPage = 1,
+  filters,
+}: TProps): Promise<TGetAllFairyTalesWithPagination> => {
   const count = await getCountOfAllTales();
 
   let nextPage: number | null = currentPage + 1;
@@ -21,7 +20,7 @@ export const getAllFairyTalesWithPagination = async (
   }
 
   try {
-    return await Promise.all([count, getAllFairyTales({ currentPage }), nextPage]);
+    return await Promise.all([count, getAllFairyTales({ currentPage, filters }), nextPage]);
   } catch (e) {
     throw new Error("Error getting all fairy tales with pagination");
   }

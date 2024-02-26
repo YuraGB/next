@@ -10,7 +10,7 @@ import placeholder from "@/assets/placeholder.webp";
 import RatingComponent from "@/modules/rating/Rating";
 import CreatedAt from "@/app/[locale]/fairyTales/modules/components/taleItem/CreatedAt";
 import { type TFindAllTales } from "@/server/actions/types";
-import MainImage from "@/app/[locale]/fairyTales/[id]/components/MainImage";
+import MainImage from "@/app/[locale]/fairyTales/[id]/_components/MainImage";
 
 const TaleItem = ({ tale }: { tale: TFindAllTales }): React.ReactNode | null => {
   const router = useRouter();

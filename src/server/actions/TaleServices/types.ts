@@ -1,8 +1,34 @@
 import { z } from "zod";
 import type { CategoryTale } from "@prisma/client";
 import type { Image } from ".prisma/client";
+import type { TaleWithRelations } from "@/server/actions/types";
 
 export const LIMIT = 6;
+
+export type TGetAllFairyTalesWithPagination = [
+  number,
+  TaleWithRelations[] | undefined,
+  number | null,
+];
+
+export type OrderTitleFilter = {
+  orderBy: {
+    title?: string;
+  };
+};
+
+export type CategoryFilter = {
+  where: {
+    categoryTale: {
+      id: string;
+    };
+  };
+};
+
+export type TProps = {
+  currentPage?: number;
+  filters?: OrderTitleFilter | CategoryFilter;
+};
 
 export const TaleSchema = z.object({
   content: z.string({
