@@ -69,7 +69,7 @@ const Navigation = (): React.ReactNode => {
           <NavbarBrand className={"mr-[-18px] flex  justify-start sm:mr-0"}>
             <Link href={"/"} className={"flex content-center items-center justify-center"}>
               <AcmeLogo />
-              <p className="ml-4 flex items-center font-bold text-inherit">
+              <p className="ml-4 hidden items-center font-bold text-inherit">
                 <FormattedMessage id={"logo"} />
               </p>
             </Link>

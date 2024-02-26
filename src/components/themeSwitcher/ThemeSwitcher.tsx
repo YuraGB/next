@@ -1,4 +1,4 @@
-// app/components/ThemeSwitcher.tsx
+// app/_components/ThemeSwitcher.tsx
 "use client";
 import { useTheme } from "next-themes";
 import { Button } from "@nextui-org/button";

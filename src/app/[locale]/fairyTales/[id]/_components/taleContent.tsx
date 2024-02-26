@@ -1,11 +1,11 @@
 "use client";
 import { memo, type ReactNode, Suspense } from "react";
-import { useTaleContent } from "@/app/[locale]/fairyTales/[id]/components/useTaleContent";
+import { useTaleContent } from "@/app/[locale]/fairyTales/[id]/_components/useTaleContent";
 import dynamic from "next/dynamic";
 import { type TaleWithRelations } from "@/server/actions/types";
 import { FormattedMessage } from "react-intl";
-import MainImage from "@/app/[locale]/fairyTales/[id]/components/MainImage";
-import ShareComponent from "@/app/[locale]/fairyTales/[id]/components/shareComponent";
+import MainImage from "@/app/[locale]/fairyTales/[id]/_components/MainImage";
+import ShareComponent from "@/app/[locale]/fairyTales/[id]/_components/shareComponent";
 
 const RatingComponent = dynamic(() => import("@/modules/rating/Rating"));
 const Comments = dynamic(() => import("@/modules/comments"));
@@ -49,7 +49,11 @@ const TaleContent = ({
       </section>
 
       <section>
-        <h3 className={"mt-8 text-center text-[32px] text-amber-50"}>
+        <h3
+          className={
+            "mt-8 text-center text-[32px] text-amber-50 [text-shadow:-1px_1px_1px_#091001]"
+          }
+        >
           <FormattedMessage
             id={"comments.section"}
             defaultMessage={"You can leave comment below"}

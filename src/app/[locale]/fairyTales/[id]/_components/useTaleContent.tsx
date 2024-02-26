@@ -1,5 +1,5 @@
 import { Fragment, useMemo } from "react";
-import Paragraph from "@/app/[locale]/fairyTales/[id]/components/paragraph";
+import Paragraph from "@/app/[locale]/fairyTales/[id]/_components/paragraph";
 import { type TaleWithRelations } from "@/server/actions/types";
 import { useQuery } from "@tanstack/react-query";
 import { getTale } from "@/server/actions/TaleServices/getTale";
@@ -9,7 +9,7 @@ import { GET_ONE_TALE } from "@/server/actions/queryNaming";
 export const useTaleContent = (taleData: Partial<TaleWithRelations>) => {
   const { data } = useQuery({
     queryKey: [GET_ONE_TALE, taleData.id],
-    queryFn: () => getTale(taleData.id ? taleData.id : ""),
+    queryFn: () => getTale(taleData.id!),
     initialData: taleData,
     enabled: Boolean(taleData.id),
   });

@@ -1,14 +1,14 @@
 "use server";
 import prisma from "$prismaClient/prisma";
 import { type TaleWithRelations } from "@/server/actions/types";
-import { LIMIT } from "@/server/actions/TaleServices/types";
+import { LIMIT, type TProps } from "@/server/actions/TaleServices/types";
+import { setFilters } from "@/server/actions/TaleServices/util/setFilters";
 
-type TProps = {
-  currentPage?: number;
-};
-
-export const getAllFairyTales = async ({ currentPage }: TProps): Promise<TaleWithRelations[]> => {
-  let config = {};
+export const getAllFairyTales = async ({
+  currentPage,
+  filters,
+}: TProps): Promise<TaleWithRelations[]> => {
+  let config: NonNullable<unknown>;
   const defaultConfig = {
     include: {
       categoryTale: true,
@@ -19,15 +19,19 @@ export const getAllFairyTales = async ({ currentPage }: TProps): Promise<TaleWit
     },
   };
 
+  const filtersConfig = setFilters(filters);
+
   if (currentPage === 0 || currentPage) {
     config = {
       skip: currentPage === 0 ? 0 : currentPage * LIMIT,
       take: LIMIT,
       ...defaultConfig,
+      ...filtersConfig,
     };
   } else {
     config = {
       ...defaultConfig,
+      ...filtersConfig,
     };
   }
 

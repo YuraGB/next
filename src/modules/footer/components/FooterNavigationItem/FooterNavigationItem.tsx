@@ -7,9 +7,12 @@ type FooterNavigationItemProps = {
 };
 
 const FooterNavigationItem = ({ navigationItem }: FooterNavigationItemProps): ReactNode => {
-  return (
-    <Link href={navigationItem.url}>{navigationItem.name.toLowerCase().replace("_", " ")}</Link>
-  );
+  const { url, name } = navigationItem;
+  const title = name.toLowerCase().replace("_", " ");
+  const firstLetter = title.charAt(0).toUpperCase();
+  const restOfTitle = title.slice(1);
+
+  return <Link href={url}>{firstLetter + restOfTitle}</Link>;
 };
 
 export default FooterNavigationItem;
