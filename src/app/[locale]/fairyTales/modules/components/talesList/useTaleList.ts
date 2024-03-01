@@ -40,7 +40,7 @@ export const useTaleList = (): TUseTaleList => {
     let observerRef: IntersectionObserver;
     if (load.current) {
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-expect-error eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+      // @ts-expect-error
       observerRef = new IntersectionObserver(([entry]) => {
         if (entry.isIntersecting) {
           void fetchNextPage();
