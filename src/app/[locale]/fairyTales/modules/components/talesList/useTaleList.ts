@@ -35,23 +35,22 @@ export const useTaleList = (): TUseTaleList => {
   }, [data?.pages]);
 
   const load = useRef<HTMLButtonElement>(null);
+  const observerRef = useRef<IntersectionObserver | null>(null);
 
   useEffect(() => {
-    let observerRef: IntersectionObserver;
-    if (load.current) {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-expect-error
-      observerRef = new IntersectionObserver(([entry]) => {
+    if (load.current && observerRef.current && showLoadMore.current) {
+      // @ts-expect-error - IntersectionObserver is not available in the current environment
+      observerRef.current = new IntersectionObserver(([entry]) => {
         if (entry.isIntersecting) {
           void fetchNextPage();
         }
       }) as unknown as IntersectionObserver;
-      observerRef.observe(load.current);
+      observerRef.current.observe(load.current);
     }
 
     return () => {
-      if (observerRef) {
-        observerRef.disconnect();
+      if (observerRef.current) {
+        observerRef.current.disconnect();
       }
     };
   }, [load.current, showLoadMore.current]);
