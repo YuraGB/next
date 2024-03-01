@@ -7,7 +7,7 @@ import type {
 import type { TaleWithRelations } from "@/server/actions/types";
 import type React from "react";
 // eslint-disable-next-line no-duplicate-imports
-import type { ChangeEvent } from "react";
+import type { ChangeEvent, MutableRefObject } from "react";
 
 export type TUseTaleList = {
   fetchNextPage: (options?: FetchNextPageOptions) => Promise<
@@ -25,4 +25,5 @@ export type TUseTaleList = {
   showLoadMore: React.MutableRefObject<boolean>;
   status: "error" | "success" | "pending";
   onSetSort: (sort: ChangeEvent<HTMLSelectElement>) => void;
+  load: MutableRefObject<HTMLButtonElement | null>;
 };

@@ -7,8 +7,7 @@ import TalesListSkeleton from "@/app/[locale]/fairyTales/modules/components/tale
 import Toolbar from "@/app/[locale]/fairyTales/modules/components/toolBar/Toolbar";
 
 const TalesList = (): ReactNode => {
-  const { taleList, fetchNextPage, isFetchingNextPage, status, showLoadMore, onSetSort } =
-    useTaleList();
+  const { load, taleList, isFetchingNextPage, status, showLoadMore, onSetSort } = useTaleList();
   if (status === "pending") return <TalesListSkeleton />;
 
   return (
@@ -20,11 +19,11 @@ const TalesList = (): ReactNode => {
       {showLoadMore.current ? (
         <Button
           isLoading={isFetchingNextPage}
-          onClick={() => fetchNextPage()}
           color="primary"
           variant="shadow"
           size={"lg"}
           className={"top-2"}
+          ref={load}
         >
           Load more
         </Button>

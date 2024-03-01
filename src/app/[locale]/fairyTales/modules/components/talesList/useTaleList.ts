@@ -1,6 +1,6 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { getAllFairyTalesWithPagination } from "@/server/actions/TaleServices/getAllFairyTalesWithPagination";
-import { useMemo, useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import { GET_TALES_PAGINATION } from "@/server/actions/queryNaming";
 import { useFilters } from "@/app/[locale]/fairyTales/modules/components/talesList/useFilters";
 import { type TUseTaleList } from "@/app/[locale]/fairyTales/modules/components/talesList/types";
@@ -34,6 +34,28 @@ export const useTaleList = (): TUseTaleList => {
     return [];
   }, [data?.pages]);
 
+  const load = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    let observerRef: IntersectionObserver;
+    if (load.current) {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-expect-error eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+      observerRef = new IntersectionObserver(([entry]) => {
+        if (entry.isIntersecting) {
+          void fetchNextPage();
+        }
+      }) as unknown as IntersectionObserver;
+      observerRef.observe(load.current);
+    }
+
+    return () => {
+      if (observerRef) {
+        observerRef.disconnect();
+      }
+    };
+  }, [load.current, showLoadMore.current]);
+
   return {
     taleList: listData,
     fetchNextPage,
@@ -41,5 +63,6 @@ export const useTaleList = (): TUseTaleList => {
     status,
     showLoadMore,
     onSetSort,
+    load,
   };
 };
