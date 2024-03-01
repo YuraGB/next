@@ -39,7 +39,8 @@ export const useTaleList = (): TUseTaleList => {
 
   useEffect(() => {
     if (load.current && observerRef.current && showLoadMore.current) {
-      // @ts-expect-error - IntersectionObserver is not available in the current environment
+      // eslint-disable-next-line
+      // @ts-ignore - IntersectionObserver is not available in the current environment
       observerRef.current = new IntersectionObserver(([entry]) => {
         if (entry.isIntersecting) {
           void fetchNextPage();
