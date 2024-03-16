@@ -20,7 +20,7 @@ export const setRating = async ({
   // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 }) => {
   if (!RatingSchema.safeParse(data).success) {
-    throw "Not all rating data provided";
+    throw new Error("Not all rating data provided");
   }
 
   try {

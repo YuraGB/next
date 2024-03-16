@@ -7,7 +7,7 @@ export type TUpdateSocialLinks = {
 };
 
 // eslint-disable-next-line
-export const updateSocialLinks = ({ id, data }: TUpdateSocialLinks) => {
+export const useUpdateSocialLinks = ({ id, data }: TUpdateSocialLinks) => {
   try {
     return prisma?.footerSocials.update({
       where: {

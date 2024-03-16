@@ -13,7 +13,7 @@ export const findUser = async (email: TFindUser): Promise<User | null | undefine
   }
 
   if (prisma === null || prisma === undefined) {
-    throw "prisma absent";
+    throw new Error("prisma absent");
   }
 
   try {

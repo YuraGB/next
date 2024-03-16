@@ -40,7 +40,7 @@ export const useUserPopup = (initialValues: User | null, onClose: () => void = (
     let fieldsWithDefaultValues: Fields[] = [];
     if (initialValues) {
       fieldsWithDefaultValues = fields.map((field: Fields) => {
-        if (initialValues && field.name && initialValues[field.name as keyof User] !== undefined) {
+        if (field.name && initialValues[field.name as keyof User] !== undefined) {
           return {
             defaultValue: initialValues[field.name as keyof User] as string,
             ...field,

@@ -9,7 +9,7 @@ const LangSwitcher = (): ReactNode => {
   return (
     <Select
       onChange={handleChange}
-      defaultSelectedKeys={[currentLocale!]}
+      defaultSelectedKeys={[currentLocale]}
       aria-labelledby={"language switcher"}
       data-cy={"language-switcher"}
       className={"w-[70px]"}

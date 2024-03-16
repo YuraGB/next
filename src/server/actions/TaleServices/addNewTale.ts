@@ -7,7 +7,7 @@ export type TCreateTaleResponse = Pick<Tale, "id" | "title"> | undefined;
 
 const createTale = async (newTale: TCreateTale): Promise<TCreateTaleResponse> => {
   if (!TaleSchema.safeParse(newTale).success) {
-    throw "Not all tale data provided";
+    throw new Error("Not all tale data provided");
   }
 
   try {

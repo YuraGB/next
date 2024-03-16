@@ -7,9 +7,10 @@ const TalesListSkeleton = (): ReactNode => {
     <section className="grid w-full grid-cols-1 justify-start gap-3 lg:grid-cols-2">
       {Array(6)
         .fill(1)
+        .map((item: number, index) => item + index)
         .map((item, index) => (
           // eslint-disable-next-line react/no-array-index-key
-          <TaleItemSkeleton key={index} />
+          <TaleItemSkeleton key={index + item} />
         ))}
     </section>
   );

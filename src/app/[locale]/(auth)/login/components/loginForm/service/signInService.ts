@@ -14,9 +14,9 @@ export default async (data: Partial<Inputs>) => {
       });
     } catch (e) {
       console.log(e);
-      throw "There is an error during logging";
+      throw new Error("There is an error during logging");
     }
   } else {
-    throw "The email or password is missing";
+    throw new Error("The email or password is missing");
   }
 };

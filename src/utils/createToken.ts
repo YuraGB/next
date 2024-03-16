@@ -1,5 +1,5 @@
 export const rand = (): string => {
-  return Math.random().toString(36).substr(2); // remove `0.`
+  return Math.random().toString(36).substring(2); // remove `0.`
 };
 
 export const createToken = (): string => {

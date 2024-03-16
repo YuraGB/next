@@ -54,7 +54,7 @@ const MultipleImagesContainer = ({
               uploadFiles.current = uploadFiles.current.filter((_, i) => i !== index);
             }
 
-            void onChange?.(value.filter((_, i) => i !== index) ?? []);
+            return onChange?.(value.filter((_, i) => i !== index) ?? []);
           }}
         >
           <div className="flex size-5 cursor-pointer items-center justify-center rounded-md border border-solid border-gray-500 bg-white transition-all duration-300 hover:size-6 dark:border-gray-400 dark:bg-black">

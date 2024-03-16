@@ -1,6 +1,5 @@
 import React, { type ReactNode } from "react";
 import { Card, CardBody, CardFooter, CardHeader } from "@nextui-org/card";
-// import Image from "next/image";
 import { Divider } from "@nextui-org/react";
 import { type PostT } from "@admin/(admin_pages)/entities/_modules/adminDashboardTabs/modules/blogDashboardTab/model/Post";
 

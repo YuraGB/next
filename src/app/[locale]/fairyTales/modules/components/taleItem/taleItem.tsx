@@ -2,11 +2,9 @@
 /* eslint-disable */
 import React from "react";
 import { Card, CardFooter, CardHeader } from "@nextui-org/card";
-import Image from "next/image";
 import { Divider } from "@nextui-org/react";
 import { useRouter } from "next/navigation";
 import { Pages } from "@/utils/pages";
-import placeholder from "@/assets/placeholder.webp";
 import RatingComponent from "@/modules/rating/Rating";
 import CreatedAt from "@/app/[locale]/fairyTales/modules/components/taleItem/CreatedAt";
 import { type TFindAllTales } from "@/server/actions/types";

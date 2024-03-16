@@ -16,9 +16,7 @@ export const metadata: Metadata = {
   ],
 };
 
-export default function BlogPost({ params }: { params: { id: string } }): React.ReactNode {
-  //todo dynamic route data
-  console.log(params);
+export default function BlogPost({}: { params: { id: string } }): React.ReactNode {
   return (
     <PageWrapper>
       <h1>BlogPost</h1>

@@ -8,7 +8,7 @@ export type TUpdateSocialLink = {
   data: TSocialLink;
 };
 
-export const updateSocialLink = ({ id, data }: TUpdateSocialLink): Promise<SocialItem> => {
+export const useUpdateSocialLink = ({ id, data }: TUpdateSocialLink): Promise<SocialItem> => {
   try {
     return prisma?.socialItem.update({
       where: {

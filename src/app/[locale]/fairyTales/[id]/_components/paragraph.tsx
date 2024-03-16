@@ -16,15 +16,13 @@ const Paragraph = ({
     return image?.url ? image.url : placeholder.src;
   });
 
+  const contentClass = `max-w-full p-6 font-['cormorant_it'] text-xl italic text-amber-50 backdrop-blur [text-shadow:-1px_1px_1px_#091001] [z-index:1] lg:max-w-[50%] ${
+    isOdd ? "ml-auto" : "mr-auto"
+  }`;
+
   return (
     <div className={"relative my-3 flex min-h-[400px] items-center justify-between"}>
-      <p
-        className={`max-w-full p-6 font-['cormorant_it'] text-xl italic text-amber-50 backdrop-blur [text-shadow:-1px_1px_1px_#091001] [z-index:1] lg:max-w-[50%] ${
-          isOdd ? "ml-auto" : "mr-auto"
-        }`}
-      >
-        {content}
-      </p>
+      <p className={contentClass}>{content}</p>
       {img ? (
         <ImageComponent
           src={img}

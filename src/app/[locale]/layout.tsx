@@ -70,5 +70,3 @@ export function generateStaticParams(): Array<{ locale: string }> {
 
   return locales.map((locale) => ({ locale }));
 }
-
-export const revalidate = 60;
