@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   ],
 };
 
-export default function BlogPost({}: { params: { id: string } }): React.ReactNode {
+export default function BlogPost(): React.ReactNode {
   return (
     <PageWrapper>
       <h1>BlogPost</h1>
