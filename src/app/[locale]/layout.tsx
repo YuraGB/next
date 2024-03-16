@@ -30,9 +30,11 @@ export const metadata: Metadata = {
 export default async function RootLayout({
   children,
   params,
+  modal,
 }: {
   children: ReactNode;
   params: { locale: string };
+  modal?: ReactNode;
 }) {
   const intl = await getIntl(params.locale);
   return (
@@ -50,6 +52,7 @@ export default async function RootLayout({
                   <BackgroundSwithcer />
                   <Navigation />
                   {children}
+                  {modal}
                   <Suspense fallback={null}>
                     <Footer />
                   </Suspense>
