@@ -1,7 +1,5 @@
-export const rand = (): string => {
-  return Math.random().toString(36).substring(2); // remove `0.`
-};
+import crypto from "crypto";
 
 export const createToken = (): string => {
-  return rand() + rand(); // to make it longer
+  return crypto.randomBytes(64).toString("hex");
 };
