@@ -32,9 +32,8 @@ const HomePageSlider = (): ReactNode | null => {
                   </SwiperSlide>
                 );
               })
-          : new Array(4).fill(0).map((_, index) => (
-              // eslint-disable-next-line react/no-array-index-key
-              <SwiperSlide key={index}>
+          : new Array(4).fill(0).map((item, index) => (
+              <SwiperSlide key={`${index + item}`}>
                 <SkeletonSlider />
               </SwiperSlide>
             ))}

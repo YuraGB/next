@@ -8,7 +8,7 @@ import { type ChangeEvent } from "react";
 export const useLangSwitcher = () => {
   const router = useRouter();
   const currentPathname = usePathname();
-  const currentLocale = useCurrentLocale(i18nConfig);
+  const currentLocale = useCurrentLocale(i18nConfig) as unknown as string;
 
   // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
   const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {

@@ -12,7 +12,7 @@ export const useAddCommentService = (taleId: string) => {
       console.log(error);
     },
     onSettled: () => {
-      void queryClient.invalidateQueries({ queryKey: [GET_ONE_TALE, taleId] });
+      return queryClient.invalidateQueries({ queryKey: [GET_ONE_TALE, taleId] });
     },
   });
 

@@ -15,7 +15,7 @@ const RemoveImageIcon: FC<Props> = ({ imageUrl, disabled, onChange }) => {
         className="group absolute right-0 top-0 -translate-y-1/4 translate-x-1/4"
         onClick={(e) => {
           e.stopPropagation();
-          void onChange?.(undefined);
+          return onChange?.(undefined);
         }}
       >
         <div className="flex size-5 items-center justify-center rounded-md border border-solid border-gray-500 bg-white transition-all duration-300 hover:size-6 dark:border-gray-400 dark:bg-black">

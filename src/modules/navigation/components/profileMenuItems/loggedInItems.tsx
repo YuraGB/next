@@ -18,14 +18,14 @@ const LoggedInItems = ({ user }: Props): React.ReactNode => {
     return null;
   }
 
-  const { name } = user;
+  const { name } = user as unknown as { name: string };
 
   return (
     <NavbarContent justify="center" className={"ml-[auto] max-w-[40px]"}>
       <li>
         <Dropdown>
           <DropdownTrigger>
-            <Avatar name={name!} size={"sm"} />
+            <Avatar name={name} size={"sm"} />
           </DropdownTrigger>
           <DropdownMenu aria-label="Static Actions">
             <DropdownItem key={Pages.ADMIN}>

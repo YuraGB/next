@@ -2,7 +2,7 @@ import { Input } from "@nextui-org/input";
 import React, { type FC } from "react";
 import { Button } from "@nextui-org/react";
 import { FormattedMessage } from "react-intl";
-import { updateSocialLink } from "@admin/(admin_pages)/general/_modules/GeneralAccordion/components/SocialItemsAdmin/useSocialItemAdmin";
+import { useUpdateSocialLink } from "@admin/(admin_pages)/general/_modules/GeneralAccordion/components/SocialItemsAdmin/useSocialItemAdmin";
 import type { TSocialLink } from "@/server/actions/FooterService/FooterSocials/types";
 import SelectItemName from "@admin/(admin_pages)/general/_modules/GeneralAccordion/components/SocialItemsAdmin/SelectItemName";
 
@@ -15,7 +15,7 @@ type SocialItemAdminProps = {
 };
 
 const SocialItemAdmin: FC<SocialItemAdminProps> = ({ url, name, onSubmit, id, isLoading }) => {
-  const { nameRef, urlRef, onChange, canSubmit } = updateSocialLink();
+  const { nameRef, urlRef, onChange, canSubmit } = useUpdateSocialLink();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();

@@ -26,10 +26,12 @@ export const useAddRattingService = (
       console.log(error);
     },
     onSettled: () => {
-      void queryClient.invalidateQueries({
-        queryKey: [GET_ONE_USER_WITH_VOTE, { userId, taleId }],
-      });
-      void queryClient.invalidateQueries({ queryKey: [GET_ONE_TALE, taleId] });
+      return Promise.all([
+        queryClient.invalidateQueries({
+          queryKey: [GET_ONE_USER_WITH_VOTE, { userId, taleId }],
+        }),
+        queryClient.invalidateQueries({ queryKey: [GET_ONE_TALE, taleId] }),
+      ]);
     },
   });
 

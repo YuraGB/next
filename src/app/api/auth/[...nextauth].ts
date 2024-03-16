@@ -44,7 +44,7 @@ export const authOptions: NextAuthOptions = {
               console.log("user not found");
             }
           } catch (e) {
-            throw "there is an error during logging";
+            throw new Error("there is an error during logging");
           }
         }
         return null;

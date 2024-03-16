@@ -59,8 +59,11 @@ export const useMultipleLoad = ({
         key: Math.random().toString(36).slice(2),
         progress: "PENDING",
       }));
-      void onFilesAdded?.(addedFiles);
-      void onChange?.([...(value ?? []), ...addedFiles]);
+
+      // eslint-disable-next-line
+      onFilesAdded?.(addedFiles);
+      // eslint-disable-next-line
+      onChange?.([...(value ?? []), ...addedFiles]);
     }
   };
 

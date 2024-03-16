@@ -244,9 +244,7 @@ export default function start(theme: string) {
     if (context === null) return;
 
     context.fillStyle = "rgba(255, 255, 255, " + p.opacity + ")";
-    // context.beginPath();
-    // context.arc(x, y, p.radius, 0, Math.PI * 2, false);
-    // context.fill();
+
     const starLength = 5;
     context.beginPath();
     context.moveTo(x - 1, y + 1);

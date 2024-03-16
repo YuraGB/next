@@ -13,7 +13,7 @@ type SocialItemAdminProps = {
   ) => void;
 };
 
-export const updateSocialLink = (): SocialItemAdminProps => {
+export const useUpdateSocialLink = (): SocialItemAdminProps => {
   const nameRef = useRef<HTMLSelectElement>(null);
   const urlRef = useRef<HTMLInputElement>(null);
   const [canSubmit, setCanSubmit] = useState<boolean>(false);

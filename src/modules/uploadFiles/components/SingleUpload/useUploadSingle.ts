@@ -15,10 +15,10 @@ export const useUploadSingle = ({
   disabled,
   onChange,
 }: InputProps) => {
-  const onDrop = (acceptedFiles: any[]): void => {
+  const onDrop = (acceptedFiles: any[]): void | Promise<void> | undefined => {
     const file = acceptedFiles[0];
     if (file) {
-      void onChange?.(file);
+      return onChange?.(file);
     }
   };
 

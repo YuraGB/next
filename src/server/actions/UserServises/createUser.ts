@@ -9,7 +9,7 @@ export const createUser = async (
   user: TCreateUser
 ): Promise<Pick<User, "email" | "hashPassword"> | TErrorObject> => {
   if (!UserSchema.safeParse(user).success) {
-    throw "Not all user data provided";
+    throw new Error("Not all user data provided");
   }
   try {
     return await prisma.user.create(user);

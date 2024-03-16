@@ -1,6 +1,5 @@
 "use client";
 import { type ReactNode } from "react";
-// import { getRandomInt } from "@/utils/getRandom";
 import ImageComponent from "next/image";
 import { getRandomInt } from "@/utils/getRandom";
 

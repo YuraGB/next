@@ -36,8 +36,6 @@ export const useHelper = ({ setImage, defaultValue }: TProps) => {
 
     return () => {
       uploadFiles.current = [];
-
-      //  setImage?.("images", undefined);
     };
   }, []);
 
