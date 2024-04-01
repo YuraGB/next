@@ -10,6 +10,7 @@ type Field = {
   errorMessage?: string;
   description?: string;
   placeholder?: string;
+  additionalClasses?: string;
 };
 
 export const useFormFields = (): Field[] => {
