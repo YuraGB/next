@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 import { type SubmitHandler, useForm } from "react-hook-form";
 import { type Inputs } from "@/modules/types/formTypes";
 import formFieldsMapping from "@/modules/utils/formFieldsMapping";
-import fields from "./fields";
+import { useRegistrationFields } from "./fields";
 import validateFields from "@/utils/validation/validateFields";
 import { useServiceCreate } from "@/app/[locale]/(auth)/signUp/components/registrationForm/service/useServiceCreate";
 import { useServiceSignIn } from "@/app/[locale]/(auth)/signUp/components/registrationForm/service/useServiceSignIn";
@@ -16,6 +16,8 @@ export const useSignUp = () => {
     handleSubmit,
     formState: { errors, isValid },
   } = useForm<Partial<Inputs>>();
+
+  const fields = useRegistrationFields();
 
   // save the password to use it in the signIn mutation
   const refPassword = useRef<string | null>(null);

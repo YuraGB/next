@@ -5,6 +5,7 @@ import { useTaleList } from "@/app/[locale]/fairyTales/modules/components/talesL
 import { Button } from "@nextui-org/button";
 import TalesListSkeleton from "@/app/[locale]/fairyTales/modules/components/talesList/taleListSkeleton";
 import Toolbar from "@/app/[locale]/fairyTales/modules/components/toolBar/Toolbar";
+import { FormattedMessage } from "react-intl";
 
 const TalesList = (): ReactNode => {
   const { load, taleList, isFetchingNextPage, status, showLoadMore, onSetSort } = useTaleList();
@@ -25,7 +26,7 @@ const TalesList = (): ReactNode => {
           className={"top-2"}
           ref={load}
         >
-          Load more
+          <FormattedMessage id={"load.more.btn"} defaultMessage={"Load more"} />
         </Button>
       ) : null}
     </Fragment>

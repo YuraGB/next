@@ -2,6 +2,7 @@
 import React, { memo } from "react";
 import { Button } from "@nextui-org/button";
 import { useLoginForm } from "@/app/[locale]/(auth)/login/components/loginForm/useLoginForm";
+import { FormattedMessage } from "react-intl";
 
 export type LoginFormType = {
   redirectUrl: string;
@@ -28,13 +29,13 @@ const LoginForm = ({ redirectUrl }: LoginFormType): React.ReactNode => {
             aria-labelledby={"login in button"}
             data-cy={"login-in-button"}
           >
-            Login in
+            <FormattedMessage id={"login.button"} defaultMessage={"Login in"} />
           </Button>
           <a
             className="inline-block align-baseline text-sm font-bold text-blue-500 hover:text-blue-800"
             href="/forgotPassword"
           >
-            Forgot Password?
+            <FormattedMessage id={"forgot.password.link"} defaultMessage={"Forgot password?"} />
           </a>
         </div>
       </form>

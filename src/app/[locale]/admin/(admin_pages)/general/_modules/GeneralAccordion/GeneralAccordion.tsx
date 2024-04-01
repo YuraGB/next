@@ -1,5 +1,6 @@
 "use client";
 import { type ReactNode } from "react";
+import { FormattedMessage } from "react-intl";
 import { Accordion, AccordionItem } from "@nextui-org/accordion";
 import SocialBlockAdmin from "@admin/(admin_pages)/general/_modules/GeneralAccordion/components/SocialsBlockAdmin/SocialBlockAdmin";
 import { type FooterSocialLinks } from "@/server/actions/FooterService/FooterSocials/types";
@@ -26,7 +27,11 @@ const GeneralAccordion = ({
     <article className={"w-full"}>
       <h3 className={"my-3 text-center align-middle text-xl font-bold"}>Footer</h3>
       <Accordion>
-        <AccordionItem key="1" aria-label="Footer Navigation" title="Footer Navigation">
+        <AccordionItem
+          key="1"
+          aria-label="Footer Navigation"
+          title={<FormattedMessage id={"footer.navigation"} defaultMessage={"Footer navigation"} />}
+        >
           <FooterNavigation footerNavigation={footerNavigation} />
         </AccordionItem>
         <AccordionItem key="2" aria-label="Footer Socials" title="Footer socials">

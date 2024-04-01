@@ -1,5 +1,6 @@
 "use client";
 import React, { type FC, memo, type ReactNode, Suspense, useEffect, useState } from "react";
+import { FormattedMessage } from "react-intl";
 
 type TProps = {
   createdAt: Date | string;
@@ -18,7 +19,10 @@ const CreatedAt: FC<TProps> = ({ createdAt }): ReactNode => {
 
   return (
     <Suspense fallback={null}>
-      <p>Published: {String(date)}</p>
+      <p>
+        <FormattedMessage id={"published"} defaultMessage={"Published: "} />
+        {String(date)}
+      </p>
     </Suspense>
   );
 };

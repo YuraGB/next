@@ -4,6 +4,7 @@ import { getSocialLinks } from "@/server/actions/FooterService/FooterSocials/get
 import { getCopyright } from "@/server/actions/FooterService/FooterCopyright/getCopyright";
 import { getFooterNavigation } from "@/server/actions/FooterService/FooterNavigation/getFooterNavigation";
 import { getOwnerInfo } from "@/server/actions/FooterService/FooterOwnerInfo/getOwnerInfo";
+import PageTitle from "@admin/(admin_pages)/general/_components/PageTitle";
 
 // eslint-disable-next-line
 const GeneratedPage = async () => {
@@ -21,9 +22,7 @@ const GeneratedPage = async () => {
 
   return (
     <PageWrapper additionalClasses={"items-start"}>
-      <div>
-        <h1>Generated Page</h1>
-      </div>
+      <PageTitle />
       <GeneralAccordion
         socials={socials[0]}
         copyrightBlock={copyright}

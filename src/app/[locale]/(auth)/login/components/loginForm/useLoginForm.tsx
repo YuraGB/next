@@ -1,5 +1,5 @@
 "use client";
-import fields from "@/app/[locale]/(auth)/login/components/loginForm/fields";
+import { userLoginFields } from "@/app/[locale]/(auth)/login/components/loginForm/fields";
 import type React from "react";
 import { type SubmitHandler, useForm } from "react-hook-form";
 import { type Inputs } from "@/modules/types/formTypes";
@@ -17,6 +17,7 @@ export const useLoginForm = ({ redirectUrl }: LoginFormType) => {
     formState: { errors, isValid },
   } = useForm<Partial<Inputs>>();
   const router = useRouter();
+  const fields = userLoginFields();
 
   const onSubmit: SubmitHandler<Partial<Inputs>> = async (data): Promise<void> => {
     // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions

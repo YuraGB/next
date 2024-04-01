@@ -1,5 +1,5 @@
 "use client";
-import { memo, type ReactNode, Suspense } from "react";
+import React, { memo, type ReactNode, Suspense } from "react";
 import { useTaleContent } from "@/app/[locale]/fairyTales/[id]/_components/useTaleContent";
 import dynamic from "next/dynamic";
 import { type TaleWithRelations } from "@/server/actions/types";
@@ -30,9 +30,15 @@ const TaleContent = ({
             {title ? title : "Fairy Tale"}
           </h1>
           <div className={"flex justify-between p-4 text-amber-50"}>
-            <em>Published : {Boolean(createdAt) && createdAt?.toLocaleDateString()}</em>
+            <em>
+              <FormattedMessage id={"published"} defaultMessage={"Published: "} />{" "}
+              {Boolean(createdAt) && createdAt?.toLocaleDateString()}
+            </em>
             <p>
-              <em>Category: {forAge}</em>
+              <em>
+                {" "}
+                <FormattedMessage id={"categoryName"} defaultMessage={"Category: "} /> {forAge}
+              </em>
             </p>
           </div>
         </section>
@@ -55,7 +61,7 @@ const TaleContent = ({
           }
         >
           <FormattedMessage
-            id={"comments.section"}
+            id={"comments.section.title"}
             defaultMessage={"You can leave comment below"}
           />{" "}
         </h3>

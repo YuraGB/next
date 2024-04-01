@@ -2,6 +2,7 @@
 import { useGetComments } from "@admin/_modules/AdminLatestComments/api/useGetComments";
 import { type Comment } from ".prisma/client";
 import { type ReactNode } from "react";
+import { FormattedMessage } from "react-intl";
 
 const AdminLatestComments = (): ReactNode | null => {
   const { data, error, isLoading } = useGetComments();
@@ -9,7 +10,9 @@ const AdminLatestComments = (): ReactNode | null => {
 
   return (
     <section className={"relative mt-4 flex  w-full max-w-full flex-col p-2"}>
-      <h3 className={"text-center font-bold text-foreground"}>Latest comments</h3>
+      <h3 className={"text-center font-bold text-foreground"}>
+        <FormattedMessage id={"latest.comments.title"} defaultMessage={"Latest comments"} />
+      </h3>
       <div>
         {isLoading && "Loading..."}
         {error && "Error: " + error.message}

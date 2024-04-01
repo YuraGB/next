@@ -27,13 +27,20 @@ export default async function FairyTale({ params }: { params: { id: string } }) 
   const brdcrPath = [
     {
       url: "/fairyTales",
-      name: "Catalog of the Tales",
+      name: {
+        id: "category.fairyTales",
+        defaultMessage: "Fairy Tales",
+      },
     },
   ];
 
   return (
     <PageWrapper>
-      <BreadcrumbsModule current={taleData?.title ?? "Tale"} path={brdcrPath} />
+      <BreadcrumbsModule
+        current={taleData?.title ?? "Tale"}
+        currentId={taleData?.title ?? "Tale"}
+        path={brdcrPath}
+      />
       {taleData ? <TaleContent taleContent={taleData} /> : null}
     </PageWrapper>
   );
