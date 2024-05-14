@@ -22,7 +22,7 @@ export const metadata: Metadata = {
 export default function FairyTales(): ReactNode {
   return (
     <PageWrapper>
-      <BreadcrumbsModule current={"Catalog of the Tales"} />
+      <BreadcrumbsModule current={"Catalog of the Tales"} currentId={"catalog.page"} />
       <PageTitle />
       <Suspense fallback={<TalesListSkeleton />}>
         <TalesList />

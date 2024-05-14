@@ -2,6 +2,7 @@ import LoginForm from "@/app/[locale]/(auth)/login/components/loginForm/LoginFor
 import PageWrapper from "@/components/pageWrapper/PageWrapper";
 import { type Metadata } from "next";
 import React, { Suspense } from "react";
+import PageTitle from "@/app/[locale]/(auth)/login/components/PageTitle";
 
 export const metadata: Metadata = {
   title: "Gyb Nextjs Login Page",
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
 export default function Login(): React.ReactNode {
   return (
     <PageWrapper>
-      <h1>Login</h1>
+      <PageTitle />
       <Suspense fallback={<p>Loading</p>}>
         <LoginForm redirectUrl={"/"} />
       </Suspense>

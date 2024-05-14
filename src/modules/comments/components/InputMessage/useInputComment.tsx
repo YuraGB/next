@@ -1,5 +1,5 @@
 import { type SubmitHandler, useForm } from "react-hook-form";
-import commentFields from "./fields";
+import { useFormFields } from "./fields";
 import formFieldsMapping from "@/modules/utils/formFieldsMapping";
 import { type TCreateComment } from "@/server/actions/CommentServises/addComment";
 import { useAddCommentService } from "@/modules/comments/components/service/addCommentService";
@@ -24,12 +24,11 @@ export const useInputComment = (taleId: string | undefined) => {
     formState: { errors, isValid },
   } = useForm<Partial<TSubmitData>>();
   const { data: sessionData } = useSession();
+  let fieldsData = useFormFields();
 
   const { mutate, error, status, data } = useAddCommentService(taleId ?? "");
 
   const fields = useMemo(() => {
-    let fieldsData = commentFields;
-
     // if the user is logged in, fill the name and email fields
     if (sessionData?.user) {
       const { email, name } = sessionData.user as User;

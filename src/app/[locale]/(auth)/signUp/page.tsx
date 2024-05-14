@@ -2,6 +2,7 @@ import { RegistrationForm } from "@/app/[locale]/(auth)/signUp/components/regist
 import { type Metadata } from "next";
 import PageWrapper from "@/components/pageWrapper/PageWrapper";
 import React, { Suspense } from "react";
+import PageTitle from "@/app/[locale]/(auth)/signUp/components/PageTitle";
 
 export const metadata: Metadata = {
   title: "Gyb Next js Sign Up Page",
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
 export default function RegisterPage(): React.ReactNode {
   return (
     <PageWrapper>
-      <h1>Registration</h1>
+      <PageTitle />
       <Suspense fallback={null}>
         <RegistrationForm />
       </Suspense>

@@ -3,6 +3,7 @@ import { type Metadata } from "next";
 import React, { type ReactNode } from "react";
 import AdminHomeRatingChart from "@admin/_modules/AdminHomeRatingChart";
 import AdminLatestComments from "@admin/_modules/AdminLatestComments";
+import PageTitle from "@admin/_components/PageTitle";
 
 export const metadata: Metadata = {
   title: "Gyb Nextjs Admin Page",
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
 export default function Admin(): ReactNode {
   return (
     <PageWrapper additionalClasses={"items-start"}>
-      <h1 className={"mb-4 text-2xl font-bold"}>Admin Page Home</h1>
+      <PageTitle />
       <article className={"grid w-full grid-cols-2 gap-2"}>
         <section className={"relative flex max-w-full justify-center"}>
           <AdminHomeRatingChart />

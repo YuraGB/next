@@ -4,17 +4,21 @@ import Link from "next/link";
 import { FormattedMessage } from "react-intl";
 
 type PathItem = {
-  name: string;
+  name: {
+    id: string;
+    defaultMessage: string;
+  };
   url: string;
 };
 
 type Props = {
   path?: PathItem[];
   current: string;
+  currentId?: string;
 };
 
 const BreadcrumbsModule = (props: Props): ReactNode => {
-  const { path, current } = props;
+  const { path, current, currentId = "" } = props;
   return (
     <nav className="mb-4 w-full rounded-md px-5 py-3 backdrop-blur">
       {/* eslint-disable-next-line tailwindcss/no-custom-classname */}
@@ -33,13 +37,13 @@ const BreadcrumbsModule = (props: Props): ReactNode => {
         </li>
         {Boolean(path?.length)
           ? path?.map((item) => (
-              <Fragment key={item.name}>
+              <Fragment key={item.name.defaultMessage}>
                 <li>
                   <Link
                     href={item.url}
                     className="text-primary transition duration-150 ease-in-out hover:text-primary-600 focus:text-primary-600 active:text-primary-700 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500 dark:active:text-primary-600"
                   >
-                    {item.name}
+                    <FormattedMessage id={item.name.id} defaultMessage={item.name.defaultMessage} />
                   </Link>
                 </li>
                 <li>
@@ -48,7 +52,9 @@ const BreadcrumbsModule = (props: Props): ReactNode => {
               </Fragment>
             ))
           : null}
-        <li className="text-neutral-500 dark:text-neutral-300">{current}</li>
+        <li className="text-neutral-500 dark:text-neutral-300">
+          <FormattedMessage id={currentId} defaultMessage={current} />
+        </li>
       </ol>
     </nav>
   );

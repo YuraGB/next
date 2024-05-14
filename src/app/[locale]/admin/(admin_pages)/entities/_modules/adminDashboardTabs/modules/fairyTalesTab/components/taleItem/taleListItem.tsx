@@ -2,6 +2,7 @@ import React from "react";
 import { Card, CardFooter, CardHeader } from "@nextui-org/card";
 import { Divider } from "@nextui-org/react";
 import { type Tale } from ".prisma/client";
+import { FormattedMessage } from "react-intl";
 
 const TaleAdminItem = ({
   tale,
@@ -39,8 +40,14 @@ const TaleAdminItem = ({
       </CardHeader>
       <Divider />
       <CardFooter className={"flex justify-between"}>
-        <p className={"mr-2 text-sm text-foreground-100"}>Category: {forAge}</p>
-        <p className={"text-sm text-foreground-100"}>Published: {createdAt.toLocaleDateString()}</p>
+        <p className={"mr-2 text-sm text-foreground-100"}>
+          <FormattedMessage id={"categoryName"} defaultMessage={"Category: "} /> {forAge}
+        </p>
+        <p className={"text-sm text-foreground-100"}>
+          {" "}
+          <FormattedMessage id={"published"} defaultMessage={"Published: "} />{" "}
+          {createdAt.toLocaleDateString()}
+        </p>
       </CardFooter>
     </Card>
   );
