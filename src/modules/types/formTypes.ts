@@ -2,10 +2,10 @@ import { type Image } from ".prisma/client";
 
 export type Fields = {
   type: string;
-  required: boolean;
+  required?: boolean;
   label: string;
   name: string;
-  errorMessage: string;
+  errorMessage?: string;
   isInvalid?: boolean;
   accept?: string;
   pattern?: RegExp;
