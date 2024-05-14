@@ -50,7 +50,6 @@ export default async function RootLayout({
                   <BackgroundSwithcer />
                   <Navigation />
                   {children}
-                  {children}
                   <Suspense fallback={null}>
                     <Footer />
                   </Suspense>
