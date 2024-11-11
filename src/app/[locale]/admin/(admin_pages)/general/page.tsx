@@ -6,7 +6,9 @@ import { getFooterNavigation } from "@/server/actions/FooterService/FooterNaviga
 import { getOwnerInfo } from "@/server/actions/FooterService/FooterOwnerInfo/getOwnerInfo";
 import PageTitle from "@admin/(admin_pages)/general/_components/PageTitle";
 
-// eslint-disable-next-line
+export const dynamic = "force-dynamic";
+
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 const GeneratedPage = async () => {
   const socialsBlock = getSocialLinks();
   const copyrightBlock = getCopyright();

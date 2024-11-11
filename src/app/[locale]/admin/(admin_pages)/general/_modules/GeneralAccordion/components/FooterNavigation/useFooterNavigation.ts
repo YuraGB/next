@@ -37,6 +37,7 @@ export const useFooterNavigation = (
   }, [errorCreate, errorUpdate]);
 
   useEffect(() => {
+    console.log(statusCreate, statusUpdate);
     if (statusCreate === "success" || statusUpdate === "success") {
       toast.success("Navigation saved successfully");
     }

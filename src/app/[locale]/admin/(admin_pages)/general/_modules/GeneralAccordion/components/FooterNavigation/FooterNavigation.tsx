@@ -24,7 +24,7 @@ const FooterNavigation: FC<{ footerNavigation: TFooterNavWithLinks | undefined |
         ))}
       </Select>
       <Button isLoading={isLoading} type="submit" color={"success"}>
-        Save navigation
+        {isLoading ? "Saving" : "Save navigation"}
       </Button>
     </form>
   );
