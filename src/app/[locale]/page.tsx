@@ -9,10 +9,16 @@ export const metadata: Metadata = {
   title: "Fairy Tales Catalog Home page",
   description: "Introduction to the Fairy Tales Website",
   keywords: ["fairy tales", "home page"],
-  robots: "index, follow",
+  robots: {
+    index: true,
+    googleBot: {
+      index: true,
+    },
+  },
 };
 
 export const preferredRegion = ["fra1"];
+export const revalidate = 3600;
 
 export default function Home(): ReactNode {
   return (
