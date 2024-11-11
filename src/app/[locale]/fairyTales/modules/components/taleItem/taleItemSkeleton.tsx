@@ -4,8 +4,8 @@ import React, { type ReactNode } from "react";
 import { Skeleton } from "@nextui-org/skeleton";
 
 const TaleItemSkeleton = (): ReactNode => (
-  <Card className="w-full rounded-[0]" isPressable isBlurred isHoverable>
-    <CardHeader className="relative flex h-[300px] w-full flex-col items-start gap-3 overflow-hidden rounded-[0] p-0">
+  <Card className="w-full rounded-none" isPressable isBlurred isHoverable>
+    <CardHeader className="relative flex h-[300px] w-full flex-col items-start gap-3 overflow-hidden rounded-none p-0">
       <Skeleton className={"h-[300px] w-full object-cover"} />
     </CardHeader>
     <Divider />

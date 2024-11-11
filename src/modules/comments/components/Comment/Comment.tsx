@@ -27,7 +27,7 @@ const CommentComponent: FC<TProps> = (props): ReactNode | null => {
     <section
       className={`relative flex flex-col ${
         isOdd ? "items-end" : "items-start"
-      } m-auto w-full max-w-[768px]`}
+      } m-auto w-full max-w-md`}
     >
       <div className={`comment ${isOdd ? "" : "odd"} `}>
         <p className={"flex w-full border-b-1 px-3 py-5 text-foreground-50"}>{comment.content}</p>

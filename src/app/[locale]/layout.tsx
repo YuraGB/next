@@ -1,5 +1,4 @@
 import React, { type ReactNode, Suspense } from "react";
-import type { Metadata } from "next";
 
 import { Analytics } from "@vercel/analytics/react";
 
@@ -34,7 +33,7 @@ export default async function RootLayout({
     <html lang={intl.locale}>
       <body
         className={
-          "flex min-h-[100dvh] flex-col bg-background [&>div:first-child]:flex [&>div:first-child]:min-h-[100dvh] [&>div:first-child]:flex-col"
+          "flex min-h-dvh flex-col bg-background [&>div:first-child]:flex [&>div:first-child]:min-h-dvh [&>div:first-child]:flex-col"
         }
       >
         <NextUiProviderComponent>

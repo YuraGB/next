@@ -16,7 +16,7 @@ const TaleListSkeleton = (): React.ReactNode => {
       <Divider />
       <CardFooter className={"flex justify-between"}>
         <Skeleton className={"w-[20%] rounded p-2"}>
-          <p className={"w-[20%] p-2"} />
+          <p className={"'w-1/5 p-2"} />
         </Skeleton>
 
         <Skeleton className={"w-[10%] rounded p-2"}>
