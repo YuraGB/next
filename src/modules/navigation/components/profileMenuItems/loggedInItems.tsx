@@ -23,7 +23,7 @@ const LoggedInItems = ({ user }: Props): React.ReactNode => {
   const { name } = user as unknown as { name: string };
 
   return (
-    <NavbarContent justify="center" className={"ml-[auto] max-w-[40px]"}>
+    <NavbarContent justify="center" className={"ml-auto max-w-[40px]"}>
       <li>
         <Dropdown>
           <DropdownTrigger>

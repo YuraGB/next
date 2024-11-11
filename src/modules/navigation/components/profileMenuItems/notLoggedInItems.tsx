@@ -8,7 +8,7 @@ import { Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from "@nextui-o
 
 const NotLoggedInItems = (): React.ReactNode => {
   return (
-    <NavbarContent justify="center" className={"ml-[auto] max-w-[140px]"}>
+    <NavbarContent justify="center" className={"ml-auto max-w-[140px]"}>
       <NavbarItem>
         <Dropdown>
           <DropdownTrigger>

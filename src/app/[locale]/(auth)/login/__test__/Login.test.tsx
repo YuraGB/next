@@ -1,15 +1,36 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { type GetByRole, render, screen, waitFor } from "@testing-library/react";
 import Login from "@/app/[locale]/(auth)/login/page";
+import { createIntl } from "@formatjs/intl";
+import en from "@/i18n/en.json";
+import type { ReactNode } from "react";
+import ServerIntlProvider from "@/context/i18nProvider";
 
 jest.mock("next/navigation", () => ({
   useRouter: jest.fn(),
 }));
 
 describe("Login page", () => {
-  it("Login H1 must be on the page", async () => {
-    render(<Login />); //ARRANGE
+  const intl = createIntl({
+    locale: "en",
+    messages: en,
+    onError: (e) => {
+      console.log(e);
+    },
+  });
+  function Wrapper({ children }: { children: ReactNode }): ReactNode {
+    return (
+      <ServerIntlProvider locale={intl.locale} messages={intl.messages}>
+        {children}
+      </ServerIntlProvider>
+    );
+  }
 
-    const elem: HTMLParagraphElement = screen.getByRole("heading", {
+  it("Login H1 must be on the page", async () => {
+    render(<Login />, {
+      wrapper: Wrapper,
+    }); //ARRANGE
+
+    const elem: ReturnType<GetByRole<HTMLElement>> = screen.getByRole("heading", {
       name: "Login",
     }); //ACT
 
@@ -23,9 +44,11 @@ describe("Login page", () => {
   });
 
   it("should have submit button Forgot password", async () => {
-    render(<Login />); //ARRANGE
+    render(<Login />, {
+      wrapper: Wrapper,
+    }); //ARRANGE
 
-    const elem: HTMLParagraphElement = screen.getByRole("button", {
+    const elem: ReturnType<GetByRole<HTMLElement>> = screen.getByRole("button", {
       name: "Login in",
     }); //ACT
     await waitFor(
@@ -40,7 +63,7 @@ describe("Login page", () => {
   it("should have the form on the Forgot password page", async () => {
     render(<Login />); //ARRANGE
 
-    const elem: HTMLParagraphElement = screen.getByRole("form", {
+    const elem: ReturnType<GetByRole<HTMLElement>> = screen.getByRole("form", {
       name: "Login in form",
     }); //ACT
 
