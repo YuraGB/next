@@ -61,7 +61,9 @@ describe("Login page", () => {
   });
 
   it("should have the form on the Forgot password page", async () => {
-    render(<Login />); //ARRANGE
+    render(<Login />, {
+      wrapper: Wrapper,
+    }); //ARRANGE
 
     const elem: ReturnType<GetByRole<HTMLElement>> = screen.getByRole("form", {
       name: "Login in form",
