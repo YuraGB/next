@@ -67,7 +67,11 @@ const Navigation = (): React.ReactNode => {
       <NavbarContent className="max-w-[50%] pr-3 sm:max-w-[fit-content]" justify="start">
         <li className={"flex w-full"}>
           <NavbarBrand className={"mr-[-18px] flex  justify-start sm:mr-0"}>
-            <Link href={"/"} className={"flex content-center items-center justify-center"}>
+            <Link
+              href={"/"}
+              className={"flex content-center items-center justify-center"}
+              aria-label={"link to home page"}
+            >
               <AcmeLogo />
               <p className="ml-4 hidden items-center font-bold text-inherit">
                 <FormattedMessage id={"logo"} />

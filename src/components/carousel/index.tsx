@@ -65,6 +65,7 @@ export default function Carousel({ children, config = {} }: Props): ReactNode {
           }
           isIconOnly={true}
           onClick={() => swiperRef.current?.slidePrev()}
+          aria-label={"slide before"}
         >
           <LeftArrow />
         </Button>
@@ -72,6 +73,7 @@ export default function Carousel({ children, config = {} }: Props): ReactNode {
           className={
             "absolute right-0 top-1/2 z-10 -translate-y-1/2 rounded-full bg-white p-2 shadow-lg  md:right-[-50px]"
           }
+          aria-label={"slide after"}
           type={"button"}
           isIconOnly={true}
           onClick={() => swiperRef.current?.slideNext()}

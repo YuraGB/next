@@ -18,9 +18,9 @@ const HomePageSlider = (): ReactNode | null => {
 
   return (
     <section className={"relative mb-4 w-full"}>
-      <h3 className={"mb-4 flex justify-center text-2xl font-bold text-foreground"}>
+      <h2 className={"mb-4 flex justify-center text-2xl font-bold text-foreground"}>
         <FormattedMessage id={"hp.slider.title"} defaultMessage={"The list of magic"} />
-      </h3>
+      </h2>
       <Carousel>
         {slides?.length
           ? slides
