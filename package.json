@@ -43,7 +43,7 @@
     "bcrypt": "^5.1.1",
     "caniuse-lite": "^1.0.30001680",
     "chart.js": "^4.4.1",
-    "firebase": "^10.6.0",
+    "firebase": "^10.9.0",
     "framer-motion": "^10.16.5",
     "lucide-react": "^0.323.0",
     "mongodb": "^6.3.0",
