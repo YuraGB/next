@@ -14,6 +14,7 @@ import dynamic from "next/dynamic";
 import ServerIntlProvider from "@/context/i18nProvider";
 import getIntl from "@/utils/intl";
 import { EdgeStoreProvider } from "@/context/Edgestore";
+import { Head } from "@react-email/components";
 const Navigation = dynamic(() => import("@/modules/navigation/Navigation"));
 const Footer = dynamic(() => import("../../modules/footer"));
 const BackgroundSwithcer = dynamic(
@@ -31,6 +32,12 @@ export default async function RootLayout({
   const intl = await getIntl(params.locale);
   return (
     <html lang={intl.locale}>
+      <Head>
+        <meta
+          name="google-site-verification"
+          content="SGnHdj3uSZ00TuyXLI4fk5L5wnMpUHZyfJCsvRzTCJs"
+        />
+      </Head>
       <body
         className={
           "flex min-h-dvh flex-col bg-background [&>div:first-child]:flex [&>div:first-child]:min-h-dvh [&>div:first-child]:flex-col"
