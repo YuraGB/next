@@ -35,7 +35,7 @@ export default async function RootLayout({
       <Head>
         <meta
           name="google-site-verification"
-          content="SGnHdj3uSZ00TuyXLI4fk5L5wnMpUHZyfJCsvRzTCJs"
+          content="X6cUniHFM7M8vEOaWatykmllRH575clR-8_mja3qR_Y"
         />
       </Head>
       <body
