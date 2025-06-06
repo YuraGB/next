@@ -32,7 +32,7 @@
     "@auth/mongodb-adapter": "^3.7.3",
     "@edgestore/react": "^0.1.6",
     "@edgestore/server": "^0.1.6",
-    "@nextui-org/react": "^2.2.9",
+    "@nextui-org/react": "^2.6.11",
     "@react-email/components": "0.0.15",
     "@react-email/tailwind": "0.0.14",
     "@react-three/fiber": "^8.15.15",
